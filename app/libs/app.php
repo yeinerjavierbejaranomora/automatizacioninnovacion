@@ -1,10 +1,11 @@
 <?php
+/**
+ * 
+ */
 class App{
-
     private $controller = 'producto';
     private $method = 'inicio';
     private $parameters = [];
-
     function __construct()
     {
         date_default_timezone_set("America/Bogota");
@@ -14,7 +15,7 @@ class App{
             unset($url[0]);
         endif;
 
-        require_once("../app/controllers/".ucwords($this->controller.".php"));
+        require_once("../app/controllers/".ucwords($this->controller).".php");
         $this->controller = new $this->controller;
 
         if(isset($url[1])):
@@ -25,17 +26,18 @@ class App{
         endif;
 
         $this->parameters = $url?array_values($url):[];
+
         call_user_func_array([$this->controller,$this->method],$this->parameters);
     }
 
-    public function separarURL(){
-        $url ="";
-        if(isset($_GET['url'])):
+    public function separarURL()
+    {
+        $url = "";
+        if (isset($_GET['url'])) {
             $url = rtrim($_GET['url'],'/');
             $url = filter_var($url,FILTER_SANITIZE_URL);
-            $url = explode('/',$url);
-        endif;
-
+            $url = explode("/",$url);
+        }
         return $url;
     }
 }

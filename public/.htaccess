@@ -1,7 +1,7 @@
 <IfModule mod_rewrite.c>
     Options -Multiviews
     RewriteEngine On
-    RewriteBase /automatizacioninnovacion/public
+    RewriteBase /public
     RewriteCond %{REQUEST_FILENAE} !-d
     RewriteCond %{REQUEST_FILENAE} !-f
     RewriteRule ^$ public/ [L]

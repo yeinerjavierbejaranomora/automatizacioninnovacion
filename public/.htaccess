@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+    Options -Multiviews
+    RewriteEngine On
+    RewriteBase /innovacion/public
+    RewriteCond %{REQUEST_FILENAE} !-d
+    RewriteCond %{REQUEST_FILENAE} !-f
+    RewriteRule ^$ public/ [L]
+    RewriteRule ^(.+) index.php?url=$1 [QSA,L]
+</IfModule>

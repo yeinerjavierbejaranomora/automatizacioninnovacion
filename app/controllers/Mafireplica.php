@@ -8,7 +8,7 @@ class Mafireplica  extends Controller{
     }
 
     public function datamafireplica(){
-        echo "Hola";
+        echo "hola";
     }
 
     

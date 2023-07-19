@@ -12,6 +12,7 @@ class Mafi extends Controller{
         
         $log = $this->model->log('Insert','datosMafiReplica');
         $logFecth = $log->fetch(PDO::FETCH_ASSOC);
+        var_dump($logFecth);die();
         if(!empty($logFecth)):
             $offset = $logFecth['idFin'];
         else:

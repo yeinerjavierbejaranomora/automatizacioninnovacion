@@ -19,10 +19,8 @@ class Mafi extends Controller{
         endif;
         $datosMafi = $this->model->dataMafi();
         if($datosMafi):
-            $datosMafiFetch = $datosMafi->fetch(PDO::FETCH_ASSOC);
-            var_dump($datosMafiFetch);
             $numeroRegistros = 0;
-            $primerId = $datosMafiFetch['id'];
+            $primerId = $datosMafi->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):

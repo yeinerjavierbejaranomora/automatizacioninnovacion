@@ -3,7 +3,7 @@ class Database{
     private $host,$db,$user,$password,$charset,$pdo;
     function __construct()
     {
-        $this->host = '127.0.0.1';
+        $this->host = 'localhost';
         $this->db = 'u266816196_ILPoF';
         $this->user = 'u266816196_YCF0b';
         $this->password = 'Yeiner91041755542.';

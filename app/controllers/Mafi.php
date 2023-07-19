@@ -39,7 +39,7 @@ class Mafi extends Controller{
                 if($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')):
                     //$insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
                     $numeroRegistros++;
-                else:
+                elseif($sello == 'TIENE SELLO FINANCIERO'):
                     //$insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
                     $numeroRegistros++;
                 endif;

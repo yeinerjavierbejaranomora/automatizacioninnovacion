@@ -18,6 +18,6 @@ class Mafi extends Controller{
             $offset = 0;
         endif;
         $datosMafi = $this->model->dataMafi();
-        var_dump($datosMafi->rowCount());die();
+        var_dump($datosMafi->fetch(PDO::FETCH_ASSOC));die();
     }
 }

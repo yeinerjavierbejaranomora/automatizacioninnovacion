@@ -8,7 +8,6 @@ class Mafi extends Controller{
     }
 
     public function inicio() {
-        $datosMafi = $this->model->dataMafi();
-        var_dump($datosMafi->fetch(PDO::FETCH_ASSOC));die();
+        echo "Hola";
     }
 }

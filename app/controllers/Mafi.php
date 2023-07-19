@@ -17,7 +17,7 @@ class Mafi extends Controller{
         else:
             $offset = 0;
         endif;
-        var_dump($offset);die();
+        // var_dump($offset);die();
         $datosMafi = $this->model->dataMafi();
         if($datosMafi):
             $numeroRegistros = 0;

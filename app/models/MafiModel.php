@@ -11,7 +11,7 @@ class MafiModel{
 
     function dataMafi(){
         try {
-            $consulta = $this->db->connect()->prepare('SELECT * FROM `datosmafireplica`');
+            $consulta = $this->db->connect()->prepare('SELECT * FROM `datosMafi`');
             $consulta->execute();
             return $consulta;
         } catch (PDOException $e) {

@@ -17,8 +17,7 @@ class Mafi extends Controller{
         else:
             $offset = 0;
         endif;
-        var_dump($offset);die();
-        /*$datosMafi = $this->model->dataMafi();
-        var_dump($datosMafi->fetch(PDO::FETCH_ASSOC));die();*/
+        $datosMafi = $this->model->dataMafi();
+        var_dump($datosMafi->rowCount());die();
     }
 }

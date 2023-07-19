@@ -23,7 +23,7 @@ class MafiModel{
 
     function dataMafi(){
         try {
-            $consulta = $this->db->connect()->prepare('SELECT * FROM `datosMafi`');
+            $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
             $consulta->execute();
             return $consulta;
         } catch (PDOException $e) {

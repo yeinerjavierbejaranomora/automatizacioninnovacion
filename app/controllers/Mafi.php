@@ -25,27 +25,29 @@ class Mafi extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
-                $idBanner = $estudiante['idbanner'];
-                $primerApellido = $estudiante['primer_apellido'];
-                $programa = $estudiante['programa'];
-                $codPrograma = $estudiante['codprograma'];
-                $cadena = $estudiante['cadena'];
-                $periodo = $estudiante['periodo'];
-                $estado = $estudiante['estado'];
-                $tipoEstudiante = $estudiante['tipoestudiante'];
-                $rutaAcademica = $estudiante['ruta_academica'];
-                $sello = $estudiante['sello'];
-                $operador = $estudiante['operador'];
-                $autorizadoAsistir = $estudiante['autorizado_asistir'];
-                if($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')):
-                    $insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
-                    $numeroRegistros++;
-                elseif($sello == 'TIENE SELLO FINANCIERO'):
-                    $insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
-                    $numeroRegistros++;
+                if($estudiante['idbanner'] > $offset):
+                    $idBanner = $estudiante['idbanner'];
+                    $primerApellido = $estudiante['primer_apellido'];
+                    $programa = $estudiante['programa'];
+                    $codPrograma = $estudiante['codprograma'];
+                    $cadena = $estudiante['cadena'];
+                    $periodo = $estudiante['periodo'];
+                    $estado = $estudiante['estado'];
+                    $tipoEstudiante = $estudiante['tipoestudiante'];
+                    $rutaAcademica = $estudiante['ruta_academica'];
+                    $sello = $estudiante['sello'];
+                    $operador = $estudiante['operador'];
+                    $autorizadoAsistir = $estudiante['autorizado_asistir'];
+                    if($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')):
+                        $insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
+                        $numeroRegistros++;
+                    elseif($sello == 'TIENE SELLO FINANCIERO'):
+                        $insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
+                        $numeroRegistros++;
+                    endif;
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $idBanner;
                 endif;
-                $ultimoRegistroId = $estudiante['id'];
-                $idBannerUltimoRegistro = $idBanner;
             endforeach;
             $fechaFin = date('Y-m-d H:i:s');
             $accion ='Insert';

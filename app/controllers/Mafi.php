@@ -24,7 +24,10 @@ class Mafi extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
-                var_dump($primerId,$estudiante['sello']);die();
+                if($estudiante['sello'] == 'TIENE RETENCION' && ($estudiante['autorizado_asistir'] == 'ACTIVO EN PLATAFORMA' || $estudiante['autorizado_asistir'] == 'ACTIVO EN PLATAFORMA ICETEX')):
+                    var_dump($estudiante);die();
+                else:
+                endif;
             endforeach;
         else:
             echo "No Hay datos que registrar";

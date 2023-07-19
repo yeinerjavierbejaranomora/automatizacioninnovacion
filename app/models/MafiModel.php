@@ -30,7 +30,7 @@ class MafiModel{
             if(!$consulta):
                 return False;
             else:
-                return True;
+                return $consulta;
             endif;
             /*return $consulta;
         } catch (PDOException $e) {

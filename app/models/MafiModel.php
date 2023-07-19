@@ -30,4 +30,26 @@ class MafiModel{
             return false;
         }
     }
+
+    public function insertEstudiante(){
+        try {
+            $insertEstudiante= $this->db->connect()->prepare("INSERT INTO `datosMafiReplica` SET 
+                                                                          `idbanner` = ?, 
+                                                                          `primer_apellido` = ?, 
+                                                                          `programa` = ?, 
+                                                                          `codprograma` = ?, 
+                                                                          `cadena` = ?, 
+                                                                          `periodo` = ?, 
+                                                                          `estado` = ?, 
+                                                                          `tipoestudiante` = ?, 
+                                                                          `ruta_academica` = ?, 
+                                                                          `sello` = ?, 
+                                                                          `operador` = ?, 
+                                                                          `autorizado_asistir` = ?, 
+                                                                          `created_at` = NOW(), 
+                                                                          `updated_at` = NOW()");
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

@@ -24,7 +24,19 @@ class Mafi extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
-                if($estudiante['sello'] == 'TIENE RETENCION' && ($estudiante['autorizado_asistir'] == 'ACTIVO EN PLATAFORMA' || $estudiante['autorizado_asistir'] == 'ACTIVO EN PLATAFORMA ICETEX')):
+                $idBanner = $estudiante['idbanner'];
+                $primerApellido = $estudiante['primer_apellido'];
+                $programa = $estudiante['programa'];
+                $codPrograma = $estudiante['codprograma'];
+                $cadena = $estudiante['cadena'];
+                $periodo = $estudiante['periodo'];
+                $estado = $estudiante['estado'];
+                $tipoEstudiante = $estudiante['tipoestudiante'];
+                $rutaAcademica = $estudiante['ruta_academica'];
+                $sello = $estudiante['sello'];
+                $operador = $estudiante['operador'];
+                $autorizadoAsistir = $estudiante['autorizado_asistir'];
+                if($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')):
                     var_dump($estudiante);die();
                 else:
                 endif;

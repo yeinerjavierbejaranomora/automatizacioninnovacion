@@ -15,7 +15,8 @@ class Mafireplica  extends Controller{
         else:
             $offset = 0;
         endif;
-        var_dump($offset);die();
+        $datosMafi = $this->model->dataMafiReplica($offset);
+        var_dump($datosMafi);die();
     }
 
     

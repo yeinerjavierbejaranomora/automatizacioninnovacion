@@ -4,20 +4,16 @@ class App{
     private $controller = 'inicio';
     private $method = 'inicio';
     private $parameters = [];
-
     function __construct()
     {
         date_default_timezone_set("America/Bogota");
         $url = $this->separarURL();
-        var_dump(ucwords($url[0]));
-        var_dump("ydesarrollo.online/automatizacioninnovacion/app/controllers/Mafireplica.php");die();
         if($url != '' && file_exists("../app/controllers/".ucwords($url[0]).".php")):
             $this->controller = ucwords($url[0]);
-            var_dump($this->controller);die();
             unset($url[0]);
         endif;
 
-        require_once("../app/controllers/".ucwords($this->controller.".php"));
+        require_once("../app/controllers/".ucwords($this->controller).".php");
         $this->controller = new $this->controller;
 
         if(isset($url[1])):
@@ -28,6 +24,7 @@ class App{
         endif;
 
         $this->parameters = $url?array_values($url):[];
+
         call_user_func_array([$this->controller,$this->method],$this->parameters);
     }
 

@@ -41,7 +41,7 @@ class Mafi extends Controller{
                     $numeroRegistros++;
                 elseif($sello == 'TIENE SELLO FINANCIERO'):
                     //$insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
-                    $numeroRegistros++;
+                    //$numeroRegistros++;
                 endif;
             endforeach;
 

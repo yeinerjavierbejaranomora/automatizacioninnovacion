@@ -24,7 +24,7 @@ class Mafi extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
-                var_dump($estudiante);die();
+                var_dump($primerId,$estudiante);die();
             endforeach;
         else:
             echo "No Hay datos que registrar";

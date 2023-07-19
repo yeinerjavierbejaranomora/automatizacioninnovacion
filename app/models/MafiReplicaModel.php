@@ -8,7 +8,7 @@ class MafiReplicaModel{
 
     public function numerodatosMafi($offset){
         try {
-            $consultaDataMafiReplica =$this->db->connect()->prepare("SELECT COUNT(`idbanner`) as `totalEstudiantes` FROM `datosmafireplica` dmr INNER JOIN programas p ON p.codprograma=dmr.programa INNER JOIN periodo pe ON pe.periodos=dmr.periodo WHERE dmr.id > ? AND pe.periodoActivo = 1 ORDER BY dmr.id ASC");
+            $consultaDataMafiReplica =$this->db->connect()->prepare("SELECT COUNT(`idbanner`) as `totalEstudiantes` FROM `datosMafiReplica` dmr INNER JOIN programas p ON p.codprograma=dmr.programa INNER JOIN periodo pe ON pe.periodos=dmr.periodo WHERE dmr.id > ? AND pe.periodoActivo = 1 ORDER BY dmr.id ASC");
             $consultaDataMafiReplica->bindValue(1,$offset,PDO::PARAM_INT);
             $consultaDataMafiReplica->execute();
             return $consultaDataMafiReplica;
@@ -19,7 +19,7 @@ class MafiReplicaModel{
 
     public function log($accion,$tabla){
         try {
-            $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logaplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");
+            $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logAplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");
             $consultaLog->bindValue(1,$accion,PDO::PARAM_STR);
             $consultaLog->bindValue(2,$tabla,PDO::PARAM_STR);
             $consultaLog->execute();

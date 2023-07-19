@@ -17,7 +17,7 @@ class Mafi extends Controller{
         else:
             $offset = 0;
         endif;
-        $datosMafi = $this->model->dataMafi($offset);
+        //$datosMafi = $this->model->dataMafi($offset);
         if($datosMafi):
             $numeroRegistros = 0;
             $primerId = $this->model->dataMafi()->fetch(PDO::FETCH_ASSOC)['id'];

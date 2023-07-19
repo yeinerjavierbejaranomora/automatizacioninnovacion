@@ -5,8 +5,8 @@ class Database{
     {
         $this->host = 'localhost';
         $this->db = 'u266816196_ILPoF';
-        $this->user = 'u266816196_YCF0b';
-        $this->password = 'Yeiner91041755542.';
+        $this->user = 'root';
+        $this->password = '';
         $this->charset = 'utf8mb4';
     }
 

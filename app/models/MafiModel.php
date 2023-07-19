@@ -21,8 +21,7 @@ class MafiModel{
         }
     }
 
-    function dataMafi($offset){
-        var_dump($offset);die();
+    function dataMafi(){
         try {
             $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `id` > ? AND `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
             $consulta->bindValue(1,$offset,PDO::PARAM_INT);

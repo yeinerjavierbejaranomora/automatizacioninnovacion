@@ -19,7 +19,12 @@ class Mafi extends Controller{
         endif;
         $datosMafi = $this->model->dataMafi();
         if($datosMafi):
-            echo "Hay datos que registrar";
+            $datosMafiFetch = $datosMafi->fetch(PDO::FETCH_ASSOC);
+            var_dump($datosMafiFetch);die();
+            /*$numeroRegistros = 0;
+            $primerId = $data[0][0]->id;
+            $ultimoRegistroId = 0;
+            $fechaInicio = date('Y-m-d H:i:s');*/
         else:
             echo "No Hay datos que registrar";
         endif;

@@ -31,7 +31,7 @@ class MafiModel{
         }
     }
 
-    public function insertEstudiante(){
+    public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){
         try {
             $insertEstudiante= $this->db->connect()->prepare("INSERT INTO `datosMafiReplica` SET 
                                                                           `idbanner` = ?, 
@@ -48,6 +48,20 @@ class MafiModel{
                                                                           `autorizado_asistir` = ?, 
                                                                           `created_at` = NOW(), 
                                                                           `updated_at` = NOW()");
+            $insertEstudiante->bindValue(1,$idBanner,PDO::PARAM_INT);
+            $insertEstudiante->bindValue(2,$primerApellido,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(3,$programa,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(4,$codPrograma,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(5,$cadena,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(6,$periodo,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(7,$estado,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(8,$tipoEstudiante,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(9,$rutaAcademica,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(10,$sello,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(11,$operador,PDO::PARAM_STR);
+            $insertEstudiante->bindValue(12,$autorizadoAsistir,PDO::PARAM_STR);
+            $insertEstudiante->execute();
+            return $insertEstudiante;
         } catch (PDOException $e) {
             return false;
         }

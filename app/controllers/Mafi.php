@@ -37,10 +37,15 @@ class Mafi extends Controller{
                 $operador = $estudiante['operador'];
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 if($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')):
-                    var_dump($estudiante);die();
+                    //$insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
+                    $numeroRegistros++;
                 else:
+                    //$insertEstudiante = $this->model->insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);
+                    $numeroRegistros++;
                 endif;
             endforeach;
+
+            echo $numeroRegistros;
         else:
             echo "No Hay datos que registrar";
         endif;

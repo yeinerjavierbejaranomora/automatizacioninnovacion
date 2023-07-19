@@ -8,7 +8,8 @@ class Mafireplica  extends Controller{
     }
 
     public function datamafireplica(){
-        echo "hola";
+        $log = $this->model->log('Insert','estudiantes');
+        var_dump($log);die();
     }
 
     

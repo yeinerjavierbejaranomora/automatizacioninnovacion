@@ -53,6 +53,7 @@ class Mafi extends Controller{
             $insertarLog = $this->model->insertLog($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$accion,$tablaAfectada,$mensajeLog); 
             $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro,$accion,$mensajeLog);
             if ($insertarLog && $insertIndice) :
+                echo "Fecha inicio: " .$fechaInicio. ', Fecha Fin '. $fechaFin;
                 echo "Numero de registros: '$numeroRegistros'=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId;
             endif;
         else:

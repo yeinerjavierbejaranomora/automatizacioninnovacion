@@ -18,6 +18,10 @@ class Mafi extends Controller{
             $offset = 0;
         endif;
         $datosMafi = $this->model->dataMafi();
-        var_dump($datosMafi);die();
+        if($datosMafi):
+            echo "Hay datos que registrar";
+        else:
+            echo "No Hay datos que registrar";
+        endif;
     }
 }

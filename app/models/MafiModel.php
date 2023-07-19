@@ -21,10 +21,9 @@ class MafiModel{
         }
     }
 
-    function dataMafi($offset){
+    function dataMafi(){
         try {
-            $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `id` > 0 AND `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
-            $consulta->bindValue(1,$offset,PDO::PARAM_INT);
+            $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE  `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
             $consulta->execute();
             return $consulta;
         } catch (PDOException $e) {

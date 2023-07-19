@@ -10,7 +10,7 @@ class App{
         date_default_timezone_set("America/Bogota");
         $url = $this->separarURL();
         var_dump(ucwords($url[0]));
-        var_dump(file_exists("../controllers/Mafireplica.php"));die();
+        var_dump(file_exists("../app/controllers/Mafireplica.php"));die();
         if($url != '' && file_exists("../app/controllers/".ucwords($url[0]).".php")):
             $this->controller = ucwords($url[0]);
             var_dump($this->controller);die();

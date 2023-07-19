@@ -20,7 +20,7 @@ class Mafi extends Controller{
         $datosMafi = $this->model->dataMafi();
         if($datosMafi):
             $numeroRegistros = 0;
-            $primerId = $datosMafi->fetch(PDO::FETCH_ASSOC)['id'];
+            $primerId = $this->model->dataMafi()->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):

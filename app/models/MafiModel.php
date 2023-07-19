@@ -32,7 +32,7 @@ class MafiModel{
     }
 
     public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){
-        //try {
+        try {
             $insertEstudiante= $this->db->connect()->prepare("INSERT INTO `datosMafiReplica` SET 
                                                                           `idbanner` = ?, 
                                                                           `primer_apellido` = ?, 
@@ -61,11 +61,10 @@ class MafiModel{
             $insertEstudiante->bindValue(11,$operador,PDO::PARAM_STR);
             $insertEstudiante->bindValue(12,$autorizadoAsistir,PDO::PARAM_STR);
             $insertEstudiante->execute();
-            var_dump($insertEstudiante);die();
-            /*return $insertEstudiante;
+            return $insertEstudiante;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 
     public function insertLog($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$accion,$tablaAfectada,$mensajeLog){

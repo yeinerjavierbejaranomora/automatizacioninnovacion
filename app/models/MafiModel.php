@@ -32,6 +32,7 @@ class MafiModel{
     }
 
     public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){
+        var_dump($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir);die();
         try {
             $insertEstudiante= $this->db->connect()->prepare("INSERT INTO `datosMafiReplica` SET 
                                                                           `idbanner` = ?, 

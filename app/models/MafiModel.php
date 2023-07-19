@@ -27,9 +27,9 @@ class MafiModel{
             $consulta->bindValue(1,$offset,PDO::PARAM_INT);
             $consulta->execute();
             if($consulta->fetch(PDO::FETCH_ASSOC) != false):
-                var_dump($consulta);die();
+                return $consulta;
             else:
-                var_dump(false);die();
+                return "false";
             endif;
             //return $consulta;
         /*} catch (PDOException $e) {

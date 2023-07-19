@@ -9,7 +9,6 @@ class App{
     {
         date_default_timezone_set("America/Bogota");
         $url = $this->separarURL();
-        var_dump($url);die();
         if($url != '' && file_exists("../app/controllers/".ucwords($url[0]).".php")):
             $this->controller = ucwords($url[0]);
             unset($url[0]);

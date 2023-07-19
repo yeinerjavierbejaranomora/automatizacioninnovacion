@@ -1,5 +1,5 @@
 <?php
-class MateriasPorVer extends Controller{
+class Materiasporver extends Controller{
     private $model;
     public function __construct()
     {

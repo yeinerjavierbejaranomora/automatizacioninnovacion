@@ -66,4 +66,49 @@ class MafiModel{
             return false;
         }
     }
+
+    public function insertLog($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$accion,$tablaAfectada,$mensajeLog){
+        try {
+            $insertLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET   
+                                                                    `idInicio` = ?, 
+                                                                    `idFin` = ?, 
+                                                                    `fechaInicio` = ?, 
+                                                                    `fechaFin` = ?, 
+                                                                    `accion` = ?, 
+                                                                    `tabla_afectada` = ?, 
+                                                                    `descripcion` = ?, 
+                                                                    `created_at` = NOW(), 
+                                                                    `updated_at` = NOW()");
+            $insertLog->bindValue(1,$primerId,PDO::PARAM_INT);
+            $insertLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_INT);
+            $insertLog->bindValue(3,$fechaInicio,PDO::PARAM_STR);
+            $insertLog->bindValue(4,$fechaFin,PDO::PARAM_STR);
+            $insertLog->bindValue(5,$accion,PDO::PARAM_STR);
+            $insertLog->bindValue(6,$tablaAfectada,PDO::PARAM_STR);
+            $insertLog->bindValue(7,$mensajeLog,PDO::PARAM_STR);
+            $insertLog->execute();
+            return $insertLog;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function insertIndice($idBannerUltimoRegistro,$accion,$mensajeLog){
+        try {
+            $insertIndice = $this->db->connect()->prepare("INSERT INTO `indice_cambios_mafi` SET 
+                                                                        `idbanner` = ?, 
+                                                                        `accion` = ?, 
+                                                                        `descripcion` = ?, 
+                                                                        `fecha` = NOW(), 
+                                                                        `created_at` = NOW(), 
+                                                                        `updated_at` = NOW()");
+            $insertIndice->bindValue(1,$idBannerUltimoRegistro,PDO::PARAM_INT);
+            $insertIndice->bindValue(2,$accion,PDO::PARAM_STR);
+            $insertIndice->bindValue(3,$mensajeLog,PDO::PARAM_STR);
+            $insertIndice->execute();
+            return $insertIndice;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

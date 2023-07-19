@@ -12,6 +12,7 @@ class App{
         //var_dump(ucwords($url[0]));die();
         if($url != '' && file_exists("../app/controllers/".ucwords($url[0]).".php")):
             $this->controller = ucwords($url[0]);
+            var_dump($this->controller);die();
             unset($url[0]);
         endif;
 

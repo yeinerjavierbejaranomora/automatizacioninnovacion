@@ -29,7 +29,7 @@ class MafiModel{
             if($consulta->fetch(PDO::FETCH_ASSOC) != false):
                 var_dump($consulta);die();
             else:
-                var_dump(false):die();
+                var_dump(false);die();
             endif;
             //return $consulta;
         /*} catch (PDOException $e) {

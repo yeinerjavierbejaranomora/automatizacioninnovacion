@@ -7,7 +7,7 @@ class Mafireplica  extends Controller{
         $this->model = $this->model("MafiReplicaModel");
     }
 
-    public function dataMafiReplica(){
+    public function datamafireplica(){
         $log = $this->model->log('Insert','estudiantes');
         $logFecth = $log->fetch(PDO::FETCH_ASSOC);
         if(!empty($logFecth)):

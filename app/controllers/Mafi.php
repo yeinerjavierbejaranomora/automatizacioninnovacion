@@ -11,7 +11,13 @@ class Mafi extends Controller{
     public function inicio() {
         
         $log = $this->model->log('Insert','datosMafiReplica');
-        var_dump($log->fetch(PDO::FETCH_ASSOC));die();
+        $logFecth = $log->fetch(PDO::FETCH_ASSOC);
+        var_dump($logFecth);die();
+        if(!empty($logFecth)):
+            $offset = $logFecth['idFin'];
+        else:
+            $offset = 0;
+        endif;
         /*$datosMafi = $this->model->dataMafi();
         var_dump($datosMafi->fetch(PDO::FETCH_ASSOC));die();*/
     }

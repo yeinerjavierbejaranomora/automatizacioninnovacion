@@ -23,15 +23,15 @@ class MafiModel{
 
     function dataMafi($offset){
         //var_dump($offset);die();
-        try {
+        //try {
             $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `id` > ? AND  `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
-            $consulta->bindParam(1,0,PDO::PARAM_INT);
+            $consulta->bindParam(1,$offset,PDO::PARAM_INT);
             $consulta->execute();
-            //var_dump($consulta->fetch(PDO::FETCH_ASSOC));die();
-            return $consulta;
+            var_dump($consulta->fetch(PDO::FETCH_ASSOC));die();
+            /*return $consulta;
         } catch (PDOException $e) {
             return false;
-        }
+        }*/
     }
 
     public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){

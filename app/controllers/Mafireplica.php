@@ -39,10 +39,10 @@ class Mafireplica  extends Controller{
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):
-                    var_dump($codigoBanner,$programaActivo);die();
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
                     if($historialCount == 0):
+                        var_dump($codigoBanner,$programaActivo);die();
                         var_dump($estudiante['id'],$codigoBanner,$marcaIngreso,$tipoEstudiante,"TRANSFERENTE");die();
                     else:
                     endif;

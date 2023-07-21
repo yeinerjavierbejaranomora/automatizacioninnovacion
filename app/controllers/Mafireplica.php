@@ -39,7 +39,7 @@ class Mafireplica  extends Controller{
                 else:
                     var_dump($codigoBanner,$programa,$tipoEstudiante,"NO TRANSFERENTE");die();
                 endif;
-                var_dump($codigoBanner,$programa,$tipoEstudiante);die();
+                //var_dump($codigoBanner,$programa,$tipoEstudiante);die();
             endforeach;
         else:
             echo "No Hay datos que registrar";

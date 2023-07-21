@@ -24,7 +24,17 @@ class Mafireplica  extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
-                var_dump(1,$estudiante);die();
+                $codigoBanner = $estudiante['idbanner'];
+                $nombre = $estudiante['primer_apellido'];
+                $programa = $estudiante['programa'];
+                $bolsa = $estudiante['ruta_academica'];
+                $operador = $estudiante['operador'];
+                $nodo = 'nodo';
+                $tipoEstudiante = $estudiante['tipoestudiante'];
+                $marcaIngreso = $estudiante['periodo'];
+                $tieneHistorial = NULL;
+                $programaAbrio = NULL;
+                var_dump($codigoBanner,$programa,$tipoEstudiante);die();
             endforeach;
         else:
             echo "No Hay datos que registrar";

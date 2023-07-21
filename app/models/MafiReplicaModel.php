@@ -42,6 +42,10 @@ class MafiReplicaModel{
         }
     }
 
+    public function programaActivo($codigoBanner,$periodo){
+        var_dump("model",$codigoBanner,$periodo);die();
+    }
+
     public function historialEstudiante($idBanner){
         try {
             $consultaHistorial = $this->db->connect()->prepare("SELECT COUNT(ha.codMateria) AS `historial` FROM `datosMafiReplica` dmr INNER JOIN historialAcademico ha ON ha.codBanner=dmr.idbanner WHERE dmr.idbanner = ?");

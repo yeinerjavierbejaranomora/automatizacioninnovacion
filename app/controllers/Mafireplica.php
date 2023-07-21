@@ -33,8 +33,8 @@ class Mafireplica  extends Controller{
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
                 $periodo = substr($marcaIngreso,-2);
-                var_dump($codigoBanner,$periodo);die();
-                $programaActivo = $this->model->programaActivo($codigoBanner);
+                // var_dump($codigoBanner,$periodo);die();
+                $programaActivo = $this->model->programaActivo($codigoBanner,$periodo);
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):

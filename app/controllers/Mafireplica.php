@@ -20,7 +20,7 @@ class Mafireplica  extends Controller{
         if ($datosNumFetch['totalEstudiantes'] > 0) :
             echo "Hay datos que registrar";
             $datosMafi = $this->model->dataMafiReplica($offset);
-            var_dump($datosMafi->rowCount(PDO::FETCH_ASSOC));die();
+            var_dump($datosMafi->fetch(PDO::FETCH_ASSOC));die();
         else:
             echo "No Hay datos que registrar";
         endif;

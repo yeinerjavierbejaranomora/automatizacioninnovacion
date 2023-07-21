@@ -45,10 +45,16 @@ class MafiModel{
         }
     }
 
-    public function dataMafi2(){
-        $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
-        $consulta->execute();
-        return $consulta;
+    public function dataMafi2($offset){
+        try {
+            $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `id` > ? AND  `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
+            $consulta->bindValue(1,$offset,PDO::PARAM_INT);
+            $consulta->execute();
+            //var_dump($consulta);die();
+            return $consulta;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){

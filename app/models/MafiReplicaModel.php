@@ -66,7 +66,7 @@ class MafiReplicaModel{
     }
 
     public function insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso){
-        //var_dump($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+        var_dump($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
         try {
             $insertarEstudiante = $this->db->connect()->prepare("INSERT INTO `estudiantes` SET 
                                                                             `homologante` = ?, 
@@ -101,7 +101,7 @@ class MafiReplicaModel{
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){
         try {
-            $insertarLog = $this->db->connect()->prepare("INSERT INTO `logaplicacion` SET
+            $insertarLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET
                                                                         `idInicio` = ?, 
                                                                         `idFin` = ?, 
                                                                         `fechaInicio` = ?, 
@@ -127,7 +127,7 @@ class MafiReplicaModel{
 
     public function insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha){
         try {
-            $insertIndiceCambios = $this->db->connect()->prepare("INSERT INTO `indece_cambios_mafi` SET  
+            $insertIndiceCambios = $this->db->connect()->prepare("INSERT INTO `indice_cambios_mafi` SET  
                                                                                 `idbanner` = ?, 
                                                                                 `accion` = ?, 
                                                                                 `descripcion` = ?, 

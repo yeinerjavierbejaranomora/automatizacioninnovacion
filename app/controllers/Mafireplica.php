@@ -20,6 +20,7 @@ class Mafireplica  extends Controller{
         if ($datosNumFetch['totalEstudiantes'] > 0) :
             $datosMafi = $this->model->dataMafiReplica($offset);
             $numeroRegistros = 0;
+            $numeroRegistrosAlertas = 0;
             $primerId = $this->model->datamafireplica($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
@@ -42,15 +43,75 @@ class Mafireplica  extends Controller{
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
                     if($historialCount == 0):
-                        var_dump($codigoBanner,$programaActivo);die();
-                        var_dump($estudiante['id'],$codigoBanner,$marcaIngreso,$tipoEstudiante,"TRANSFERENTE");die();
+                        if($programaActivo < 1):
+                            $tieneHistorial = 'SIN HISTORIAL';
+                            $programaAbrio = 'NO SE ABRIO PROGRAMA';
+                            $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+                            $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                            if($insertarAlertaTemprana):
+                                $numeroRegistrosAlertas++;
+                            endif;
+                            $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                            if($insertarAlertaTemprana):
+                                $numeroRegistrosAlertas++;
+                            endif;
+                        else:
+                            $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                            if($insertarAlertaTemprana):
+                                $numeroRegistrosAlertas++;
+                            endif;
+                        endif;
+                        if($insertarEstudiante):
+                            $numeroRegistros++;
+                        endif;
                     else:
+                        if($programaActivo > 0):
+                            $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+                        else:
+                            $programaAbrio = 'NO SE ABRIO PROGRAMA';
+                            $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+                            $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                            if($insertarAlertaTemprana):
+                                $numeroRegistrosAlertas++;
+                            endif;
+                        endif;
+                        if($insertarEstudiante):
+                            $numeroRegistros++;
+                        endif;
                     endif;
                 else:
-                    //var_dump($codigoBanner,$programa,$tipoEstudiante,"NO TRANSFERENTE");die();
+                    if($programaActivo > 0):
+                        $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+                    else:
+                        $programaAbrio = 'NO SE ABRIO PROGRAMA';
+                        $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+                        $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                        $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                        if($insertarAlertaTemprana):
+                            $numeroRegistrosAlertas++;
+                        endif;
+                    endif;
+                    if($insertarEstudiante):
+                        $numeroRegistros++;
+                    endif;
                 endif;
-                //var_dump($codigoBanner,$programa,$tipoEstudiante);die();
+                $ultimoRegistroId = $estudiante['id'];
+                $idBannerUltimoRegistro = $estudiante['idbanner'];
             endforeach;
+            $fechaFin = date('Y-m-d H:i:s');
+            $acccion = 'Insert';
+            $tablaAfectada = 'estudiantes';
+            $descripcion = 'Se realizo la insercion en la tabla estudiantes desde la tabla datosMafiReplica, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $numeroRegistros . ' registros';
+            $fecha = date('Y-m-d H:i:s');
+            $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);
+            $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);
+            echo  "Numero de registros: " . $numeroRegistros . "=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId .
+                "<br> Numero de registrosen alertas: " . $numeroRegistrosAlertas .
+                "<br> inicio:" . $fechaInicio . "-- Fin:" . $fechaFin;
         else:
             echo "No Hay datos que registrar";
         endif;

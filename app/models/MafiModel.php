@@ -46,6 +46,12 @@ class MafiModel{
         }*/
     }
 
+    public function dataMafi2(){
+        $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
+        $consulta->execute();
+        return $consulta;
+    }
+
     public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){
         try {
             $insertEstudiante= $this->db->connect()->prepare("INSERT INTO `datosMafiReplica` SET 

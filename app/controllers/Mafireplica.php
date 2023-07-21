@@ -18,7 +18,6 @@ class Mafireplica  extends Controller{
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :
-            echo "Hay datos que registrar";
             $datosMafi = $this->model->dataMafiReplica($offset);
             $numeroRegistros = 0;
             $primerId = $this->model->dataMafi($offset)->fetch(PDO::FETCH_ASSOC)['id'];

@@ -41,14 +41,6 @@ class MafiModel{
             return $consulta;
     }
 
-    public function dataMafi2($offset)
-    {
-        $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `id` > ? AND  `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
-        $consulta->bindValue(1, $offset, PDO::PARAM_INT);
-        $consulta->execute();
-        //var_dump($consulta);die();
-        return $consulta;
-    }
 
     public function insertEstudiante($idBanner,$primerApellido,$programa,$codPrograma,$cadena,$periodo,$estado,$tipoEstudiante,$rutaAcademica,$sello,$operador,$autorizadoAsistir){
         try {

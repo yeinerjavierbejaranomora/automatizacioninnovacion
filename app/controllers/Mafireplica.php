@@ -35,7 +35,8 @@ class Mafireplica  extends Controller{
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):
-                    var_dump($estudiante['id'],$codigoBanner,$programa,$tipoEstudiante,"TRANSFERENTE");die();
+                    $historial = $this->model->historialEstudiante($codigoBanner);
+                    var_dump($historial);die();
                 else:
                     //var_dump($codigoBanner,$programa,$tipoEstudiante,"NO TRANSFERENTE");die();
                 endif;

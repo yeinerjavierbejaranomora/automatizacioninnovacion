@@ -24,7 +24,7 @@ class Mafireplica  extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
-                var_dump($estudiante);die();
+                var_dump(1,$estudiante);die();
             endforeach;
         else:
             echo "No Hay datos que registrar";

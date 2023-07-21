@@ -20,6 +20,7 @@ class Mafi extends Controller{
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if($datosNumFetch['total'] > 0):
+            echo "Hay datos que registrar";die();
             // $datosMafi = $this->model->dataMafi($offset);
             $datosMafi = $this->model->dataMafi();
             $numeroRegistros = 0;

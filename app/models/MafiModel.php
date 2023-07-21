@@ -9,6 +9,18 @@ class MafiModel{
         $this->db = new Database();
     }
 
+    public function numeroDatosMafi($offset)
+    {
+        try {
+            $consultaNumeroDatos = $this->db->connect()->prepare("SELECT COUNT(`id`) as total FROM `datosMafi` WHERE `id` > ? AND  `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
+            $consultaNumeroDatos->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaNumeroDatos->execute();
+            return $consultaNumeroDatos;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function log($accion,$tabla){
         try {
             $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logAplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");

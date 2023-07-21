@@ -59,7 +59,7 @@ class Mafireplica  extends Controller{
                                 $numeroRegistrosAlertas++;
                             endif;*/
                         else:
-                            var_dump($estudiante['id'],$codigoBanner,$historial);
+                            var_dump($estudiante['id'],$codigoBanner,$historialCount);
                             /*$mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
                             if($insertarAlertaTemprana):

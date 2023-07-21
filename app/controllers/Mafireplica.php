@@ -15,7 +15,7 @@ class Mafireplica  extends Controller{
         else:
             $offset = 0;
         endif;
-        $limit = 1000;
+        $limit = 5000;
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :

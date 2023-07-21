@@ -44,8 +44,8 @@ class Mafireplica  extends Controller{
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
                     if($historialCount == 0):
                         if($programaActivo < 1):
-                            var_dump("pa",$estudiante['id'],$codigoBanner,$historial);
-                            /*$tieneHistorial = 'SIN HISTORIAL';
+                            //var_dump("pa",$estudiante['id'],$codigoBanner,$historial);
+                            $tieneHistorial = 'SIN HISTORIAL';
                             $programaAbrio = 'NO SE ABRIO PROGRAMA';
                             $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
@@ -57,20 +57,22 @@ class Mafireplica  extends Controller{
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
                             if($insertarAlertaTemprana):
                                 $numeroRegistrosAlertas++;
-                            endif;*/
+                            endif;
                         else:
-                            var_dump($estudiante['id'],$codigoBanner,$historialCount);
-                            /*$mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                            //var_dump($estudiante['id'],$codigoBanner,$historialCount);
+                            $tieneHistorial = 'SIN HISTORIAL';
+                            $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
+                            $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
                             if($insertarAlertaTemprana):
                                 $numeroRegistrosAlertas++;
-                            endif;*/
+                            endif;
                         endif;
-                        /*if($insertarEstudiante):
+                        if($insertarEstudiante):
                             $numeroRegistros++;
-                        endif;*/
+                        endif;
                     else:
-                        /*if($programaActivo > 0):
+                        if($programaActivo > 0):
                             $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
                         else:
                             $programaAbrio = 'NO SE ABRIO PROGRAMA';
@@ -83,10 +85,10 @@ class Mafireplica  extends Controller{
                         endif;
                         if($insertarEstudiante):
                             $numeroRegistros++;
-                        endif;*/
+                        endif;
                     endif;
                 else:
-                    /*if($programaActivo > 0):
+                    if($programaActivo > 0):
                         $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);
                     else:
                         $programaAbrio = 'NO SE ABRIO PROGRAMA';
@@ -99,7 +101,7 @@ class Mafireplica  extends Controller{
                     endif;
                     if($insertarEstudiante):
                         $numeroRegistros++;
-                    endif;*/
+                    endif;
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];

@@ -35,6 +35,7 @@ class Mafireplica  extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 // var_dump($codigoBanner,$periodo);die();
                 $programaActivo = $this->model->programaActivo($codigoBanner,$periodo);
+                var_dump($programaActivo->fetch(PDO::FETCH_ASSOC));die();
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):

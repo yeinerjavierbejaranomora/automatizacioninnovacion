@@ -18,7 +18,7 @@ class Mafireplica  extends Controller{
         $limit = 5000;
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
-        var_dump($datosNumFetch);die();
+        var_dump(ceil($datosNumFetch['totalEstudiantes']/$limit));die();
         if ($datosNumFetch['totalEstudiantes'] > 0) :
             $datosMafi = $this->model->dataMafiReplica($offset,$limit);
             $numeroRegistros = 0;

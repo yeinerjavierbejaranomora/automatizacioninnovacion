@@ -15,6 +15,9 @@ class Mafireplica  extends Controller{
         else:
             $offset = 0;
         endif;
+        $datosNum = $this->model->numeroDatosMafi($offset);
+        $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
+        var_dump($datosNumFetch);die();
         $datosMafi = $this->model->dataMafiReplica($offset);
         var_dump($datosMafi->rowCount(PDO::FETCH_ASSOC));die();
     }

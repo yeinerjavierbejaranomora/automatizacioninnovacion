@@ -19,9 +19,10 @@ class Mafi extends Controller{
         endif;
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
+        $datosMafi = $this->model->dataMafi2();
+        var_dump($datosMafi);die();
         if($datosNumFetch['total'] > 0):
             // $datosMafi = $this->model->dataMafi($offset);
-            $datosMafi = $this->model->dataMafi2();
             $numeroRegistros = 0;
             $primerId = $this->model->dataMafi()->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;

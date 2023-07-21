@@ -34,16 +34,15 @@ class MafiModel{
     }
 
     function dataMafi($offset){
-        //var_dump($offset);die();
-        //try {
+        try {
             $consulta = $this->db->connect()->prepare("SELECT * FROM `datosMafi` WHERE `id` > 0 AND  `estado` = 'Activo' AND `sello` IN ('TIENE RETENCION', 'TIENE SELLO FINANCIERO') ORDER BY `id` ASC");
             //$consulta->bindValue(1,$offset,PDO::PARAM_INT);
             $consulta->execute();
-            var_dump($consulta);die();
-            /*return $consulta;
+            //var_dump($consulta);die();
+            return $consulta;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 
     public function dataMafi2(){

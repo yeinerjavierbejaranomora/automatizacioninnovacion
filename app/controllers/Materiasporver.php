@@ -44,7 +44,7 @@ class Materiasporver extends Controller{
         if($log):
             $offset =0;
         else:
-            $offset = $log(PDO::FETCH_ASSOC)['idFin'];
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         var_dump($offset);die();
     }

@@ -53,7 +53,10 @@ class Materiasporver extends Controller{
             $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
-                var_dump($estudiante);die();
+                $marcaIngreso = $estudiante['periodo'];
+                $periodo = substr($marcaIngreso,-2);
+                $mallaCurricular = $this->model->baseAcademica($estudiante->homologante,$estudiante->programa);
+                var_dump($estudiante,$periodo);die();
             endforeach;
             echo "Hay estudiantes de primer ingreso <br>";die();
         else:

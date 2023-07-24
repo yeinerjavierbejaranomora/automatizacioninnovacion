@@ -40,4 +40,12 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function baseAcademica($codBanner,$programa){
+        try {
+            $consultaBaseAcademica = $this->db->connect()->prepare("");
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

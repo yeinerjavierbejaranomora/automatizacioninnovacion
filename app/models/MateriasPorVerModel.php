@@ -55,7 +55,6 @@ class MateriasPorVerModel{
             $consultaBaseAcademica->execute();
             $orden = 1;
             foreach($consultaBaseAcademica as $key => $value):
-                var_dump($value['codprograma']);die();
                 $data[] = [
                     'codBanner' => $codBanner,
                     'codMateria' => $value['codigoCurso'],
@@ -65,6 +64,7 @@ class MateriasPorVerModel{
                     'updated_at' => now(),*/
                 ];
                 $orden++;
+                var_dump($data);die();
             endforeach;
         /*} catch (PDOException $e) {
             return false;

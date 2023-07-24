@@ -74,7 +74,7 @@ class Materiasporver extends Controller{
         endif;
         $offset = 13657;
         $transferentes = $this->model->faltantesTransferentes($offset);
-        var_dump($transferentes);die();
+        //var_dump($transferentes);die();
         if($transferentes):
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

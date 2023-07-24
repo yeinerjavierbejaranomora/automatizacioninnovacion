@@ -65,7 +65,7 @@ class Materiasporver extends Controller{
         endif;
     }
 
-    public function transferente(){
+    public function transferentes(){
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if(!$log):
             $offset =0;

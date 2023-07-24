@@ -64,8 +64,8 @@ class MateriasPorVerModel{
                     'updated_at' => now(),*/
                 ];
                 $orden++;
-                var_dump($data);die();
             endforeach;
+            var_dump($data);die();
         /*} catch (PDOException $e) {
             return false;
         }*/

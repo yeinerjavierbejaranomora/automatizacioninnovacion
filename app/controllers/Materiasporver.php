@@ -9,6 +9,7 @@ class Materiasporver extends Controller{
     public function periodo(){
         $fechaActual = date('Y-m-d');
         $mesActual = date('m');
+        $mesActual = 06;
         $periodo = $this->model->getPeriodo();
         foreach($periodo as $value):
             $ciclo1 = explode('-',$value['fechaInicioCiclo1']);

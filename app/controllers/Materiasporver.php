@@ -25,22 +25,7 @@ class Materiasporver extends Controller{
     }*/
 
     public function primeringreso(){
-        /*$programado_ciclo1 = NULL;
-        $periodo = $this->periodo();
-        var_dump($periodo);die();
-        $marcaIngreso = "";
-        foreach ($periodo as $key => $value) {
-            $marcaIngreso .= (int)$value->periodos . ",";
-        }
-
-        // para procesasr las marcas de ingreso en los periodos
-        $marcaIngreso = trim($marcaIngreso, ",");
-        // Dividir la cadena en elementos individuales
-        $marcaIngreso = explode(",", $marcaIngreso);
-        // Convertir cada elemento en un número
-        $marcaIngreso = array_map('intval', $marcaIngreso);*/
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
-        //$estudiantes = $this->model->numeroEstudiantes();
         if(!$log):
             $offset =0;
         else:
@@ -78,5 +63,16 @@ class Materiasporver extends Controller{
         else:
             echo "No hay estudiantes de primer ingreso <br>";die();
         endif;
+    }
+
+    public function transferente(){
+        $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
+        if(!$log):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+
+        var_dump($log);die();
     }
 }

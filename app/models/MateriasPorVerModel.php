@@ -49,7 +49,6 @@ class MateriasPorVerModel{
                                                                     INNER JOIN programasPeriodos pp ON pp.codPrograma=m.codprograma
                                                                     WHERE m.codprograma = ?
                                                                     AND pp.periodo = ?
-                                                                    AND `programa` != 'MED'
                                                                     ORDER BY semestre ASC, orden ASC
                                                                     ");
             $consultaBaseAcademica->bindParam(1,$programa,PDO::PARAM_STR);
@@ -166,7 +165,8 @@ class MateriasPorVerModel{
                                                                         AND `tipo_estudiante` like 'TRANSFERENTE%'
                                                                         AND `programaActivo` IS NULL
                                                                         AND `tiene_historial` IS NULL
-                                                                        AND `materias_faltantes` IS NULL");
+                                                                        AND `materias_faltantes` IS NULL
+                                                                        AND `programa` != 'MED'");
             $consultaEstTransferente->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstTransferente->execute();
             return $consultaEstTransferente;

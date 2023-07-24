@@ -74,7 +74,7 @@ class MateriasPorVerModel{
     public function insertMateriaPorVer($mallaCurricular){
         try {
             foreach($mallaCurricular as $malla):
-                var_dump($malla['codBanner']);
+                var_dump($malla);
                 /*$insertMateriaPorVer = $this->db->connect()->prepare("INSERT INTO `materiasPorVer` SET 
                                                                                     `codBanner` = ?, 
                                                                                     `codMateria` = ?, 

@@ -10,7 +10,9 @@ class Materiasporver extends Controller{
         $fechaActual = date('Y-m-d');
         $mesActual = date('m');
         $periodo = $this->model->getPeriodo();
-        var_dump($periodo->fetch(PDO::FETCH_ASSOC));die();
+        foreach($periodo as $value):
+            var_dump($value);die();
+        endforeach;
         return $mesActual;
     }
 

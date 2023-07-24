@@ -50,7 +50,7 @@ class Materiasporver extends Controller{
         if($primerIngreso):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
-            $primerId = $primerIngreso->fetch(PDO::FETCH_ASSOC)['id'];
+            $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
                 var_dump($estudiante);die();

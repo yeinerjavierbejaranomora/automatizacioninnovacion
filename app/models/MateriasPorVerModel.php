@@ -70,4 +70,8 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function insertMateriaPorVer($mallaCurricular){
+        var_dump($mallaCurricular);die();
+    }
 }

@@ -52,7 +52,9 @@ class Materiasporver extends Controller{
             $registroMPV = 0;
             $primerId = $primerIngreso->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
-            var_dump($primerId);die();
+            foreach($primerIngreso as $estudiante):
+                var_dump($estudiante);die();
+            endforeach;
             echo "Hay estudiantes de primer ingreso <br>";die();
         else:
             echo "No hay estudiantes de primer ingreso <br>";die();

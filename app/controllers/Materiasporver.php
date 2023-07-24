@@ -75,7 +75,7 @@ class Materiasporver extends Controller{
         $offset = 13657;
         $transferentes = $this->model->faltantesTransferentes($offset);
         var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
-        if($transferentes != false):
+        if($transferentes->fetch(PDO::FETCH_ASSOC) != false):
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:
             echo "No hay estudiantes TRANSFERENTES <br>";die();

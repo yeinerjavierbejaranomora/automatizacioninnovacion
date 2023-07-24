@@ -6,7 +6,7 @@ class Materiasporver extends Controller{
         $this->model = $this->model("MateriasPorVerModel");
     }
 
-    public function periodo(){
+    /*public function periodo(){
         $fechaActual = date('Y-m-d');
         $mesActual = date('m');
         $mesActual = 06;
@@ -22,7 +22,7 @@ class Materiasporver extends Controller{
         endforeach;
         die();
         return $mesActual;
-    }
+    }*/
 
     public function getEstudiantes(){
         /*$programado_ciclo1 = NULL;

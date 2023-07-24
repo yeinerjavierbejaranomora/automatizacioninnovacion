@@ -55,6 +55,7 @@ class MateriasPorVerModel{
             $consultaBaseAcademica->execute();
             $orden = 1;
             foreach($consultaBaseAcademica as $key => $value):
+                var_dump($value['codprograma']);DIE();
                 $data[] = [
                     'codBanner' => $codBanner,
                     'codMateria' => $value['codigoCurso'],
@@ -65,7 +66,6 @@ class MateriasPorVerModel{
                 ];
                 $orden++;
             endforeach;
-            var_dump($value['codprograma']);DIE();
         /*} catch (PDOException $e) {
             return false;
         }*/

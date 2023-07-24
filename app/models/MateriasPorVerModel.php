@@ -74,15 +74,18 @@ class MateriasPorVerModel{
     public function insertMateriaPorVer($mallaCurricular){
         try {
             foreach($mallaCurricular as $malla):
-                var_dump($malla['codBanner']);die();
-                $insertMateriaPorVer = $this->db->connect()->prepare("INSERT INTO `materiasPorVer` SET 
+                var_dump($malla['codBanner']);
+                /*$insertMateriaPorVer = $this->db->connect()->prepare("INSERT INTO `materiasPorVer` SET 
                                                                                     `codBanner` = ?, 
                                                                                     `codMateria` = ?, 
                                                                                     `orden` = ?, 
                                                                                     `codprograma` = ?, 
                                                                                     `created_at` = NOW(), 
                                                                                     `updated_at` = NOW()");
-                $insertMateriaPorVer->bindValue(1,$malla,PDO::PARAM_INT);
+                $insertMateriaPorVer->bindValue(1,$malla['codBanner'],PDO::PARAM_INT);
+                $insertMateriaPorVer->bindValue(2,$malla['codBanner'],PDO::PARAM_INT);
+                $insertMateriaPorVer->bindValue(3,$malla['codBanner'],PDO::PARAM_INT);
+                $insertMateriaPorVer->bindValue(4,$malla['codBanner'],PDO::PARAM_INT);*/
             endforeach;
             die();
         } catch (PDOException $e) {

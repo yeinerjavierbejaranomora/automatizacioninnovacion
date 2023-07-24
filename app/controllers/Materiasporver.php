@@ -60,8 +60,8 @@ class Materiasporver extends Controller{
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
                 if(count($mallaCurricular) == $insertMateriaPorVer):
-                    var_dump($estudiante['id'],$codBanner);die();
                     $updateEstudiantePC = $this->model->updateEstudiante($estudiante['id'],$codBanner);
+                    var_dump($updateEstudiantePC);die();
                 endif;
                 die();
             endforeach;

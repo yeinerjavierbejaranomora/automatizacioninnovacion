@@ -53,7 +53,7 @@ class Materiasporver extends Controller{
             $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
-                $marcaIngreso = $estudiante['periodo'];
+                $marcaIngreso = $estudiante['marca_ingreso'];
                 $periodo = substr($marcaIngreso,-2);
                 //$mallaCurricular = $this->model->baseAcademica($estudiante->homologante,$estudiante->programa,$periodo);
                 var_dump($estudiante,$periodo);die();

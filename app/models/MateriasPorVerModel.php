@@ -29,4 +29,15 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function falatntesPrimerIngreso($offset){
+        try {
+            $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT * FROM `estudiantes` WHERE `id` > ? AND `tipo_estudiante` LIKE 'PRIMER%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` LIKE 'INGRESO%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL");
+            $consultaEstPrimerIngreso->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstPrimerIngreso->execute();
+            return $consultaEstPrimerIngreso;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

@@ -48,7 +48,7 @@ class Materiasporver extends Controller{
         endif;
         $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
         if($primerIngreso):
-            echo "No hay estudiantes de primer ingreso <br>";die();
+            echo "Hay estudiantes de primer ingreso <br>";die();
         else:
             echo "No hay estudiantes de primer ingreso <br>";die();
         endif;

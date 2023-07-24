@@ -52,11 +52,11 @@ class Materiasporver extends Controller{
             $registroMPV = 0;
             $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
-            $marcaIngreso = $estudiante['periodo'];
-            $periodo = substr($marcaIngreso,-2);
             foreach($primerIngreso as $estudiante):
+                $marcaIngreso = $estudiante['periodo'];
+                $periodo = substr($marcaIngreso,-2);
                 //$mallaCurricular = $this->model->baseAcademica($estudiante->homologante,$estudiante->programa,$periodo);
-                var_dump($periodo);die();
+                var_dump($estudiante,$periodo);die();
             endforeach;
             echo "Hay estudiantes de primer ingreso <br>";die();
         else:

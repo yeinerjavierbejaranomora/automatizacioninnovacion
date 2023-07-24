@@ -80,7 +80,12 @@ class Materiasporver extends Controller{
             $primerId = $this->model->faltantesTransferentes($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($transferentes as $estudiante):
-                var_dump($estudiante);
+                $marcaIngreso = $estudiante['marca_ingreso'];
+                $codBanner = $estudiante['homologante'];
+                $programa = $estudiante['programa'];
+                $periodo = substr($marcaIngreso,-2);
+                $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
+                var_dump($mallaCurricular->fetch(PDO::FETCH_ASSOC));die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

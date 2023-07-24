@@ -65,7 +65,7 @@ class MateriasPorVerModel{
                 ];
                 $orden++;
             endforeach;
-            var_dump($data);DIE();
+            var_dump($data);die();
         /*} catch (PDOException $e) {
             return false;
         }*/

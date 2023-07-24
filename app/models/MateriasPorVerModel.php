@@ -49,8 +49,8 @@ class MateriasPorVerModel{
                                                                     WHERE m.codprograma = ?
                                                                     AND pp.periodo = ?
                                                                     ORDER BY semestre ASC, orden ASC");
-            $consultaBaseAcademica->bindParam(1,$programa.pdo::PARAM_STR);
-            $consultaBaseAcademica->bindParam(2,$periodo.pdo::PARAM_INT);
+            $consultaBaseAcademica->bindParam(1,$programa,PDO::PARAM_STR);
+            $consultaBaseAcademica->bindParam(2,$periodo,PDO::PARAM_INT);
             $consultaBaseAcademica->execute();
             var_dump($consultaBaseAcademica->fetch(PDO::FETCH_ASSOC));DIE();
         /*} catch (PDOException $e) {

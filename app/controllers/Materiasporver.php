@@ -50,7 +50,7 @@ class Materiasporver extends Controller{
         if($primerIngreso):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
-            $primerId = $primerIngreso->fetch(PDO::FETCH_ASSOC)-['id'];
+            $primerId = $primerIngreso->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             var_dump($primerId);die();
             echo "Hay estudiantes de primer ingreso <br>";die();

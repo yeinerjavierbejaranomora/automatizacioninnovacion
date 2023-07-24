@@ -72,7 +72,7 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $offset = 13657;
+        $offset = 0;
         $transferentes = $this->model->faltantesTransferentes($offset);
         //var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
         if($transferentes->fetch(PDO::FETCH_ASSOC) != false):

@@ -15,11 +15,12 @@ class Materiasporver extends Controller{
             $ciclo1 = explode('-',$value['fechaInicioCiclo1']);
             $ciclo2 = explode('-',$value['fechaInicioCiclo2']);
             if(in_array($mesActual,$ciclo1) || in_array($mesActual,$ciclo2)):
-                var_dump("SI");die();
+                var_dump("SI");
             else:
-                var_dump("No");die();
+                var_dump("No");
             endif;
         endforeach;
+        die();
         return $mesActual;
     }
 

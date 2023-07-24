@@ -60,8 +60,6 @@ class MateriasPorVerModel{
                     'codMateria' => $value['codigoCurso'],
                     'orden' => $orden,
                     'codprograma' => $value['codprograma'],
-                    'created_at' => NOW(),
-                    'updated_at' => NOW(),
                 ];
                 $orden++;
             endforeach;

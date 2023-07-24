@@ -49,6 +49,7 @@ class Materiasporver extends Controller{
         $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
         if($primerIngreso):
             $fechaInicio = date('Y-m-d H:i:s');
+            $registroMPV = 0;
             $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
@@ -58,6 +59,7 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
+                $registroMPV = $registroMPV + $insertMateriaPorVer;
                 if(count($mallaCurricular) == $insertMateriaPorVer):
                     $updateEstudiantePC = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                 endif;
@@ -67,11 +69,11 @@ class Materiasporver extends Controller{
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert-PrimerIngreso';
             $tablaAfectada = 'materiasPorVer';
-            $descripcion = 'Se realizo la insercion en la tabla materiasPorVer insertando las materias por ver del estudiante de primer ingreso, modificando el valor del campo materias_faltantes en la tabla estudiantes de NULL a "OK" en cada estudiante, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $insertMateriaPorVer . ' registros';
+            $descripcion = 'Se realizo la insercion en la tabla materiasPorVer insertando las materias por ver del estudiante de primer ingreso, modificando el valor del campo materias_faltantes en la tabla estudiantes de NULL a "OK" en cada estudiante, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $registroMPV . ' registros';
             $fecha = date('Y-m-d H:i:s');
             $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);
             $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);
-            echo $codBanner."-".$insertMateriaPorVer . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+            echo $codBanner."-".$registroMPV . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
         else:
             echo "No hay estudiantes de primer ingreso <br>";die();
         endif;

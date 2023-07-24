@@ -72,6 +72,13 @@ class MateriasPorVerModel{
     }
 
     public function insertMateriaPorVer($mallaCurricular){
-        var_dump($mallaCurricular);die();
+        try {
+            foreach($mallaCurricular as $malla):
+                var_dump($malla);die();
+            endforeach;
+            //$insertMateriaPorVer = $this->db->connect()->prepare("INSERT INTO `materiasPorVer` SET `codBanner` = ?, `codMateria` = ?, `orden` = ?, `codprograma` = ?, `created_at` = ?, `updated_at` = ?");
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

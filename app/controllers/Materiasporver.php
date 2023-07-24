@@ -79,7 +79,9 @@ class Materiasporver extends Controller{
             $registroMPV = 0;
             $primerId = $this->model->faltantesTransferentes($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
-            var_dump($primerId);
+            foreach($transferentes as $estudiante):
+                var_dump($estudiante);
+            endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:
             echo "No hay estudiantes TRANSFERENTES <br>";die();

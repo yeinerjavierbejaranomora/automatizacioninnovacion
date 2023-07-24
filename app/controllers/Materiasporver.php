@@ -55,7 +55,7 @@ class Materiasporver extends Controller{
             foreach($primerIngreso as $estudiante):
                 $marcaIngreso = $estudiante['periodo'];
                 $periodo = substr($marcaIngreso,-2);
-                $mallaCurricular = $this->model->baseAcademica($estudiante->homologante,$estudiante->programa);
+                //$mallaCurricular = $this->model->baseAcademica($estudiante->homologante,$estudiante->programa,$periodo);
                 var_dump($estudiante,$periodo);die();
             endforeach;
             echo "Hay estudiantes de primer ingreso <br>";die();

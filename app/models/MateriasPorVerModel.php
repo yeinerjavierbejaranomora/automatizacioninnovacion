@@ -42,7 +42,7 @@ class MateriasPorVerModel{
     }
 
     public function baseAcademica($codBanner,$programa,$periodo){
-        //try {
+        try {
             $data = [];
             $consultaBaseAcademica = $this->db->connect()->prepare("SELECT m.codigoCurso,m.orden,m.codprograma FROM `mallaCurricular` m 
                                                                     INNER JOIN programas p ON p.codprograma=m.codprograma
@@ -65,9 +65,9 @@ class MateriasPorVerModel{
                 ];
                 $orden++;
             endforeach;
-            var_dump($data);die();
-        /*} catch (PDOException $e) {
+            return $data;
+        } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 }

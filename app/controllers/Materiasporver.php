@@ -47,6 +47,10 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
-        var_dump($primerIngreso->fetch(PDO::FETCH_ASSOC));die();
+        if(!$primerIngreso):
+            echo "No hay estudiantes de primer ingreso <br>";die();
+        else:
+            echo "No hay estudiantes de primer ingreso <br>";die();
+        endif;
     }
 }

@@ -47,7 +47,7 @@ class Materiasporver extends Controller{
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
                 $registroMPV = $registroMPV + $insertMateriaPorVer;
                 if(count($mallaCurricular) == $insertMateriaPorVer):
-                    $updateEstudiantePC = $this->model->updateEstudiante($estudiante['id'],$codBanner);
+                    $updateEstudiantePI = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
@@ -72,7 +72,7 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-
-        var_dump($offset);die();
+        $transferentes = $this->model->faltantesTransferentes($offset);
+        var_dump($transferentes->rowCount());die();
     }
 }

@@ -156,4 +156,20 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function faltantesTransferentes($offset){
+        try {
+            $consultaEstTransferente = $this->db->connect()->prepare("SELECT * FROM `estudiantes`
+                                                                        WHERE `id` > ?
+                                                                        AND `tipo_estudiante` like 'TRANSFERENTE%'
+                                                                        AND `programaActivo` IS NULL
+                                                                        AND `tiene_historial` IS NULL
+                                                                        AND `materias_faltantes` IS NULL");
+            $consultaEstTransferente->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstTransferente->execute();
+            return $consultaEstTransferente;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

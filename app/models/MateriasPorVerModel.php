@@ -49,7 +49,8 @@ class MateriasPorVerModel{
                                                                     INNER JOIN programasPeriodos pp ON pp.codPrograma=m.codprograma
                                                                     WHERE m.codprograma = ?
                                                                     AND pp.periodo = ?
-                                                                    ORDER BY semestre ASC, orden ASC");
+                                                                    ORDER BY semestre ASC, orden ASC
+                                                                    AND `programa` != 'MED'");
             $consultaBaseAcademica->bindParam(1,$programa,PDO::PARAM_STR);
             $consultaBaseAcademica->bindParam(2,$periodo,PDO::PARAM_INT);
             $consultaBaseAcademica->execute();

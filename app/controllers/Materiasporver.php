@@ -84,6 +84,7 @@ class Materiasporver extends Controller{
                 $codBanner = $estudiante['homologante'];
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
+                var_dump($codBanner,$programa,$periodo);die();
                 //$mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 //var_dump($mallaCurricular->fetch(PDO::FETCH_ASSOC));die();
             endforeach;

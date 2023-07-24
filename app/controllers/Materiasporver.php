@@ -25,7 +25,7 @@ class Materiasporver extends Controller{
     }
 
     public function getEstudiantes(){
-        $programado_ciclo1 = NULL;
+        /*$programado_ciclo1 = NULL;
         $periodo = $this->periodo();
         var_dump($periodo);die();
         $marcaIngreso = "";
@@ -38,7 +38,7 @@ class Materiasporver extends Controller{
         // Dividir la cadena en elementos individuales
         $marcaIngreso = explode(",", $marcaIngreso);
         // Convertir cada elemento en un número
-        $marcaIngreso = array_map('intval', $marcaIngreso);
+        $marcaIngreso = array_map('intval', $marcaIngreso);*/
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         $estudiantes = $this->model->numeroEstudiantes();
         var_dump($log->fetch(PDO::FETCH_ASSOC));die();

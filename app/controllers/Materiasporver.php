@@ -47,6 +47,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
+        var_dump($primerIngreso);die();
         if($primerIngreso):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;

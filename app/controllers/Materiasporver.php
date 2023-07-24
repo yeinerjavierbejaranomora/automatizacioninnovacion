@@ -48,6 +48,11 @@ class Materiasporver extends Controller{
         endif;
         $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
         if($primerIngreso):
+            $fechaInicio = date('Y-m-d H:i:s');
+            $registroMPV = 0;
+            $primerId = $primerIngreso[0]->id;
+            $ultimoRegistroId = 0;
+            var_dump($primerId);die();
             echo "Hay estudiantes de primer ingreso <br>";die();
         else:
             echo "No hay estudiantes de primer ingreso <br>";die();

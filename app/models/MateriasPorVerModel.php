@@ -8,7 +8,7 @@ class MateriasPorVerModel{
         $this->db = new Database();
     }
 
-    public function getPeriodo(){
+    /*public function getPeriodo(){
         try {
             $consultaPeriodo = $this->db->connect()->prepare("SELECT * FROM `periodo`");
             $consultaPeriodo->execute();
@@ -16,7 +16,7 @@ class MateriasPorVerModel{
         } catch (PDOException $e) {
             return false;
         }
-    }
+    }*/
 
     public function logAplicacion($accion,$tabla){
         try {

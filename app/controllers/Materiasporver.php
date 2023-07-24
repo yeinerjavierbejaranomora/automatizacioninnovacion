@@ -11,7 +11,7 @@ class Materiasporver extends Controller{
         $mesActual = date('m');
         $periodo = $this->model->getPeriodo();
         foreach($periodo as $value):
-            var_dump($value['fechaInicioCiclo1']);die();
+            var_dump(explode($value['fechaInicioCiclo1']));die();
         endforeach;
         return $mesActual;
     }

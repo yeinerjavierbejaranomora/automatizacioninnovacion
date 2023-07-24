@@ -49,7 +49,6 @@ class Materiasporver extends Controller{
         $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
         if($primerIngreso):
             $fechaInicio = date('Y-m-d H:i:s');
-            $registroMPV = 0;
             $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
@@ -61,11 +60,18 @@ class Materiasporver extends Controller{
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
                 if(count($mallaCurricular) == $insertMateriaPorVer):
                     $updateEstudiantePC = $this->model->updateEstudiante($estudiante['id'],$codBanner);
-                    var_dump($updateEstudiantePC);die();
                 endif;
-                die();
+                $ultimoRegistroId = $estudiante['id'];
+                $idBannerUltimoRegistro = $estudiante['homologante'];
             endforeach;
-            echo "Hay estudiantes de primer ingreso <br>";die();
+            $fechaFin = date('Y-m-d H:i:s');
+            $acccion = 'Insert-PrimerIngreso';
+            $tablaAfectada = 'materiasPorVer';
+            $descripcion = 'Se realizo la insercion en la tabla materiasPorVer insertando las materias por ver del estudiante de primer ingreso, modificando el valor del campo materias_faltantes en la tabla estudiantes de NULL a "OK" en cada estudiante, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $insertMateriaPorVer . ' registros';
+            $fecha = date('Y-m-d H:i:s');
+            $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);
+            $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);
+            echo $codBanner."-".$insertMateriaPorVer . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
         else:
             echo "No hay estudiantes de primer ingreso <br>";die();
         endif;

@@ -110,4 +110,50 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){
+        try {
+            $insertarLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET
+                                                                        `idInicio` = ?, 
+                                                                        `idFin` = ?, 
+                                                                        `fechaInicio` = ?, 
+                                                                        `fechaFin` = ?, 
+                                                                        `accion` = ?, 
+                                                                        `tabla_afectada` = ?, 
+                                                                        `descripcion` = ?, 
+                                                                        `created_at` = NOW(), 
+                                                                        `updated_at` = NOW()");
+            $insertarLog->bindValue(1,$primerID,PDO::PARAM_INT);
+            $insertarLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_STR);
+            $insertarLog->bindValue(3,$fechaInicio,PDO::PARAM_STR);
+            $insertarLog->bindValue(4,$fechaFin,PDO::PARAM_STR);
+            $insertarLog->bindValue(5,$acccion,PDO::PARAM_STR);
+            $insertarLog->bindValue(6,$tablaAfectada,PDO::PARAM_STR);
+            $insertarLog->bindValue(7,$descripcion,PDO::PARAM_STR);
+            $insertarLog->execute();
+            return $insertarLog;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha){
+        try {
+            $insertIndiceCambios = $this->db->connect()->prepare("INSERT INTO `indice_cambios_mafi` SET  
+                                                                                `idbanner` = ?, 
+                                                                                `accion` = ?, 
+                                                                                `descripcion` = ?, 
+                                                                                `fecha` = ?, 
+                                                                                `created_at` = NOW(), 
+                                                                                `updated_at` = NOW()");
+            $insertIndiceCambios->bindValue(1,$idBannerUltimoRegistro,PDO::PARAM_INT);
+            $insertIndiceCambios->bindValue(2,$acccion,PDO::PARAM_STR);
+            $insertIndiceCambios->bindValue(3,$descripcion,PDO::PARAM_STR);
+            $insertIndiceCambios->bindValue(4,$fecha,PDO::PARAM_STR);
+            $insertIndiceCambios->execute();
+            return $insertIndiceCambios;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

@@ -9,6 +9,8 @@ class Materiasporver extends Controller{
     public function periodo(){
         $fechaActual = date('Y-m-d');
         $mesActual = date('m');
+        $periodo = $this->model->getPeriodo();
+        var_dump($periodo->fetch(PDO::FETCH_ASSOC));die();
         return $mesActual;
     }
 
@@ -16,7 +18,7 @@ class Materiasporver extends Controller{
         $programado_ciclo1 = NULL;
         $periodo = $this->periodo();
         var_dump($periodo);die();
-        /*$marcaIngreso = "";
+        $marcaIngreso = "";
         foreach ($periodo as $key => $value) {
             $marcaIngreso .= (int)$value->periodos . ",";
         }
@@ -29,6 +31,6 @@ class Materiasporver extends Controller{
         $marcaIngreso = array_map('intval', $marcaIngreso);
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         $estudiantes = $this->model->numeroEstudiantes();
-        var_dump($log->fetch(PDO::FETCH_ASSOC));die();*/
+        var_dump($log->fetch(PDO::FETCH_ASSOC));die();
     }
 }

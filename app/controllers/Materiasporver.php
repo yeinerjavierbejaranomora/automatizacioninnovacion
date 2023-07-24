@@ -59,7 +59,7 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
-                var_dump($insertMateriaPorVer);die();
+                var_dump(count($mallaCurricular),$insertMateriaPorVer);die();
                 die();
             endforeach;
             echo "Hay estudiantes de primer ingreso <br>";die();

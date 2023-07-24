@@ -55,14 +55,14 @@ class MateriasPorVerModel{
             $consultaBaseAcademica->execute();
             $orden = 1;
             foreach($consultaBaseAcademica as $key => $value):
-                var_dump($value['codigoCurso']);DIE();
+                var_dump($value['codprograma']);DIE();
                 $data[] = [
                     'codBanner' => $codBanner,
                     'codMateria' => $value['codigoCurso'],
                     'orden' => $orden,
                     'codprograma' => $value['codprograma'],
-                    'created_at' => now(),
-                    'updated_at' => now(),
+                    /*'created_at' => now(),
+                    'updated_at' => now(),*/
                 ];
                 $orden++;
             endforeach;

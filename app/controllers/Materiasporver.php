@@ -13,9 +13,10 @@ class Materiasporver extends Controller{
         foreach ($periodo as $key => $value) {
             $ciclo1 = explode('-', $value->fechaInicioCiclo1);
             $ciclo2 = explode('-', $value->fechaInicioCiclo2);
-            var_dump($ciclo1,$ciclo2);die();
+            var_dump($ciclo1,$ciclo2);
 
         }
+        die();
         return $mesActual;
     }
 

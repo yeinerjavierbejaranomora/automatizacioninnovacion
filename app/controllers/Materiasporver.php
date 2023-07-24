@@ -41,6 +41,6 @@ class Materiasporver extends Controller{
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         //$estudiantes = $this->model->numeroEstudiantes();
-        var_dump($log->fetch(PDO::FETCH_ASSOC));die();
+        var_dump($log);die();
     }
 }

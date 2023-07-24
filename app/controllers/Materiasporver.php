@@ -24,7 +24,7 @@ class Materiasporver extends Controller{
         return $mesActual;
     }*/
 
-    public function getEstudiantes(){
+    public function primeringreso(){
         /*$programado_ciclo1 = NULL;
         $periodo = $this->periodo();
         var_dump($periodo);die();

@@ -77,15 +77,12 @@ class Materiasporver extends Controller{
             $registroMPV = 0;
             $primerId = $this->model->faltantesTransferentes($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
-            //var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
             foreach($transferentes as $estudiante):
-                var_dump("s",$estudiante);die();
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
-                var_dump($mallaCurricular);die();
                 $historial = $this->model->historial($codBanner);
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
@@ -96,7 +93,6 @@ class Materiasporver extends Controller{
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
-                die();
             endforeach;
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert-Transferente';

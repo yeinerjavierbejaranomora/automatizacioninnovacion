@@ -198,7 +198,7 @@ class MateriasPorVerModel{
         }
     }
 
-    public function totalEstudiantes($offset = 0){
+    public function totalEstudiantes($offset){
         var_dump($offset);die();
         try {
             $consultaTotalEstudiantes = $this->db->connect()->prepare("SELECT COUNT(`id`) AS `total` FROM `estudiantes` WHERE `id` > ? AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` = 'REINGRESO' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL ORDER BY `id` ASC");

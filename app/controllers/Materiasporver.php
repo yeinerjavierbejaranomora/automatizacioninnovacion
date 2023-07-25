@@ -110,7 +110,7 @@ class Materiasporver extends Controller{
 
     public function antiguos(){
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes();
-        var_dump("C",$totalEstudiantesAntiguos);die();
+        var_dump("C",ceil($totalEstudiantesAntiguos/500));die();
         $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if(!$log):
             $offset =0;

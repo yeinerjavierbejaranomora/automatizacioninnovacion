@@ -208,4 +208,30 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function faltantesAntiguos($offset,$limit){
+        try{
+            $consultaEstudiantesAntiguos = $this->db->connect()->prepare("SELECT * FROM `estudiantes`
+            WHERE `id` > ?
+            AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
+            AND `programaActivo` IS NULL
+            AND `materias_faltantes` IS NULL
+            OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
+            AND `programaActivo` IS NULL
+            AND `materias_faltantes` IS NULL
+            OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
+            AND `programaActivo` IS NULL
+            AND `materias_faltantes` IS NULL
+            ORDER BY `id` DESC
+            LIMIT ?");
+            $consultaEstudiantesAntiguos->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstudiantesAntiguos->bindParam(2,$offset,PDO::PARAM_INT);
+            $consultaEstudiantesAntiguos->bindParam(3,$offset,PDO::PARAM_INT);
+            $consultaEstudiantesAntiguos->bindParam(4,$limit,PDO::PARAM_INT);
+            $consultaEstudiantesAntiguos->execute();
+            return $consultaEstudiantesAntiguos;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

@@ -109,7 +109,7 @@ class Materiasporver extends Controller{
     }
 
     public function antiguos(){
-        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        /*$log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if(!$log):
             $offset =13658;
         else:
@@ -120,7 +120,16 @@ class Materiasporver extends Controller{
             var_dump("hay estudiantes antiguos");die();
         else:
             var_dump("No hay estudiantes antiguos");die();
+        endif;*/
+        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        if(!$log):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
+        $limit = 1000;
+        $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit);
+        var_dump($estudiantesAntiguos->rowCount());die();
         
     }
 

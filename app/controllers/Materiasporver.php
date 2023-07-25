@@ -116,7 +116,11 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
-        var_dump($totalEstudiantesAntiguos);die();
+        if($totalEstudiantesAntiguos > 0):
+            var_dump("hay estudiantes antiguos");die();
+        else:
+            var_dump("No hay estudiantes antiguos");die();
+        endif;
         
     }
 

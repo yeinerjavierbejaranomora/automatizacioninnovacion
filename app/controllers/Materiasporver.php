@@ -86,10 +86,10 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $historial = $this->model->historial($codBanner);
-                /*$diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
+                $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
-                });*/
-                var_dump($historial);die();
+                });
+                var_dump($diff);die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

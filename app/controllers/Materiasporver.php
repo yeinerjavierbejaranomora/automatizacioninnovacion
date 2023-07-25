@@ -82,10 +82,11 @@ class Materiasporver extends Controller{
             foreach($transferentes as $estudiante):
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
+                var_dump($codBanner);die();
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
-                //var_dump($codBanner,$programa,$periodo);die();
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
+                $historial = $this->model->historial($codBanner);
                 var_dump($mallaCurricular);die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();

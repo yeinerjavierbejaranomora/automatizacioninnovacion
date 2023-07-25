@@ -176,4 +176,12 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function historial($codBanner){
+        try {
+            $consultaHistorial = $this->db->connect()->prepare("");
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

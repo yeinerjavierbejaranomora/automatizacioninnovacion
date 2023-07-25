@@ -71,7 +71,7 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 1000;
+        $limit = 800;
         $transferentes = $this->model->faltantesTransferentes($offset,$limit);
         if($transferentes->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');

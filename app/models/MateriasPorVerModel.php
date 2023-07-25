@@ -179,9 +179,17 @@ class MateriasPorVerModel{
 
     public function historial($codBanner){
         try {
+            $data=[];
             $consultaHistorial = $this->db->connect()->prepare("SELECT `codMateria`,`codBanner` FROM `historialAcademico` WHERE `codBanner` = ? AND `codMateria` != 'na'");
             $consultaHistorial->bindParam(1,$codBanner,PDO::PARAM_INT);
             $consultaHistorial->execute();
+            foreach($consultaHistorial as $historial):
+                $data[] = [
+                    'codMateria'=>$historial['codMateria'],
+                    'codprograma'=>$historial['codprograma'],
+                ];
+            endforeach;
+            var_dump($data);die();
             return $consultaHistorial;
         } catch (PDOException $e) {
             return false;

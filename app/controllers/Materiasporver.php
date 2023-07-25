@@ -110,6 +110,8 @@ class Materiasporver extends Controller{
 
     public function antiguos(){
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes();
+        $offset = 20;
+        $totalEstudiantesAntiguos2 = $this->model->totalEstudiantes();
         //var_dump("C",ceil($totalEstudiantesAntiguos/500));die();
         
     }

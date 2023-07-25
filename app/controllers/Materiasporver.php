@@ -72,8 +72,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $transferentes = $this->model->faltantesTransferentes($offset);
-        var_dump($transferentes->rowCount());die();
-        if(!empty($transferentes)):
+        if($transferentes->rowCount()):
             /*$fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
             $primerId = 99;

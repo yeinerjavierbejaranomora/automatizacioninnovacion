@@ -131,6 +131,7 @@ class Materiasporver extends Controller{
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit);
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):
+                var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $this->model->faltantesAntiguos($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
                 $ultimoRegistroId = 0;

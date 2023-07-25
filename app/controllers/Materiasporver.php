@@ -31,13 +31,11 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 1000;
-        $primerIngreso = $this->model->falatntesPrimerIngreso($offset,$limit);
-        var_dump($primerIngreso->fetch(PDO::FETCH_ASSOC));die();
+        $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
         if($primerIngreso):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
-            $primerId = $this->model->falatntesPrimerIngreso($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
+            $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
                 $marcaIngreso = $estudiante['marca_ingreso'];
@@ -74,6 +72,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $transferentes = $this->model->faltantesTransferentes($offset);
+        var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
         if($transferentes->fetch(PDO::FETCH_ASSOC) != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;

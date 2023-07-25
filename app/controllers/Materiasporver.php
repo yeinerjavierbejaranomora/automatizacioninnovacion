@@ -111,7 +111,7 @@ class Materiasporver extends Controller{
     public function antiguos(){
         $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if(!$log):
-            $offset =0;
+            $offset =13658;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;

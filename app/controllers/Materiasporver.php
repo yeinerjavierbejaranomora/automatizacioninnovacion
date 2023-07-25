@@ -90,7 +90,7 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
-                var_dump($diff);die();
+                var_dump($insertMateriaPorVer);die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

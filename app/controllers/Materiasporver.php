@@ -79,7 +79,7 @@ class Materiasporver extends Controller{
             $ultimoRegistroId = 0;
             //var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
             foreach($transferentes as $estudiante):
-                var_dump("s",$estudiante);die();
+                //var_dump("s",$estudiante);die();
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
                 $programa = $estudiante['programa'];

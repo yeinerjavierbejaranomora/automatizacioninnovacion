@@ -89,7 +89,7 @@ class Materiasporver extends Controller{
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
-                $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
+                $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
                 var_dump($diff);die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();

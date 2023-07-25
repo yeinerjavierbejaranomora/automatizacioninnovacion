@@ -42,7 +42,7 @@ class MateriasPorVerModel{
     }
 
     public function baseAcademica($codBanner,$programa,$periodo){
-        var_dump($codBanner,$programa,$periodo);die();
+        //var_dump($codBanner,$programa,$periodo);die();
         try {
             $data = [];
             $consultaBaseAcademica = $this->db->connect()->prepare("SELECT m.codigoCurso,m.orden,m.codprograma FROM `mallaCurricular` m 
@@ -244,6 +244,19 @@ class MateriasPorVerModel{
             if($udpateEstudiante):
                 return true;
             endif;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+    
+    public function insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta){
+        try {
+            $insertAlerta = $this->db->connect()->prepare("INSERT INTO `alertas_tempranas` SET `idbanner` = ?, `tipo_estudiante` = ?, `desccripcion` = ?, `created_at` = NOW(), `updated_at` = NOW()");
+            $insertAlerta->bindValue(1,$codigoBanner,PDO::PARAM_INT);
+            $insertAlerta->bindValue(2,$tipoEstudiante,PDO::PARAM_STR);
+            $insertAlerta->bindValue(3,$mensajeAlerta,PDO::PARAM_STR);
+            $insertAlerta->execute();
+            return $insertAlerta;
         } catch (PDOException $e) {
             return false;
         }

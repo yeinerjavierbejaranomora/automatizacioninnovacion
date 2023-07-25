@@ -75,6 +75,7 @@ class MateriasPorVerModel{
     }
 
     public function insertMateriaPorVer($mallaCurricular){
+        var_dump($mallaCurricular);die();
         try {
             $numInsert= 0;
             foreach($mallaCurricular as $malla):

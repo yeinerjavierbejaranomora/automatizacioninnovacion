@@ -202,7 +202,7 @@ class MateriasPorVerModel{
         try {
             $consultaTotalEstudiantes = $this->db->connect()->prepare("SELECT COUNT(`id`) AS `total` FROM `estudiantes` WHERE `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` = 'REINGRESO' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL ORDER BY `id` ASC"); 
             $consultaTotalEstudiantes->execute();
-            var_dump($consultaTotalEstudiantes->fetch(PDO::FETCH_ASSOC)['total']);die();
+            return $consultaTotalEstudiantes->fetch(PDO::FETCH_ASSOC)['total'];
         } catch (PDOException $e) {
             return false;
         }

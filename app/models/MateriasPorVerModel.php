@@ -222,7 +222,7 @@ class MateriasPorVerModel{
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            ORDER BY `id` DESC
+            ORDER BY `id` ASC
             LIMIT ?");
             $consultaEstudiantesAntiguos->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantesAntiguos->bindParam(2,$offset,PDO::PARAM_INT);

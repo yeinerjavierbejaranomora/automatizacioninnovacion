@@ -72,8 +72,8 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $transferentes = $this->model->faltantesTransferentes($offset);
-        if($transferentes):
-            $fechaInicio = date('Y-m-d H:i:s');
+        if(!empty($transferentes)):
+            /*$fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
             $primerId = 99;
             $ultimoRegistroId = 0;
@@ -105,7 +105,9 @@ class Materiasporver extends Controller{
             $fecha = date('Y-m-d H:i:s');
             $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);
             $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);
-            echo $ultimoRegistroId."-".$registroMPV . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+            echo $ultimoRegistroId."-".$registroMPV . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
+
+            echo "hay estudiantes TRANSFERENTES <br>";die();
         else:
             echo "No hay estudiantes TRANSFERENTES <br>";die();
         endif;

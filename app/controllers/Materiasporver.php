@@ -87,7 +87,7 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $historial = $this->model->historial($codBanner);
-                var_dump($mallaCurricular);die();
+                var_dump($historial->rowCount());die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

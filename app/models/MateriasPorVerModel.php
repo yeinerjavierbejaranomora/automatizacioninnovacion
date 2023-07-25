@@ -189,8 +189,7 @@ class MateriasPorVerModel{
                     'codprograma'=>$historial['codprograma'],
                 ];
             endforeach;
-            var_dump($data);die();
-            return $consultaHistorial;
+            return $data;
         } catch (PDOException $e) {
             return false;
         }

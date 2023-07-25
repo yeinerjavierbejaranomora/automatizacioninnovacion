@@ -89,7 +89,7 @@ class Materiasporver extends Controller{
                 /*$diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });*/
-                var_dump($mallaCurricular);die();
+                var_dump($historial);die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

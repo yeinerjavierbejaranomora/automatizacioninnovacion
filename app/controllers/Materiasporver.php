@@ -142,7 +142,11 @@ class Materiasporver extends Controller{
 
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $historial = $this->model->historial($codBanner);
-                var_dump($mallaCurricular,$historial);die();
+                $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
+                    return $a['codMateria'] <=> $b['codMateria'];
+                });
+                $cantidadDiff = count($diff);
+                var_dump($cantidadDiff);die();
             endforeach;
             echo "hay estudiantes ANTIGUOS,ni PSEUDO INGRESO O REINGRESO <br>";
         else:

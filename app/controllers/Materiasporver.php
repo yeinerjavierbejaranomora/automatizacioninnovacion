@@ -67,7 +67,7 @@ class Materiasporver extends Controller{
     public function transferentes(){
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if(!$log):
-            $offset =13642;
+            $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;

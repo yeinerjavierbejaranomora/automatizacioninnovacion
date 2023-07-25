@@ -95,6 +95,7 @@ class Materiasporver extends Controller{
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
+                die();
             endforeach;
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert-Transferente';

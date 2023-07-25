@@ -234,4 +234,18 @@ class MateriasPorVerModel{
             return false;
         }
     }
+
+    public function upateEstuianteAntiguo($estudianteId,$codBanner){
+        try {
+            $udpateEstudiante = $this->db->connect()->prepare("UPDATE `estudiantes` SET `materias_faltantes`='YA VIO TODO','tiene_historial'=>'COMPLETO' WHERE `id` = ? AND `homologante` = ? ");
+            $udpateEstudiante->bindParam(1,$estudianteId,PDO::PARAM_INT);
+            $udpateEstudiante->bindParam(2,$codBanner,PDO::PARAM_INT);
+            $udpateEstudiante->execute();
+            if($udpateEstudiante):
+                return true;
+            endif;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

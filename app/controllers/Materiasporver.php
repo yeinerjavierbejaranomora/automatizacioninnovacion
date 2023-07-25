@@ -137,6 +137,7 @@ class Materiasporver extends Controller{
 
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
+                $tipoEstudiante = $estudiante['tipo_estudiante'];
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
 
@@ -146,7 +147,27 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 $cantidadDiff = count($diff);
-                var_dump($cantidadDiff);die();
+                if(count($diff) > 0):
+                    $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
+                    if (count($diff) == $insertMateriaPorVer) :
+                        $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+                    endif;
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $estudiante[ 'homologante'];
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $acccion = 'Insert-EstudinatesAntiguos';
+                    $tablaAfectada = 'materiasPorVer';
+                    $descripcion = 'Se realizo la insercion en la tabla materiasPorVer insertando las materias por ver del estudiante de primer ingreso, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $fecha = date('Y-m-d H:i:s');
+                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                    $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+                    echo $ultimoRegistroId . "-" . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                else :
+                    $mensajeAlerta = 'El estudiante con idBanner' . $codBanner . ' es estudiante antiguo y ya vio todo.';
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner, $tipoEstudiante, $mensajeAlerta);
+                    $updateEstudianteEA = $this->model->upateEstuianteAntiguo($estudiante['id'],$codBanner);
+                    echo "estudinate vio todo". $codBanner;
+                endif;
             endforeach;
             echo "hay estudiantes ANTIGUOS,ni PSEUDO INGRESO O REINGRESO <br>";
         else:

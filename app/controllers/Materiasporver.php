@@ -77,7 +77,7 @@ class Materiasporver extends Controller{
             $registroMPV = 0;
             $primerId = $this->model->faltantesTransferentes($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
-            var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
+            //var_dump($transferentes->fetch(PDO::FETCH_ASSOC));die();
             foreach($transferentes as $estudiante):
                 var_dump($estudiante);die();
                 $marcaIngreso = $estudiante['marca_ingreso'];

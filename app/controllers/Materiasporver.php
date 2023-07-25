@@ -130,6 +130,9 @@ class Materiasporver extends Controller{
         $limit = 1000;
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit);
         if($estudiantesAntiguos->rowCount() != false):
+            foreach($estudiantesAntiguos as $estudiante):
+                var_dump($estudiante);die();
+            endforeach;
             echo "hay estudiantes ANTIGUOS,ni PSEUDO INGRESO O REINGRESO <br>";
         else:
             echo "No hay estudiantes ANTIGUOS,ni PSEUDO INGRESO O REINGRESO <br>";

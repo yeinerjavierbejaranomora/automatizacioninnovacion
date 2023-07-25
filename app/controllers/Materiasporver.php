@@ -131,7 +131,18 @@ class Materiasporver extends Controller{
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit);
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):
-                var_dump($estudiante);die();
+                $fechaInicio = date('Y-m-d H:i:s');
+                $primerId = $this->model->faltantesAntiguos($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
+                $ultimoRegistroId = 0;
+
+                $marcaIngreso = $estudiante['marca_ingreso'];
+                $codBanner = $estudiante['homologante'];
+                $programa = $estudiante['programa'];
+                $periodo = substr($marcaIngreso,-2);
+
+                $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
+                $historial = $this->model->historial($codBanner);
+                var_dump($mallaCurricular,$historial);die();
             endforeach;
             echo "hay estudiantes ANTIGUOS,ni PSEUDO INGRESO O REINGRESO <br>";
         else:

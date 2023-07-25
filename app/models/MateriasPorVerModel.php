@@ -55,8 +55,7 @@ class MateriasPorVerModel{
             $consultaBaseAcademica->bindParam(1,$programa,PDO::PARAM_STR);
             $consultaBaseAcademica->bindParam(2,$periodo,PDO::PARAM_INT);
             $consultaBaseAcademica->execute();
-            var_dump($consultaBaseAcademica->fetch(PDO::FETCH_ASSOC));die();
-            /*$orden = 1;
+            $orden = 1;
             foreach($consultaBaseAcademica as $key => $value):
                 $data[] = [
                     'codBanner' => $codBanner,
@@ -65,10 +64,11 @@ class MateriasPorVerModel{
                     'codprograma' => $value['codprograma'],
                     /*'created_at' => now(),
                     'updated_at' => now(),*/
-                /*];
-                $orden++;
-            endforeach;
-            return $data;
+                    ];
+                    $orden++;
+                endforeach;
+            var_dump($data));die();
+            /*return $data;
         } catch (PDOException $e) {
             return false;
         }*/

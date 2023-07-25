@@ -86,7 +86,7 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 //var_dump($codBanner,$programa,$periodo);die();
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
-                var_dump($mallaCurricular->fetch(PDO::FETCH_ASSOC));die();
+                var_dump($mallaCurricular);die();
             endforeach;
             echo "hay estudiantes TRANSFERENTES <br>";die();
         else:

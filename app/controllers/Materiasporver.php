@@ -82,7 +82,6 @@ class Materiasporver extends Controller{
             foreach($transferentes as $estudiante):
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
-                var_dump($codBanner);die();
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);

@@ -107,4 +107,15 @@ class Materiasporver extends Controller{
             echo "No hay estudiantes TRANSFERENTES <br>";die();
         endif;
     }
+
+    public function antiguos(){
+        $totalEstudiantesAntiguos = $this->model->totalEstudiantes();
+        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        if(!$log):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        $limit = 800;
+    }
 }

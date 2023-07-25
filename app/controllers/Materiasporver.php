@@ -73,7 +73,6 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $transferentes = $this->model->faltantesTransferentes($offset);
-        //var_dump($transferentes->rowCount());die();
         if($transferentes->fetch(PDO::FETCH_ASSOC) != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
@@ -90,9 +89,20 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
-                var_dump($insertMateriaPorVer);die();
+                if(count($diff) == $insertMateriaPorVer):
+                    $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
+                endif;
+                $ultimoRegistroId = $estudiante['id'];
+                $idBannerUltimoRegistro = $estudiante['homologante'];
             endforeach;
-            echo "hay estudiantes TRANSFERENTES <br>";die();
+            $fechaFin = date('Y-m-d H:i:s');
+            $acccion = 'Insert-Transferente';
+            $tablaAfectada = 'materiasPorVer';
+            $descripcion = 'Se realizo la insercion en la tabla materiasPorVer insertando las materias por ver del estudiante transferente, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $registroMPV . ' registros';
+            $fecha = date('Y-m-d H:i:s');
+            $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);
+            $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);
+            echo $ultimoRegistroId."-".$registroMPV . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
         else:
             echo "No hay estudiantes TRANSFERENTES <br>";die();
         endif;

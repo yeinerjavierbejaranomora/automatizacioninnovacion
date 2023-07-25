@@ -67,13 +67,13 @@ class Materiasporver extends Controller{
     public function transferentes(){
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if(!$log):
-            $offset =13642;
+            $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $transferentes = $this->model->faltantesTransferentes($offset);
         if($transferentes->rowCount()):
-            /*$fechaInicio = date('Y-m-d H:i:s');
+            $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
             $primerId = 99;
             $ultimoRegistroId = 0;
@@ -105,9 +105,7 @@ class Materiasporver extends Controller{
             $fecha = date('Y-m-d H:i:s');
             $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);
             $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);
-            echo $ultimoRegistroId."-".$registroMPV . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
-
-            echo "hay estudiantes TRANSFERENTES <br>";die();
+            echo $ultimoRegistroId."-".$registroMPV . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
         else:
             echo "No hay estudiantes TRANSFERENTES <br>";die();
         endif;

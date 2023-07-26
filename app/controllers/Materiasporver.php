@@ -127,7 +127,7 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 1500;
+        $limit = 1000;
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit);
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):

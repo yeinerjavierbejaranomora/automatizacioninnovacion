@@ -89,6 +89,7 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
+                $registroMPV = $registroMPV + $insertMateriaPorVer;
                 if(count($diff) == $insertMateriaPorVer):
                     $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                 endif;

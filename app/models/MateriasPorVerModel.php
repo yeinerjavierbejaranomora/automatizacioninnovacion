@@ -226,15 +226,15 @@ class MateriasPorVerModel{
             WHERE `id` > ?
             AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
             AND `programaActivo` IS NULL
-            AND `materias_faltantes` = 'OK'
+            AND `materias_faltantes` IS NULL
             AND `programa` != 'MED'
             OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
-            AND `materias_faltantes` = 'OK'
+            AND `materias_faltantes` IS NULL
             AND `programa` != 'MED'
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
-            AND `materias_faltantes` = 'OK'
+            AND `materias_faltantes` IS NULL
             AND `programa` != 'MED'
             ORDER BY `id` ASC
             LIMIT ?");

@@ -236,19 +236,17 @@ class MateriasPorVerModel{
     }
 
     public function upateEstuianteAntiguo($estudianteId,$codBanner){
-        var_dump($estudianteId,$codBanner);die();
-        //try {
-            $udpateEstudiante = $this->db->connect()->prepare("UPDATE `estudiantes` SET `materias_faltantes`='YA VIO TODO','tiene_historial'='COMPLETO' WHERE `id` = ? AND `homologante` = ? ");
+        try {
+            $udpateEstudiante = $this->db->connect()->prepare("UPDATE `estudiantes` SET `materias_faltantes`='YA VIO TODO',`tiene_historial`='COMPLETO' WHERE `id` = ? AND `homologante` = ? ");
             $udpateEstudiante->bindParam(1,$estudianteId,PDO::PARAM_INT);
             $udpateEstudiante->bindParam(2,$codBanner,PDO::PARAM_INT);
             $udpateEstudiante->execute();
-            var_dump($udpateEstudiante);die();
-            /*if($udpateEstudiante):
+            if($udpateEstudiante):
                 return true;
             endif;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
     
     public function insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta){

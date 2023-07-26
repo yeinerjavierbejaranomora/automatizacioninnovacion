@@ -167,7 +167,7 @@ class Materiasporver extends Controller{
                     $mensajeAlerta = 'El estudiante con idBanner' . $codBanner . ' es estudiante antiguo y ya vio todo.';
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudianteEA = $this->model->upateEstuianteAntiguo($estudiante['id'],$codBanner);
-                    echo "estudiante vio todo". $codBanner;
+                    echo "estudiante vio todo". $codBanner."<br>";
                 endif;
             endforeach;
         else:

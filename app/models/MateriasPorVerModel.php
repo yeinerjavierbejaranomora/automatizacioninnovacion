@@ -32,8 +32,19 @@ class MateriasPorVerModel{
 
     public function falatntesPrimerIngreso($offset){
         try {
-            $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT * FROM `estudiantes` WHERE `id` > ? AND `tipo_estudiante` LIKE 'PRIMER%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` LIKE 'INGRESO%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL");
+            $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT * FROM `estudiantes` 
+            WHERE `id` > ? 
+            AND `programa` != 'MED'
+            AND `tipo_estudiante` LIKE 'PRIMER%'  
+            AND `programaActivo` IS NULL 
+            AND `materias_faltantes` IS NULL 
+            OR `id` > ?  
+            AND `programa` != 'MED'
+            AND `tipo_estudiante` LIKE 'INGRESO%' 
+            AND `programaActivo` IS NULL 
+            AND `materias_faltantes` IS NULL ");
             $consultaEstPrimerIngreso->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstPrimerIngreso->bindParam(2,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->execute();
             return $consultaEstPrimerIngreso;
         } catch (PDOException $e) {
@@ -215,13 +226,16 @@ class MateriasPorVerModel{
             WHERE `id` > ?
             AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
             AND `programaActivo` IS NULL
-            AND `materias_faltantes` IS NULL
+            AND `materias_faltantes` = 'OK'
+            AND `programa` != 'MED'
             OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
-            AND `materias_faltantes` IS NULL
+            AND `materias_faltantes` = 'OK'
+            AND `programa` != 'MED'
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
-            AND `materias_faltantes` IS NULL
+            AND `materias_faltantes` = 'OK'
+            AND `programa` != 'MED'
             ORDER BY `id` ASC
             LIMIT ?");
             $consultaEstudiantesAntiguos->bindParam(1,$offset,PDO::PARAM_INT);

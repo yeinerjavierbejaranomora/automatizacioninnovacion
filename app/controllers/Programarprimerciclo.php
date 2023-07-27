@@ -37,16 +37,17 @@ class Programarprimerciclo extends Controller{
         /*$marcaIngreso = explode(",", $marcaIngreso);
         // Convertir cada elemento en un número
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
-        $estudiantes = $this->model->getEstudiantes($marcaIngreso);
+        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        if (!$log) :
+            $offset = 0;
+        else :
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        $limit = 1000;
+        $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->rowCount());die();
         if($estudiantes->rowCount() > 0):
-            $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo','planeacion');
-            if(!$log):
-                $offset =0;
-            else:
-                $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
-            endif;
-            $limit = 800;
-            var_dump($offset);die();
+            
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

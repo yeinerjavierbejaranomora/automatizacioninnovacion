@@ -16,14 +16,18 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function getEstudiantes($marcaIngreso){
+    public function getEstudiantes($offset,$marcaIngreso,$limit){
         try {
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
-            WHERE `materias_faltantes` = 'OK' 
-            AND `programado_ciclo1` IS NULL
-            AND `programado_ciclo2` IS NULL
-            AND `marca_ingreso` IN ($marcaIngreso)
-            ORDER BY `id` ASC");
+            WHERE `id` > ?
+            AND `materias_faltantes` = 'OK' 
+            AND `programado_ciclo1` IS NULL 
+            AND `programado_ciclo2` IS NULL 
+            AND `marca_ingreso` IN ($marcaIngreso) 
+            ORDER BY `id` ASC
+            LIMIT ?");
+            $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstudiantes->bindParam(2,$limit,PDO::PARAM_INT);
             $consultaEstudiantes->execute();
             return $consultaEstudiantes;
         } catch (PDOException $e) {

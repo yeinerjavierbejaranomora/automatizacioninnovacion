@@ -34,9 +34,9 @@ class Programarprimerciclo extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         // Dividir la cadena en elementos individuales
-        $marcaIngreso = explode(",", $marcaIngreso);
+        /*$marcaIngreso = explode(",", $marcaIngreso);
         // Convertir cada elemento en un número
-        $marcaIngreso = array_map('intval', $marcaIngreso);
+        $marcaIngreso = array_map('intval', $marcaIngreso);*/
         $estudiantes = $this->model->getEstudiantes($marcaIngreso);
         var_dump($estudiantes->rowCount());die();
     }

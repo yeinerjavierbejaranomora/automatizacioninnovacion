@@ -100,7 +100,7 @@ class Programarprimerciclo extends Controller{
                 $reglasNegocio = $reglasNegocioConsulta->fetchAll(PDO::FETCH_ASSOC);
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = $reglasNegocio['materiasPermitidas'];
-                var_dump($numeroMateriasPermitidos);die();
+                var_dump($reglasNegocioConsulta,$numeroMateriasPermitidos);die();
                 $orden = 1;
                 //var_dump($programa,$materiasPorVer->fetchAll());die();
 

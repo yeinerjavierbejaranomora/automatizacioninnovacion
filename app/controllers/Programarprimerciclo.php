@@ -33,6 +33,7 @@ class Programarprimerciclo extends Controller{
             $marcaIngreso .= "'".(int)$periodo['periodos'] . "',";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
+        $marcaIngreso = "(".$marcaIngreso.")";
         $estudiantes = $this->model->getEstudiantes($marcaIngreso);
         var_dump($estudiantes->rowCount());die();
     }

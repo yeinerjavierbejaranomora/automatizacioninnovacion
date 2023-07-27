@@ -17,7 +17,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function getEstudiantes($marcaIngreso){
-        try {
+        //try {
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
             WHERE `materias_faltantes` = 'OK' 
             AND `programado_ciclo1` IS NULL
@@ -26,9 +26,10 @@ class ProgramarPrimerCicloModel{
             ORDER BY `id` ASC");
             $consultaEstudiantes->bindParam(1,$marcaIngreso,PDO::PARAM_STR);
             $consultaEstudiantes->execute();
-            return $consultaEstudiantes;
+            var_dump($consultaEstudiantes);die();
+            /*return $consultaEstudiantes;
         } catch (PDOException $e) {
             return false;
-        }
+        }*/
     }
 }

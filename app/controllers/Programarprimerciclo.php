@@ -89,6 +89,10 @@ class Programarprimerciclo extends Controller{
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);
                 var_dump($numeroCreditosC1->rowCount());die();
+                $sumaCreditosCiclo1 = $numeroCreditosC1['screditos'];
+                $sumaCreditosCiclo1 = $sumaCreditosCiclo1 == '' ? 0 : $sumaCreditosCiclo1;
+                $cuentaCursosCiclo1 = $numeroCreditosC1['ccursos'];
+                $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == '' ? 0 : $cuentaCursosCiclo1;
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

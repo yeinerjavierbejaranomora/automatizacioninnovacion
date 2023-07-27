@@ -28,6 +28,6 @@ class Programarprimerciclo extends Controller{
 
     public function primerciclo(){
         $periodos = $this->model->periodos();
-        var_dump($periodos->rowCount());die();
+        var_dump($periodos->fetch(PDO::FETCH_ASSOC));die();
     }
 }

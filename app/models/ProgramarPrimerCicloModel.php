@@ -109,7 +109,7 @@ class ProgramarPrimerCicloModel{
             $consultaPrerequisitos->bindParam(2,$programa,PDO::PARAM_STR);
             $consultaPrerequisitos->execute();
 
-            var_dump($consultaPrerequisitos);die();
+            var_dump($consultaPrerequisitos->fetch(PDO::FETCH_ASSOC));die();
             /*return $consultaPrerequisitos;
         } catch (PDOException $e) {
             return false;

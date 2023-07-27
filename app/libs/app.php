@@ -15,9 +15,9 @@ class App{
             unset($url[0]);
         endif;
         
-        var_dump($this->controller);die();
         require_once("../app/controllers/".ucwords($this->controller.".php"));
         $this->controller = new $this->controller;
+        var_dump($this->controller);die();
 
         if(isset($url[1])):
             var_dump(method_exists($this->controller,$url[1]));die();

@@ -65,4 +65,15 @@ class ProgramarPrimerCicloModel{
             return false;
         }
     }
+
+    public function getCreditosPlaneados($codigoBanner){
+        try {
+            $consultaCreditosPlaneados = $this->db->connect()->prepare("SELECT `planeacion`.`codBanner`, SUM(mallaCurricular.creditos) AS `CreditosPlaneados` FROM `mallaCurricular` INNER JOIN `planeacion` ON `planeacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `planeacion`.`codBanner` = ? GROUP BY `planeacion`.`codBanner` LIMIT 1");
+            $consultaCreditosPlaneados->bindParam(1,$codigoBanner,PDO::PARAM_INT);
+            $consultaCreditosPlaneados->execute();
+            return $consultaCreditosPlaneados;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

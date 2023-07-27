@@ -32,6 +32,11 @@ class Programarprimerciclo extends Controller{
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
+        $marcaIngreso = trim($marcaIngreso, ",");
+        // Dividir la cadena en elementos individuales
+        $marcaIngreso = explode(",", $marcaIngreso);
+        // Convertir cada elemento en un número
+        $marcaIngreso = array_map('intval', $marcaIngreso);
         var_dump($marcaIngreso);die();
     }
 }

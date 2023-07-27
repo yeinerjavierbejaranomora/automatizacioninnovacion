@@ -8,7 +8,7 @@ class Programarprimerciclo extends Controller{
         $this->model = $this->model("ProgramarPrimerCicloModel");
     }
 
-    public function periodo(){
+    /*public function periodo(){
         $fechaActual = date('Y-m-d');
         $mesActual = date('m');
         $mesActual = 06;
@@ -24,9 +24,10 @@ class Programarprimerciclo extends Controller{
         endforeach;
         die();
         return $mesActual;
-    }
+    }*/
 
     public function primerciclo(){
-        echo "Hola ppc";
+        $periodos = $this->model->periodos();
+        var_dump($periodos);die();
     }
 }

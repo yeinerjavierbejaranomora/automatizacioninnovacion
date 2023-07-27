@@ -25,7 +25,7 @@ class ProgramarPrimerCicloModel{
             AND `programado_ciclo2` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             ORDER BY `id` ASC");
-            $consultaEstudiantes->bindValue(1,$marcaIngreso,PDO::PARAM_STR);
+            //$consultaEstudiantes->bindValue(1,$marcaIngreso,PDO::PARAM_STR);
             $consultaEstudiantes->execute();
             var_dump($consultaEstudiantes->fetch(PDO::FETCH_ASSOC));die();
             /*return $consultaEstudiantes;

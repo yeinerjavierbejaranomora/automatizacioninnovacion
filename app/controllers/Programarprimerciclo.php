@@ -97,7 +97,7 @@ class Programarprimerciclo extends Controller{
                 $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : $cuentaCursosCiclo1;
                 $cicloReglaNegocio = 1;
                 $reglasNegocio = $this->model->getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio);
-                var_dump($reglasNegocio->rowCount());die();
+                var_dump($reglasNegocio->fetchAll());die();
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

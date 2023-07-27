@@ -46,7 +46,7 @@ class Programarprimerciclo extends Controller{
                 $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
             endif;
             $limit = 800;
-            var_dump($log);die();
+            var_dump($offset);die();
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

@@ -94,7 +94,7 @@ class Programarprimerciclo extends Controller{
                 $sumaCreditosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['screditos'];
                 $sumaCreditosCiclo1 = $sumaCreditosCiclo1 == '' ? 0 : $sumaCreditosCiclo1;
                 $cuentaCursosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['ccursos'];
-                $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : $cuentaCursosCiclo1;
+                $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : (int)$cuentaCursosCiclo1;
                 $cicloReglaNegocio = 1;
                 $reglasNegocioConsulta = $this->model->getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio);
                 $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);

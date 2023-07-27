@@ -17,6 +17,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function getEstudiantes($marcaIngreso){
+        var_dump($marcaIngreso);die();
         //try {
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
             WHERE `materias_faltantes` = 'OK' 

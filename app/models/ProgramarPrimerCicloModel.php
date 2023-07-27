@@ -150,6 +150,7 @@ class ProgramarPrimerCicloModel{
 
     public function insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
         //try {
+            $fecha = date('Y-m-d H:i:s');
             $insertPlaneacion = $this->db->connect()->prepare("INSERT INTO `planeacion` SET 
             `codBanner`= ?, 
             `codMateria`= ?, 
@@ -157,13 +158,14 @@ class ProgramarPrimerCicloModel{
             `semestre`= ?, 
             `programada`= ?, 
             `codprograma`= ?, 
-            `fecha_registro` =  date('Y-m-d H:i:s')");
+            `fecha_registro` = ?");
             $insertPlaneacion->bindValue(1,$codBanner,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(2,$codMateria,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(3,$orden,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(6,$programa,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
             $insertPlaneacion->execute();
             var_dump($insertPlaneacion);die();
             /*if($insertPlaneacion):

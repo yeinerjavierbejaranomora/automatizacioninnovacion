@@ -101,7 +101,7 @@ class Programarprimerciclo extends Controller{
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = $reglasNegocio['materiasPermitidas'];
                 $orden = 1;
-                var_dump($programa,$materiasPorVer->fetchAll());die();
+                //var_dump($programa,$materiasPorVer->fetchAll());die();
 
                 foreach($materiasPorVer as $materia):
                     if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :
@@ -111,6 +111,8 @@ class Programarprimerciclo extends Controller{
                     $codMateria = $materia['codMateria'];
                     $creditoMateria = $materia['creditos'];
                     $ciclo = $materia['ciclo'];
+                    $prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
+                    var_dump($prerequisitosConsulta->fetchAll());di();
                 endforeach;
             endforeach;
         else:

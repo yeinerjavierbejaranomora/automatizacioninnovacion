@@ -8,7 +8,7 @@ class Programarprimerciclo extends Controller{
         $this->model = $this->model("ProgramarPrimerCiclo");
     }
 
-    public function a(){
+    public function primerciclo(){
         echo "Hola";
     }
 }

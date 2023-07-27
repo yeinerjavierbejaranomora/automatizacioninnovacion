@@ -37,7 +37,7 @@ class Programarprimerciclo extends Controller{
         /*$marcaIngreso = explode(",", $marcaIngreso);
         // Convertir cada elemento en un número
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
-        var_dump($marcaIngreso);die();
+        //var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
         if (!$log) :
             $offset = 0;
@@ -57,6 +57,8 @@ class Programarprimerciclo extends Controller{
                 $ruta = $estudiante['bolsa'];
                 if ($ruta != '') :
                     $ruta = 1;
+                else:
+                    $ruta = 0;
                 endif;
                 $tipoEstudiante = $estudiante['tipo_estudiante'];
 
@@ -93,7 +95,9 @@ class Programarprimerciclo extends Controller{
                 $sumaCreditosCiclo1 = $sumaCreditosCiclo1 == '' ? 0 : $sumaCreditosCiclo1;
                 $cuentaCursosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['ccursos'];
                 $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : $cuentaCursosCiclo1;
-                var_dump($sumaCreditosCiclo1,$cuentaCursosCiclo1);die();
+                $cicloReglaNegocio = 1;
+                $reglasNegocio = $this->model->getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio);
+                var_dump($reglasNegocio->rowCount());die();
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

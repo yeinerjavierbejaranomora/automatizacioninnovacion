@@ -87,4 +87,18 @@ class ProgramarPrimerCicloModel{
             return false;
         }
     }
+
+    public function getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio){
+        try {
+            $consultaReglasNegocio = $this->db->connect()->prepare("");
+            $consultaReglasNegocio->bindParam(1,$programa,PDO::PARAM_INT);
+            $consultaReglasNegocio->bindParam(2,$ruta,PDO::PARAM_INT);
+            $consultaReglasNegocio->bindParam(3,$tipoEstudiante,PDO::PARAM_STR);
+            $consultaReglasNegocio->bindParam(4,$cicloReglaNegocio,PDO::PARAM_INT);
+            $consultaReglasNegocio->execute();
+            return $consultaReglasNegocio;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

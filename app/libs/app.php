@@ -9,13 +9,13 @@ class App{
     {
         date_default_timezone_set("America/Bogota");
         $url = $this->separarURL();
-        var_dump($url[1]);die();
         //var_dump(file_exists("../app/controllers/".ucwords($url[0]).".php"));die();
         if($url != '' && file_exists("../app/controllers/".ucwords($url[0]).".php")):
             $this->controller = ucwords($url[0]);
             unset($url[0]);
         endif;
-
+        
+        var_dump($this->controller);die();
         require_once("../app/controllers/".ucwords($this->controller.".php"));
         $this->controller = new $this->controller;
 

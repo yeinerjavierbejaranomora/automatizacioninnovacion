@@ -24,15 +24,15 @@ class MateriasPorVerModel{
         try {
             $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT * FROM `estudiantes` 
             WHERE `id` > ? 
-            AND `programa` != 'MED'
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'PRIMER%'  
             AND `programaActivo` IS NULL 
-            AND `materias_faltantes` IS NULL 
+            AND `materias_faltantes` IS NULL
             OR `id` > ?  
-            AND `programa` != 'MED'
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'INGRESO%' 
             AND `programaActivo` IS NULL 
-            AND `materias_faltantes` IS NULL ");
+            AND `materias_faltantes` IS NULL");
             $consultaEstPrimerIngreso->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->bindParam(2,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->execute();
@@ -165,13 +165,13 @@ class MateriasPorVerModel{
     public function faltantesTransferentes($offset,$limit){
         try {
             $consultaEstTransferente = $this->db->connect()->prepare("SELECT * FROM `estudiantes`
-                                                                        WHERE `id` > ?
-                                                                        AND `tipo_estudiante` like 'TRANSFERENTE%'
-                                                                        AND `programaActivo` IS NULL
-                                                                        AND `tiene_historial` IS NULL
-                                                                        AND `materias_faltantes` IS NULL
-                                                                        AND `programa` != 'MED'
-                                                                        LIMIT ?");
+            WHERE `id` > ?
+            AND `tipo_estudiante` like 'TRANSFERENTE%'
+            AND `programaActivo` IS NULL
+            AND `tiene_historial` IS NULL
+            AND `materias_faltantes` IS NULL
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            LIMIT ?");
             $consultaEstTransferente->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstTransferente->bindParam(2,$limit,PDO::PARAM_INT);
             $consultaEstTransferente->execute();
@@ -217,15 +217,15 @@ class MateriasPorVerModel{
             AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` != 'MED'
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` != 'MED'
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` != 'MED'
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             ORDER BY `id` ASC
             LIMIT ?");
             $consultaEstudiantesAntiguos->bindParam(1,$offset,PDO::PARAM_INT);

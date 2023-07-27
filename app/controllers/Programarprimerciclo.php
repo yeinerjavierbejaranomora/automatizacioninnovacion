@@ -98,9 +98,9 @@ class Programarprimerciclo extends Controller{
                 $cicloReglaNegocio = 1;
                 $reglasNegocioConsulta = $this->model->getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio);
                 $reglasNegocio = $reglasNegocioConsulta->fetchAll(PDO::FETCH_ASSOC);
-                var_dump($reglasNegocio);die();
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
-                $numeroMateriasPermitidos = $reglasNegocio['materiasPermitidas'];
+                $numeroMateriasPermitidos = intval($reglasNegocio['materiasPermitidas']);
+                var_dump($numeroMateriasPermitidos);die();
                 $orden = 1;
                 //var_dump($programa,$materiasPorVer->fetchAll());die();
 

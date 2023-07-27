@@ -119,7 +119,7 @@ class Programarprimerciclo extends Controller{
                         //var_dump("Sp",$numeroCreditos,$creditoMateria,$prerequisitos);    
                         $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                         //var_dump($estaPlaneacion->fetch(PDO::FETCH_ASSOC));die();
-                        if ($estaPlaneacion->rowCount() > 0  && $numeroCreditos < $numeroCreditosPermitidos) :
+                        if ($estaPlaneacion  && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
                             $semestre = 1;
                             $programada = '';

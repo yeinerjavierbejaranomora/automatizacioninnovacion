@@ -118,7 +118,8 @@ class Programarprimerciclo extends Controller{
                     if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                         //var_dump("Sp",$numeroCreditos,$creditoMateria,$prerequisitos);    
                         $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
-                        if ($estaPlaneacion->rowCount() > 0 && $numeroCreditos < $numeroCreditosPermitidos) :
+                        var_dump($estaPlaneacion);die();
+                        if ($estaPlaneacion == '' && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
                             $semestre = 1;
                             $programada = '';

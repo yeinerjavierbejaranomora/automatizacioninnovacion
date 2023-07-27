@@ -15,4 +15,8 @@ class ProgramarPrimerCicloModel{
             return false;
         }
     }
+
+    public function getEstudiantes($marcaIngreso){
+        var_dump($marcaIngreso);die();
+    }
 }

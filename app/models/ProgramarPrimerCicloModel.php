@@ -193,6 +193,7 @@ class ProgramarPrimerCicloModel{
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){
         try {
+            $fecha = date('Y-m-d H:i:s');
             $insertarLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET
                                                                         `idInicio` = ?, 
                                                                         `idFin` = ?, 
@@ -201,8 +202,8 @@ class ProgramarPrimerCicloModel{
                                                                         `accion` = ?, 
                                                                         `tabla_afectada` = ?, 
                                                                         `descripcion` = ?, 
-                                                                        `created_at` = NOW(), 
-                                                                        `updated_at` = NOW()");
+                                                                        `created_at` = ?, 
+                                                                        `updated_at` = ?");
             $insertarLog->bindValue(1,$primerID,PDO::PARAM_INT);
             $insertarLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_STR);
             $insertarLog->bindValue(3,$fechaInicio,PDO::PARAM_STR);
@@ -210,6 +211,8 @@ class ProgramarPrimerCicloModel{
             $insertarLog->bindValue(5,$acccion,PDO::PARAM_STR);
             $insertarLog->bindValue(6,$tablaAfectada,PDO::PARAM_STR);
             $insertarLog->bindValue(7,$descripcion,PDO::PARAM_STR);
+            $insertarLog->bindValue(8,$fecha,PDO::PARAM_STR);
+            $insertarLog->bindValue(9,$fecha,PDO::PARAM_STR);
             $insertarLog->execute();
             return $insertarLog;
         } catch (PDOException $e) {
@@ -219,17 +222,20 @@ class ProgramarPrimerCicloModel{
 
     public function insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha){
         try {
+            $fecha = date('Y-m-d H:i:s');
             $insertIndiceCambios = $this->db->connect()->prepare("INSERT INTO `indice_cambios_mafi` SET  
                                                                                 `idbanner` = ?, 
                                                                                 `accion` = ?, 
                                                                                 `descripcion` = ?, 
                                                                                 `fecha` = ?, 
-                                                                                `created_at` = NOW(), 
-                                                                                `updated_at` = NOW()");
+                                                                                `created_at` = ?, 
+                                                                                `updated_at` = ?");
             $insertIndiceCambios->bindValue(1,$idBannerUltimoRegistro,PDO::PARAM_INT);
             $insertIndiceCambios->bindValue(2,$acccion,PDO::PARAM_STR);
             $insertIndiceCambios->bindValue(3,$descripcion,PDO::PARAM_STR);
             $insertIndiceCambios->bindValue(4,$fecha,PDO::PARAM_STR);
+            $insertIndiceCambios->bindValue(5,$fecha,PDO::PARAM_STR);
+            $insertIndiceCambios->bindValue(6,$fecha,PDO::PARAM_STR);
             $insertIndiceCambios->execute();
             return $insertIndiceCambios;
         } catch (PDOException $e) {

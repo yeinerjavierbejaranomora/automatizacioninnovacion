@@ -112,7 +112,7 @@ class Programarprimerciclo extends Controller{
                     $creditoMateria = $materia['creditos'];
                     $ciclo = $materia['ciclo'];
                     $prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
-                    var_dump($prerequisitosConsulta->fetchAll());di();
+                    var_dump($prerequisitosConsulta->fetchAll());die();
                 endforeach;
             endforeach;
         else:

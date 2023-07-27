@@ -149,7 +149,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
-        try {
+        //try {
             $insertPlaneacion = $this->db->connect()->prepare("INSERT INTO `planeacion` SET 
             `codBanner`= ?, 
             `codMateria`= ?, 
@@ -165,12 +165,13 @@ class ProgramarPrimerCicloModel{
             $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(6,$programa,PDO::PARAM_STR);
             $insertPlaneacion->execute();
-            if($insertPlaneacion):
+            var_dump($insertPlaneacion);die();
+            /*if($insertPlaneacion):
                 return true;
             endif;
         } catch (PDOException $e) {
             return false;
-        }
+        }*/
     }
 
 

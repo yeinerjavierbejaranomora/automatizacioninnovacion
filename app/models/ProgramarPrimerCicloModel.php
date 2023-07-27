@@ -149,6 +149,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
+        var_dump($codBanner,$codMateria,$orden,$semestre,$programada,$programa);die();
         //try {
             $fecha = date('Y-m-d H:i:s');
             $insertPlaneacion = $this->db->connect()->prepare("INSERT INTO `planeacion` SET 

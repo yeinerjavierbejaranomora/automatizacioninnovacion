@@ -116,9 +116,7 @@ class Programarprimerciclo extends Controller{
                     $prerequisitos =$prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                     //echo $codMateria."-". $prerequisitos."<br>";
                     if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
-                        //var_dump("Sp",$numeroCreditos,$creditoMateria,$prerequisitos);    
                         $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
-                        //var_dump($estaPlaneacion->fetch(PDO::FETCH_ASSOC));die();
                         if ($estaPlaneacion  && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
                             $semestre = 1;
@@ -128,20 +126,19 @@ class Programarprimerciclo extends Controller{
                         endif;
                     else:
                         //var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos);       
-                        /*$prerequisitos = $prerequisitos;
+                        $prerequisitos = $prerequisitos;
                         $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
                         $estaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
-                        if ($estaPlaneacion == '' && $estaPorVer == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                        if ($estaPlaneacion  && $estaPorVer  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
                             $semestre = 1;
                             $programada = '';
                             $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
                             $cuentaCursosCiclo1++;
-                        endif;*/
+                        endif;
                     endif;
                 endforeach;
-                die();
-                /*$updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
+                $updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
                 $ultimoRegistroId = $estudiante->id;
                 $idBannerUltimoRegistro = $estudiante->homologante;
                 $fechaFin = date('Y-m-d H:i:s');
@@ -151,9 +148,8 @@ class Programarprimerciclo extends Controller{
                 $fecha = date('Y-m-d H:i:s');
                 $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                 $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
+                echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
             endforeach;
-            die();
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

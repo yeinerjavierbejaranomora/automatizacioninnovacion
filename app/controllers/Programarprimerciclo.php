@@ -37,6 +37,7 @@ class Programarprimerciclo extends Controller{
         /*$marcaIngreso = explode(",", $marcaIngreso);
         // Convertir cada elemento en un número
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
+        var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
         if (!$log) :
             $offset = 0;

@@ -6,23 +6,6 @@ class Materiasporver extends Controller{
         $this->model = $this->model("MateriasPorVerModel");
     }
 
-    /*public function periodo(){
-        $fechaActual = date('Y-m-d');
-        $mesActual = date('m');
-        $mesActual = 06;
-        $periodo = $this->model->getPeriodo();
-        foreach($periodo as $value):
-            $ciclo1 = explode('-',$value['fechaInicioCiclo1']);
-            $ciclo2 = explode('-',$value['fechaInicioCiclo2']);
-            if(in_array($mesActual,$ciclo1) || in_array($mesActual,$ciclo2)):
-                var_dump("SI");
-            else:
-                var_dump("No");
-            endif;
-        endforeach;
-        die();
-        return $mesActual;
-    }*/
 
     public function primeringreso(){
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');

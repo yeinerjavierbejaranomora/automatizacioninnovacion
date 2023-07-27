@@ -223,6 +223,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha){
+        var_dump($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);die();
         //try {
             $fecha = date('Y-m-d H:i:s');
             $insertIndiceCambios = $this->db->connect()->prepare("INSERT INTO `indice_cambios_mafi` SET  

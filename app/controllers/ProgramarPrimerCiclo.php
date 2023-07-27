@@ -9,6 +9,6 @@ class Programarprimerciclo extends Controller{
     }
 
     public function inicio(){
-        
+        echo "Hola";
     }
 }

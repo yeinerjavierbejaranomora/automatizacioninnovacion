@@ -76,4 +76,15 @@ class ProgramarPrimerCicloModel{
             return false;
         }
     }
+
+    public function getCreditosCicloUno($codigoBanner){
+        try {
+            $consultaCreditosCicloUno = $this->db->connect()->prepare("SELECT SUM(`mallaCurricular`.`creditos`) AS `screditos`,COUNT(`mallaCurricular`.`creditos`) AS `ccursos` FROM `mallaCurricular` INNER JOIN `planeacion` ON `planeacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `planeacion`.`codBanner` = ? AND `mallaCurricular`.`ciclo` IN (1,12) LIMIT 1");
+            $consultaCreditosCicloUno->bindParam(1,$codigoBanner,PDO::PARAM_INT);
+            $consultaCreditosCicloUno->execute();
+            return $consultaCreditosCicloUno;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

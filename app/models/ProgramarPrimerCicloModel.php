@@ -192,8 +192,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){
-        //var_dump($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);die();
-        //try {
+        try {
             $fecha = date('Y-m-d H:i:s');
             $insertarLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET
                                                                         `idInicio` = ?, 
@@ -206,7 +205,7 @@ class ProgramarPrimerCicloModel{
                                                                         `created_at` = ?, 
                                                                         `updated_at` = ?");
             $insertarLog->bindValue(1,$primerID,PDO::PARAM_INT);
-            $insertarLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_INT);
+            $insertarLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_STR);
             $insertarLog->bindValue(3,$fechaInicio,PDO::PARAM_STR);
             $insertarLog->bindValue(4,$fechaFin,PDO::PARAM_STR);
             $insertarLog->bindValue(5,$acccion,PDO::PARAM_STR);
@@ -215,16 +214,14 @@ class ProgramarPrimerCicloModel{
             $insertarLog->bindValue(8,$fecha,PDO::PARAM_STR);
             $insertarLog->bindValue(9,$fecha,PDO::PARAM_STR);
             $insertarLog->execute();
-            var_dump($insertarLog);die();
-            /*return $insertarLog;
+            return $insertarLog;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 
     public function insertIndiceCambio($idBannerUltimoRegistro,$acccion,$descripcion,$fecha){
-        var_dump($idBannerUltimoRegistro,$acccion,$descripcion,$fecha);die();
-        //try {
+        try {
             $fecha = date('Y-m-d H:i:s');
             $insertIndiceCambios = $this->db->connect()->prepare("INSERT INTO `indice_cambios_mafi` SET  
                                                                                 `idbanner` = ?, 
@@ -240,10 +237,9 @@ class ProgramarPrimerCicloModel{
             $insertIndiceCambios->bindValue(5,$fecha,PDO::PARAM_STR);
             $insertIndiceCambios->bindValue(6,$fecha,PDO::PARAM_STR);
             $insertIndiceCambios->execute();
-            var_dump($insertIndiceCambios);die();
-            /*return $insertIndiceCambios;
+            return $insertIndiceCambios;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 }

@@ -112,7 +112,7 @@ class Programarprimerciclo extends Controller{
                     $creditoMateria = $materia['creditos'];
                     $ciclo = $materia['ciclo'];
                     $prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
-                    var_dump($prerequisitosConsulta->rowCount());
+                    echo $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC);
                 endforeach;
                 die();
             endforeach;

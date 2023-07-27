@@ -86,7 +86,8 @@ class Programarprimerciclo extends Controller{
                 $ciclo = [1, 12];
                 $materiasPorVer = $this->model->materiasPorVer($codigoBanner,$ciclo,$programa);
                 $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
-                var_dump($numeroCreditos->rowCount());die();
+                $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
+                var_dump($numeroCreditos);die();
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

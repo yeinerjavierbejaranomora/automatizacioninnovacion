@@ -28,6 +28,10 @@ class Programarprimerciclo extends Controller{
 
     public function primerciclo(){
         $periodos = $this->model->periodos();
-        var_dump($periodos->fetch(PDO::FETCH_ASSOC));die();
+        $marcaIngreso = "";
+        foreach ($periodos as $periodo) {
+            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+        }
+        var_dump($marcaIngreso);die();
     }
 }

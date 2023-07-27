@@ -103,16 +103,14 @@ class ProgramarPrimerCicloModel{
     }
 
     public function prerequisitos($codMateria,$programa){
-        //try {
+        try {
             $consultaPrerequisitos = $this->db->connect()->prepare("SELECT `prerequisito` FROM `mallaCurricular` WHERE `codigoCurso` = ? AND `codprograma` = ? LIMIT 1");
             $consultaPrerequisitos->bindParam(1,$codMateria,PDO::PARAM_STR);
             $consultaPrerequisitos->bindParam(2,$programa,PDO::PARAM_STR);
             $consultaPrerequisitos->execute();
-
-            var_dump($consultaPrerequisitos->fetch(PDO::FETCH_ASSOC));die();
-            /*return $consultaPrerequisitos;
+            return $consultaPrerequisitos;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 }

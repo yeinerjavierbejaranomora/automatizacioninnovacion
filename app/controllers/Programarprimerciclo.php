@@ -45,9 +45,10 @@ class Programarprimerciclo extends Controller{
         endif;
         $limit = 1000;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
-            
+            foreach($estudiantes as $estudiante):
+                var_dump($estudiante);die();
+            endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

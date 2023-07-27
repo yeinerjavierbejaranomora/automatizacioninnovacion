@@ -206,7 +206,7 @@ class ProgramarPrimerCicloModel{
                                                                         `created_at` = ?, 
                                                                         `updated_at` = ?");
             $insertarLog->bindValue(1,$primerID,PDO::PARAM_INT);
-            $insertarLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_STR);
+            $insertarLog->bindValue(2,$ultimoRegistroId,PDO::PARAM_INT);
             $insertarLog->bindValue(3,$fechaInicio,PDO::PARAM_STR);
             $insertarLog->bindValue(4,$fechaFin,PDO::PARAM_STR);
             $insertarLog->bindValue(5,$acccion,PDO::PARAM_STR);

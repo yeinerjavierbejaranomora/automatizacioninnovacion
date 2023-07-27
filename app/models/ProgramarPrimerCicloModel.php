@@ -192,7 +192,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){
-        var_dump($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);die();
+        //var_dump($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion);die();
         //try {
             $fecha = date('Y-m-d H:i:s');
             $insertarLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET

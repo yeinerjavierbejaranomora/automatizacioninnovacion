@@ -9,7 +9,7 @@ class App{
     {
         date_default_timezone_set("America/Bogota");
         $url = $this->separarURL();
-        var_dump(file_exists("../app/controllers/".ucwords($url[0]).".php"));die();
+        //var_dump(file_exists("../app/controllers/".ucwords($url[0]).".php"));die();
         if($url != '' && file_exists("../app/controllers/".ucwords($url[0]).".php")):
             $this->controller = ucwords($url[0]);
             unset($url[0]);
@@ -19,6 +19,7 @@ class App{
         $this->controller = new $this->controller;
 
         if(isset($url[1])):
+            var_dump(method_exists($this->controller,$url[1]));die();
             if(method_exists($this->controller,$url[1])):
                 $this->method = $url[1];
                 unset($url[1]);

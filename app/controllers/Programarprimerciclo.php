@@ -30,10 +30,13 @@ class Programarprimerciclo extends Controller{
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
-            $marcaIngreso .= "'".(int)$periodo['periodos'] . "',";
+            $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        $marcaIngreso = "(".$marcaIngreso.")";
+        // Dividir la cadena en elementos individuales
+        $marcaIngreso = explode(",", $marcaIngreso);
+        // Convertir cada elemento en un número
+        $marcaIngreso = array_map('intval', $marcaIngreso);
         $estudiantes = $this->model->getEstudiantes($marcaIngreso);
         var_dump($estudiantes->rowCount());die();
     }

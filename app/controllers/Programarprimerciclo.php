@@ -114,6 +114,7 @@ class Programarprimerciclo extends Controller{
                     $prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
                     var_dump($prerequisitosConsulta->fetchAll());die();
                 endforeach;
+                die();
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

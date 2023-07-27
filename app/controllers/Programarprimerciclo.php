@@ -116,15 +116,15 @@ class Programarprimerciclo extends Controller{
                     $prerequisitos =$prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                     //echo $codMateria."-". $prerequisitos."<br>";
                     if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
-                        var_dump("Sp",$numeroCreditos,$creditoMateria,$prerequisitos);    
-                        /*$estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
+                        //var_dump("Sp",$numeroCreditos,$creditoMateria,$prerequisitos);    
+                        $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                         if ($estaPlaneacion == '' && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
                             $semestre = 1;
                             $programada = '';
                             $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
                             $cuentaCursosCiclo1++;
-                        endif;*/
+                        endif;
                     else:
                         var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos);       
                         /*$prerequisitos = $prerequisitos;

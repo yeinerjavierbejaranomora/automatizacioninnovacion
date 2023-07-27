@@ -26,7 +26,7 @@ class ProgramarPrimerCicloModel{
             ORDER BY `id` ASC");
             $consultaEstudiantes->bindParam(1,$marcaIngreso,PDO::PARAM_STR);
             $consultaEstudiantes->execute();
-            var_dump($consultaEstudiantes);die();
+            var_dump($consultaEstudiantes->fetch(PDO::FETCH_ASSOC));die();
             /*return $consultaEstudiantes;
         } catch (PDOException $e) {
             return false;

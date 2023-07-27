@@ -96,8 +96,15 @@ class Programarprimerciclo extends Controller{
                 $cuentaCursosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['ccursos'];
                 $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : $cuentaCursosCiclo1;
                 $cicloReglaNegocio = 1;
-                $reglasNegocio = $this->model->getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio);
-                var_dump($reglasNegocio->fetchAll());die();
+                $reglasNegocioConsulta = $this->model->getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio);
+                $reglasNegocio = $reglasNegocioConsulta->fetchAll(PDO::FETCH_ASSOC);
+                $numeroCreditosPermitidos = $reglasNegocio['creditos'];
+                $numeroMateriasPermitidos = $reglasNegocio['materiasPermitidas'];
+                $orden = 1;
+
+                foreach($materiasPorVer as $materia):
+                    var_dump($materia);die();
+                endforeach;
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

@@ -84,7 +84,8 @@ class Programarprimerciclo extends Controller{
                         break;
                 }
                 $ciclo = [1, 12];
-                var_dump($ruta,$tipoEstudiante,$ciclo);die();
+                var_dump($ruta,$tipoEstudiante,$ciclo,$programa);die();
+                $materiasPorVer = $this->model->materiasPorVer($codigoBanner,$ciclo,$programa);
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

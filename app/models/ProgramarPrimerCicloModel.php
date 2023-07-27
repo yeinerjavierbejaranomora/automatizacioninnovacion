@@ -46,4 +46,12 @@ class ProgramarPrimerCicloModel{
             return false;
         }
     }
+
+    public function materiasPorVer($codigoBanner,$ciclo,$programa){
+        try {
+            $consultaMateriasPorVer = $this->db->connect()->prepare("");
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

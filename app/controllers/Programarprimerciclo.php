@@ -115,8 +115,39 @@ class Programarprimerciclo extends Controller{
                     $prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
                     $prerequisitos =$prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                     echo $codMateria."-". $prerequisitos."<br>";
+                    if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                        $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
+                        if ($estaPlaneacion->rowCount() > 0 == '' && $numeroCreditos < $numeroCreditosPermitidos) :
+                            $numeroCreditos = $numeroCreditos + $creditoMateria;
+                            $semestre = 1;
+                            $programada = '';
+                            $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
+                            $cuentaCursosCiclo1++;
+                        endif;
+                    else:
+                        $prerequisitos = $prerequisitos;
+                        $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
+                        $estaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
+                        if ($estaPlaneacion == '' && $estaPorVer == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                            $numeroCreditos = $numeroCreditos + $creditoMateria;
+                            $semestre = 1;
+                            $programada = '';
+                            $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
+                            $cuentaCursosCiclo1++;
+                        endif;
+                    endif;
                 endforeach;
-                die();
+                $updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
+                $ultimoRegistroId = $estudiante->id;
+                $idBannerUltimoRegistro = $estudiante->homologante;
+                $fechaFin = date('Y-m-d H:i:s');
+                $acccion = 'Insert-PlaneacionPrimerCiclo';
+                $tablaAfectada = 'planeacion';
+                $descripcion = 'Se realizo la insercion en la tabla materiasPorVer insertando las materias por ver del estudiante transferente, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $registroMPV . ' registros';
+                $fecha = date('Y-m-d H:i:s');
+                $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+                echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

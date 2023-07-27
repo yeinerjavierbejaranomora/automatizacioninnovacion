@@ -90,7 +90,7 @@ class ProgramarPrimerCicloModel{
 
     public function getReglasNegocio($programa,$ruta,$tipoEstudiante,$cicloReglaNegocio){
         try {
-            $consultaReglasNegocio = $this->db->connect()->prepare("");
+            $consultaReglasNegocio = $this->db->connect()->prepare("SELECT `creditos`,`materiasPermitidas` FROM `reglasNegocio` WHERE `programa` = ? AND `ruta` = ? AND `tipoEstudiante` = ? AND `ciclo` =? AND `activo` = 1");
             $consultaReglasNegocio->bindParam(1,$programa,PDO::PARAM_INT);
             $consultaReglasNegocio->bindParam(2,$ruta,PDO::PARAM_INT);
             $consultaReglasNegocio->bindParam(3,$tipoEstudiante,PDO::PARAM_STR);

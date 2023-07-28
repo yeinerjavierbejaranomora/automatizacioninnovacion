@@ -40,15 +40,15 @@ class Programarprimerciclo extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        //var_dump($estudiantes->rowCount());die();
-        $limit = 1;
+        var_dump($estudiantes->rowCount());die();
+        /*$limit = 100;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
             $this->primerciclo($limit);
-        }
+        }*/
     }
 
-    public function primerciclo($limit){
+    public function primerciclo(){
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
@@ -123,7 +123,7 @@ class Programarprimerciclo extends Controller{
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
                 $orden = 1;
-                //var_dump($programa,$materiasPorVer->fetchAll());die();
+                var_dump($programa,$materiasPorVer->fetchAll());die();
 
                 foreach($materiasPorVer as $materia):
                     /*if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :

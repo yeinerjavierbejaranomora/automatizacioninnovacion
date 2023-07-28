@@ -44,7 +44,7 @@ class Programarprimerciclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 1000;
+        $limit = 500;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach($estudiantes as $estudiante):

@@ -47,7 +47,7 @@ class Programarprimerciclo extends Controller{
         }
     }
 
-    public function primerciclo($limit){
+    public function primerciclo(){
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

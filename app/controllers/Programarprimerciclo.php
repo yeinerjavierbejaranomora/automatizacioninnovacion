@@ -130,7 +130,7 @@ class Programarprimerciclo extends Controller{
                         //var_dump($prerequisitos);die();
                         $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
                         $estaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
-                        var_dump($estaPorVer->rowCount());die();   
+                        var_dump("E",$estaPorVer->rowCount());die();   
                         if ($estaPlaneacion->rowCount() == 0  && $estaPorVer  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                             var_dump("con pre");die();
                             $numeroCreditos = $numeroCreditos + $creditoMateria;

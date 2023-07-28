@@ -40,7 +40,9 @@ class Programarprimerciclo extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        var_dump($estudiantes->rowCount());die();
+        $limit = 100;
+        $numEstudinates = ceil($estudiantes/$limit);
+        var_dump($numEstudinates);die();
     }
 
     public function primerciclo(){
@@ -61,7 +63,7 @@ class Programarprimerciclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 500;
+        //$limit = 500;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach($estudiantes as $estudiante):

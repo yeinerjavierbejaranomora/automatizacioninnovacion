@@ -161,8 +161,8 @@ class Programarprimerciclo extends Controller{
                             $cuentaCursosCiclo1++;
                         endif;
                     endif;*/
-                    die();
                 endforeach;
+                die();
                 $updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];

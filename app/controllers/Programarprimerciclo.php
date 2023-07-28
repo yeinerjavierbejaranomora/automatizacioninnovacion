@@ -33,7 +33,7 @@ class Programarprimerciclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        var_dump($log);die();
+        var_dump($offset);die();
     }
 
     public function primerciclo(){

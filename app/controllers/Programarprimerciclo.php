@@ -42,10 +42,12 @@ class Programarprimerciclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $limit = 100;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
-        var_dump($numEstudinates);die();
+        for ($i=0; $i < $numEstudinates; $i++) { 
+            $this->primerciclo($limit);
+        }
     }
 
-    public function primerciclo(){
+    public function primerciclo($limit){
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

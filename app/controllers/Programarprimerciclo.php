@@ -200,7 +200,7 @@ class Programarprimerciclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 50;
+        $limit = 100;
         $planeacion = [];
         $logs=[];
         $indices=[];

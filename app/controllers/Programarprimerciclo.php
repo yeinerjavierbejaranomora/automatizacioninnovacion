@@ -202,6 +202,8 @@ class Programarprimerciclo extends Controller{
         endif;
         $limit = 50;
         $planeacion = [];
+        $logs=[];
+        $indices=[];
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach($estudiantes as $estudiante):
@@ -316,8 +318,7 @@ class Programarprimerciclo extends Controller{
                         endif;
                     endif;
                 endforeach;
-                var_dump($planeacion);die();
-                /*$updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
+                //$updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
                 $fechaFin = date('Y-m-d H:i:s');
@@ -325,10 +326,31 @@ class Programarprimerciclo extends Controller{
                 $tablaAfectada = 'planeacion';
                 $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias delprimer ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                 $fecha = date('Y-m-d H:i:s');
-                $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                $logs[]=[
+                    'idInicio' => $primerId, 
+                    'idFin' => $ultimoRegistroId, 
+                    'fechaInicio' => $fechaInicio, 
+                    'fechaFin' => $fechaFin, 
+                    'accion' => $acccion, 
+                    'tabla_afectada' => $tablaAfectada, 
+                    'descripcion' => $descripcion, 
+                    'created_at' => $fecha, 
+                    'updated_at' => $fecha
+                ];
+
+                $indices[] =[
+                    'idbanner' => $codBanner, 
+                    'accion' => $acccion, 
+                    'descripcion' => $descripcion, 
+                    'fecha' => $fecha, 
+                    'created_at' => $fecha, 
+                    'updated_at' => $fecha
+                ];
+                /*$insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                 $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                 echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
             endforeach;
+            var_dump($planeacion);die();
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

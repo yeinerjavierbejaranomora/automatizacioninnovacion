@@ -123,7 +123,7 @@ class Programarprimerciclo extends Controller{
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
                 $orden = 1;
-                var_dump($programa,$materiasPorVer->fetchAll());die();
+                //var_dump($programa,$materiasPorVer->fetchAll());die();
 
                 foreach($materiasPorVer as $materia):
                     /*if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :
@@ -134,10 +134,12 @@ class Programarprimerciclo extends Controller{
                     $codMateria = $materia['codMateria'];
                     $creditoMateria = $materia['creditos'];
                     $ciclo = $materia['ciclo'];
-                    $prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
-                    $prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
+                    $prerequisitos = $materia['prerequisito'];
+                    /*$prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
+                    $prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];*/
                     //echo $codMateria."-". $prerequisitos."<br>";
-                    if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                    var_dump($prerequisitos);
+                    /*if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                         $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                         if ($estaPlaneacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
@@ -158,7 +160,8 @@ class Programarprimerciclo extends Controller{
                             $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
                             $cuentaCursosCiclo1++;
                         endif;
-                    endif;
+                    endif;*/
+                    die();
                 endforeach;
                 $updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
                 $ultimoRegistroId = $estudiante['id'];

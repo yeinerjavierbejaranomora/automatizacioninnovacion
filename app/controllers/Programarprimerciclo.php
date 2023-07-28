@@ -43,7 +43,7 @@ class Programarprimerciclo extends Controller{
         // var_dump($estudiantes->rowCount());die();
         $limit = 50;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
-        for ($i=0; $i < 6; $i++) { 
+        for ($i=0; $i < $numEstudinates; $i++) { 
             //sleep(10);
             $this->primerciclo($limit);
         }

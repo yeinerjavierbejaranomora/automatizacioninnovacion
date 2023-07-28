@@ -127,14 +127,15 @@ class ProgramarPrimerCicloModel{
     }
     
     public function estaPlaneacionPrerequisitos($prerequisitos,$codBanner){
-        try {
+        //try {
             $consultaEstaPlaneacionPrerequisitos = $this->db->connect()->prepare("SELECT `codMateria` FROM `planeacion` WHERE `codMateria` IN ($prerequisitos)  AND `codBanner` = ?");
             $consultaEstaPlaneacionPrerequisitos->bindParam(1,$codBanner,PDO::PARAM_STR);
             $consultaEstaPlaneacionPrerequisitos->execute();
-            return $consultaEstaPlaneacionPrerequisitos;
+            var_dump($consultaEstaPlaneacionPrerequisitos);die();
+            /*return $consultaEstaPlaneacionPrerequisitos;
         } catch (PDOException $e) {
             return false;
-        }
+        }*/
     }
     
     public function estaPorVer($prerequisitos,$codBanner){

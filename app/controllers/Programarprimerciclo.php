@@ -33,7 +33,14 @@ class Programarprimerciclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        var_dump($offset);die();
+        $periodos = $this->model->periodos();
+        $marcaIngreso = "";
+        foreach ($periodos as $periodo) {
+            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+        }
+        $marcaIngreso = trim($marcaIngreso, ",");
+        $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
+        var_dump($estudiantes->rowCount());die();
     }
 
     public function primerciclo(){

@@ -138,8 +138,8 @@ class Programarprimerciclo extends Controller{
                     /*$prerequisitosConsulta = $this->model->prerequisitos($codMateria,$programa);
                     $prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];*/
                     //echo $codMateria."-". $prerequisitos."<br>";
-                    var_dump($prerequisitos,"<br>");
-                    /*if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                    //var_dump($prerequisitos,"<br>");
+                    if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                         $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                         if ($estaPlaneacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
@@ -160,7 +160,7 @@ class Programarprimerciclo extends Controller{
                             $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
                             $cuentaCursosCiclo1++;
                         endif;
-                    endif;*/
+                    endif;
                 endforeach;
                 die();
                 $updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);

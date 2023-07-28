@@ -115,16 +115,15 @@ class ProgramarPrimerCicloModel{
     }
 
     public function estaPlaneacion($codMateria,$codBanner){
-        //try {
+        try {
             $consultaEstaPlaneacion = $this->db->connect()->prepare("SELECT `codMateria` FROM `planeacion` WHERE `codMateria` = ?  AND `codBanner` = ?");
             $consultaEstaPlaneacion->bindParam(1,$codMateria,PDO::PARAM_STR);
             $consultaEstaPlaneacion->bindParam(2,$codBanner,PDO::PARAM_INT);
             $consultaEstaPlaneacion->execute();
-            var_dump($consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC));die();
-            /*return $consultaEstaPlaneacion;
+            return $consultaEstaPlaneacion;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
     
     public function estaPlaneacionPrerequisitos($prerequisitos,$codBanner){

@@ -26,6 +26,16 @@ class Programarprimerciclo extends Controller{
         return $mesActual;
     }*/
 
+    public function inicio(){
+        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        if (!$log) :
+            $offset = 0;
+        else :
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        var_dump($log);die();
+    }
+
     public function primerciclo(){
         $periodos = $this->model->periodos();
         $marcaIngreso = "";

@@ -127,6 +127,7 @@ class ProgramarPrimerCicloModel{
     }
     
     public function estaPlaneacionPrerequisitos($prerequisitos,$codBanner){
+        var_dump($prerequisitos,$codBanner);die();
         //try {
             $consultaEstaPlaneacionPrerequisitos = $this->db->connect()->prepare("SELECT `codMateria` FROM `planeacion` WHERE `codMateria` IN ($prerequisitos)  AND `codBanner` = ?");
             $consultaEstaPlaneacionPrerequisitos->bindParam(1,$codBanner,PDO::PARAM_STR);

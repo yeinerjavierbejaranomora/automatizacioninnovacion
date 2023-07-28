@@ -128,9 +128,9 @@ class Programarprimerciclo extends Controller{
                 //var_dump($programa,$materiasPorVer->fetchAll());die();
 
                 foreach($materiasPorVer as $materia):
-                    /*if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :
+                    if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :
                         break;
-                    endif;*/
+                    endif;
                     //var_dump($materia);
                     $codBanner = $materia['codBanner'];
                     $codMateria = $materia['codMateria'];

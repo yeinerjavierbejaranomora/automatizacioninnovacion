@@ -41,7 +41,7 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         // var_dump($estudiantes->rowCount());die();
-        $limit = 10;
+        $limit = 50;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < 4; $i++) { 
             //sleep(10);

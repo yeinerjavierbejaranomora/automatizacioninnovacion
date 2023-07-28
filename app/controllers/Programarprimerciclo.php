@@ -139,8 +139,8 @@ class Programarprimerciclo extends Controller{
                     endif;
                 endforeach;
                 $updateEstudiante = $this-> model->updateEstudiante($estudiante['id'], $codBanner);
-                $ultimoRegistroId = $estudiante->id;
-                $idBannerUltimoRegistro = $estudiante->homologante;
+                $ultimoRegistroId = $estudiante['id'];
+                $idBannerUltimoRegistro = $estudiante['homologante'];
                 $fechaFin = date('Y-m-d H:i:s');
                 $acccion = 'Insert-PlaneacionPrimerCiclo';
                 $tablaAfectada = 'planeacion';

@@ -34,12 +34,20 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
-                if($marcaIngreso == '')
-                $periodo = substr($marcaIngreso,-2);
+                if($marcaIngreso == ''):
+                    $periodo = substr($marcaIngreso,-2);
+                endif;
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
+
+                if ($tipoEstudiante == 'MOVILIDAD ENTRANTE' || $tipoEstudiante == 'OPCION DE GRADO') :
+                    $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', perteneciente al  programa' . $programa;
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
+                    if ($insertarAlertaTemprana) :
+                        $numeroRegistrosAlertas++;
+                    endif;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
@@ -86,12 +94,6 @@ class Mafireplica  extends Controller{
                             $numeroRegistros++;
                         endif;
                     endif;
-                /*elseif($tipoEstudiante == 'MOVILIDAD ENTRANTE' && $tipoEstudiante == 'OPCION DE GRADO'):
-                    $mensajeAlerta = 'El '.$codigoBanner.' es tipo de estudiante '.$tipoEstudiante .', programa' . $programa;
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
-                    if ($insertarAlertaTemprana) :
-                        $numeroRegistrosAlertas++;
-                    endif;*/
                 else:
                     if($programaActivo > 0):
                         $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso);

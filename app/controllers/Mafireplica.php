@@ -37,6 +37,7 @@ class Mafireplica  extends Controller{
                 if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso,-2);
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
+                var_dump($programaActivo);die();
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;

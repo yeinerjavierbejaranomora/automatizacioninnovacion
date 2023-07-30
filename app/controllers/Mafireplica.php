@@ -34,6 +34,7 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
+                var_dump($marcaIngreso);die();
                 if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso,-2);
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);

@@ -40,6 +40,12 @@ class Mafireplica  extends Controller{
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
+                if ($tipoEstudiante == 'MOVILIDAD ENTRANTE' || $tipoEstudiante == 'OPCION DE GRADO') :
+                    $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
+                    if ($insertarAlertaTemprana) :
+                        $numeroRegistrosAlertas++;
+                    endif;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];

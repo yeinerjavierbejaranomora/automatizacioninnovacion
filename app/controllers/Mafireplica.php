@@ -40,7 +40,7 @@ class Mafireplica  extends Controller{
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
-                if ($tipoEstudiante === 'MOVILIDAD ENTRANTE') {
+                if ($tipoEstudiante === 'OPCION DE GRADO') {
                     # code...
                     var_dump($tipoEstudiante);die();
                 }

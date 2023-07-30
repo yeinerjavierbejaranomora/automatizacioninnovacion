@@ -34,7 +34,7 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
-                if($marcaIngreso == ''):
+                if($marcaIngreso != ''):
                     $periodo = substr($marcaIngreso,-2);
                 endif;
                 var_dump($periodo);die();

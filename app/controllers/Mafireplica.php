@@ -34,9 +34,8 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
-                if($marcaIngreso == ''):
-                    $periodo = substr($marcaIngreso,-2);
-                endif;
+                if($marcaIngreso == '')
+                $periodo = substr($marcaIngreso,-2);
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
@@ -47,7 +46,7 @@ class Mafireplica  extends Controller{
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                     if ($insertarAlertaTemprana) :
                         $numeroRegistrosAlertas++;
-                    endif;
+                endif;
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];

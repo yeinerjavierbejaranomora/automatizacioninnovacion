@@ -34,9 +34,10 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
-                var_dump($marcaIngreso);die();
-                if($marcaIngreso == '')
-                $periodo = substr($marcaIngreso,-2);
+                if($marcaIngreso == ''):
+                    $periodo = substr($marcaIngreso,-2);
+                endif;
+                var_dump($periodo);die();
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 var_dump($programaActivo);die();

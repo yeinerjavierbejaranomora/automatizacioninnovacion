@@ -46,6 +46,7 @@ class Mafireplica  extends Controller{
                     if ($insertarAlertaTemprana) :
                         $numeroRegistrosAlertas++;
                 endif;
+                endif;
                 var_dump($tipoEstudiante);die();
                 if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);

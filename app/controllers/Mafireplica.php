@@ -42,17 +42,7 @@ class Mafireplica  extends Controller{
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 $observacion = NULL;
-                if ($tipoEstudiante === 'MOVILIDAD ENTRANTE' || $tipoEstudiante === 'OPCION DE GRADO') :
-                    $observacion = "tipo de estudiante " . $tipoEstudiante;
-                    $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner, $nombre, $programa, $bolsa, $operador, $nodo, $tipoEstudiante, $tieneHistorial, $programaAbrio, $marcaIngreso, $observacion);
-                    $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
-                    if ($insertarAlertaTemprana) :
-                        $numeroRegistrosAlertas++;
-                    endif;
-                else :
-
-                    if (str_contains($tipoEstudiante, 'TRANSFERENTE')) :
+                if (str_contains($tipoEstudiante, 'TRANSFERENTE')) :
                         $historial = $this->model->historialEstudiante($codigoBanner);
                         $historialCount = $historial->fetch(PDO::FETCH_ASSOC)['historial'];
                         if ($historialCount == 0) :
@@ -114,7 +104,6 @@ class Mafireplica  extends Controller{
                             $numeroRegistros++;
                         endif;
                     endif;
-                endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
             endforeach;

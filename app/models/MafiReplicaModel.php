@@ -66,7 +66,7 @@ class MafiReplicaModel{
         }
     }
 
-    public function insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso){
+    public function insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion){
         //var_dump($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion);die();
         try {
             $insertarEstudiante = $this->db->connect()->prepare("INSERT INTO `estudiantes` SET 
@@ -79,6 +79,7 @@ class MafiReplicaModel{
                                                                             `tipo_estudiante` = ?,  
                                                                             `tiene_historial` = ?, 
                                                                             `programaActivo` = ?, 
+                                                                            `observacion` = ?, 
                                                                             `marca_ingreso` = ?, 
                                                                             `created_at` = NOW(), 
                                                                             `updated_at` = NOW()");
@@ -91,7 +92,7 @@ class MafiReplicaModel{
             $insertarEstudiante->bindValue(7,$tipoEstudiante,PDO::PARAM_STR);
             $insertarEstudiante->bindValue(8,$tieneHistorial,PDO::PARAM_STR);
             $insertarEstudiante->bindValue(9,$programaAbrio,PDO::PARAM_STR);
-            // $insertarEstudiante->bindValue(10,$observacion,PDO::PARAM_STR);
+            $insertarEstudiante->bindValue(10,$observacion,PDO::PARAM_STR);
             $insertarEstudiante->bindValue(11,$marcaIngreso,PDO::PARAM_STR);
             $insertarEstudiante->execute();
             //var_dump($insertarEstudiante);die();

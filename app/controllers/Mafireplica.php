@@ -50,7 +50,6 @@ class Mafireplica  extends Controller{
                     if ($insertarAlertaTemprana) :
                         $numeroRegistrosAlertas++;
                     endif;
-                endif;
                 else :
 
                     if (str_contains($tipoEstudiante, 'TRANSFERENTE')) :

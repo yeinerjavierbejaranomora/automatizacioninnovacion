@@ -87,15 +87,16 @@ class Mafireplica  extends Controller{
                             $numeroRegistros++;
                         endif;
                     endif;
-                elseif(str_contains($tipoEstudiante,'MOVILIDAD ENTRANTE') || str_contains($tipoEstudiante,'OPCION DE GRADO')):
-                    $observaciones = "tipo de estudiante " . $tipoEstudiante;
-                    $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner, $nombre, $programa, $bolsa, $operador, $nodo, $tipoEstudiante, $tieneHistorial, $programaAbrio, $marcaIngreso, $observaciones);
-                    $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
-                    if ($insertarAlertaTemprana) :
-                        $numeroRegistrosAlertas++;
-                    endif;
                 else:
+                    if(str_contains($tipoEstudiante,'MOVILIDAD ENTRANTE') || str_contains($tipoEstudiante,'OPCION DE GRADO')):
+                        $observaciones = "tipo de estudiante " . $tipoEstudiante;
+                        $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner, $nombre, $programa, $bolsa, $operador, $nodo, $tipoEstudiante, $tieneHistorial, $programaAbrio, $marcaIngreso, $observaciones);
+                        $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
+                        $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
+                        if ($insertarAlertaTemprana) :
+                            $numeroRegistrosAlertas++;
+                        endif;
+                    endif;
                     if($programaActivo > 0):
                         $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
                     else:

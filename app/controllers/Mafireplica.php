@@ -34,7 +34,7 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
-                if($marcaIngreso == '')
+                //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso,-2);
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
@@ -85,12 +85,6 @@ class Mafireplica  extends Controller{
                         if($insertarEstudiante):
                             $numeroRegistros++;
                         endif;
-                    endif;
-                elseif($tipoEstudiante == 'MOVILIDAD ENTRANTE' && $tipoEstudiante == 'OPCION DE GRADO'):
-                    $mensajeAlerta = 'El '.$codigoBanner.' es tipo de estudiante '.$tipoEstudiante .', programa' . $programa;
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
-                    if ($insertarAlertaTemprana) :
-                        $numeroRegistrosAlertas++;
                     endif;
                 else:
                     if($programaActivo > 0):

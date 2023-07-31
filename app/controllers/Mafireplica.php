@@ -87,7 +87,7 @@ class Mafireplica  extends Controller{
                             $numeroRegistros++;
                         endif;
                     endif;
-                elseif($tipoEstudiante === 'MOVILIDAD ENTRANTE' || $tipoEstudiante === 'OPCION DE GRADO'):
+                elseif(str_contains($tipoEstudiante,'MOVILIDAD ENTRANTE') || str_contains($tipoEstudiante,'OPCION DE GRADO')):
                     $observaciones = "tipo de estudiante " . $tipoEstudiante;
                     $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner, $nombre, $programa, $bolsa, $operador, $nodo, $tipoEstudiante, $tieneHistorial, $programaAbrio, $marcaIngreso, $observaciones);
                     $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;

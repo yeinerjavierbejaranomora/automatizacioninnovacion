@@ -9,6 +9,7 @@ class Programarsegundociclo extends Controller{
     }
 
     public function inicio(){
+        var_dump("Hola");die();
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

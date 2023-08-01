@@ -15,7 +15,7 @@ class Mafireplica  extends Controller{
         else:
             $offset = 0;
         endif;
-        $limit = 50;
+        $limit = 4000;
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :
@@ -44,39 +44,51 @@ class Mafireplica  extends Controller{
                 $programaAbrio = NULL;
                 $observaciones = NULL;
                 if($nivelFormacion == 'PROFESIONAL'):
-                    echo "Es PROFESIONAL<br>";
-                else:
-                    echo "No es PROFESIONAL<br>";
-                endif;
-                /*if(str_contains($tipoEstudiante,'TRANSFERENTE')):
-                    $historial = $this->model->historialEstudiante($codigoBanner);
-                    $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
-                    if($historialCount == 0):
-                        if($programaActivo < 1):
-                            $tieneHistorial = 'SIN HISTORIAL';
-                            $programaAbrio = 'NO SE ABRIO PROGRAMA';
-                            $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
-                            $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
-                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
-                            if($insertarAlertaTemprana):
-                                $numeroRegistrosAlertas++;
+                    if(str_contains($tipoEstudiante,'TRANSFERENTE')):
+                        $historial = $this->model->historialEstudiante($codigoBanner);
+                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
+                        if($historialCount == 0):
+                            if($programaActivo < 1):
+                                $tieneHistorial = 'SIN HISTORIAL';
+                                $programaAbrio = 'NO SE ABRIO PROGRAMA';
+                                $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
+                                $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
+                                $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                                if($insertarAlertaTemprana):
+                                    $numeroRegistrosAlertas++;
+                                endif;
+                                $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                                $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                                if($insertarAlertaTemprana):
+                                    $numeroRegistrosAlertas++;
+                                endif;
+                            else:
+                                $tieneHistorial = 'SIN HISTORIAL';
+                                $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
+                                $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
+                                $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                                if($insertarAlertaTemprana):
+                                    $numeroRegistrosAlertas++;
+                                endif;
                             endif;
-                            $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
-                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
-                            if($insertarAlertaTemprana):
-                                $numeroRegistrosAlertas++;
+                            if($insertarEstudiante):
+                                $numeroRegistros++;
                             endif;
                         else:
-                            $tieneHistorial = 'SIN HISTORIAL';
-                            $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
-                            $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
-                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
-                            if($insertarAlertaTemprana):
-                                $numeroRegistrosAlertas++;
+                            if($programaActivo > 0):
+                                $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
+                            else:
+                                $programaAbrio = 'NO SE ABRIO PROGRAMA';
+                                $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
+                                $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
+                                $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
+                                if($insertarAlertaTemprana):
+                                    $numeroRegistrosAlertas++;
+                                endif;
                             endif;
-                        endif;
-                        if($insertarEstudiante):
-                            $numeroRegistros++;
+                            if($insertarEstudiante):
+                                $numeroRegistros++;
+                            endif;
                         endif;
                     else:
                         if($programaActivo > 0):
@@ -95,30 +107,14 @@ class Mafireplica  extends Controller{
                         endif;
                     endif;
                 else:
-                    if(str_contains($tipoEstudiante,'MOVILIDAD ENTRANTE') || str_contains($tipoEstudiante,'OPCION DE GRADO')):
-                        $observaciones = "tipo de estudiante " . $tipoEstudiante;
+                        $observaciones = "Nivel de formación " . $nivelFormacion;
                         $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner, $nombre, $programa, $bolsa, $operador, $nodo, $tipoEstudiante, $tieneHistorial, $programaAbrio, $marcaIngreso, $observaciones);
-                        $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
+                        /*$mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
                         $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         if ($insertarAlertaTemprana) :
                             $numeroRegistrosAlertas++;
-                        endif;
-                    endif;
-                    if($programaActivo > 0):
-                        $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
-                    else:
-                        $programaAbrio = 'NO SE ABRIO PROGRAMA';
-                        $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones);
-                        $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
-                        $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
-                        if($insertarAlertaTemprana):
-                            $numeroRegistrosAlertas++;
-                        endif;
-                    endif;
-                    if($insertarEstudiante):
-                        $numeroRegistros++;
-                    endif;
-                endif;*/
+                        endif;*/
+                endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
             endforeach;

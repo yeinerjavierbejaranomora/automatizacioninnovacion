@@ -118,7 +118,6 @@ class Mafireplica  extends Controller{
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
             endforeach;
-            die();
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert';
             $tablaAfectada = 'estudiantes';

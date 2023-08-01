@@ -47,7 +47,7 @@ class ProgramarPrimerCicloModel{
             ORDER BY `id` ASC");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->execute();
-            var_dump($consultaEstudiantes);die();
+            var_dump($consultaEstudiantes->rowCount());die();
             /*return $consultaEstudiantes;
         } catch (PDOException $e) {
             return false;

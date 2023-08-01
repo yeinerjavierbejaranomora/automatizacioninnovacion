@@ -19,7 +19,6 @@ class App{
         require_once("../app/controllers/".ucwords($this->controller.".php"));
         $this->controller = new $this->controller;
 
-        var_dump(method_exists($this->controller,$url[1]));die();
         if(isset($url[1])):
             if(method_exists($this->controller,$url[1])):
                 $this->method = $url[1];

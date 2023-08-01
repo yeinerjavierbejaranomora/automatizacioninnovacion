@@ -44,9 +44,9 @@ class Mafireplica  extends Controller{
                 $programaAbrio = NULL;
                 $observaciones = NULL;
                 if($nivelFormacion == 'PROFESIONAL'):
-                    echo "Es PROFESIONAL";
+                    echo "Es PROFESIONAL<br>";
                 else:
-                    echo "No es PROFESIONAL";
+                    echo "No es PROFESIONAL<br>";
                 endif;
                 /*if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);

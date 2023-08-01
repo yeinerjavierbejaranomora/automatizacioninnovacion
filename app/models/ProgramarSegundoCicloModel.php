@@ -1,5 +1,5 @@
 <?php
-class ProgramarPrimerCicloModel{
+class ProgramarSegundoCicloModel{
     private $db;
     public function __construct()
     {

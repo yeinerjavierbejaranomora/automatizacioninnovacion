@@ -10,13 +10,13 @@ class Programarsegundociclo extends Controller{
 
     public function inicio(){
         var_dump("Hola");die();
-        $periodos = $this->model->periodos();
+        /*$periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        var_dump($marcaIngreso);die();*/
 
         /*$log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :

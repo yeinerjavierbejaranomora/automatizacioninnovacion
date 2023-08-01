@@ -15,12 +15,12 @@ class Mafireplica  extends Controller{
         else:
             $offset = 0;
         endif;
-        $limit = 200;
+        $limit = 50;
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :
             $datosMafi = $this->model->dataMafiReplica($offset,$limit);
-            var_dump($datosMafi->fetchAll());die();
+            // var_dump($datosMafi->fetchAll());die();
             $numeroRegistros = 0;
             $numeroRegistrosAlertas = 0;
             $primerId = $this->model->datamafireplica($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
@@ -35,6 +35,7 @@ class Mafireplica  extends Controller{
                 $nodo = 'nodo';
                 $tipoEstudiante = $estudiante['tipoestudiante'];
                 $marcaIngreso = $estudiante['periodo'];
+                $nivelFormacion = $estudiante['nivelFormacion'];
                 //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso,-2);
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
@@ -42,7 +43,13 @@ class Mafireplica  extends Controller{
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 $observaciones = NULL;
-                if(str_contains($tipoEstudiante,'TRANSFERENTE')):
+                if($nivelFormacion == 'PROFESIONAL'):
+                    echo "Es PROFESIONAL";
+                else:
+                    echo "No es PROFESIONAL";
+                endif;
+                die();
+                /*if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
                     if($historialCount == 0):
@@ -112,7 +119,7 @@ class Mafireplica  extends Controller{
                     if($insertarEstudiante):
                         $numeroRegistros++;
                     endif;
-                endif;
+                endif;*/
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
             endforeach;

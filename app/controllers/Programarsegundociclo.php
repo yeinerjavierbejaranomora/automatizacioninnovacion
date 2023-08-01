@@ -9,8 +9,7 @@ class Programarsegundociclo extends Controller{
     }
 
     public function inicio(){
-        var_dump("Hola");die();
-        /*$periodos = $this->model->periodos();
+        $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
@@ -26,6 +25,6 @@ class Programarsegundociclo extends Controller{
         endif;
         $limit = 500;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->rowCount());die();*/
+        var_dump($estudiantes->rowCount());die();
     }
 }

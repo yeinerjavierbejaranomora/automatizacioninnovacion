@@ -24,5 +24,6 @@ class Programarsegundociclo extends Controller{
         endif;
         $limit = 500;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->rowCount());die();
     }
 }

@@ -36,14 +36,14 @@ class ProgramarPrimerCicloModel{
     }
     
     public function getEstudiantesNum($offset,$marcaIngreso){
-        var_dump($marcaIngreso);die();
+        //var_dump($marcaIngreso);die();
         //try {
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK' 
             AND `programado_ciclo1` IS NULL 
             AND `programado_ciclo2` IS NULL 
-            AND `marca_ingreso` IN ($marcaIngreso) 
+            AND `marca_ingreso` IN (202305,202312,202332,202342,202352,202306,202313,202333,202343,202353) 
             ORDER BY `id` ASC");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->execute();

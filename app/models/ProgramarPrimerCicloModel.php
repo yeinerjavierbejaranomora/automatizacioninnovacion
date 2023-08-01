@@ -43,7 +43,7 @@ class ProgramarPrimerCicloModel{
             AND `materias_faltantes` = 'OK' 
             AND `programado_ciclo1` IS NULL 
             AND `programado_ciclo2` IS NULL 
-            AND `marca_ingreso` IN ($marcaIngreso) 
+            AND `marca_ingreso` IN ((int)$marcaIngreso) 
             ORDER BY `id` ASC");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->execute();

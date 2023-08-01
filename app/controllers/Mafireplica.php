@@ -48,7 +48,6 @@ class Mafireplica  extends Controller{
                 else:
                     echo "No es PROFESIONAL";
                 endif;
-                die();
                 /*if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                     $historial = $this->model->historialEstudiante($codigoBanner);
                     $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
@@ -123,6 +122,7 @@ class Mafireplica  extends Controller{
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
             endforeach;
+            die();
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert';
             $tablaAfectada = 'estudiantes';

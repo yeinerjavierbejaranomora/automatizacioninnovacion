@@ -42,7 +42,6 @@ class Programarprimerciclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $limit = 300;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
-        var_dump($numEstudinates);die();
         for ($i=0; $i < $numEstudinates; $i++) { 
             //sleep(10);
             $this->primerciclo($limit);
@@ -63,6 +62,7 @@ class Programarprimerciclo extends Controller{
         //var_dump($marcaIngreso);die();
 
         $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        var_dump($log);die();
         if (!$log) :
             $offset = 0;
         else :

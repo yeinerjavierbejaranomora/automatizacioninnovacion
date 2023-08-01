@@ -36,8 +36,8 @@ class ProgramarPrimerCicloModel{
     }
     
     public function getEstudiantesNum($offset,$marcaIngreso){
-        var_dump($marcaIngreso);die();
-        try {
+        //var_dump($marcaIngreso);die();
+        //try {
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK' 
@@ -47,10 +47,11 @@ class ProgramarPrimerCicloModel{
             ORDER BY `id` ASC");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->execute();
-            return $consultaEstudiantes;
+            var_dump($consultaEstudiantes);die();
+            /*return $consultaEstudiantes;
         } catch (PDOException $e) {
             return false;
-        }
+        }*/
     }
 
     public function logAplicacion($accion,$tabla){

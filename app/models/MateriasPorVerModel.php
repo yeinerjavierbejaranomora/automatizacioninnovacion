@@ -167,7 +167,7 @@ class MateriasPorVerModel{
     public function faltantesTransferentes($offset,$limit){
         try {
             $consultaEstTransferente = $this->db->connect()->prepare("SELECT * FROM `estudiantes`
-            WHERE `id` > 0
+            WHERE `id` > ?
             AND `tipo_estudiante` like 'TRANSFERENTE%'
             AND `programaActivo` IS NULL
             AND `tiene_historial` IS NULL

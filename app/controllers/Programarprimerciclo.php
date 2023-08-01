@@ -28,6 +28,7 @@ class Programarprimerciclo extends Controller{
 
     public function inicio(){
         $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        var_dump($log);die();
         if (!$log) :
             $offset = 0;
         else :

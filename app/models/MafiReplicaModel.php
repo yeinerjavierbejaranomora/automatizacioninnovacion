@@ -95,7 +95,7 @@ class MafiReplicaModel{
             $insertarEstudiante->bindValue(10,$observacion,PDO::PARAM_STR);
             $insertarEstudiante->bindValue(11,$marcaIngreso,PDO::PARAM_STR);
             $insertarEstudiante->execute();
-            //var_dump($insertarEstudiante);die();
+            var_dump($insertarEstudiante);die();
             return $insertarEstudiante;
         } catch (PDOException $e) {
             return false;

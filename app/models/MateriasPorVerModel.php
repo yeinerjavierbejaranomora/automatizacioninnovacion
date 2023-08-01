@@ -28,11 +28,13 @@ class MateriasPorVerModel{
             AND `tipo_estudiante` LIKE 'PRIMER%'  
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL
+            AND `observacion` IS NULL
             OR `id` > ?  
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'INGRESO%' 
             AND `programaActivo` IS NULL 
-            AND `materias_faltantes` IS NULL");
+            AND `materias_faltantes` IS NULL
+            AND `observacion` IS NULL");
             $consultaEstPrimerIngreso->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->bindParam(2,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->execute();

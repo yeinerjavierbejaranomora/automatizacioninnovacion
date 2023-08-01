@@ -221,14 +221,17 @@ class MateriasPorVerModel{
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `observacion` IS NULL
             OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `observacion` IS NULL
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `observacion` IS NULL
             ORDER BY `id` ASC
             LIMIT ?");
             $consultaEstudiantesAntiguos->bindParam(1,$offset,PDO::PARAM_INT);

@@ -28,8 +28,7 @@ class Programarprimerciclo extends Controller{
 
     public function inicio(){
         $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
-        var_dump($log->rowCount());die();
-        if (!$log) :
+        if ($log->rowCount() == 0) :
             $offset = 0;
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];

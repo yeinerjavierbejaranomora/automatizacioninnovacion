@@ -62,7 +62,6 @@ class Programarprimerciclo extends Controller{
         //var_dump($marcaIngreso);die();
 
         $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
-        var_dump($log->rowCount());die();
         if ($log->rowCount()) :
             $offset = 0;
         else :

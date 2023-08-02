@@ -79,6 +79,7 @@ class Programarsegundociclo extends Controller{
                 $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
+                var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();
                 $orden2 = 1;
 
                 if ($numeroMateriasPorVer == 0) :

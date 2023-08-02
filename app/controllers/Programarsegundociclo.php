@@ -27,7 +27,7 @@ class Programarsegundociclo extends Controller{
         $numEstudiantes = $estudiantes->rowCount();
         //var_dump($numEstudiantes);die();
         $divEstudiantes = ceil($numEstudiantes/20);
-        for ($i=0; $i < $divEstudiantes; $i++) { 
+        for ($i=0; $i < 20; $i++) { 
             echo date('Y-m-d H:i:s') . "-->" . $i;
             sleep(55);
             

@@ -24,7 +24,8 @@ class Programarsegundociclo extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        var_dump($estudiantes->rowCount());die();
+        $numEstudiantes = $estudiantes->rowCount();
+        var_dump(ceil($numEstudiantes/20));die();
     }
 
 

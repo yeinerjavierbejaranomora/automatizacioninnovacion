@@ -136,4 +136,16 @@ class ProgramarSegundoCicloModel{
             return false;
         }
     }
+
+    public function estaPlaneacion($codMateria,$codBanner){
+        try {
+            $consultaEstaPlaneacion= $this->db->connect()->prepare("SELECT codMateria FROM planeacion WHERE codMateria=? AND codBanner=?");
+            $consultaEstaPlaneacion->bindValue(1,$codMateria,PDO::PARAM_STR);
+            $consultaEstaPlaneacion->bindValue(2,$codBanner,PDO::PARAM_INT);
+            $consultaEstaPlaneacion->execute();
+            return $consultaEstaPlaneacion;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

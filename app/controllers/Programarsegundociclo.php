@@ -130,9 +130,10 @@ class Programarsegundociclo extends Controller{
                         $codMateria = $materia['codMateria'];
                         $creditoMateria = $materia['creditos'];
                         $ciclo = $materia['ciclo'];
-                        $consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
+                        /*$consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
-                        $prerequisitos =  $fetchPrerequisistos['prerequisito'];
+                        $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
+                        $prerequisitos = $materia['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):

@@ -82,9 +82,9 @@ class Programarsegundociclo extends Controller{
                 $orden2 = 1;
 
                 if ($numeroMateriasPorVer == 0) :
-                    /*$mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
+                    $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
-                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);*/
+                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
                     foreach($consultaMateriasPorVer as $materia):
@@ -99,7 +99,7 @@ class Programarsegundociclo extends Controller{
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
                         //var_dump($prerequisitos,$numeroCreditosTemp,$numeroMateriasPermitidos,$ciclo);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
-                            /*$consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
+                            $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
                             $codBanner=$codBanner;
                             $planeada = $fetchEstaPlaneacion['codMateria'];
@@ -110,7 +110,7 @@ class Programarsegundociclo extends Controller{
                                 $programada = '';
                                 $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
                                 echo $insertPlaneada . "<br />";
-                            endif;*/
+                            endif;
                         else:
                             $prerequisitos = '"'.$prerequisitos.'"';
                             $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
@@ -119,15 +119,20 @@ class Programarsegundociclo extends Controller{
                             $consultaEstaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
                             $fetchEstaPorVer = $consultaEstaPorVer->fetch(PDO::FETCH_ASSOC);
                             $estaPorVer = $fetchEstaPorVer['codMateria'];
-                            echo $estaPorVer."<br>";
+                            if($preprogramado == '' && $estaPorVer == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2 && $numeroCreditos < $numeroCreditosPermitidos):
+                                $numeroCreditos = $numeroCreditos + $creditoMateria;
+                                $semestre = 1;
+                                $programada = '';
+                                $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                                echo $insertPlaneada . "<br />";
+                            endif;
                         endif;
                         //var_dump($prerequisitos);die();
                     endforeach;
-                    die();
-                    echo "Con  Materias : " . $codHomologante . "<br />";
+                    $orden2++;
+                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);	
+                    echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "<br />";
                 endif;
-                //var_dump($numeroMateriasPorVer);die();
-                # code...
             }
         else:
             echo "No hay estudiantes de segundo ciclo para programar <br>";

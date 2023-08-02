@@ -97,6 +97,7 @@ class Programarsegundociclo extends Controller{
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
+                        var_dump($numeroCreditosTemp);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
                             $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             var_dump($consultaEstaPlaneacion->fetchAll());die();

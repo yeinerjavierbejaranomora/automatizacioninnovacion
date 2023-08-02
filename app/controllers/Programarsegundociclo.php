@@ -22,7 +22,7 @@ class Programarsegundociclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 300;
+        $limit = 100;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {

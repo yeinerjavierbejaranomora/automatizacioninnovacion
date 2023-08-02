@@ -42,9 +42,46 @@ class Programarsegundociclo extends Controller{
                 $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
-                $orden2=1;
+                $ruta = $estudiante['bolsa'];
+                if ($ruta != '') :
+                    $ruta = 1;
+                else:
+                    $ruta = 0;
+                endif;
+                $tipoEstudiante = $estudiante['tipo_estudiante'];
 
-                if($numeroMateriasPorVer == 0):
+                switch ($tipoEstudiante) {
+                    case str_contains($tipoEstudiante, 'TRANSFERENTE'):
+                        $tipoEstudiante = 'TRANSFERENTE';
+                        break;
+                    case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
+                        $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                        break;
+                    case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
+                        $tipoEstudiante = 'PRIMER INGRESO';
+                        break;
+                    case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
+                        $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                        break;
+                    case str_contains($tipoEstudiante, 'REINGRESO'):
+                        $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                        break;
+                    case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
+                        $tipoEstudiante = 'PRIMER INGRESO';
+                        break;
+
+                    default:
+                        # code...
+                        break;
+                }
+                $cicloReglaNegocio = 2;
+                $reglasNegocioConsulta = $this->model->getReglasNegocio($programaHomologante,$ruta,$tipoEstudiante,$cicloReglaNegocio);
+                $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
+                $numeroCreditosPermitidos = $reglasNegocio['creditos'];
+                $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
+                $orden2 = 1;
+
+                if ($numeroMateriasPorVer == 0) :
                     /*$mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);*/

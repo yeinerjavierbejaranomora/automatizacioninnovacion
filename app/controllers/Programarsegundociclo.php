@@ -26,6 +26,9 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
+                $fechaInicio = date('Y-m-d H:i:s');
+                $primerId = $estudiante['id'];
+                $ultimoRegistroId = 0;
                 $idHomologante = $estudiante['id'];
                 $codHomologante = $estudiante['homologante'];
                 $programaHomologante = $estudiante['programa'];
@@ -128,9 +131,19 @@ class Programarsegundociclo extends Controller{
                         endif;
                     endforeach;
                     $orden2++;
-                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);	
+                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $estudiante['homologante'];
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $acccion = 'Insert-PlaneacionSegundoCiclo';
+                    $tablaAfectada = 'planeacion';
+                    $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $fecha = date('Y-m-d H:i:s');
+                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                    $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "<br />";
                 endif;
+
             }
         else:
             echo "No hay estudiantes de segundo ciclo para programar <br>";

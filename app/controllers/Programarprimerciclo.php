@@ -169,7 +169,7 @@ class Programarprimerciclo extends Controller{
                 $fechaFin = date('Y-m-d H:i:s');
                 $acccion = 'Insert-PlaneacionPrimerCiclo';
                 $tablaAfectada = 'planeacion';
-                $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias delprimer ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                 $fecha = date('Y-m-d H:i:s');
                 $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                 $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);

@@ -79,7 +79,6 @@ class Programarsegundociclo extends Controller{
                 $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
-                var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();
                 $orden2 = 1;
 
                 if ($numeroMateriasPorVer == 0) :
@@ -96,6 +95,12 @@ class Programarsegundociclo extends Controller{
                         $consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];
+                        var_dump($codMateria);die();
+
+                        $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
+                        if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
+                        else:
+                        endif;
                         var_dump($prerequisitos);die();
                     endforeach;
                     echo "Con  Materias : " . $codHomologante . "<br />";

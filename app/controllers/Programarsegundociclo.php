@@ -43,7 +43,7 @@ class Programarsegundociclo extends Controller{
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
                 $orden2=1;
 
-                if($numeroMateriasPorVer):
+                if($numeroMateriasPorVer == 0):
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
                     echo "Con  Materias : " . $codHomologante . "<br />";

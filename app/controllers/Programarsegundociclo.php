@@ -88,6 +88,15 @@ class Programarsegundociclo extends Controller{
                     $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $estudiante['homologante'];
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $acccion = 'Insert-PlaneacionSegundoCiclo';
+                    $tablaAfectada = 'planeacion';
+                    $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $fecha = date('Y-m-d H:i:s');
+                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                    $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
                     foreach($consultaMateriasPorVer as $materia):

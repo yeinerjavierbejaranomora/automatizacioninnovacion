@@ -53,7 +53,7 @@ class Programarsegundociclo extends Controller{
                 else:
                     //echo "Con  Materias : " . $codHomologante . "<br />";
                 endif;
-                var_dump($numeroMateriasPorVer);die();
+                //var_dump($numeroMateriasPorVer);die();
                 # code...
             }
         else:

@@ -45,7 +45,7 @@ class Programarsegundociclo extends Controller{
                 $orden2=1;
 
                 if($numeroMateriasPorVer == 0):
-                    $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver.';
+                    $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     echo "Sin  Materias : " . $codHomologante . "<br />";die();

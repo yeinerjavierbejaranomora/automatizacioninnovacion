@@ -120,7 +120,7 @@ class Programarsegundociclo extends Controller{
                                 $semestre = 1;
                                 $programada = '';
                                 $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
-                                echo $insertPlaneada . "<br />";
+                                //echo $insertPlaneada . "<br />";
                             endif;
                         else:
                             $prerequisitos = '"'.$prerequisitos.'"';
@@ -135,7 +135,7 @@ class Programarsegundociclo extends Controller{
                                 $semestre = 1;
                                 $programada = '';
                                 $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
-                                echo $insertPlaneada . "<br />";
+                                //echo $insertPlaneada . "<br />";
                             endif;
                         endif;
                     endforeach;

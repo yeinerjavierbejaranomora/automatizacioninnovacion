@@ -29,7 +29,8 @@ class Programarsegundociclo extends Controller{
                 $idHomologante = $estudiante['id'];
                 $codHomologante = $estudiante['homologante'];
                 $programaHomologante = $estudiante['programa'];
-                var_dump($idHomologante,$codHomologante,$programaHomologante);die();
+                $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante,$programaHomologante);
+                var_dump($materiasPlaneadas->fetchAll());die();
                 # code...
             }
         else:

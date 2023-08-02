@@ -22,7 +22,7 @@ class Programarsegundociclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 10;
+        $limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
@@ -120,7 +120,7 @@ class Programarsegundociclo extends Controller{
                                 $semestre = 1;
                                 $programada = '';
                                 $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
-                                // echo $insertPlaneada . "<br />";
+                                echo $insertPlaneada . "<br />";
                             endif;
                         else:
                             $prerequisitos = '"'.$prerequisitos.'"';
@@ -135,7 +135,7 @@ class Programarsegundociclo extends Controller{
                                 $semestre = 1;
                                 $programada = '';
                                 $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
-                                // echo $insertPlaneada . "<br />";
+                                echo $insertPlaneada . "<br />";
                             endif;
                         endif;
                     endforeach;

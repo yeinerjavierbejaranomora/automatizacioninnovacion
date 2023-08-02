@@ -24,6 +24,13 @@ class Programarsegundociclo extends Controller{
         endif;
         $limit = 500;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->rowCount());die();
+        if($estudiantes->rowCount() > 0):
+            foreach ($estudiantes as $key => $estudiante) {
+                var_dump($estudiante);die();
+                # code...
+            }
+        else:
+            echo "No hay estudiantes de segundo ciclo para programar <br>";
+        endif;
     }
 }

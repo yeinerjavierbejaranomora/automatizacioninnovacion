@@ -104,9 +104,9 @@ class Programarsegundociclo extends Controller{
                         else:
                             echo $prerequisitos;
                         endif;
-                        die();
-                        var_dump($prerequisitos);die();
+                        //var_dump($prerequisitos);die();
                     endforeach;
+                    die();
                     echo "Con  Materias : " . $codHomologante . "<br />";
                 endif;
                 //var_dump($numeroMateriasPorVer);die();

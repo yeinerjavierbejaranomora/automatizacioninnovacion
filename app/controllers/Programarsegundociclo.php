@@ -35,6 +35,8 @@ class Programarsegundociclo extends Controller{
                     $codmateria= $materia['codMateria'];
                     $materias_planeadas = $materias_planeadas . "'" . $codmateria . "',";
                 endforeach;
+                $materias_planeadas = substr($materias_planeadas, 0, -1);
+	            $materias_planeadas = ($materias_planeadas=='') ? "'n-a'" : $materias_planeadas;
                 var_dump($materias_planeadas);die();
                 # code...
             }

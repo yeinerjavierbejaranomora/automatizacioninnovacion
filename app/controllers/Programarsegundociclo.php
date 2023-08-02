@@ -97,7 +97,6 @@ class Programarsegundociclo extends Controller{
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
-                        //var_dump($prerequisitos,$numeroCreditosTemp,$numeroMateriasPermitidos,$ciclo);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
                             $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
@@ -127,7 +126,6 @@ class Programarsegundociclo extends Controller{
                                 echo $insertPlaneada . "<br />";
                             endif;
                         endif;
-                        //var_dump($prerequisitos);die();
                     endforeach;
                     $orden2++;
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);	

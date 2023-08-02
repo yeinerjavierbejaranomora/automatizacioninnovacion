@@ -30,7 +30,7 @@ class ProgramarSegundoCicloModel{
 
     public function getEstudiantes($offset,$marcaIngreso,$limit){
         try {
-            $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa FROM estudiantes 
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
             WHERE `id` > ?
             AND materias_faltantes='OK' 
             AND programado_ciclo1='OK' 
@@ -79,6 +79,33 @@ class ProgramarSegundoCicloModel{
             $consultaCreditosplaneados->bindValue(1,$codHomologante,PDO::PARAM_INT);
             $consultaCreditosplaneados->execute();
             return $consultaCreditosplaneados;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta){
+        try {
+            $insertAlerta = $this->db->connect()->prepare("INSERT INTO `alertas_tempranas` SET `idbanner` = ?, `tipo_estudiante` = ?, `desccripcion` = ?, `created_at` = NOW(), `updated_at` = NOW()");
+            $insertAlerta->bindValue(1,$codigoBanner,PDO::PARAM_INT);
+            $insertAlerta->bindValue(2,$tipoEstudiante,PDO::PARAM_STR);
+            $insertAlerta->bindValue(3,$mensajeAlerta,PDO::PARAM_STR);
+            $insertAlerta->execute();
+            return $insertAlerta;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function updateEstudinate($idHomologante,$codHomologante){
+        try {
+            $updateEstudiante = $this->db->connect()->prepare("");
+            $updateEstudiante->bindParam(1,$idHomologante,PDO::PARAM_INT);
+            $updateEstudiante->bindParam(2,$codHomologante,PDO::PARAM_INT);
+            $updateEstudiante->execute();
+            if ($updateEstudiante == true):
+                return true;
+            endif;
         } catch (PDOException $e) {
             return false;
         }

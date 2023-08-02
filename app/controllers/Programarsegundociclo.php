@@ -29,6 +29,7 @@ class Programarsegundociclo extends Controller{
                 $idHomologante = $estudiante['id'];
                 $codHomologante = $estudiante['homologante'];
                 $programaHomologante = $estudiante['programa'];
+                $tipoEstudiante = $estudiante['tipo_estudiante'];
                 $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante,$programaHomologante);
                 $materias_planeadas='';
                 foreach($materiasPlaneadas as $materia):
@@ -44,9 +45,13 @@ class Programarsegundociclo extends Controller{
                 $orden2=1;
 
                 if($numeroMateriasPorVer == 0):
+                    var_dump($codHomologante);die();
+                    $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver.';
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
+                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
-                    echo "Con  Materias : " . $codHomologante . "<br />";
+                    //echo "Con  Materias : " . $codHomologante . "<br />";
                 endif;
                 var_dump($numeroMateriasPorVer);die();
                 # code...

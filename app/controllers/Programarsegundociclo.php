@@ -56,7 +56,9 @@ class Programarsegundociclo extends Controller{
                         $creditoMateria = $materia['creditos'];
                         $ciclo = $materia['ciclo'];
                         $consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
-                        var_dump($consultaPrerequisitos->fetchAll());die();
+                        $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
+                        $prerequisitos =  $fetchPrerequisistos['prerequisito'];
+                        var_dump($prerequisitos);die();
                     endforeach;
                     echo "Con  Materias : " . $codHomologante . "<br />";
                 endif;

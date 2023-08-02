@@ -48,6 +48,12 @@ class Programarsegundociclo extends Controller{
                     //exit();
                 }
                 $orden2=1;
+
+                if($numeroMateriasPorVer):
+                    echo "Sin  Materias : " . $codHomologante . "<br />";
+                else:
+                    echo "Con  Materias : " . $codHomologante . "<br />";
+                endif;
                 var_dump($numeroMateriasPorVer);die();
                 # code...
             }

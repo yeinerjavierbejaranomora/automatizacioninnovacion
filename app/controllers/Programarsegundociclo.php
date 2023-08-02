@@ -50,7 +50,7 @@ class Programarsegundociclo extends Controller{
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);*/
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
-                    foreach($numeroMateriasPorVer as $materia):
+                    foreach($consultaMateriasPorVer as $materia):
                         var_dump($materia);die();
                     endforeach;
                     echo "Con  Materias : " . $codHomologante . "<br />";

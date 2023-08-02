@@ -110,4 +110,16 @@ class ProgramarSegundoCicloModel{
             return false;
         }
     }
+
+    public function consultaPrerequisitos($codMateria,$programaHomologante){
+        try {
+            $consultaPrerequisitos = $this->db->connect()->prepare("SELECT prerequisito FROM mallaCurricular WHERE codigoCurso=? AND codprograma = ?");
+            $consultaPrerequisitos->bindParam(1,$codMateria,PDO::PARAM_STR);
+            $consultaPrerequisitos->bindParam(2,$programaHomologante,PDO::PARAM_STR);
+            $consultaPrerequisitos->execute();
+            return $consultaPrerequisitos;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

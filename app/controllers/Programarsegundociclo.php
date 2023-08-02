@@ -51,7 +51,12 @@ class Programarsegundociclo extends Controller{
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
                     foreach($consultaMateriasPorVer as $materia):
-                        var_dump($materia);die();
+                        $codBanner = $materia['codBanner'];
+                        $codMateria = $materia['codMateria'];
+                        $creditoMateria = $materia['creditos'];
+                        $ciclo = $materia['ciclo'];
+                        $consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
+                        var_dump($consultaPrerequisitos->fetchAll());die();
                     endforeach;
                     echo "Con  Materias : " . $codHomologante . "<br />";
                 endif;

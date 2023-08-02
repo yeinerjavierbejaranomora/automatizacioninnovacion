@@ -8,7 +8,9 @@ class Programarsegundociclo extends Controller{
         $this->model = $this->model("ProgramarSegundoCicloModel");
     }
 
-    public function inicio(){
+
+
+    public function segundociclo(){
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

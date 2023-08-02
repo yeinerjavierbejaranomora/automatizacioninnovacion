@@ -112,7 +112,9 @@ class Programarsegundociclo extends Controller{
                                 echo $insertPlaneada . "<br />";
                             endif;*/
                         else:
-                            //$consultaEstaPlaneacion
+                            $prerequisitos = '"'.$prerequisitos.'"';
+                            $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
+                            var_dump($estaPlaneacion->fetcAll());
                             echo $prerequisitos."<br>";
                         endif;
                         //var_dump($prerequisitos);die();

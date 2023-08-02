@@ -25,7 +25,12 @@ class Programarsegundociclo extends Controller{
         endif;
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
-        var_dump(ceil($numEstudiantes/20));die();
+        $divEstudiantes = ceil($numEstudiantes/20);
+        for ($i=0; $i < $divEstudiantes; $i++) { 
+            echo date('Y-m-d H:i:s');
+            sleep(55);
+            
+        }
     }
 
 

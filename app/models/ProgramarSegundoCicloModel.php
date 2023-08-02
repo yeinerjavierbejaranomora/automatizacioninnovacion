@@ -187,4 +187,15 @@ class ProgramarSegundoCicloModel{
             return false;
         }
     }
+
+    public function estaPorVer($prerequisitos,$codBanner){
+        try {
+            $consultaEstaPorVer = $this->db->connect()->prepare("SELECT `codMateria` FROM `materiasPorVer` WHERE `codMateria` IN ($prerequisitos)  AND `codBanner` = ? ORDER BY `id` ASC LIMIT 1");
+            $consultaEstaPorVer->bindParam(1,$codBanner,PDO::PARAM_STR);
+            $consultaEstaPorVer->execute();
+            return $consultaEstaPorVer;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

@@ -99,7 +99,7 @@ class ProgramarSegundoCicloModel{
 
     public function updateEstudinate($idHomologante,$codHomologante){
         try {
-            $updateEstudiante = $this->db->connect()->prepare("");
+            $updateEstudiante = $this->db->connect()->prepare("UPDATE `estudiantes` SET `programado_ciclo2`='OK' WHERE `id` = ? AND `homologante` = ?");
             $updateEstudiante->bindParam(1,$idHomologante,PDO::PARAM_INT);
             $updateEstudiante->bindParam(2,$codHomologante,PDO::PARAM_INT);
             $updateEstudiante->execute();

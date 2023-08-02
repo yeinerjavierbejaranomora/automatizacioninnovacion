@@ -59,4 +59,17 @@ class ProgramarSegundoCicloModel{
             return false;
         }
     }
+
+    public function materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas){
+        try {
+            $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mv.codBanner, mv.codMateria, mv.orden, mc.creditos, mc.ciclo FROM materiasPorVer mv INNER JOIN mallaCurricular mc ON mv.codMateria=mc.codigoCurso WHERE codBanner=? AND mv.codprograma = ? AND mc.codprograma = ? AND mv.codMateria NOT IN ($materias_planeadas) ORDER BY mv.orden ASC");
+            $consultaMateriasPorVer->bindParam(1,$codHomologante,PDO::PARAM_INT);
+            $consultaMateriasPorVer->bindParam(2,$programaHomologante,PDO::PARAM_STR);
+            $consultaMateriasPorVer->bindParam(3,$programaHomologante,PDO::PARAM_STR);
+            $consultaMateriasPorVer->execute();
+            return $consultaMateriasPorVer;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

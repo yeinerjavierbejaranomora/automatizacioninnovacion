@@ -9,6 +9,10 @@ class Programarsegundociclo extends Controller{
     }
 
 
+    public function inicio(){
+
+    }
+
 
     public function segundociclo(){
         $periodos = $this->model->periodos();
@@ -152,7 +156,7 @@ class Programarsegundociclo extends Controller{
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                    echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "<br />";
+                    echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
                 endif;
 
             }

@@ -26,7 +26,10 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
-                var_dump($estudiante);die();
+                $idHomologante = $estudiante['id'];
+                $codHomologante = $estudiante['homologante'];
+                $programaHomologante = $estudiante['programa'];
+                var_dump($idHomologante,$codHomologante,$programaHomologante);die();
                 # code...
             }
         else:

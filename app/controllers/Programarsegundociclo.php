@@ -42,7 +42,7 @@ class Programarsegundociclo extends Controller{
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
 
-                if($consultaMateriasPorVer ->rowCount() > 1) {
+                if($consultaMateriasPorVer->rowCount() > 1) {
                     echo "Materias por ver de: " . $codHomologante . " -> " . $consultaMateriasPorVer . "<br />";
                     die("Error 2 : no se pudo realizar la consulta materias por ver de " . $codHomologante);
                     //exit();

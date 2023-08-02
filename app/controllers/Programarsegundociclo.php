@@ -114,7 +114,7 @@ class Programarsegundociclo extends Controller{
                         else:
                             $prerequisitos = '"'.$prerequisitos.'"';
                             $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
-                            var_dump($estaPlaneacion->fetcAll());
+                            var_dump($estaPlaneacion->fetchAll());
                             echo $prerequisitos."<br>";
                         endif;
                         //var_dump($prerequisitos);die();

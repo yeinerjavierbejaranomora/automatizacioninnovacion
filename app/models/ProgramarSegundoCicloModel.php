@@ -72,4 +72,15 @@ class ProgramarSegundoCicloModel{
             return false;
         }
     }
+
+    public function getCreditosplaneados($codHomologante){
+        try {
+            $consultaCreditosplaneados = $this->db->connect()->prepare("SELECT p.codBanner, SUM(mc.creditos) AS CreditosPlaneados FROM mallaCurricular mc INNER JOIN planeacion p ON mc.codigoCurso=p.codMateria WHERE p.codBanner=? AND mc.codprograma=p.codprograma group by p.codbanner");
+            $consultaCreditosplaneados->bindValue(1,$codHomologante,PDO::PARAM_INT);
+            $consultaCreditosplaneados->execute();
+            return $consultaCreditosplaneados;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

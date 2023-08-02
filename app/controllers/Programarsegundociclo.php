@@ -38,7 +38,8 @@ class Programarsegundociclo extends Controller{
                 $materias_planeadas = substr($materias_planeadas, 0, -1);
 	            $materias_planeadas = ($materias_planeadas=='') ? "'n-a'" : $materias_planeadas;
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
-                var_dump($consultaMateriasPorVer->fetchAll());die();
+                $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
+                var_dump($numeroCreditos->fetchAll());die();
                 # code...
             }
         else:

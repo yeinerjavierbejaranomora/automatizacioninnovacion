@@ -31,7 +31,7 @@ class Mafireplica  extends Controller{
             foreach($datosMafi as $estudiante):
                 $codigoBanner = $estudiante['idbanner'];
                 $nombre = $estudiante['primer_apellido'];
-                $programa = $estudiante['programa'];
+                $programa = $estudiante['codprograma'];
                 $bolsa = $estudiante['ruta_academica'];
                 $operador = $estudiante['operador'];
                 $nodo = 'nodo';

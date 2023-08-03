@@ -38,7 +38,7 @@ class ProgramarPrimerCicloModel{
     public function getEstudiantesNum($offset,$marcaIngreso){
         //var_dump($marcaIngreso);die();
         try {
-            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante` FROM `estudiantes` 
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK' 
             AND `programado_ciclo1` IS NULL 

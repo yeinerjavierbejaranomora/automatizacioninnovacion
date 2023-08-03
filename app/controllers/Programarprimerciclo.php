@@ -39,35 +39,35 @@ class Programarprimerciclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        // var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $limit = 500;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
             //sleep(10);
-            $this->primerciclo($limit);
+            $this->primerciclo($limit,$marcaIngreso,$offset);
         }
     }
 
-    public function primerciclo($limit){
-        $periodos = $this->model->periodos();
+    public function primerciclo($limit,$marcaIngreso,$offset){
+        /*$periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
-        $marcaIngreso = trim($marcaIngreso, ",");
+        $marcaIngreso = trim($marcaIngreso, ",");*/
         // Dividir la cadena en elementos individuales
         /*$marcaIngreso = explode(",", $marcaIngreso);
         // Convertir cada elemento en un número
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
         //var_dump($marcaIngreso);die();
 
-        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        /*$log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
-        endif;
+        endif;*/
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):

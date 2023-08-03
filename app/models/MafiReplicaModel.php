@@ -51,7 +51,7 @@ class MafiReplicaModel{
 
     public function programaActivo($codigoBanner,$periodo){
         try {
-            $consultaProgramaActivo = $this->db->connect()->prepare("SELECT pp.estado AS `programaActivo` FROM `datosMafiReplica` dmr INNER JOIN programasPeriodos pp ON pp.codPrograma=dmr.programa WHERE dmr.idbanner = ? AND pp.periodo = ? ORDER BY pp.`id` ASC LIMIT 1");
+            $consultaProgramaActivo = $this->db->connect()->prepare("SELECT pp.estado AS `programaActivo` FROM `datosMafiReplica` dmr INNER JOIN programasPeriodos pp ON pp.codPrograma=dmr.codprograma  WHERE dmr.idbanner = ? AND pp.periodo = ? ORDER BY pp.`id` ASC LIMIT 1");
             $consultaProgramaActivo->bindParam(1,$codigoBanner,PDO::PARAM_INT);
             $consultaProgramaActivo->bindParam(2,$periodo,PDO::PARAM_INT);
             $consultaProgramaActivo->execute();

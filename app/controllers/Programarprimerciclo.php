@@ -38,6 +38,7 @@ class Programarprimerciclo extends Controller{
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
+        var_dump($marcaIngreso);die();
         $marcaIngreso = trim($marcaIngreso, ",");
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $limit = 500;

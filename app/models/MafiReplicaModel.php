@@ -33,11 +33,11 @@ class MafiReplicaModel{
         //var_dump($offset);die();
         try {
             $consultaDataMafiReplica = $this->db->connect()->prepare("SELECT dmr.*,p.nivelFormacion FROM `datosMafiReplica` dmr 
-            INNER JOIN periodo pe ON pe.periodos=dmr.periodo
-            INNER JOIN programas p ON p.codprograma=dmr.programa
+            INNER JOIN periodo pe ON pe.periodos=dmr.periodo 
+            INNER JOIN programas p ON p.codprograma=dmr.codprograma 
             WHERE dmr.id > ? 
-            AND pe.periodoActivo = 1
-            ORDER BY dmr.id ASC 
+            AND pe.periodoActivo = 1 
+            ORDER BY dmr.id ASC  
             limit ?");
             $consultaDataMafiReplica->bindValue(1,$offset,PDO::PARAM_INT);
             $consultaDataMafiReplica->bindValue(2,$limit,PDO::PARAM_INT);

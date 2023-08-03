@@ -73,7 +73,7 @@ class MafiReplicaModel{
     }
 
     public function insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion){
-        var_dump($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion);die();
+        //var_dump($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion);die();
         //try {
             $insertarEstudiante = $this->db->connect()->prepare("INSERT INTO `estudiantes` SET 
                                                                             `homologante` = ?, 

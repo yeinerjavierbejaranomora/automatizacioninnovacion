@@ -40,6 +40,7 @@ class Mafireplica  extends Controller{
                 $nivelFormacion = $estudiante['nivelFormacion'];
                 //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso,-2);
+                var_dump($periodo);die();
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;

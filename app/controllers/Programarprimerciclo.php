@@ -42,8 +42,8 @@ class Programarprimerciclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $limit = 50;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
+        $programacion = [];
         for ($i=0; $i < $numEstudinates; $i++) { 
-            $programacion = [];
             //sleep(10);
             //$this->primerciclo($limit);
             $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
@@ -171,8 +171,8 @@ class Programarprimerciclo extends Controller{
                     $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                     var_dump($programacion);
-                    die();
                 endforeach;
+                die();
             endif;
             var_dump($i,$estudiantes->rowCount(),"<br>");
         }

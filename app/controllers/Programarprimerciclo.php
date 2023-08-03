@@ -170,10 +170,10 @@ class Programarprimerciclo extends Controller{
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
-                    var_dump($programacion);
                 endforeach;
-                die();
             endif;
+            var_dump($programacion);
+            die();
             var_dump($i,$estudiantes->rowCount(),"<br>");
         }
         die();

@@ -125,7 +125,7 @@ class Programarprimerciclo extends Controller{
                                 $semestre = 1;
                                 $programada = '';
                                 //$insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
-                                $programacion = [
+                                $programacion[] = [
                                     'codBanner'=> $codBanner, 
                                     'codMateria'=> $codMateria, 
                                     'orden'=> $orden, 
@@ -146,7 +146,7 @@ class Programarprimerciclo extends Controller{
                                 $semestre = 1;
                                 $programada = '';
                                 //$insertarPlaneacion = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa);
-                                $programacion = [
+                                $programacion[] = [
                                     'codBanner'=> $codBanner, 
                                     'codMateria'=> $codMateria, 
                                     'orden'=> $orden, 

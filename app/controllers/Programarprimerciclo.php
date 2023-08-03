@@ -172,10 +172,10 @@ class Programarprimerciclo extends Controller{
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                 endforeach;
             endif;
-            var_dump($programacion);
-            die();
-            var_dump($i,$estudiantes->rowCount(),"<br>");
+            //var_dump($i,$estudiantes->rowCount(),"<br>");
         }
+        var_dump($programacion);
+        die();
         die();
     }
 

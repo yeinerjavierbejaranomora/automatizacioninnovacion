@@ -42,8 +42,8 @@ class Programarprimerciclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $limit = 50;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
-        $programacion = [];
         for ($i=0; $i < $numEstudinates; $i++) { 
+            $programacion = [];
             //sleep(10);
             //$this->primerciclo($limit);
             $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
@@ -132,7 +132,7 @@ class Programarprimerciclo extends Controller{
                                     'semestre'=> $semestre, 
                                     'programada'=> $programa, 
                                     'codprograma'=> $programa, 
-                                    'fecha_registr' => date('Y-m-d H:i:s'),
+                                    'fecha_registro' => date('Y-m-d H:i:s'),
                                 ];
                                 $cuentaCursosCiclo1++;
                             endif;
@@ -153,7 +153,7 @@ class Programarprimerciclo extends Controller{
                                     'semestre'=> $semestre, 
                                     'programada'=> $programa, 
                                     'codprograma'=> $programa, 
-                                    'fecha_registr' => date('Y-m-d H:i:s'),
+                                    'fecha_registro' => date('Y-m-d H:i:s'),
                                 ];
                                 $cuentaCursosCiclo1++;
                             endif;

@@ -9,8 +9,8 @@ class Mafireplica  extends Controller{
 
     public function datamafireplica(){
         $log = $this->model->log('Insert','estudiantes');
-        var_dump($log->rowCount());die();
         $logFecth = $log->fetch(PDO::FETCH_ASSOC);
+        var_dump($logFecth);die();
         if(!empty($logFecth)):
             $offset = $logFecth['idFin'];
         else:

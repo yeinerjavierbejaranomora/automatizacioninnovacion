@@ -8,7 +8,7 @@ class MafiReplicaModel{
 
     public function numeroDatosMafi($offset){
         try {
-            $consultaDataMafiReplica =$this->db->connect()->prepare("SELECT COUNT(`idbanner`) as `totalEstudiantes` FROM `datosMafiReplica` dmr INNER JOIN programas p ON p.codprograma=dmr.programa INNER JOIN periodo pe ON pe.periodos=dmr.periodo WHERE dmr.id > ? AND pe.periodoActivo = 1 ORDER BY dmr.id ASC");
+            $consultaDataMafiReplica =$this->db->connect()->prepare("SELECT COUNT(`idbanner`) as `totalEstudiantes` FROM `datosMafiReplica` dmr INNER JOIN periodo pe ON pe.periodos=dmr.periodo WHERE dmr.id > ? AND pe.periodoActivo = 1 ORDER BY dmr.id ASC");
             $consultaDataMafiReplica->bindValue(1,$offset,PDO::PARAM_INT);
             $consultaDataMafiReplica->execute();
             return $consultaDataMafiReplica;

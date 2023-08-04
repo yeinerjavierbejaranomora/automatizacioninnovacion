@@ -60,13 +60,13 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 $tipoEstudiante = $estudiante['tipo_estudiante'];
                 $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante,$programaHomologante);
-                var_dump($materiasPlaneadas->fetchAll());die();
                 $materias_planeadas='';
                 foreach($materiasPlaneadas as $materia):
                     $codmateria= $materia['codMateria'];
                     $materias_planeadas = $materias_planeadas . "'" . $codmateria . "',";
                 endforeach;
                 $materias_planeadas = substr($materias_planeadas, 0, -1);
+                var_dump($materias_planeadas);die();
 	            $materias_planeadas = ($materias_planeadas=='') ? "'n-a'" : $materias_planeadas;
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
                 $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);

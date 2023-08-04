@@ -156,6 +156,7 @@ class ProgramarSegundoCicloModel{
     }
 
     public function estaPlaneacion($codMateria,$codBanner){
+        var_dump($codMateria,$codBanner);die();
         try {
             $consultaEstaPlaneacion= $this->db->connect()->prepare("SELECT codMateria FROM planeacion WHERE codMateria=? AND codBanner=?");
             $consultaEstaPlaneacion->bindValue(1,$codMateria,PDO::PARAM_STR);

@@ -16,7 +16,7 @@ class Programarsegundociclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-
+var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -28,8 +28,6 @@ class Programarsegundociclo extends Controller{
         //var_dump($numEstudiantes);die();
         $divEstudiantes = ceil($numEstudiantes/20);
         for ($i=0; $i < 10; $i++) {
-            echo date('Y-m-d H:i:s') . "-->" . $i;
-            // sleep(40);
 
         }
     }

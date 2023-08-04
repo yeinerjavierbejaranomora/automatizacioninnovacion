@@ -8,7 +8,7 @@ class ProgramarSegundoCicloModel{
 
     public function periodos(){
         try {
-            $consultaPeriodo = $this->db->connect()->prepare("SELECT * FROM `periodo` WHERE `periodoActivo` = 1");
+            $consultaPeriodo = $this->db->connect()->prepare("SELECT `periodos` FROM `periodo` WHERE `periodoActivo` = 1");
             $consultaPeriodo->execute();
             return $consultaPeriodo;
         } catch (PDOException $e) {
@@ -18,7 +18,7 @@ class ProgramarSegundoCicloModel{
 
     public function logAplicacion($accion,$tabla){
         try {
-            $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logAplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");
+            $consultaLog = $this->db->connect()->prepare("SELECT `idFin` FROM `logAplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");
             $consultaLog->bindValue(1,$accion,PDO::PARAM_STR);
             $consultaLog->bindValue(2,$tabla,PDO::PARAM_STR);
             $consultaLog->execute();

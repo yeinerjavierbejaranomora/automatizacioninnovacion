@@ -27,7 +27,7 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
-        var_dump($numEstudiantes);die();
+        //var_dump($numEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
             $this->segundociclo($offset,$marcaIngreso,$limit);
         }
@@ -52,6 +52,7 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
+                var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;

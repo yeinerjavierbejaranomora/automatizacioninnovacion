@@ -27,7 +27,7 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
-        // var_dump($divEstudiantes);die();
+        var_dump($divEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
             $this->segundociclo($offset,$marcaIngreso,$limit);
         }

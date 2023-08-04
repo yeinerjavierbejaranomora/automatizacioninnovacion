@@ -91,6 +91,21 @@ class Materiasporver extends Controller{
             echo "No hay estudiantes TRANSFERENTES <br>";die();
         endif;
     }
+    
+    public function estudiantesantiguos(){
+        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        if($log->rowCount() == 0):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
+        $limit = 1000;
+        $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
+        for ($i=0; $i < $numDivEstudiantes; $i++) :
+            $this->antiguos($offset,$limit);
+        endfor;
+    }
 
     public function antiguos($offset,$limit){
         /*$log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
@@ -147,18 +162,5 @@ class Materiasporver extends Controller{
         endif;
     }
 
-    public function estudiantesantiguos(){
-        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
-        if($log->rowCount() == 0):
-            $offset =0;
-        else:
-            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
-        endif;
-        $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
-        $limit = 1000;
-        $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
-        for ($i=0; $i < $numDivEstudiantes; $i++) :
-            $this->antiguos($offset,$limit);
-        endfor;
-    }
+    
 }

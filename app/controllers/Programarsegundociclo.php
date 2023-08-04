@@ -52,6 +52,7 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
+                var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;
@@ -60,7 +61,6 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 $tipoEstudiante = $estudiante['tipo_estudiante'];
                 $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante,$programaHomologante);
-                var_dump($materiasPlaneadas->fetchAll());die();
                 $materias_planeadas='';
                 foreach($materiasPlaneadas as $materia):
                     $codmateria= $materia['codMateria'];

@@ -10,7 +10,7 @@ class MateriasPorVerModel{
 
     public function logAplicacion($accion,$tabla){
         try {
-            $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logaplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");
+            $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logAplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");
             $consultaLog->bindValue(1,$accion,PDO::PARAM_STR);
             $consultaLog->bindValue(2,$tabla,PDO::PARAM_STR);
             $consultaLog->execute();
@@ -22,7 +22,7 @@ class MateriasPorVerModel{
 
     public function falatntesPrimerIngreso($offset){
         try {
-            $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT * FROM `estudiantes` 
+            $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`marca_ingreso` FROM `estudiantes` 
             WHERE `id` > ? 
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'PRIMER%'  

@@ -73,6 +73,7 @@ class Programarsegundociclo extends Controller{
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 //var_dump($numeroCreditos);die();
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
+                var_dump($numeroMateriasPorVer);die();
                 $ruta = $estudiante['bolsa'];
                 if ($ruta != '') :
                     $ruta = 1;

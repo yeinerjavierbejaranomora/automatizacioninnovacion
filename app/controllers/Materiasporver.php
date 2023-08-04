@@ -159,13 +159,14 @@ class Materiasporver extends Controller{
         endif;
     }
 
-    public function estudiantesAntiguos(){
+    public function estudiantesantiguos(){
         $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
-        if(!$log):
+        if($log->rowCount() == 0):
             $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 1000;
+        $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
+        var_dump($totalEstudiantesAntiguos->fetchAll());die();
     }
 }

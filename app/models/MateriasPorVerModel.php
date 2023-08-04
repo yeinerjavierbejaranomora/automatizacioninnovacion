@@ -204,8 +204,29 @@ class MateriasPorVerModel{
 
     public function totalEstudiantes($offset){
         try {
-            $consultaTotalEstudiantes = $this->db->connect()->prepare("SELECT COUNT(`id`) AS `total` FROM `estudiantes` WHERE `id` > ? AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL OR `tipo_estudiante` = 'REINGRESO' AND `programaActivo` IS NULL AND `materias_faltantes` IS NULL ORDER BY `id` ASC");
+            $consultaTotalEstudiantes = $this->db->connect()->prepare("SELECT COUNT(`id`) AS `total` FROM `estudiantes`
+            WHERE `id` > ?
+            AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
+            AND `programaActivo` IS NULL
+            AND `materias_faltantes` IS NULL
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `observacion` IS NULL
+            OR `id` > ?
+            AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
+            AND `programaActivo` IS NULL
+            AND `materias_faltantes` IS NULL
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `observacion` IS NULL
+            OR `id` > ? 
+            AND `tipo_estudiante` = 'REINGRESO'
+            AND `programaActivo` IS NULL
+            AND `materias_faltantes` IS NULL
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `observacion` IS NULL
+            ORDER BY `id` ASC");
             $consultaTotalEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaTotalEstudiantes->bindParam(2,$offset,PDO::PARAM_INT);
+            $consultaTotalEstudiantes->bindParam(3,$offset,PDO::PARAM_INT);
             $consultaTotalEstudiantes->execute();
             return $consultaTotalEstudiantes->fetch(PDO::FETCH_ASSOC)['total'];
         } catch (PDOException $e) {

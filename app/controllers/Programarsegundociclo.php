@@ -25,8 +25,7 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/20);
-        var_dump($divEstudiantes);die();
-        for ($i=0; $i < 10; $i++) {
+        for ($i=0; $i < $divEstudiantes; $i++) {
 
         }
     }
@@ -39,7 +38,7 @@ class Programarsegundociclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-
+        var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -120,7 +119,7 @@ class Programarsegundociclo extends Controller{
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
-                    $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+                    //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
                     foreach($consultaMateriasPorVer as $materia):

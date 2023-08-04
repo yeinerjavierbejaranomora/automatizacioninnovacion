@@ -40,7 +40,7 @@ class Programarsegundociclo extends Controller{
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
-        $marcaIngreso = trim($marcaIngreso, ",");
+        $marcaIngreso = trim($marcaIngreso, ",");*/
         
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
@@ -48,7 +48,7 @@ class Programarsegundociclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 20;*/
+        $limit = 20;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
@@ -68,11 +68,11 @@ class Programarsegundociclo extends Controller{
                 endforeach;
                 $materias_planeadas = substr($materias_planeadas, 0, -1);
 	            $materias_planeadas = ($materias_planeadas=='') ? "'n-a'" : $materias_planeadas;
-                var_dump($materias_planeadas);die();
+                //var_dump($materias_planeadas);die();
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
                 $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
-                var_dump($numeroCreditos);die();
+                //var_dump($numeroCreditos);die();
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
                 
                 $ruta = $estudiante['bolsa'];
@@ -142,7 +142,7 @@ class Programarsegundociclo extends Controller{
                         $prerequisitos = $materia['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
-                        var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
+                        //var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
                             $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();

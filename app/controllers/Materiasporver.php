@@ -9,7 +9,7 @@ class Materiasporver extends Controller{
 
     public function primeringreso(){
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
-        if(!$log):
+        if($log->rowCount() == 0):
             $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];

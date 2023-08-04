@@ -109,7 +109,7 @@ class Programarsegundociclo extends Controller{
                 $cicloReglaNegocio = 2;
                 $reglasNegocioConsulta = $this->model->getReglasNegocio($programaHomologante,$ruta,$tipoEstudiante,$cicloReglaNegocio);
                 $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
-                var_dump($reglasNegocio);die();
+                
                 $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                 $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
                 $orden2 = 1;
@@ -130,6 +130,7 @@ class Programarsegundociclo extends Controller{
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
                     foreach($consultaMateriasPorVer as $materia):
+                        var_dump($materia);die();
                         $codBanner = $materia['codBanner'];
                         $codMateria = $materia['codMateria'];
                         $creditoMateria = $materia['creditos'];

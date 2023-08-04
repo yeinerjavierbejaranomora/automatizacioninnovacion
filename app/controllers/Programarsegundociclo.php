@@ -16,16 +16,18 @@ class Programarsegundociclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        // var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
+        $limit = 500;
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
-        $divEstudiantes = ceil($numEstudiantes/20);
+        $divEstudiantes = ceil($numEstudiantes/$limit);
+        var_dump($divEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
 
         }

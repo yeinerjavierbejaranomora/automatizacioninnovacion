@@ -49,7 +49,7 @@ class Materiasporver extends Controller{
 
     public function transferentes(){
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
-        if(!$log):
+        if($log->rowCount() == 0):
             $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
@@ -106,7 +106,7 @@ class Materiasporver extends Controller{
             var_dump("No hay estudiantes antiguos");die();
         endif;*/
         $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
-        if(!$log):
+        if($log->rowCount() == 0):
             $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];

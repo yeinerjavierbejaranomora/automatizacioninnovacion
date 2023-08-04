@@ -66,7 +66,8 @@ class ProgramarSegundoCicloModel{
 
     public function materiasPlaneadas($codHomologante,$programaHomologante){
         try {
-            $consultaMateriasplaneadas = $this->db->connect()->prepare("SELECT p.codBanner, p.codMateria FROM planeacion p INNER JOIN mallaCurricular mc ON p.codMateria=mc.codigoCurso WHERE codBanner=? AND p.codprograma = ? AND mc.codprograma = ?");
+            //$consultaMateriasplaneadas = $this->db->connect()->prepare("SELECT p.codBanner, p.codMateria FROM planeacion p INNER JOIN mallaCurricular mc ON p.codMateria=mc.codigoCurso WHERE codBanner=? AND p.codprograma = ? AND mc.codprograma = ?");
+            $consultaMateriasplaneadas = $this->db->connect()->prepare("SELECT p.codMateria FROM planeacion p INNER JOIN mallaCurricular mc ON p.codMateria=mc.codigoCurso WHERE codBanner=? AND p.codprograma = ? AND mc.codprograma = ?");
             $consultaMateriasplaneadas->bindValue(1,$codHomologante,PDO::PARAM_INT);
             $consultaMateriasplaneadas->bindValue(2,$programaHomologante,PDO::PARAM_STR);
             $consultaMateriasplaneadas->bindValue(3,$programaHomologante,PDO::PARAM_STR);

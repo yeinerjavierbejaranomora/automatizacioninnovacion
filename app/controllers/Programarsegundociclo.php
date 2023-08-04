@@ -27,15 +27,15 @@ class Programarsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
-        var_dump($divEstudiantes);die();
+        // var_dump($divEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
-
+            $this->segundociclo($offset,$marcaIngreso,$limit);
         }
     }
 
 
-    public function segundociclo(){
-        $periodos = $this->model->periodos();
+    public function segundociclo($offset,$marcaIngreso,$limit){
+        /*$periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
@@ -48,7 +48,7 @@ class Programarsegundociclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 20;
+        $limit = 20;*/
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
@@ -176,7 +176,7 @@ class Programarsegundociclo extends Controller{
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
-                    $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+                    //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
                 endif;
 

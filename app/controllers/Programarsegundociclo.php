@@ -29,12 +29,12 @@ class Programarsegundociclo extends Controller{
         $divEstudiantes = ceil($numEstudiantes/$limit);
         //var_dump($numEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
-            $this->segundociclo($offset,$marcaIngreso,$limit);
+            $this->segundociclo($marcaIngreso,$limit);
         }
     }
 
 
-    public function segundociclo($offset,$marcaIngreso,$limit){
+    public function segundociclo($marcaIngreso,$limit){
         /*$periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

@@ -71,7 +71,7 @@ class Programarsegundociclo extends Controller{
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
                 $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
-                //var_dump($numeroCreditos);die();
+                var_dump($numeroCreditos);die();
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
                 
                 $ruta = $estudiante['bolsa'];

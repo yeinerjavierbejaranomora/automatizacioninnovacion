@@ -72,7 +72,7 @@ class MafiReplicaModel{
         }
     }
 
-    public function insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion){
+    public function insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion,$sello){
         //var_dump($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observacion);die();
         try {
             $insertarEstudiante = $this->db->connect()->prepare("INSERT INTO `estudiantes` SET 
@@ -82,7 +82,8 @@ class MafiReplicaModel{
                                                                             `bolsa` = ?, 
                                                                             `operador` = ?, 
                                                                             `nodo` = ?, 
-                                                                            `tipo_estudiante` = ?,  
+                                                                            `tipo_estudiante` = ?, 
+                                                                            `sello` = ? , 
                                                                             `tiene_historial` = ?, 
                                                                             `programaActivo` = ?, 
                                                                             `observacion` = ?, 
@@ -96,10 +97,11 @@ class MafiReplicaModel{
             $insertarEstudiante->bindValue(5,$operador,PDO::PARAM_STR);
             $insertarEstudiante->bindValue(6,$nodo,PDO::PARAM_STR);
             $insertarEstudiante->bindValue(7,$tipoEstudiante,PDO::PARAM_STR);
-            $insertarEstudiante->bindValue(8,$tieneHistorial,PDO::PARAM_STR);
-            $insertarEstudiante->bindValue(9,$programaAbrio,PDO::PARAM_STR);
-            $insertarEstudiante->bindValue(10,$observacion,PDO::PARAM_STR);
-            $insertarEstudiante->bindValue(11,$marcaIngreso,PDO::PARAM_STR);
+            $insertarEstudiante->bindValue(8,$sello,PDO::PARAM_STR);
+            $insertarEstudiante->bindValue(9,$tieneHistorial,PDO::PARAM_STR);
+            $insertarEstudiante->bindValue(10,$programaAbrio,PDO::PARAM_STR);
+            $insertarEstudiante->bindValue(11,$observacion,PDO::PARAM_STR);
+            $insertarEstudiante->bindValue(12,$marcaIngreso,PDO::PARAM_STR);
             $insertarEstudiante->execute();
             //var_dump($insertarEstudiante);die();
             return $insertarEstudiante;

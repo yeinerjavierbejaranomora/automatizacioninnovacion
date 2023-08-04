@@ -33,7 +33,7 @@ class Programarprimerciclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $offset = 6013;
+        // $offset = 6013;
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

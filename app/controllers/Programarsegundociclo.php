@@ -67,9 +67,9 @@ class Programarsegundociclo extends Controller{
                     $materias_planeadas = $materias_planeadas . "'" . $codmateria . "',";
                 endforeach;
                 $materias_planeadas = substr($materias_planeadas, 0, -1);
-                var_dump($materias_planeadas);die();
 	            $materias_planeadas = ($materias_planeadas=='') ? "'n-a'" : $materias_planeadas;
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
+                var_dump($consultaMateriasPorVer->fetchAll());die();
                 $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();

@@ -202,6 +202,25 @@ class MateriasPorVerModel{
             return false;
         }
     }
+    
+    public function historialMoodle($codBanner){
+        try {
+            $data=[];
+            $consultaHistorial = $this->db->connect()->prepare("SELECT `codMateria`,`codprograma`,`nota` FROM `datos_moodle` WHERE `idbanner` = ?");
+            $consultaHistorial->bindParam(1,$codBanner,PDO::PARAM_INT);
+            $consultaHistorial->execute();
+            foreach($consultaHistorial as $historial):
+                $data[] = [
+                    'codMateria'=>$historial['codMateria'],
+                    'codprograma'=>$historial['codprograma'],
+                    'nota'=>$historial['nota'],
+                ];
+            endforeach;
+            return $data;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 
     public function totalEstudiantes($offset){
         try {

@@ -194,6 +194,7 @@ class MateriasPorVerModel{
                 $data[] = [
                     'codMateria'=>$historial['codMateria'],
                     'codprograma'=>$historial['codprograma'],
+                    'nota'=>$historial['nota'],
                 ];
             endforeach;
             return $data;

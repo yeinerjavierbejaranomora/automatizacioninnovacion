@@ -155,7 +155,7 @@ class Materiasporver extends Controller{
                     });
                     var_dump($diffMoodle);
                 else:
-                    var_dump($diff);
+                    //var_dump($diff);
                 endif;
                 die();
                 /*$cantidadDiff = count($diff);

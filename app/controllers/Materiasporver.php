@@ -154,10 +154,9 @@ class Materiasporver extends Controller{
                     $diff = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
-                    var_dump($diff);die();
-                else:
+                    //var_dump($diff);die();
                 endif;
-                /*$cantidadDiff = count($diff);
+                $cantidadDiff = count($diff);
                 if(count($diff) > 0):
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
                     if (count($diff) == $insertMateriaPorVer) :
@@ -178,7 +177,7 @@ class Materiasporver extends Controller{
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudianteEA = $this->model->upateEstuianteAntiguo($estudiante['id'],$codBanner);
                     echo "estudiante vio todo". $codBanner."<br>";
-                endif;*/
+                endif;
             endforeach;
         else:
             echo "No hay estudiantes ANTIGUOS,ni PSEUDO INGRESO O REINGRESO <br>";

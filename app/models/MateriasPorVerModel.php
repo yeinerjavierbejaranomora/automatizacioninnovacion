@@ -204,7 +204,7 @@ class MateriasPorVerModel{
     }
     
     public function historialMoodle($codBanner){
-        //try {
+        try {
             $data=[];
             $consultaHistorial = $this->db->connect()->prepare("SELECT `codigomateria`,`Nombrecorto`,`Nota_Acumulada` FROM `datos_moodle` WHERE `Id_Banner` = ?");
             $consultaHistorial->bindParam(1,$codBanner,PDO::PARAM_INT);
@@ -212,18 +212,16 @@ class MateriasPorVerModel{
             foreach($consultaHistorial as $historial):
                 $programa = explode('_',$historial['Nombrecorto']);
                 $codprograma = $programa[1];
-                var_dump($codprograma);
                 $data[] = [
                     'codMateria'=>$historial['codMateria'],
-                    'codprograma'=>$historial['codprograma'],
+                    'codprograma'=>$codprograma,
                     'nota'=>$historial['nota'],
                 ];
             endforeach;
-            die();
-           /* return $data;
+            return $data;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 
     public function totalEstudiantes($offset){

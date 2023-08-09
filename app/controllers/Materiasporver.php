@@ -73,14 +73,22 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 $historialMoodle = $this->model->historialMoodle($codBanner);
-                $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
-                    return $a['codMateria'] <=> $b['codMateria'];
-                });
                 var_dump(count($historialMoodle));die();
-                $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
-                $registroMPV = $registroMPV + $insertMateriaPorVer;
-                if(count($diff) == $insertMateriaPorVer):
-                    $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
+                if(count($historialMoodle) > 0 ):
+                    $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
+                        return $a['codMateria'] <=> $b['codMateria'];
+                    });
+                    $insertMateriaPorVer = $this->model->insertMateriaPorVer($diffMoodle);
+                    $registroMPV = $registroMPV + $insertMateriaPorVer;
+                    if(count($diffMoodle) == $insertMateriaPorVer):
+                        $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
+                    endif;
+                else:
+                    $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
+                    $registroMPV = $registroMPV + $insertMateriaPorVer;
+                    if(count($diff) == $insertMateriaPorVer):
+                        $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
+                    endif;
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];

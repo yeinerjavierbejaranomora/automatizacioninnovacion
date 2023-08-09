@@ -206,11 +206,11 @@ class MateriasPorVerModel{
     public function historialMoodle($codBanner){
         try {
             $data=[];
-            $consultaHistorial = $this->db->connect()->prepare("SELECT `codigomateria`,`Nombrecorto`,`Nota_Acumulada` FROM `datos_moodle` WHERE `Id_Banner` = ?");
+            $consultaHistorial = $this->db->connect()->prepare("SELECT `codigomateria`,`Grupo`,`Nota_Acumulada` FROM `datos_moodle` WHERE `Id_Banner` = ?");
             $consultaHistorial->bindParam(1,$codBanner,PDO::PARAM_INT);
             $consultaHistorial->execute();
             foreach($consultaHistorial as $historial):
-                $programa = explode('_',$historial['Nombrecorto']);
+                $programa = explode('_',$historial['Grupo']);
                 $codprograma = $programa[1];
                 $data[] = [
                     'codMateria'=>$historial['codigomateria'],

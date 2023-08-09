@@ -187,7 +187,7 @@ class MateriasPorVerModel{
     public function historial($codBanner){
         try {
             $data=[];
-            $consultaHistorial = $this->db->connect()->prepare("SELECT `codMateria`,`codprograma` FROM `historialAcademico` WHERE `codBanner` = ? AND `codMateria` != 'na'");
+            $consultaHistorial = $this->db->connect()->prepare("SELECT `codMateria`,`codprograma`,`nota` FROM `historialAcademico` WHERE `codBanner` = ? AND `codMateria` != 'na'");
             $consultaHistorial->bindParam(1,$codBanner,PDO::PARAM_INT);
             $consultaHistorial->execute();
             foreach($consultaHistorial as $historial):

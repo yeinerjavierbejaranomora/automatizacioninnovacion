@@ -212,7 +212,7 @@ class MateriasPorVerModel{
             foreach($consultaHistorial as $historial):
                 $programa = explode('_',$historial['Grupo']);
                 $codprograma = $programa[1];
-                if ($historial['Nota_Acumulada'] >= 3) :
+                if ($historial['Nota_Acumulada'] >= 3 && $historial['Nota_Acumulada'] != 'Sin Actividad') :
                     $data[] = [
                         'codMateria' => $historial['codigomateria'],
                         'codprograma' => $codprograma,

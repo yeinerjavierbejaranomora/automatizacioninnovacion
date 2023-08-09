@@ -69,10 +69,10 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
                 $historial = $this->model->historial($codBanner);
-                var_dump($historial);die();
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
+                var_dump($diff);die();
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
                 $registroMPV = $registroMPV + $insertMateriaPorVer;
                 if(count($diff) == $insertMateriaPorVer):

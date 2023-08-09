@@ -210,7 +210,7 @@ class MateriasPorVerModel{
             $consultaHistorial->bindParam(1,$codBanner,PDO::PARAM_INT);
             $consultaHistorial->execute();
             foreach($consultaHistorial as $historial):
-                var_dump($historial['Nombrecorto']);die();
+                var_dump(explode('_',$historial['Nombrecorto']));die();
                 $data[] = [
                     'codMateria'=>$historial['codMateria'],
                     'codprograma'=>$historial['codprograma'],

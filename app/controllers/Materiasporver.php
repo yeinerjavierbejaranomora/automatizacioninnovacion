@@ -150,10 +150,10 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 if(count($historialMoodle) > 0 ):
-                    $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
+                    $diff = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
-                    var_dump($diffMoodle);die();
+                    var_dump($diff);die();
                 else:
                 endif;
                 /*$cantidadDiff = count($diff);

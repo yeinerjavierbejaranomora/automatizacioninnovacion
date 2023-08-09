@@ -212,11 +212,13 @@ class MateriasPorVerModel{
             foreach($consultaHistorial as $historial):
                 $programa = explode('_',$historial['Grupo']);
                 $codprograma = $programa[1];
-                $data[] = [
-                    'codMateria'=>$historial['codigomateria'],
-                    'codprograma'=>$codprograma,
-                    'nota'=>$historial['Nota_Acumulada'],
-                ];
+                if ($historial['Nota_Acumulada'] >= '3') :
+                    $data[] = [
+                        'codMateria' => $historial['codigomateria'],
+                        'codprograma' => $codprograma,
+                        'nota' => $historial['Nota_Acumulada'],
+                    ];
+                endif;
             endforeach;
             return $data;
         } catch (PDOException $e) {

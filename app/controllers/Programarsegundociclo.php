@@ -53,11 +53,8 @@ class Programarsegundociclo extends Controller{
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];
-                if($programaHomologante != 'PPSV'):
-                    echo "No es PPSV <br>";
-                else:
-                    echo "1Es PPSV <br>";
-                endif;
+                if ($programaHomologante != 'PPSV') :
+
                 //var_dump($estudiante);die();
                 /*$fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
@@ -145,7 +142,7 @@ class Programarsegundociclo extends Controller{
                         /*$consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
-                        /*$prerequisitos = $materia['prerequisito'];
+                /*$prerequisitos = $materia['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
                         if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
@@ -196,11 +193,17 @@ class Programarsegundociclo extends Controller{
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                     // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
                 endif;*/
-
+                else :
+                    $this->programarOrden($estudiante);
+                endif;
             }
             die();
         else:
             echo "No hay estudiantes de segundo ciclo para programar <br>";
         endif;
+    }
+
+    public function programarOrden($estudiante){
+        var_dump($estudiante);die();
     }
 }

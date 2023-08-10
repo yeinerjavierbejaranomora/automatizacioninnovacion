@@ -114,6 +114,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
+        var_dump($totalEstudiantesAntiguos);die();
         $limit = 1000;
         $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
         for ($i=0; $i < $numDivEstudiantes; $i++) :

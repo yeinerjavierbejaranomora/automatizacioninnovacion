@@ -242,7 +242,10 @@ class Programarprimerciclo extends Controller{
         $cicloReglaNegocio = 1;
         $reglasNegocioConsulta = $this->model->getReglasNegocio($programa, $ruta, $tipoEstudiante, $cicloReglaNegocio);
         $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
-        var_dump($reglasNegocio);die();
+        $numeroCreditosPermitidos = $reglasNegocio['creditos'];
+        $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
+        $orden = 1;
+        var_dump($programa,$materiasPorVer->fetchAll());die();
     }
 
 }

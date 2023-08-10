@@ -261,6 +261,11 @@ class Programarsegundociclo extends Controller{
         $numeroCreditosPermitidos = $reglasNegocio['creditos'];
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden2 = 1;
+        if ($numeroMateriasPorVer == 0) :
+            echo "No tiene materias";
+        else:
+            echo "Tiene materias";
+        endif;
         var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();
     }
 }

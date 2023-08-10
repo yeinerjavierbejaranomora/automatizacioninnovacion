@@ -264,7 +264,7 @@ class Programarprimerciclo extends Controller{
                     $cuentaCursosCiclo1++;
                 endif;
             else:
-                /*$prerequisitos = '"' . $prerequisitos . '"';
+                $prerequisitos = '"' . $prerequisitos . '"';
                 $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
                 $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
                 if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
@@ -273,7 +273,7 @@ class Programarprimerciclo extends Controller{
                     $programada = '';
                     $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                     $cuentaCursosCiclo1++;
-                endif;*/
+                endif;
             endif;
         endforeach;
         $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);

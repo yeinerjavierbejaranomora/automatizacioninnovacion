@@ -42,7 +42,7 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         // var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        var_dump($estudiantes->rowCount());die();
+        //var_dump($estudiantes->rowCount());die();
         $limit = 500;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
@@ -74,13 +74,18 @@ class Programarprimerciclo extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach($estudiantes as $estudiante):
-                var_dump($estudiante);die();
-                $fechaInicio = date('Y-m-d H:i:s');
+                //var_dump($estudiante);die();
+                $programa = $estudiante['programa'];
+                if($programa != 'PPSV'):
+                    echo "No es PPSV";die();
+                else:
+                    echo "Es PPSV";die();
+                endif;
+                /*$fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];
-                $programa = $estudiante['programa'];
                 $ruta = $estudiante['bolsa'];
                 if ($ruta != '') :
                     $ruta = 1;
@@ -144,7 +149,7 @@ class Programarprimerciclo extends Controller{
                     $prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];*/
                     //echo $codMateria."-". $prerequisitos."<br>";
                     //var_dump($prerequisitos,"<br>");
-                    if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                    /*if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                         $estaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                         if ($estaPlaneacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                             $numeroCreditos = $numeroCreditos + $creditoMateria;
@@ -177,7 +182,7 @@ class Programarprimerciclo extends Controller{
                 $fecha = date('Y-m-d H:i:s');
                 $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                 //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
             endforeach;
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";

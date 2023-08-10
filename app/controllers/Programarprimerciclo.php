@@ -184,6 +184,7 @@ class Programarprimerciclo extends Controller{
                 //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                 echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
             endforeach;
+            die();
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

@@ -114,12 +114,16 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
-        var_dump($totalEstudiantesAntiguos);die();
-        $limit = 1000;
-        $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
-        for ($i=0; $i < $numDivEstudiantes; $i++) :
-            $this->antiguos($offset,$limit);
-        endfor;
+        if($totalEstudiantesAntiguos == 0):
+            echo "No hay estudiantes ANTIGUOS <br>";die();
+        else:
+            var_dump($totalEstudiantesAntiguos);die();
+            $limit = 1000;
+            $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
+            for ($i=0; $i < $numDivEstudiantes; $i++) :
+                $this->antiguos($offset,$limit);
+            endfor;
+        endif;
     }
 
     public function antiguos($offset,$limit){

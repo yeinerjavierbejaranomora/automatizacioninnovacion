@@ -149,7 +149,7 @@ class Programarsegundociclo extends Controller{
                             break;
                         endif;
                         //var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
-                        //var_dump($numeroCreditosTemp,$numeroCreditosPermitidos,$prerequisitos);die();
+                        var_dump($codMateria,$ciclo);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
                             $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
@@ -171,7 +171,6 @@ class Programarsegundociclo extends Controller{
                             $consultaEstaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
                             $fetchEstaPorVer = $consultaEstaPorVer->fetch(PDO::FETCH_ASSOC);
                             $estaPorVer = $fetchEstaPorVer['codMateria'];
-                            var_dump($estaPorVer);die();
                             if($preprogramado == '' && $estaPorVer == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2 && $numeroCreditos < $numeroCreditosPermitidos):
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;

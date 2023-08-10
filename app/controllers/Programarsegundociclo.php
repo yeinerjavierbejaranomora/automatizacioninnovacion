@@ -135,8 +135,49 @@ class Programarsegundociclo extends Controller{
                 else:
                     //var_dump($consultaMateriasPorVer->fetchAll());die();
                     foreach($consultaMateriasPorVer as $materia):
-                        var_dump($materia);
-                        
+                        $codBanner = $materia['codBanner'];
+                        $codMateria = $materia['codMateria'];
+                        $creditoMateria = $materia['creditos'];
+                        $ciclo = $materia['ciclo'];
+                        /*$consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
+                        $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
+                        $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
+                        $prerequisitos = $materia['prerequisito'];
+
+                        $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
+                        if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
+                            break;
+                        endif;
+                        //var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
+                        if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
+                            $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
+                            $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
+                            $codBanner=$codBanner;
+                            $planeada = $fetchEstaPlaneacion['codMateria'];
+
+                            if($planeada == '' && $numeroCreditos < $numeroCreditosPermitidos && $numeroCreditosTemp<=$numeroCreditosPermitidos):
+                                $numeroCreditos = $numeroCreditos + $creditoMateria;
+                                $semestre = 1;
+                                $programada = '';
+                                $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                                //echo $insertPlaneada . "<br />";
+                            endif;
+                        else:
+                            $prerequisitos = '"'.$prerequisitos.'"';
+                            $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
+                            $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC);
+                            $preprogramado = $fetchEstaPlaneacion['codMateria'];
+                            $consultaEstaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
+                            $fetchEstaPorVer = $consultaEstaPorVer->fetch(PDO::FETCH_ASSOC);
+                            $estaPorVer = $fetchEstaPorVer['codMateria'];
+                            if($preprogramado == '' && $estaPorVer == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2 && $numeroCreditos < $numeroCreditosPermitidos):
+                                $numeroCreditos = $numeroCreditos + $creditoMateria;
+                                $semestre = 1;
+                                $programada = '';
+                                $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                                //echo $insertPlaneada . "<br />";
+                            endif;
+                        endif;
                     endforeach;
                     die();
                     $orden2++;

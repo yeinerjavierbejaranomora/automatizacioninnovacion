@@ -27,7 +27,7 @@ class Programarprimerciclo extends Controller{
     }*/
 
     public function inicio(){
-        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -64,7 +64,7 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
         //var_dump($marcaIngreso);die();
 
-        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCiclo', 'planeacion');
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -174,7 +174,7 @@ class Programarprimerciclo extends Controller{
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
-                    $acccion = 'Insert-PlaneacionPrimerCiclo';
+                    $acccion = 'Insert-ProgramacionPrimerCiclo';
                     $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
@@ -279,7 +279,7 @@ class Programarprimerciclo extends Controller{
         $ultimoRegistroId = $estudiante['id'];
         $idBannerUltimoRegistro = $estudiante['homologante'];
         $fechaFin = date('Y-m-d H:i:s');
-        $acccion = 'Insert-PlaneacionPrimerCiclo';
+        $acccion = 'Insert-ProgramacionPrimerCiclo';
         $tablaAfectada = 'planeacion';
         $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programa.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
         $fecha = date('Y-m-d H:i:s');

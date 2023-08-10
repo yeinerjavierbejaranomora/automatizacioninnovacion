@@ -17,7 +17,7 @@ class Programarsegundociclo extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         // var_dump($marcaIngreso);die();
-        $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
+        $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -42,7 +42,7 @@ class Programarsegundociclo extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");*/
         
-        $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
+        $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -125,7 +125,7 @@ class Programarsegundociclo extends Controller{
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
-                    $acccion = 'Insert-PlaneacionSegundoCiclo';
+                    $acccion = 'Insert-ProgramacionSegundoCiclo';
                     $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
@@ -186,7 +186,7 @@ class Programarsegundociclo extends Controller{
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
-                    $acccion = 'Insert-PlaneacionSegundoCiclo';
+                    $acccion = 'Insert-ProgramacionSegundoCiclo';
                     $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
@@ -269,7 +269,7 @@ class Programarsegundociclo extends Controller{
             $ultimoRegistroId = $estudiante['id'];
             $idBannerUltimoRegistro = $estudiante['homologante'];
             $fechaFin = date('Y-m-d H:i:s');
-            $acccion = 'Insert-PlaneacionSegundoCiclo';
+            $acccion = 'Insert-ProgramacionSegundoCiclo';
             $tablaAfectada = 'planeacion';
             $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
             $fecha = date('Y-m-d H:i:s');
@@ -322,7 +322,7 @@ class Programarsegundociclo extends Controller{
             $ultimoRegistroId = $estudiante['id'];
             $idBannerUltimoRegistro = $estudiante['homologante'];
             $fechaFin = date('Y-m-d H:i:s');
-            $acccion = 'Insert-PlaneacionSegundoCiclo';
+            $acccion = 'Insert-ProgramacionSegundoCiclo';
             $tablaAfectada = 'planeacion';
             $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programaHomologante.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
             $fecha = date('Y-m-d H:i:s');

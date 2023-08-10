@@ -248,8 +248,8 @@ class Programarprimerciclo extends Controller{
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden = 1;
         foreach ($materiasPorVer as $materia) :
-           var_dump($materia,"<br>");
-            /*$codBanner = $materia['codBanner'];
+           //var_dump($materia,"<br>");
+            $codBanner = $materia['codBanner'];
             $codMateria = $materia['codMateria'];
             $creditoMateria = $materia['creditos'];
             $ciclo = $materia['ciclo'];
@@ -264,7 +264,7 @@ class Programarprimerciclo extends Controller{
                     $cuentaCursosCiclo1++;
                 endif;
             else:
-                $prerequisitos = '"' . $prerequisitos . '"';
+                /*$prerequisitos = '"' . $prerequisitos . '"';
                 $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
                 $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
                 if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
@@ -273,8 +273,8 @@ class Programarprimerciclo extends Controller{
                     $programada = '';
                     $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                     $cuentaCursosCiclo1++;
-                endif;
-            endif;*/
+                endif;*/
+            endif;
         endforeach;
         $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
         $ultimoRegistroId = $estudiante['id'];

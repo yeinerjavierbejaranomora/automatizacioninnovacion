@@ -234,7 +234,12 @@ class Programarprimerciclo extends Controller{
         $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
         $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
-        var_dump($numeroCreditos);die();
+        $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);
+        $sumaCreditosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['screditos'];
+        $sumaCreditosCiclo1 = $sumaCreditosCiclo1 == '' ? 0 : $sumaCreditosCiclo1;
+        $cuentaCursosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['ccursos'];
+        $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : (int)$cuentaCursosCiclo1;
+        var_dump($sumaCreditosCiclo1,$cuentaCursosCiclo1);die();
     }
 
 }

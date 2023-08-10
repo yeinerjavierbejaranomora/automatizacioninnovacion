@@ -253,7 +253,8 @@ class Programarprimerciclo extends Controller{
             $prerequisitos = $materia['prerequisito'];
             //var_dump($prerequisitos,$cuentaCursosCiclo1,$numeroMateriasPermitidos);die();
             if($prerequisitos == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos):
-                echo "sin prerequisitos. ".$prerequisitos."<br>";
+                $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
+                var_dump($estaPlaneacion);
             else:
                 echo "Con prerequisitos. ".$prerequisitos."<br>";
             endif;

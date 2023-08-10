@@ -233,7 +233,7 @@ class Programarprimerciclo extends Controller{
                 break;
         }
         $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
-        var_dump($materiasPorVer->fetchAll());die();
+        //var_dump($materiasPorVer->fetchAll());die();
         $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
         $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);
@@ -248,7 +248,7 @@ class Programarprimerciclo extends Controller{
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden = 1;
         foreach ($materiasPorVer as $materia) :
-            var_dump($materia);
+           echo $materia."<br>";
             $codBanner = $materia['codBanner'];
             $codMateria = $materia['codMateria'];
             $creditoMateria = $materia['creditos'];

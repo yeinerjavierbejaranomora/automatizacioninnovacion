@@ -262,7 +262,7 @@ class Programarprimerciclo extends Controller{
                     $cuentaCursosCiclo1++;
                 endif;*/
             else:
-                var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos);
+                var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos,"<br>");
             endif;
         endforeach;
         die();

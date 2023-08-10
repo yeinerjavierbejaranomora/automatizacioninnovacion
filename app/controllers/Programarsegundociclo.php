@@ -258,6 +258,6 @@ class Programarsegundociclo extends Controller{
         $cicloReglaNegocio = 2;
         $reglasNegocioConsulta = $this->model->getReglasNegocio($programaHomologante, $ruta, $tipoEstudiante, $cicloReglaNegocio);
         $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
-        var_dump($reglasNegocio->rowCount());die();
+        var_dump($reglasNegocio);die();
     }
 }

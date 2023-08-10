@@ -262,7 +262,10 @@ class Programarprimerciclo extends Controller{
                     $cuentaCursosCiclo1++;
                 endif;*/
             else:
-                var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos,"<br>");
+                $prerequisitos = '"' . $prerequisitos . '"';
+                $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
+                $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
+                var_dump("Cp",$estaPlaneacion->rowCount(),$estaPorVer->rowCount(),"<br>");
             endif;
         endforeach;
         die();

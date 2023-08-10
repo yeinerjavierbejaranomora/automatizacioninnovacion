@@ -133,9 +133,9 @@ class Programarsegundociclo extends Controller{
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
-                    var_dump($consultaMateriasPorVer->fetchAll());die();
+                    //var_dump($consultaMateriasPorVer->fetchAll());die();
                     foreach($consultaMateriasPorVer as $materia):
-                        
+                        var_dump($materia);die();
                         $codBanner = $materia['codBanner'];
                         $codMateria = $materia['codMateria'];
                         $creditoMateria = $materia['creditos'];

@@ -53,7 +53,11 @@ class Programarsegundociclo extends Controller{
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];
-                echo $programaHomologante. "<br>";
+                if($programaHomologante != 'PPSV'):
+                    echo "No es PPSV <br>";
+                else:
+                    echo "Es PPSV <br>";
+                endif;
                 //var_dump($estudiante);die();
                 /*$fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];

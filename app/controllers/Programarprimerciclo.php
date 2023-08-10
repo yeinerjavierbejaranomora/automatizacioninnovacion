@@ -182,13 +182,18 @@ class Programarprimerciclo extends Controller{
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                 else :
-                    echo "Es PPSV <br>";
+                    //echo "Es PPSV <br>";
+                    $this->programarOrden($estudiante);
                 endif;
             endforeach;
             die();
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;
+    }
+
+    public function programarOrden($estudiante){
+        var_dump($estudiante);die();
     }
 
 }

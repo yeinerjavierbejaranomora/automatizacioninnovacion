@@ -262,6 +262,7 @@ class Programarprimerciclo extends Controller{
                     $cuentaCursosCiclo1++;
                 endif;
             else:
+                $prerequisitos = trim($prerequisitos,'"');
                 $prerequisitos = '"' . $prerequisitos . '"';
                 $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
                 $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);

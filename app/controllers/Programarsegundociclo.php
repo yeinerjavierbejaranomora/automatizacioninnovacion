@@ -287,12 +287,14 @@ class Programarsegundociclo extends Controller{
                     break;
                 endif;
                 if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos):
-                    echo "Sin prerequisitos<br>";
+                    $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
+                    var_dump($consultaEstaPlaneacion->fetchAll());
                 else:
-                    echo "Con prerequisitos<br>";
+                    //echo "Con prerequisitos<br>";
                 endif;
             endforeach;
         endif;
+        die();
         var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();
     }
 }

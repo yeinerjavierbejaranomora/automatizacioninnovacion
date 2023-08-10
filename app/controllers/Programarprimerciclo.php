@@ -200,6 +200,7 @@ class Programarprimerciclo extends Controller{
         $codigoBanner = $estudiante['homologante'];
         $programa = $estudiante['programa'];
         $ruta = $estudiante['bolsa'];
+        var_dump($codigoBanner);die();
         if ($ruta != '') :
             $ruta = 1;
         else :

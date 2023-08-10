@@ -262,9 +262,32 @@ class Programarsegundociclo extends Controller{
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden2 = 1;
         if ($numeroMateriasPorVer == 0) :
-            echo "No tiene materias";
-        else:
-            echo "Tiene materias";
+            $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ', perteneciente al programa '.$programaHomologante.', no tiene materias por ver, segundo ciclo.';
+            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
+            $updateEstudinate = $this->model->updateEstudinate($idHomologante, $codHomologante);
+            $ultimoRegistroId = $estudiante['id'];
+            $idBannerUltimoRegistro = $estudiante['homologante'];
+            $fechaFin = date('Y-m-d H:i:s');
+            $acccion = 'Insert-PlaneacionSegundoCiclo';
+            $tablaAfectada = 'planeacion';
+            $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+            $fecha = date('Y-m-d H:i:s');
+            $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+            //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+            echo "Sin  Materias : " . $codHomologante . "<br />";
+        else :
+            foreach ($consultaMateriasPorVer as $materia) :
+                $codBanner = $materia['codBanner'];
+                $codMateria = $materia['codMateria'];
+                $creditoMateria = $materia['creditos'];
+                $ciclo = $materia['ciclo'];
+                $prerequisitos = $materia['prerequisito'];
+                $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
+                if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
+                    break;
+                endif;
+                var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos);
+            endforeach;
         endif;
         var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();
     }

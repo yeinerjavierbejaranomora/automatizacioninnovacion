@@ -143,7 +143,7 @@ class Programarprimerciclo extends Controller{
                         $creditoMateria = $materia['creditos'];
                         $ciclo = $materia['ciclo'];
                         $prerequisitos = $materia['prerequisito'];
-                        $prerequisitosConsulta = $this->model->prerequisitos($codMateria, $programa);
+                        //$prerequisitosConsulta = $this->model->prerequisitos($codMateria, $programa);
                         //$prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                         //echo $codMateria."-". $prerequisitos."<br>";
                         //var_dump($prerequisitos,"<br>");
@@ -245,8 +245,13 @@ class Programarprimerciclo extends Controller{
         $numeroCreditosPermitidos = $reglasNegocio['creditos'];
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden = 1;
-        foreach($materiasPorVer as $materia):
-            var_dump($materia);die();
+        foreach ($materiasPorVer as $materia) :
+            $codBanner = $materia['codBanner'];
+            $codMateria = $materia['codMateria'];
+            $creditoMateria = $materia['creditos'];
+            $ciclo = $materia['ciclo'];
+            $prerequisitos = $materia['prerequisito'];
+            var_dump($prerequisitos,$cuentaCursosCiclo1,$numeroMateriasPermitidos);die();
         endforeach;
     }
 

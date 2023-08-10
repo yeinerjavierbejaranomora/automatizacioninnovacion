@@ -180,7 +180,7 @@ class Programarsegundociclo extends Controller{
                             endif;
                         endif;
                     endforeach;
-                    die();
+                    // die();
                     $orden2++;
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     $ultimoRegistroId = $estudiante['id'];

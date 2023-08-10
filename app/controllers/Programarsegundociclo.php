@@ -307,12 +307,16 @@ class Programarsegundociclo extends Controller{
                     $consultaEstaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
                     $fetchEstaPorVer = $consultaEstaPorVer->fetch(PDO::FETCH_ASSOC);
                     $estaPorVer = $fetchEstaPorVer['codMateria'];
-                    var_dump($estaPorVer,"<br>");
-                    //echo "Con prerequisitos<br>";
+                    if($preprogramado == '' && $estaPorVer == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos &&  $numeroCreditos < $numeroCreditosPermitidos):
+                        $numeroCreditos = $numeroCreditos + $creditoMateria;
+                        $semestre = 1;
+                        $programada = '';
+                        $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                        //echo $insertPlaneada . "<br />";
+                    endif;
                 endif;
             endforeach;
         endif;
         die();
-        var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();
     }
 }

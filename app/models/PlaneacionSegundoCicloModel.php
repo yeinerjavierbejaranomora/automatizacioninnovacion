@@ -206,4 +206,32 @@ class PlaneacionSegundoCicloModel{
             return false;
         }
     }
+
+    public function insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante){
+        
+        try {
+            $fecha = date('Y-m-d H:i:s');
+            $insertPlaneacion = $this->db->connect()->prepare("INSERT INTO `planeacion` SET 
+            `codBanner`= ?, 
+            `codMateria`= ?, 
+            `orden`= ?, 
+            `semestre`= ?, 
+            `programada`= ?, 
+            `codprograma`= ?, 
+            `fecha_registro` = ?");
+            $insertPlaneacion->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $insertPlaneacion->bindValue(2,$codMateria,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(3,$orden2,PDO::PARAM_INT);
+            $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
+            $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(6,$programaHomologante,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertPlaneacion->execute();
+            if($insertPlaneacion):
+                return true;
+            endif;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

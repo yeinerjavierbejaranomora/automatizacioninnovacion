@@ -204,6 +204,14 @@ class Programarsegundociclo extends Controller{
     }
 
     public function programarOrden($estudiante){
-        var_dump($estudiante);die();
+        $fechaInicio = date('Y-m-d H:i:s');
+        $primerId = $estudiante['id'];
+        $ultimoRegistroId = 0;
+        $idHomologante = $estudiante['id'];
+        $codHomologante = $estudiante['homologante'];
+        $programaHomologante = $estudiante['programa'];
+        $tipoEstudiante = $estudiante['tipo_estudiante'];
+        $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante, $programaHomologante);
+        var_dump($materiasPlaneadas->fetchAll());die();
     }
 }

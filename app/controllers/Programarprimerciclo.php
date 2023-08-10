@@ -265,10 +265,26 @@ class Programarprimerciclo extends Controller{
                 $prerequisitos = '"' . $prerequisitos . '"';
                 $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
                 $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
-                var_dump("Cp",$estaPlaneacion->rowCount(),$estaPorVer->rowCount(),"<br>");
+                if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                    $numeroCreditos = $numeroCreditos + $creditoMateria;
+                    $semestre = 1;
+                    $programada = '';
+                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $cuentaCursosCiclo1++;
+                endif;
             endif;
         endforeach;
-        die();
+        $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+        $ultimoRegistroId = $estudiante['id'];
+        $idBannerUltimoRegistro = $estudiante['homologante'];
+        $fechaFin = date('Y-m-d H:i:s');
+        $acccion = 'Insert-PlaneacionPrimerCiclo';
+        $tablaAfectada = 'planeacion';
+        $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programa.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+        $fecha = date('Y-m-d H:i:s');
+        $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+        //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
     }
 
 }

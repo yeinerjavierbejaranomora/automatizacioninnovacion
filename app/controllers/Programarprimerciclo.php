@@ -131,7 +131,7 @@ class Programarprimerciclo extends Controller{
                     $numeroCreditosPermitidos = $reglasNegocio['creditos'];
                     $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
                     $orden = 1;
-                    var_dump($materiasPorVer->fetchAll());die();
+                    var_dump($cuentaCursosCiclo1);die();
 
                     foreach ($materiasPorVer as $materia) :
                         if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :

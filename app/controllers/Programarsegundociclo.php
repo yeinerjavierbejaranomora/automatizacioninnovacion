@@ -304,7 +304,7 @@ class Programarsegundociclo extends Controller{
                     $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
                     $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC);
                     $preprogramado = $fetchEstaPlaneacion['codMateria'];
-                    var_dump($preprogramado);die();
+                    var_dump($preprogramado);
                     //echo "Con prerequisitos<br>";
                 endif;
             endforeach;

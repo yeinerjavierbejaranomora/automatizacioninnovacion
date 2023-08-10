@@ -77,7 +77,7 @@ class Programarprimerciclo extends Controller{
                 //var_dump($estudiante);die();
                 $programa = $estudiante['programa'];
                 if ($programa != 'PPSV') :
-                    echo "No es PPSV <br>";
+                    //echo "No es PPSV <br>";
 
                     /*$fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];

@@ -232,7 +232,9 @@ class Programarprimerciclo extends Controller{
                 break;
         }
         $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
-        var_dump($materiasPorVer->fetchAll());die();
+        $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
+        $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
+        var_dump($numeroCreditos);die();
     }
 
 }

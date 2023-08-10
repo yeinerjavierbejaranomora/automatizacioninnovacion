@@ -247,6 +247,7 @@ class Programarprimerciclo extends Controller{
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden = 1;
         foreach ($materiasPorVer as $materia) :
+            var_dump($materia);die();
             $codBanner = $materia['codBanner'];
             $codMateria = $materia['codMateria'];
             $creditoMateria = $materia['creditos'];

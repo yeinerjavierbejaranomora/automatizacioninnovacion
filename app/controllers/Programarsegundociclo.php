@@ -163,6 +163,8 @@ class Programarsegundociclo extends Controller{
                                 //echo $insertPlaneada . "<br />";
                             endif;
                         else:
+                            $prerequisitos = trim($prerequisitos,'"');
+                            var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);
                             /*$prerequisitos = '"'.$prerequisitos.'"';
                             $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC);

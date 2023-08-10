@@ -143,9 +143,9 @@ class Programarsegundociclo extends Controller{
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
                         $prerequisitos = $materia['prerequisito'];
-                        var_dump($prerequisitos);die();
-
+                        
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
+                        var_dump($numeroCreditosTemp);die();
                         if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
                             break;
                         endif;

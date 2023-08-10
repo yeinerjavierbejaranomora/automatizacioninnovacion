@@ -286,7 +286,7 @@ class Programarsegundociclo extends Controller{
                 if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
                     break;
                 endif;
-                var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos);
+                var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos);die();
             endforeach;
         endif;
         var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();

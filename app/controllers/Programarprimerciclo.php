@@ -231,8 +231,7 @@ class Programarprimerciclo extends Controller{
                 # code...
                 break;
         }
-        $ciclo = [1, 12,2];
-        $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
+        $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
         var_dump($materiasPorVer->fetchAll());die();
     }
 

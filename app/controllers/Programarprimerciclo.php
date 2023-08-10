@@ -257,6 +257,7 @@ class Programarprimerciclo extends Controller{
             else:
                 echo "Con prerequisitos. ".$prerequisitos."<br>";
             endif;
+            die();
         endforeach;
     }
 

@@ -219,6 +219,7 @@ class Programarsegundociclo extends Controller{
         endforeach;
         $materias_planeadas = substr($materias_planeadas, 0, -1);
         $materias_planeadas = ($materias_planeadas == '') ? "'n-a'" : $materias_planeadas;
-        var_dump($materias_planeadas);die();
+        $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
+        var_dump($consultaMateriasPorVer->fetchAll());die();
     }
 }

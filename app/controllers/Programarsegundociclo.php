@@ -145,7 +145,7 @@ class Programarsegundociclo extends Controller{
                         $prerequisitos = $materia['prerequisito'];
                         
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
-                        var_dump($numeroCreditosTemp);die();
+                        var_dump($numeroCreditosTemp,$numeroCreditosPermitidos);die();
                         if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
                             break;
                         endif;

@@ -27,7 +27,7 @@ class Programarprimerciclo extends Controller{
     }*/
 
     public function inicio(){
-        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'planeacion');
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -42,7 +42,7 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         // var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        //var_dump($estudiantes->rowCount());die();
+        var_dump($estudiantes->rowCount());die();
         $limit = 500;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
@@ -64,7 +64,7 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = array_map('intval', $marcaIngreso);*/
         //var_dump($marcaIngreso);die();
 
-        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'planeacion');
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :

@@ -117,7 +117,7 @@ class Materiasporver extends Controller{
         if($totalEstudiantesAntiguos == 0):
             echo "No hay estudiantes ANTIGUOS <br>";die();
         else:
-            var_dump($totalEstudiantesAntiguos);die();
+            //var_dump($totalEstudiantesAntiguos);die();
             $limit = 1000;
             $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
             for ($i=0; $i < $numDivEstudiantes; $i++) :

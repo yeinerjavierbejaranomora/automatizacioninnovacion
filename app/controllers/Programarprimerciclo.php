@@ -200,7 +200,7 @@ class Programarprimerciclo extends Controller{
         $codigoBanner = $estudiante['homologante'];
         $programa = $estudiante['programa'];
         $ruta = $estudiante['bolsa'];
-        var_dump($codigoBanner);die();
+        
         if ($ruta != '') :
             $ruta = 1;
         else :
@@ -233,6 +233,7 @@ class Programarprimerciclo extends Controller{
                 break;
         }
         $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
+        var_dump($materiasPorVer->fetchAll());die();
         $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
         $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);

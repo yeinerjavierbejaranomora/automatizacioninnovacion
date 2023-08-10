@@ -133,6 +133,7 @@ class Programarsegundociclo extends Controller{
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo "Sin  Materias : " . $codHomologante . "<br />";
                 else:
+                    var_dump($consultaMateriasPorVer);die();
                     foreach($consultaMateriasPorVer as $materia):
                         
                         $codBanner = $materia['codBanner'];

@@ -222,6 +222,42 @@ class Programarsegundociclo extends Controller{
         $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
         $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
-        var_dump($numeroCreditos);die();
+        $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
+        $ruta = $estudiante['bolsa'];
+        if ($ruta != '') :
+            $ruta = 1;
+        else :
+            $ruta = 0;
+        endif;
+        $tipoEstudiante = $estudiante['tipo_estudiante'];
+
+        switch ($tipoEstudiante) {
+            case str_contains($tipoEstudiante, 'TRANSFERENTE'):
+                $tipoEstudiante = 'TRANSFERENTE';
+                break;
+            case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
+                $tipoEstudiante = 'PRIMER INGRESO';
+                break;
+            case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'REINGRESO'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
+                $tipoEstudiante = 'PRIMER INGRESO';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        $cicloReglaNegocio = 2;
+        $reglasNegocioConsulta = $this->model->getReglasNegocio($programaHomologante, $ruta, $tipoEstudiante, $cicloReglaNegocio);
+        $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
+        var_dump($reglasNegocio->rowCount());die();
     }
 }

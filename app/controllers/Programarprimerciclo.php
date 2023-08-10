@@ -251,7 +251,12 @@ class Programarprimerciclo extends Controller{
             $creditoMateria = $materia['creditos'];
             $ciclo = $materia['ciclo'];
             $prerequisitos = $materia['prerequisito'];
-            var_dump($prerequisitos,$cuentaCursosCiclo1,$numeroMateriasPermitidos);die();
+            //var_dump($prerequisitos,$cuentaCursosCiclo1,$numeroMateriasPermitidos);die();
+            if($prerequisitos == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos):
+                echo "sin prerequisitos<br>";
+            else:
+                echo "Con prerequisitos<br>";
+            endif;
         endforeach;
     }
 

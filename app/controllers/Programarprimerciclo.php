@@ -137,8 +137,8 @@ class Programarprimerciclo extends Controller{
                         if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :
                             break;
                         endif;
-                        echo $materia['prerequisito'],"<br>";
-                        /*$codBanner = $materia['codBanner'];
+                        
+                        $codBanner = $materia['codBanner'];
                         $codMateria = $materia['codMateria'];
                         $creditoMateria = $materia['creditos'];
                         $ciclo = $materia['ciclo'];
@@ -148,18 +148,19 @@ class Programarprimerciclo extends Controller{
                         //echo $codMateria."-". $prerequisitos."<br>";
                         //var_dump($prerequisitos,"<br>");
                         if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
-                            $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
+                            /*$estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
                             if ($estaPlaneacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
                                 $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                                 $cuentaCursosCiclo1++;
-                            endif;
+                            endif;*/
                         else :
                             //var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos);die();       
                             $prerequisitos = '"' . $prerequisitos . '"';
-                            $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
+                            echo $prerequisitos,"<br>";
+                            /*$estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
                             $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
                             if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
@@ -167,8 +168,8 @@ class Programarprimerciclo extends Controller{
                                 $programada = '';
                                 $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                                 $cuentaCursosCiclo1++;
-                            endif;
-                        endif;*/
+                            endif;*/
+                        endif;
                     endforeach;
                     die();
                     $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);

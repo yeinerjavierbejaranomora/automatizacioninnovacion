@@ -170,4 +170,102 @@ class Planeacionprimerciclo extends Controller{
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;
     }
+
+    public function programarOrden($estudiante){
+        $fechaInicio = date('Y-m-d H:i:s');
+        $primerId = $estudiante['id'];
+        $ultimoRegistroId = 0;
+        $idEstudiante = $estudiante['id'];
+        $codigoBanner = $estudiante['homologante'];
+        $programa = $estudiante['programa'];
+        $ruta = $estudiante['bolsa'];
+        
+        if ($ruta != '') :
+            $ruta = 1;
+        else :
+            $ruta = 0;
+        endif;
+        $tipoEstudiante = $estudiante['tipo_estudiante'];
+
+        switch ($tipoEstudiante) {
+            case str_contains($tipoEstudiante, 'TRANSFERENTE'):
+                $tipoEstudiante = 'TRANSFERENTE';
+                break;
+            case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
+                $tipoEstudiante = 'PRIMER INGRESO';
+                break;
+            case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'REINGRESO'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
+                $tipoEstudiante = 'PRIMER INGRESO';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
+        //var_dump($materiasPorVer->fetchAll());die();
+        $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
+        $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
+        $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);
+        $sumaCreditosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['screditos'];
+        $sumaCreditosCiclo1 = $sumaCreditosCiclo1 == '' ? 0 : $sumaCreditosCiclo1;
+        $cuentaCursosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['ccursos'];
+        $cuentaCursosCiclo1 = $cuentaCursosCiclo1 == 0 ? 0 : (int)$cuentaCursosCiclo1;
+        $cicloReglaNegocio = 1;
+        $reglasNegocioConsulta = $this->model->getReglasNegocio($programa, $ruta, $tipoEstudiante, $cicloReglaNegocio);
+        $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
+        $numeroCreditosPermitidos = $reglasNegocio['creditos'];
+        $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
+        $orden = 1;
+        foreach ($materiasPorVer as $materia) :
+           //var_dump($materia,"<br>");
+            $codBanner = $materia['codBanner'];
+            $codMateria = $materia['codMateria'];
+            $creditoMateria = $materia['creditos'];
+            $ciclo = $materia['ciclo'];
+            $prerequisitos = $materia['prerequisito'];
+            if($prerequisitos == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos):
+                $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
+                if ($estaPlaneacion->rowCount()  == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
+                    $numeroCreditos = $numeroCreditos + $creditoMateria;
+                    $semestre = 1;
+                    $programada = '';
+                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $cuentaCursosCiclo1++;
+                endif;
+            else:
+                $prerequisitos = trim($prerequisitos,'"');
+                $prerequisitos = '"' . $prerequisitos . '"';
+                $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
+                $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
+                if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                    $numeroCreditos = $numeroCreditos + $creditoMateria;
+                    $semestre = 1;
+                    $programada = '';
+                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $cuentaCursosCiclo1++;
+                endif;
+            endif;
+        endforeach;
+        $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+        $ultimoRegistroId = $estudiante['id'];
+        $idBannerUltimoRegistro = $estudiante['homologante'];
+        $fechaFin = date('Y-m-d H:i:s');
+        $acccion = 'Insert-PlaneacionPrimerCiclo';
+        $tablaAfectada = 'planeacion';
+        $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programa.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+        $fecha = date('Y-m-d H:i:s');
+        $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+        //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+    }
 }

@@ -135,7 +135,7 @@ class Programarsegundociclo extends Controller{
                 else:
                     //var_dump($consultaMateriasPorVer->fetchAll());die();
                     foreach($consultaMateriasPorVer as $materia):
-                        var_dump($materia);die();
+                        var_dump($materia);
                         $codBanner = $materia['codBanner'];
                         $codMateria = $materia['codMateria'];
                         $creditoMateria = $materia['creditos'];

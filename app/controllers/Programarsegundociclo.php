@@ -197,7 +197,6 @@ class Programarsegundociclo extends Controller{
                     $this->programarOrden($estudiante);
                 endif;
             }
-            die();
         else:
             echo "No hay estudiantes de segundo ciclo para programar <br>";
         endif;

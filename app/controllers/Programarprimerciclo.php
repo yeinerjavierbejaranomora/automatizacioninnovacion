@@ -248,8 +248,8 @@ class Programarprimerciclo extends Controller{
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden = 1;
         foreach ($materiasPorVer as $materia) :
-           var_dump($materia,"<br>");
-            /*$codBanner = $materia['codBanner'];
+           //var_dump($materia,"<br>");
+            $codBanner = $materia['codBanner'];
             $codMateria = $materia['codMateria'];
             $creditoMateria = $materia['creditos'];
             $ciclo = $materia['ciclo'];
@@ -274,9 +274,9 @@ class Programarprimerciclo extends Controller{
                     $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                     $cuentaCursosCiclo1++;
                 endif;
-            endif;*/
+            endif;
         endforeach;
-        /*$updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+        $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
         $ultimoRegistroId = $estudiante['id'];
         $idBannerUltimoRegistro = $estudiante['homologante'];
         $fechaFin = date('Y-m-d H:i:s');
@@ -286,7 +286,7 @@ class Programarprimerciclo extends Controller{
         $fecha = date('Y-m-d H:i:s');
         $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
         //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
+        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
         die();
     }
 

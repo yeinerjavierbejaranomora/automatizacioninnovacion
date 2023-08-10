@@ -193,7 +193,47 @@ class Programarprimerciclo extends Controller{
     }
 
     public function programarOrden($estudiante){
-        var_dump($estudiante);die();
+        $fechaInicio = date('Y-m-d H:i:s');
+        $primerId = $estudiante['id'];
+        $ultimoRegistroId = 0;
+        $idEstudiante = $estudiante['id'];
+        $codigoBanner = $estudiante['homologante'];
+        $programa = $estudiante['programa'];
+        $ruta = $estudiante['bolsa'];
+        if ($ruta != '') :
+            $ruta = 1;
+        else :
+            $ruta = 0;
+        endif;
+        $tipoEstudiante = $estudiante['tipo_estudiante'];
+
+        switch ($tipoEstudiante) {
+            case str_contains($tipoEstudiante, 'TRANSFERENTE'):
+                $tipoEstudiante = 'TRANSFERENTE';
+                break;
+            case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
+                $tipoEstudiante = 'PRIMER INGRESO';
+                break;
+            case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'REINGRESO'):
+                $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                break;
+            case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
+                $tipoEstudiante = 'PRIMER INGRESO';
+                break;
+
+            default:
+                # code...
+                break;
+        }
+        $ciclo = [1, 12];
+        $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
+        var_dump($materiasPorVer->fetchAll());die();
     }
 
 }

@@ -300,8 +300,11 @@ class Programarsegundociclo extends Controller{
                     endif;*/
                 else:
                     $prerequisitos = trim($prerequisitos,'"');
-                    $prerequisitos = '"'.$prerequisitos.'"';
-                    var_dump($prerequisitos);die();
+                    $prerequisitos = '"' . $prerequisitos . '"';
+                    $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
+                    $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC);
+                    $preprogramado = $fetchEstaPlaneacion['codMateria'];
+                    var_dump($preprogramado);die();
                     //echo "Con prerequisitos<br>";
                 endif;
             endforeach;

@@ -137,7 +137,7 @@ class Programarprimerciclo extends Controller{
                         if ($cuentaCursosCiclo1 >= $numeroMateriasPermitidos) :
                             break;
                         endif;
-                        var_dump($materia,$materia['prerequisito']);
+                        var_dump($materia['prerequisito']);
                         /*$codBanner = $materia['codBanner'];
                         $codMateria = $materia['codMateria'];
                         $creditoMateria = $materia['creditos'];

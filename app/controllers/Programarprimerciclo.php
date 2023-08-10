@@ -79,7 +79,7 @@ class Programarprimerciclo extends Controller{
                 if ($programa != 'PPSV') :
                     echo "No es PPSV <br>";
 
-                    $fechaInicio = date('Y-m-d H:i:s');
+                    /*$fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
@@ -180,7 +180,7 @@ class Programarprimerciclo extends Controller{
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                 else :
                     echo "Es PPSV <br>";
                 endif;

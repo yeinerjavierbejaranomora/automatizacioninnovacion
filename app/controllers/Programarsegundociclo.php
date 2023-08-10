@@ -286,7 +286,11 @@ class Programarsegundociclo extends Controller{
                 if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
                     break;
                 endif;
-                var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos);die();
+                if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos):
+                    echo "Sin prerequisitos<br>";
+                else:
+                    echo "Con prerequisitos<br>";
+                endif;
             endforeach;
         endif;
         var_dump($numeroCreditosPermitidos,$numeroMateriasPermitidos);die();

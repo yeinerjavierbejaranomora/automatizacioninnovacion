@@ -149,7 +149,7 @@ class Programarsegundociclo extends Controller{
                             break;
                         endif;
                         //var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
-                        var_dump($codMateria,$ciclo);die();
+                        var_dump($codMateria,$ciclo,$prerequisitos,"<br>");
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
                             $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
@@ -180,6 +180,7 @@ class Programarsegundociclo extends Controller{
                             endif;
                         endif;
                     endforeach;
+                    die();
                     $orden2++;
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     $ultimoRegistroId = $estudiante['id'];

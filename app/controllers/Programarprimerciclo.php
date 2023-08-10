@@ -254,14 +254,14 @@ class Programarprimerciclo extends Controller{
             $prerequisitos = $materia['prerequisito'];
             //var_dump($prerequisitos,$cuentaCursosCiclo1,$numeroMateriasPermitidos);die();
             if($prerequisitos == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos):
-                /*$estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
+                $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
                 if ($estaPlaneacion  == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
                     $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                     $cuentaCursosCiclo1++;
-                endif;*/
+                endif;
             else:
                 $prerequisitos = '"' . $prerequisitos . '"';
                 $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);

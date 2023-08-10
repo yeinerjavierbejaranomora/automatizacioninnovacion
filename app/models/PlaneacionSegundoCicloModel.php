@@ -44,4 +44,23 @@ class PlaneacionSegundoCicloModel{
             return false;
         }
     }
+
+    public function getEstudiantes($offset,$marcaIngreso,$limit){
+        try {
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM estudiantes 
+            WHERE `id` > ?
+            AND materias_faltantes='OK' 
+            AND planeado_ciclo1='OK' 
+            AND planeado_ciclo2 IS NULL 
+            AND marca_ingreso IN ($marcaIngreso) 
+            ORDER BY id ASC 
+            LIMIT ?");
+            $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstudiantes->bindParam(2,$limit,PDO::PARAM_INT);
+            $consultaEstudiantes->execute();
+            return $consultaEstudiantes;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

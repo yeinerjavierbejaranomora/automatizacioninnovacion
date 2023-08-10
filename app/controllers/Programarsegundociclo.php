@@ -56,7 +56,7 @@ class Programarsegundociclo extends Controller{
                 if($programaHomologante != 'PPSV'):
                     echo "No es PPSV <br>";
                 else:
-                    echo "Es PPSV <br>";
+                    echo "1Es PPSV <br>";
                 endif;
                 //var_dump($estudiante);die();
                 /*$fechaInicio = date('Y-m-d H:i:s');

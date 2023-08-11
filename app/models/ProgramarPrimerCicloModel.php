@@ -21,6 +21,8 @@ class ProgramarPrimerCicloModel{
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM `estudiantes` 
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK' 
+            AND `planeado_ciclo1` = 'OK' 
+            AND `planeado_ciclo2` = 'OK'  
             AND `programado_ciclo1` IS NULL 
             AND `programado_ciclo2` IS NULL 
             AND `marca_ingreso` IN ($marcaIngreso)
@@ -64,6 +66,17 @@ class ProgramarPrimerCicloModel{
             $consultaLog->bindValue(2,$tabla,PDO::PARAM_STR);
             $consultaLog->execute();
             return $consultaLog;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function materiasMoodle($codBanner){
+        try {
+            $consultaMateriaMoodle = $this->db->connect()->prepare("");
+            $consultaMateriaMoodle->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $consultaMateriaMoodle->execute();
+            return $consultaMateriaMoodle;
         } catch (PDOException $e) {
             return false;
         }

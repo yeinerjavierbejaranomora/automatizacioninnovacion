@@ -50,7 +50,7 @@ class Programarsegundociclo extends Controller{
                 if ($programaHomologante != 'PPSV') :
 
                     //var_dump($estudiante);die();
-                    /*$fechaInicio = date('Y-m-d H:i:s');
+                    $fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idHomologante = $estudiante['id'];
@@ -124,20 +124,20 @@ class Programarsegundociclo extends Controller{
                     $orden2 = 1;
 
                     if ($numeroMateriasPorVer == 0) :
-                    /*$mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
-                    $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
-                    $ultimoRegistroId = $estudiante['id'];
-                    $idBannerUltimoRegistro = $estudiante['homologante'];
-                    $fechaFin = date('Y-m-d H:i:s');
-                    $acccion = 'Insert-ProgramacionSegundoCiclo';
-                    $tablaAfectada = 'programacion';
-                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
-                    $fecha = date('Y-m-d H:i:s');
-                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
-                    //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                    echo "Sin  Materias : " . $codHomologante . "<br />";*/
-                    /*else :
+                        $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
+                        $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
+                        $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
+                        $ultimoRegistroId = $estudiante['id'];
+                        $idBannerUltimoRegistro = $estudiante['homologante'];
+                        $fechaFin = date('Y-m-d H:i:s');
+                        $acccion = 'Insert-ProgramacionSegundoCiclo';
+                        $tablaAfectada = 'programacion';
+                        $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                        $fecha = date('Y-m-d H:i:s');
+                        $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                        //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
+                        echo "Sin  Materias : " . $codHomologante . "<br />";
+                    else :
                         //var_dump($consultaMateriasPorVer->fetchAll());die();
                         foreach ($consultaMateriasPorVer as $materia) :
                             $codBanner = $materia['codBanner'];
@@ -147,7 +147,7 @@ class Programarsegundociclo extends Controller{
                             /*$consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
-                            /*$prerequisitos = $materia['prerequisito'];
+                            $prerequisitos = $materia['prerequisito'];
 
                             $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
                             if ($numeroCreditosTemp >= $numeroCreditosPermitidos) :
@@ -186,7 +186,7 @@ class Programarsegundociclo extends Controller{
                             endif;
                         endforeach;
                     // die();
-                    /*$orden2++;
+                    $orden2++;
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
@@ -199,7 +199,7 @@ class Programarsegundociclo extends Controller{
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                     // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
-                    endif;*/
+                    endif;
                 else :
                     $this->programarOrden($estudiante);
                 endif;
@@ -333,7 +333,7 @@ class Programarsegundociclo extends Controller{
                     endif;
                 endif;
             endforeach;
-            /*$orden2++;
+            $orden2++;
             $updateEstudinate = $this->model->updateEstudinate($idHomologante, $codHomologante);
             $ultimoRegistroId = $estudiante['id'];
             $idBannerUltimoRegistro = $estudiante['homologante'];
@@ -345,7 +345,7 @@ class Programarsegundociclo extends Controller{
             $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
             //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
             echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
-                    // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";*/
+                    // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
         endif;
     }
 }

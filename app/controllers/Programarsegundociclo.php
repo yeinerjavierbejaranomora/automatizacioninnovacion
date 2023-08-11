@@ -49,7 +49,7 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 if ($programaHomologante != 'PPSV') :
 
-                    //var_dump($estudiante);die();
+                    var_dump($estudiante);die();
                     /*$fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
@@ -201,7 +201,7 @@ class Programarsegundociclo extends Controller{
                     // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
                     endif;*/
                 else :
-                $this->programarOrden($estudiante);
+                //$this->programarOrden($estudiante);
                 endif;
             }
         else :

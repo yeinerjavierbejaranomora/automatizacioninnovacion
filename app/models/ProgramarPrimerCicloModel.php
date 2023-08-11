@@ -87,15 +87,15 @@ class ProgramarPrimerCicloModel{
         //try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN mallaCurricular m ON m.codigoCurso=mpv.codMateria
-            WHERE mpv.codBanner = '100074421'  
+            WHERE mpv.codBanner = 100074421  
             AND m.ciclo IN (1,12)
             AND mpv.codprograma = 'PPSV'
             AND m.codprograma = 'PPSV'
             /*AND mpv.codMateria NOT IN ('PSV22135','PSV22185')*/
             ORDER BY mpv.orden ASC");
-            $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
+            /*$consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);
-            $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);
+            $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);*/
             $consultaMateriasPorVer->execute();
             var_dump($consultaMateriasPorVer);die();
             /*return $consultaMateriasPorVer;

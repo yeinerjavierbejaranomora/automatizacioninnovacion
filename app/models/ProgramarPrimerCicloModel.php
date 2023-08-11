@@ -83,6 +83,7 @@ class ProgramarPrimerCicloModel{
     }
 
     public function materiasPorVer($codigoBanner,$ciclo,$programa){
+        var_dump($codigoBanner,$ciclo,$programa);die();
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN mallaCurricular m ON m.codigoCurso=mpv.codMateria

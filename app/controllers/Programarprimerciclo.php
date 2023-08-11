@@ -56,8 +56,8 @@ class Programarprimerciclo extends Controller{
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
-                    //$codigoBanner = $estudiante['homologante'];
-                    $codigoBanner = '100074421';
+                    $codigoBanner = $estudiante['homologante'];
+                    //$codigoBanner = 100074421;
                     $ruta = $estudiante['bolsa'];
                     if ($ruta != '') :
                         $ruta = 1;

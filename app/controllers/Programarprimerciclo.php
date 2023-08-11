@@ -93,7 +93,7 @@ class Programarprimerciclo extends Controller{
                     }
                     $ciclo = [1, 12];
                     $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
-                    $materias_moodle = "";
+                    $materias_moodle;
                     if ($materiasMoodleConsulta->rowCount() == 0) :
                         $materias_moodle = '""';
                     else :

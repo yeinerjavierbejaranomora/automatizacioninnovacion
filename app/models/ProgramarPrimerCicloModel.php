@@ -87,7 +87,7 @@ class ProgramarPrimerCicloModel{
         //try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN mallaCurricular m ON m.codigoCurso=mpv.codMateria
-            WHERE mpv.codBanner = 100074421  
+            WHERE mpv.codBanner = '100074421'  
             AND m.ciclo IN (1,12)
             AND mpv.codprograma = 'PPSV'
             AND m.codprograma = 'PPSV'

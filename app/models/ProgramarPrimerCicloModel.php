@@ -90,7 +90,7 @@ class ProgramarPrimerCicloModel{
             AND m.ciclo IN (1,12)
             AND mpv.codprograma = ?
             AND m.codprograma = ?
-            /*AND mpv.codMateria NOT IN ($materias_moodle)*/
+            AND mpv.codMateria NOT IN ($materias_moodle)
             ORDER BY mpv.orden ASC");
             $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);

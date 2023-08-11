@@ -93,7 +93,7 @@ class Programarprimerciclo extends Controller{
                     $ciclo = [1, 12];
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
                     var_dump($materiasPorVer->rowCount());
-                    $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
+                    /*$numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                     $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);
                     $sumaCreditosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['screditos'];
@@ -158,7 +158,7 @@ class Programarprimerciclo extends Controller{
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 else :
                     //$this->programarOrden($estudiante);
-                endif;
+                endif;*/
             endforeach;
             die();
         else:

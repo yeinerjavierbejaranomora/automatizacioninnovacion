@@ -73,7 +73,7 @@ class ProgramarPrimerCicloModel{
 
     public function materiasMoodle($codBanner){
         try {
-            $consultaMateriaMoodle = $this->db->connect()->prepare("");
+            $consultaMateriaMoodle = $this->db->connect()->prepare("SELECT `Id_Banner`,`Tipo_Estudiante`,`codigomateria`,`Nota_Acumulada` FROM `datos_moodle` WHERE `Id_Banner`= ? AND`Nota_Acumulada` >= '3' AND `Nota_Acumulada` != 'Sin Actividad'");
             $consultaMateriaMoodle->bindValue(1,$codBanner,PDO::PARAM_INT);
             $consultaMateriaMoodle->execute();
             return $consultaMateriaMoodle;

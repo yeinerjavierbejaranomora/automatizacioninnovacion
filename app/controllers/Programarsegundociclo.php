@@ -23,11 +23,11 @@ class Programarsegundociclo extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 500;
+        $limit = 2;
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
-        var_dump($numEstudiantes);die();
+        //var_dump($numEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
             $this->segundociclo($marcaIngreso,$limit);
         }
@@ -35,13 +35,7 @@ class Programarsegundociclo extends Controller{
 
 
     public function segundociclo($marcaIngreso,$limit){
-        /*$periodos = $this->model->periodos();
-        $marcaIngreso = "";
-        foreach ($periodos as $periodo) {
-            $marcaIngreso .= (int)$periodo['periodos'] . ",";
-        }
-        $marcaIngreso = trim($marcaIngreso, ",");*/
-        
+
         $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -50,6 +44,7 @@ class Programarsegundociclo extends Controller{
         endif;
         // $limit = 20;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];

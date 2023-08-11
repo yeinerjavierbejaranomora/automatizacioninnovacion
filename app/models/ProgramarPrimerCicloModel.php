@@ -93,11 +93,10 @@ class ProgramarPrimerCicloModel{
             AND m.codprograma = 'PPSV'
             AND mpv.codMateria NOT IN ('PSV22135','PSV22185')
             ORDER BY mpv.orden ASC");
-            /*$consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
+            $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);
-            $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);*/
+            $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->execute();
-            //var_dump($consultaMateriasPorVer->fetchAll());die();
             return $consultaMateriasPorVer;
         } catch (PDOException $e) {
             return false;

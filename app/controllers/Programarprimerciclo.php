@@ -26,7 +26,7 @@ class Programarprimerciclo extends Controller{
         //var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         //var_dump($estudiantes->rowCount());die();
-        $limit = 4;
+        $limit = 500;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
             //sleep(10);

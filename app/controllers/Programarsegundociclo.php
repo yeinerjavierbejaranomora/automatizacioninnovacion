@@ -82,9 +82,8 @@ class Programarsegundociclo extends Controller{
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 //var_dump($numeroCreditos);die();
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
-                var_dump($numeroMateriasPorVer);die();
                 
-                /*$ruta = $estudiante['bolsa'];
+                $ruta = $estudiante['bolsa'];
                 if ($ruta != '') :
                     $ruta = 1;
                 else:
@@ -125,7 +124,7 @@ class Programarsegundociclo extends Controller{
                 $orden2 = 1;
 
                 if ($numeroMateriasPorVer == 0) :
-                    $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
+                    /*$mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
                     $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     $ultimoRegistroId = $estudiante['id'];
@@ -137,7 +136,7 @@ class Programarsegundociclo extends Controller{
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                    echo "Sin  Materias : " . $codHomologante . "<br />";
+                    echo "Sin  Materias : " . $codHomologante . "<br />";*/
                 else:
                     //var_dump($consultaMateriasPorVer->fetchAll());die();
                     foreach($consultaMateriasPorVer as $materia):
@@ -148,13 +147,13 @@ class Programarsegundociclo extends Controller{
                         /*$consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
-                        /*$prerequisitos = $materia['prerequisito'];
+                        $prerequisitos = $materia['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
                         if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
                             break;
                         endif;
-                        //var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
+                        var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
                             $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
                             $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
@@ -187,7 +186,7 @@ class Programarsegundociclo extends Controller{
                         endif;
                     endforeach;
                     // die();
-                    $orden2++;
+                    /*$orden2++;
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];

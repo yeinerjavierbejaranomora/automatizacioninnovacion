@@ -132,7 +132,7 @@ class Programarprimerciclo extends Controller{
                         //$prerequisitosConsulta = $this->model->prerequisitos($codMateria, $programa);
                         //$prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                         //echo $codMateria."-". $prerequisitos."<br>";
-                        //var_dump($prerequisitos,"<br>");
+                        var_dump($prerequisitos,"<br>");
                         /*if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                             $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
                             if ($estaPlaneacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :

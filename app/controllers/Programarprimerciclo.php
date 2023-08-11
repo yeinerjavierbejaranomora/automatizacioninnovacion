@@ -104,7 +104,7 @@ class Programarprimerciclo extends Controller{
                     $materias_moodle = trim($materias_moodle, ",");
                     //var_dump($materias_moodle);die();
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa,$materias_moodle);
-                    var_dump($materiasPorVer->fetchAll());die();
+                    var_dump($materiasPorVer);die();
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                     $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);

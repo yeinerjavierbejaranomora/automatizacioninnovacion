@@ -91,7 +91,7 @@ class ProgramarPrimerCicloModel{
             AND m.ciclo IN (1,12)
             AND mpv.codprograma = 'PPSV'
             AND m.codprograma = 'PPSV'
-            /*AND mpv.codMateria NOT IN ('PSV22135','PSV22185')*/
+            AND mpv.codMateria NOT IN ('PSV22135','PSV22185')
             ORDER BY mpv.orden ASC");
             /*$consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);

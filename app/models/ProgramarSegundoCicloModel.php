@@ -56,7 +56,7 @@ class ProgramarSegundoCicloModel{
             AND `planeado_ciclo2` = 'OK'
             AND `programado_ciclo1`='OK' 
             AND `programado_ciclo2` IS NULL 
-            AND `marca_ingreso` IN (202306,202313,202333,202343,202353,202307,202316,202334,202344,202355) 
+            AND `marca_ingreso` IN ($marcaIngreso) 
             ORDER BY id ASC
             LIMIT ?");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);

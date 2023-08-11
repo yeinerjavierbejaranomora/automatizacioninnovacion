@@ -95,7 +95,7 @@ class Programarprimerciclo extends Controller{
                     $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
                     $materias_moodle = "";
                     foreach ($materiasMoodleConsulta as $materia) {
-                        $materias_moodle .= $materia['codigomateria'] . ",";
+                        $materias_moodle .= '"'.$materia['codigomateria'] . '",';
                     }
                     $materias_moodle = trim($materias_moodle, ",");
                     var_dump($materias_moodle);die();

@@ -47,12 +47,12 @@ class Programarprimerciclo extends Controller{
         //var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
-                var_dump($estudiante);die();
+                //var_dump($estudiante);die();
                 $programa = $estudiante['programa'];
                 if ($programa != 'PPSV') :
-                    //echo "No es PPSV <br>";
+                    echo "No es PPSV <br>";
 
-                    $fechaInicio = date('Y-m-d H:i:s');
+                    /*$fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
@@ -153,9 +153,9 @@ class Programarprimerciclo extends Controller{
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                 else :
-                    $this->programarOrden($estudiante);
+                    //$this->programarOrden($estudiante);
                 endif;
             endforeach;
         else:

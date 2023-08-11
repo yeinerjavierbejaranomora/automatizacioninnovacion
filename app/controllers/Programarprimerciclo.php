@@ -93,12 +93,16 @@ class Programarprimerciclo extends Controller{
                     }
                     $ciclo = [1, 12];
                     $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
-                    var_dump($materiasMoodleConsulta->rowCount());die();
                     $materias_moodle = "";
-                    foreach ($materiasMoodleConsulta as $materia) {
-                        $materias_moodle .= '"'.$materia['codigomateria'] . '",';
-                    }
+                    if ($materiasMoodleConsulta->rowCount() == 0) :
+                        $materias_moodle = '""';
+                    else :
+                        foreach ($materiasMoodleConsulta as $materia) {
+                            $materias_moodle .= '"' . $materia['codigomateria'] . '",';
+                        }
+                    endif;
                     $materias_moodle = trim($materias_moodle, ",");
+                    var_dump($materias_moodle);
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa,$materias_moodle);
                     var_dump($materiasPorVer);die();
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);

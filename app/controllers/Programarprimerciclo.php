@@ -49,7 +49,7 @@ class Programarprimerciclo extends Controller{
             foreach ($estudiantes as $estudiante) :
                 //var_dump($estudiante);die();
                 $programa = $estudiante['programa'];
-                //if ($programa != 'PPSV') :
+                if ($programa != 'PPSV') :
                     //echo "No es PPSV <br>";
 
                     $fechaInicio = date('Y-m-d H:i:s');
@@ -167,9 +167,9 @@ class Programarprimerciclo extends Controller{
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
-                /*else :
+                else :
                     //$this->programarOrden($estudiante);
-                endif;*/
+                endif;
             endforeach;
             die();
         else:

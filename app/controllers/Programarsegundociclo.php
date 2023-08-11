@@ -210,7 +210,6 @@ class Programarsegundociclo extends Controller{
     }
 
     public function programarOrden($estudiante){
-        var_dump($estudiante);die();
         $fechaInicio = date('Y-m-d H:i:s');
         $primerId = $estudiante['id'];
         $ultimoRegistroId = 0;

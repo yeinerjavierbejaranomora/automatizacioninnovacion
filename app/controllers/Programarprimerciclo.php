@@ -52,7 +52,7 @@ class Programarprimerciclo extends Controller{
                 if ($programa != 'PPSV') :
                     //echo "No es PPSV <br>";
 
-                    /*$fechaInicio = date('Y-m-d H:i:s');
+                    $fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
@@ -161,12 +161,12 @@ class Programarprimerciclo extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-ProgramacionPrimerCiclo';
-                    $tablaAfectada = 'planeacion';
-                    $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $tablaAfectada = 'programacion';
+                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 else :
                     $this->programarOrden($estudiante);
                 endif;
@@ -272,17 +272,17 @@ class Programarprimerciclo extends Controller{
                 endif;
             endif;
         endforeach;
-        /*$updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+        $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
         $ultimoRegistroId = $estudiante['id'];
         $idBannerUltimoRegistro = $estudiante['homologante'];
         $fechaFin = date('Y-m-d H:i:s');
         $acccion = 'Insert-ProgramacionPrimerCiclo';
-        $tablaAfectada = 'planeacion';
-        $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programa.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+        $tablaAfectada = 'programacion';
+        $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del primer ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programa.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
         $fecha = date('Y-m-d H:i:s');
         $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
         //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
+        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
     }
 
 }

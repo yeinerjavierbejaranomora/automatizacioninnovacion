@@ -16,7 +16,7 @@ class Programarsegundociclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        // var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;

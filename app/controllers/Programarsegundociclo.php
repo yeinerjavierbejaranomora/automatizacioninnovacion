@@ -131,8 +131,8 @@ class Programarsegundociclo extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-ProgramacionSegundoCiclo';
-                    $tablaAfectada = 'planeacion';
-                    $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $tablaAfectada = 'programacion';
+                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
@@ -153,26 +153,26 @@ class Programarsegundociclo extends Controller{
                         if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
                             break;
                         endif;
-                        var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
+                        //var_dump($codMateria,$prerequisitos,$numeroCreditosTemp,$numeroCreditosPermitidos,$ciclo);die();
                         if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos && $ciclo == 2):
-                            $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
-                            $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
+                            $consultaestaProgramacion = $this->model->estaProgramacion($codMateria,$codBanner);
+                            $fetchestaProgramacion = $consultaestaProgramacion->fetchAll();
                             $codBanner=$codBanner;
-                            $planeada = $fetchEstaPlaneacion['codMateria'];
+                            $planeada = $fetchestaProgramacion['codMateria'];
 
                             if($planeada == '' && $numeroCreditos < $numeroCreditosPermitidos && $numeroCreditosTemp<=$numeroCreditosPermitidos):
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                                $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
                                 //echo $insertPlaneada . "<br />";
                             endif;
                         else:
                             $prerequisitos = trim($prerequisitos,'"');
                             $prerequisitos = '"'.$prerequisitos.'"';
-                            $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos,$codBanner);
-                            $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC);
-                            $preprogramado = $fetchEstaPlaneacion['codMateria'];
+                            $consultaestaProgramacion = $this->model->estaProgramacionPrerequisitos($prerequisitos,$codBanner);
+                            $fetchestaProgramacion = $consultaestaProgramacion->fetch(PDO::FETCH_ASSOC);
+                            $preprogramado = $fetchestaProgramacion['codMateria'];
                             $consultaEstaPorVer = $this->model->estaPorVer($prerequisitos,$codBanner);
                             $fetchEstaPorVer = $consultaEstaPorVer->fetch(PDO::FETCH_ASSOC);
                             $estaPorVer = $fetchEstaPorVer['codMateria'];
@@ -180,7 +180,7 @@ class Programarsegundociclo extends Controller{
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                                $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
                                 //echo $insertPlaneada . "<br />";
                             endif;
                         endif;
@@ -192,8 +192,8 @@ class Programarsegundociclo extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-ProgramacionSegundoCiclo';
-                    $tablaAfectada = 'planeacion';
-                    $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $tablaAfectada = 'programacion';
+                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
@@ -275,8 +275,8 @@ class Programarsegundociclo extends Controller{
             $idBannerUltimoRegistro = $estudiante['homologante'];
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert-ProgramacionSegundoCiclo';
-            $tablaAfectada = 'planeacion';
-            $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+            $tablaAfectada = 'programacion';
+            $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codHomologante . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
             $fecha = date('Y-m-d H:i:s');
             $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
             //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
@@ -293,23 +293,23 @@ class Programarsegundociclo extends Controller{
                     break;
                 endif;
                 if($prerequisitos == '' && $numeroCreditosTemp<=$numeroCreditosPermitidos):
-                    $consultaEstaPlaneacion = $this->model->estaPlaneacion($codMateria,$codBanner);
-                    $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetchAll();
+                    $consultaestaProgramacion = $this->model->estaProgramacion($codMateria,$codBanner);
+                    $fetchestaProgramacion = $consultaestaProgramacion->fetchAll();
                     $codBanner = $codBanner;
-                    $planeada = $fetchEstaPlaneacion['codMateria'];
+                    $planeada = $fetchestaProgramacion['codMateria'];
                     if($planeada == '' && $numeroCreditos < $numeroCreditosPermitidos && $numeroCreditosTemp<=$numeroCreditosPermitidos):
                         $numeroCreditos = $numeroCreditos + $creditoMateria;
                         $semestre = 1;
                         $programada = '';
-                        $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                        $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
                         //echo $insertPlaneada . "<br />";
                     endif;
                 else:
                     $prerequisitos = trim($prerequisitos,'"');
                     $prerequisitos = '"' . $prerequisitos . '"';
-                    $consultaEstaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
-                    $fetchEstaPlaneacion = $consultaEstaPlaneacion->fetch(PDO::FETCH_ASSOC);
-                    $preprogramado = $fetchEstaPlaneacion['codMateria'];
+                    $consultaestaProgramacion = $this->model->estaProgramacionPrerequisitos($prerequisitos, $codBanner);
+                    $fetchestaProgramacion = $consultaestaProgramacion->fetch(PDO::FETCH_ASSOC);
+                    $preprogramado = $fetchestaProgramacion['codMateria'];
                     $consultaEstaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
                     $fetchEstaPorVer = $consultaEstaPorVer->fetch(PDO::FETCH_ASSOC);
                     $estaPorVer = $fetchEstaPorVer['codMateria'];
@@ -317,7 +317,7 @@ class Programarsegundociclo extends Controller{
                         $numeroCreditos = $numeroCreditos + $creditoMateria;
                         $semestre = 1;
                         $programada = '';
-                        $insertPlaneada = $this->model->insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                        $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
                         //echo $insertPlaneada . "<br />";
                     endif;
                 endif;
@@ -328,8 +328,8 @@ class Programarsegundociclo extends Controller{
             $idBannerUltimoRegistro = $estudiante['homologante'];
             $fechaFin = date('Y-m-d H:i:s');
             $acccion = 'Insert-ProgramacionSegundoCiclo';
-            $tablaAfectada = 'planeacion';
-            $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programaHomologante.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+            $tablaAfectada = 'programacion';
+            $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codBanner . ', perteneciente al programa '.$programaHomologante.', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
             $fecha = date('Y-m-d H:i:s');
             $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
             //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);

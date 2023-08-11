@@ -181,11 +181,11 @@ class ProgramarSegundoCicloModel{
         }
     }
 
-    public function insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante){
+    public function insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante){
         
         try {
             $fecha = date('Y-m-d H:i:s');
-            $insertPlaneacion = $this->db->connect()->prepare("INSERT INTO `programacion` SET 
+            $insertProgramacion = $this->db->connect()->prepare("INSERT INTO `programacion` SET 
             `codBanner`= ?, 
             `codMateria`= ?, 
             `orden`= ?, 
@@ -193,15 +193,15 @@ class ProgramarSegundoCicloModel{
             `programada`= ?, 
             `codprograma`= ?, 
             `fecha_registro` = ?");
-            $insertPlaneacion->bindValue(1,$codBanner,PDO::PARAM_INT);
-            $insertPlaneacion->bindValue(2,$codMateria,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(3,$orden2,PDO::PARAM_INT);
-            $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
-            $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(6,$programaHomologante,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
-            $insertPlaneacion->execute();
-            if($insertPlaneacion):
+            $insertProgramacion->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(2,$codMateria,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(3,$orden2,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(4,$semestre,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(5,$programada,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(6,$programaHomologante,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertProgramacion->execute();
+            if($insertProgramacion):
                 return true;
             endif;
         } catch (PDOException $e) {

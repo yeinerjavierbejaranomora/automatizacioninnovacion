@@ -25,7 +25,7 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         //var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        var_dump($estudiantes->rowCount());die();
+        //var_dump($estudiantes->rowCount());die();
         $limit = 500;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
@@ -35,17 +35,6 @@ class Programarprimerciclo extends Controller{
     }
 
     public function primerciclo($limit,$marcaIngreso,){
-        /*$periodos = $this->model->periodos();
-        $marcaIngreso = "";
-        foreach ($periodos as $periodo) {
-            $marcaIngreso .= (int)$periodo['periodos'] . ",";
-        }
-        $marcaIngreso = trim($marcaIngreso, ",");*/
-        // Dividir la cadena en elementos individuales
-        /*$marcaIngreso = explode(",", $marcaIngreso);
-        // Convertir cada elemento en un número
-        $marcaIngreso = array_map('intval', $marcaIngreso);*/
-        //var_dump($marcaIngreso);die();
 
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
         if ($log->rowCount() == 0) :
@@ -55,6 +44,7 @@ class Programarprimerciclo extends Controller{
         endif;
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 //var_dump($estudiante);die();

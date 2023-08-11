@@ -97,7 +97,7 @@ class ProgramarPrimerCicloModel{
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->execute();
-            var_dump($consultaMateriasPorVer->fetchAll());die();
+            var_dump($consultaMateriasPorVer));die();
             /*return $consultaMateriasPorVer;
         } catch (PDOException $e) {
             return false;

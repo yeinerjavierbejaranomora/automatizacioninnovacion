@@ -80,6 +80,17 @@ class ProgramarSegundoCicloModel{
         }
     }
 
+    public function materiasMoodle($codBanner){
+        try {
+            $consultaMateriaMoodle = $this->db->connect()->prepare("SELECT `Id_Banner`,`Tipo_Estudiante`,`codigomateria`,`Nota_Acumulada` FROM `datos_moodle` WHERE `Id_Banner`= ? AND`Nota_Acumulada` >= '3' AND `Nota_Acumulada` != 'Sin Actividad'");
+            $consultaMateriaMoodle->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $consultaMateriaMoodle->execute();
+            return $consultaMateriaMoodle;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas){
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mv.codBanner, mv.codMateria, mv.orden, mc.creditos, mc.ciclo,mc.prerequisito  FROM materiasPorVer mv INNER JOIN mallaCurricular mc ON mv.codMateria=mc.codigoCurso WHERE codBanner=? AND mv.codprograma = ? AND mc.codprograma = ? AND mv.codMateria NOT IN ($materias_planeadas) ORDER BY mv.orden ASC");

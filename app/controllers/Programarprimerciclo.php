@@ -52,7 +52,7 @@ class Programarprimerciclo extends Controller{
                 if ($programa != 'PPSV') :
                     //echo "No es PPSV <br>";
 
-                    $fechaInicio = date('Y-m-d H:i:s');
+                    /*$fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
@@ -132,7 +132,7 @@ class Programarprimerciclo extends Controller{
                         //$prerequisitosConsulta = $this->model->prerequisitos($codMateria, $programa);
                         //$prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                         //echo $codMateria."-". $prerequisitos."<br>";
-                        var_dump($prerequisitos,"<br>");
+                        //var_dump($prerequisitos,"<br>");
                         if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                             $estaProgramacion = $this->model->estaProgramacion($codMateria, $codBanner);
                             if ($estaProgramacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
@@ -156,7 +156,7 @@ class Programarprimerciclo extends Controller{
                             endif;
                         endif;
                     endforeach;
-                    /*$updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+                    $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
@@ -168,7 +168,7 @@ class Programarprimerciclo extends Controller{
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                 else :
-                    //$this->programarOrden($estudiante);
+                    $this->programarOrden($estudiante);
                 endif;
             endforeach;
             die();
@@ -217,11 +217,21 @@ class Programarprimerciclo extends Controller{
                 # code...
                 break;
         }
-        $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
+        $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
+        $materias_moodle = "";
+        if ($materiasMoodleConsulta->rowCount() == 0) :
+            $materias_moodle = '""';
+        else :
+            foreach ($materiasMoodleConsulta as $materia) {
+                $materias_moodle .= '"' . $materia['codigomateria'] . '",';
+            }
+        endif;
+        $materias_moodle = trim($materias_moodle, ",");
+        $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa, $materias_moodle);
         //var_dump($materiasPorVer->fetchAll());die();
         $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
-        $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);
+        $numeroCreditosC1 = $this->model->getCreditosCicloUnoOrden($codigoBanner);
         $sumaCreditosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['screditos'];
         $sumaCreditosCiclo1 = $sumaCreditosCiclo1 == '' ? 0 : $sumaCreditosCiclo1;
         $cuentaCursosCiclo1 = $numeroCreditosC1->fetch(PDO::FETCH_ASSOC)['ccursos'];
@@ -262,7 +272,7 @@ class Programarprimerciclo extends Controller{
                 endif;
             endif;
         endforeach;
-        $updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
+        /*$updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
         $ultimoRegistroId = $estudiante['id'];
         $idBannerUltimoRegistro = $estudiante['homologante'];
         $fechaFin = date('Y-m-d H:i:s');
@@ -272,7 +282,7 @@ class Programarprimerciclo extends Controller{
         $fecha = date('Y-m-d H:i:s');
         $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
         //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
     }
 
 }

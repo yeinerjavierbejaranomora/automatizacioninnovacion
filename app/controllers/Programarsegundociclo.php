@@ -58,7 +58,6 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 $tipoEstudiante = $estudiante['tipo_estudiante'];
                 $materiasProgramadas = $this->model->materiasProgramadas($codHomologante,$programaHomologante);
-                var_dump($materiasProgramadas->fetchAll());die();
                 $materias_programadas='';
                 foreach($materiasProgramadas as $materia):
                     $codmateria= $materia['codMateria'];
@@ -66,7 +65,7 @@ class Programarsegundociclo extends Controller{
                 endforeach;
                 $materias_programadas = substr($materias_programadas, 0, -1);
 	            $materias_programadas = ($materias_programadas=='') ? "'n-a'" : $materias_programadas;
-                //var_dump($materias_programadas);die();
+                var_dump($materias_programadas);die();
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_programadas);
                 /*$numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];

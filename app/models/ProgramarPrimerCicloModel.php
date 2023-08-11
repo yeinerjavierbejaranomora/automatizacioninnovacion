@@ -82,7 +82,7 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function materiasPorVer($codigoBanner,$ciclo,$programa){
+    public function materiasPorVer($codigoBanner,$programa){
         var_dump($codigoBanner,$ciclo,$programa);die();
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 

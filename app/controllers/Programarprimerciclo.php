@@ -91,7 +91,7 @@ class Programarprimerciclo extends Controller{
                             break;
                     }
                     $ciclo = [1, 12];
-                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
                     var_dump($materiasPorVer->fetchAll());die();
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];

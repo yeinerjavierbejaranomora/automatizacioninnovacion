@@ -93,8 +93,12 @@ class Programarprimerciclo extends Controller{
                     }
                     $ciclo = [1, 12];
                     $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
-                    $materiasMoodle = $materiasMoodleConsulta->fetch(PDO::FETCH_ASSOC);
-                    var_dump($materiasMoodle['codigomateria']);die();
+                    $materias_moodle = "";
+                    foreach ($materiasMoodleConsulta as $materia) {
+                        $materias_moodle .= $materia['codigomateria'] . ",";
+                    }
+                    $materias_moodle = trim($materias_moodle, ",");
+                    var_dump($materias_moodle);die();
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];

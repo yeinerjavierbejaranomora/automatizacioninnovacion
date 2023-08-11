@@ -77,11 +77,11 @@ class Programarsegundociclo extends Controller{
                 $materias_moodle = trim($materias_moodle, ",");
                 //var_dump($materias_programadas,"--",$materias_moodle);die();
                 $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_programadas,$materias_moodle);
-                var_dump($consultaMateriasPorVer->fetchAll());die();
-                /*$numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
+                //var_dump($consultaMateriasPorVer->fetchAll());die();
+                $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 //var_dump($numeroCreditos);die();
-                $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
+                /*$numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
                 
                 $ruta = $estudiante['bolsa'];
                 if ($ruta != '') :

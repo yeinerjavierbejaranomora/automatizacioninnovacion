@@ -49,13 +49,15 @@ class ProgramarSegundoCicloModel{
 
     public function getEstudiantes($offset,$marcaIngreso,$limit){
         try {
-            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante` FROM estudiantes 
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
             WHERE `id` > ?
-            AND materias_faltantes='OK' 
-            AND programado_ciclo1='OK' 
-            AND programado_ciclo2 IS NULL 
-            AND marca_ingreso IN ($marcaIngreso) 
-            ORDER BY id ASC 
+            AND `materias_faltantes`='OK'
+            AND `planeado_ciclo1` = 'OK' 
+            AND `planeado_ciclo2` = 'OK'
+            AND `programado_ciclo1`='OK' 
+            AND `programado_ciclo2` IS NULL 
+            AND `marca_ingreso` IN (202306,202313,202333,202343,202353,202307,202316,202334,202344,202355) 
+            ORDER BY id ASC
             LIMIT ?");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->bindParam(2,$limit,PDO::PARAM_INT);

@@ -103,14 +103,14 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function materiasPorVerOrden($codigoBanner,$programa){
+    public function materiasPorVerOrden($codigoBanner,$programa,$materias_moodle){
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN mallaCurricular m ON m.codigoCurso=mpv.codMateria
             WHERE mpv.codBanner = ?
-            /*AND m.ciclo IN (1,12)*/
             AND mpv.codprograma = ?
             AND m.codprograma = ?
+            AND mpv.codMateria NOT IN ($materias_moodle)
             ORDER BY mpv.orden ASC");
             $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);
@@ -124,7 +124,7 @@ class ProgramarPrimerCicloModel{
 
     public function getCreditosPlaneados($codigoBanner){
         try {
-            $consultaCreditosPlaneados = $this->db->connect()->prepare("SELECT `planeacion`.`codBanner`, SUM(mallaCurricular.creditos) AS `CreditosPlaneados` FROM `mallaCurricular` INNER JOIN `planeacion` ON `planeacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `planeacion`.`codBanner` = ? GROUP BY `planeacion`.`codBanner` LIMIT 1");
+            $consultaCreditosPlaneados = $this->db->connect()->prepare("SELECT `programacion`.`codBanner`, SUM(mallaCurricular.creditos) AS `CreditosPlaneados` FROM `mallaCurricular` INNER JOIN `programacion` ON `programacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `programacion`.`codBanner` = ? GROUP BY `programacion`.`codBanner` LIMIT 1");
             $consultaCreditosPlaneados->bindParam(1,$codigoBanner,PDO::PARAM_INT);
             $consultaCreditosPlaneados->execute();
             return $consultaCreditosPlaneados;
@@ -135,7 +135,18 @@ class ProgramarPrimerCicloModel{
 
     public function getCreditosCicloUno($codigoBanner){
         try {
-            $consultaCreditosCicloUno = $this->db->connect()->prepare("SELECT SUM(`mallaCurricular`.`creditos`) AS `screditos`,COUNT(`mallaCurricular`.`creditos`) AS `ccursos` FROM `mallaCurricular` INNER JOIN `planeacion` ON `planeacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `planeacion`.`codBanner` = ? AND `mallaCurricular`.`ciclo` IN (1,12) LIMIT 1");
+            $consultaCreditosCicloUno = $this->db->connect()->prepare("SELECT SUM(`mallaCurricular`.`creditos`) AS `screditos`,COUNT(`mallaCurricular`.`creditos`) AS `ccursos` FROM `mallaCurricular` INNER JOIN `programacion` ON `programacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `programacion`.`codBanner` = ? AND `mallaCurricular`.`ciclo` IN (1,12) LIMIT 1");
+            $consultaCreditosCicloUno->bindParam(1,$codigoBanner,PDO::PARAM_INT);
+            $consultaCreditosCicloUno->execute();
+            return $consultaCreditosCicloUno;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+    
+    public function getCreditosCicloUnoOrden($codigoBanner){
+        try {
+            $consultaCreditosCicloUno = $this->db->connect()->prepare("SELECT SUM(`mallaCurricular`.`creditos`) AS `screditos`,COUNT(`mallaCurricular`.`creditos`) AS `ccursos` FROM `mallaCurricular` INNER JOIN `programacion` ON `programacion`.`codMateria` = `mallaCurricular`.`codigoCurso` WHERE `programacion`.`codBanner` = ?  LIMIT 1");
             $consultaCreditosCicloUno->bindParam(1,$codigoBanner,PDO::PARAM_INT);
             $consultaCreditosCicloUno->execute();
             return $consultaCreditosCicloUno;
@@ -170,24 +181,24 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function estaPlaneacion($codMateria,$codBanner){
+    public function estaProgramacion($codMateria,$codBanner){
         try {
-            $consultaEstaPlaneacion = $this->db->connect()->prepare("SELECT `codMateria` FROM `planeacion` WHERE `codMateria` = ?  AND `codBanner` = ?");
-            $consultaEstaPlaneacion->bindParam(1,$codMateria,PDO::PARAM_STR);
-            $consultaEstaPlaneacion->bindParam(2,$codBanner,PDO::PARAM_INT);
-            $consultaEstaPlaneacion->execute();
-            return $consultaEstaPlaneacion;
+            $consultaestaProgramacion = $this->db->connect()->prepare("SELECT `codMateria` FROM `programacion` WHERE `codMateria` = ?  AND `codBanner` = ?");
+            $consultaestaProgramacion->bindParam(1,$codMateria,PDO::PARAM_STR);
+            $consultaestaProgramacion->bindParam(2,$codBanner,PDO::PARAM_INT);
+            $consultaestaProgramacion->execute();
+            return $consultaestaProgramacion;
         } catch (PDOException $e) {
             return false;
         }
     }
     
-    public function estaPlaneacionPrerequisitos($prerequisitos,$codBanner){
+    public function estaProgramacionPrerequisitos($prerequisitos,$codBanner){
         try {
-            $consultaEstaPlaneacionPrerequisitos = $this->db->connect()->prepare("SELECT `codMateria` FROM `planeacion` WHERE `codMateria` IN ($prerequisitos)  AND `codBanner` = ?");
-            $consultaEstaPlaneacionPrerequisitos->bindParam(1,$codBanner,PDO::PARAM_STR);
-            $consultaEstaPlaneacionPrerequisitos->execute();
-            return $consultaEstaPlaneacionPrerequisitos;
+            $consultaestaProgramacionPrerequisitos = $this->db->connect()->prepare("SELECT `codMateria` FROM `programacion` WHERE `codMateria` IN ($prerequisitos)  AND `codBanner` = ?");
+            $consultaestaProgramacionPrerequisitos->bindParam(1,$codBanner,PDO::PARAM_STR);
+            $consultaestaProgramacionPrerequisitos->execute();
+            return $consultaestaProgramacionPrerequisitos;
         } catch (PDOException $e) {
             return false;
         }
@@ -204,11 +215,11 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
+    public function insertarProgramacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
         
         try {
             $fecha = date('Y-m-d H:i:s');
-            $insertPlaneacion = $this->db->connect()->prepare("INSERT INTO `planeacion` SET 
+            $insertProgramacion = $this->db->connect()->prepare("INSERT INTO `programacion` SET 
             `codBanner`= ?, 
             `codMateria`= ?, 
             `orden`= ?, 
@@ -216,15 +227,15 @@ class ProgramarPrimerCicloModel{
             `programada`= ?, 
             `codprograma`= ?, 
             `fecha_registro` = ?");
-            $insertPlaneacion->bindValue(1,$codBanner,PDO::PARAM_INT);
-            $insertPlaneacion->bindValue(2,$codMateria,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(3,$orden,PDO::PARAM_INT);
-            $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
-            $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(6,$programa,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
-            $insertPlaneacion->execute();
-            if($insertPlaneacion):
+            $insertProgramacion->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(2,$codMateria,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(3,$orden,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(4,$semestre,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(5,$programada,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(6,$programa,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertProgramacion->execute();
+            if($insertProgramacion):
                 return true;
             endif;
         } catch (PDOException $e) {

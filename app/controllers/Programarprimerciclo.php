@@ -26,7 +26,7 @@ class Programarprimerciclo extends Controller{
         //var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         //var_dump($estudiantes->rowCount());die();
-        $limit = 80;
+        $limit = 2;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
             //sleep(10);
@@ -133,28 +133,28 @@ class Programarprimerciclo extends Controller{
                         //$prerequisitos = $prerequisitosConsulta->fetch(PDO::FETCH_ASSOC)['prerequisito'];
                         //echo $codMateria."-". $prerequisitos."<br>";
                         var_dump($prerequisitos,"<br>");
-                        /*if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
-                            $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
-                            if ($estaPlaneacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
+                        if ($prerequisitos == '' && $ciclo != 2 && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                            $estaProgramacion = $this->model->estaProgramacion($codMateria, $codBanner);
+                            if ($estaProgramacion->rowCount() == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                                $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                                 $cuentaCursosCiclo1++;
                             endif;
                         else :
                             //var_dump("Cp",$numeroCreditos,$creditoMateria,$prerequisitos);die();
                             $prerequisitos = trim($prerequisitos,'"');
-                            $prerequisitos = '"' . $prerequisitos . '"';$estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
+                            $prerequisitos = '"' . $prerequisitos . '"';$estaProgramacion = $this->model->estaProgramacionPrerequisitos($prerequisitos, $codBanner);
                             $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
-                            if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                            if ($estaProgramacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                                $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                                 $cuentaCursosCiclo1++;
                             endif;
-                        endif;*/
+                        endif;
                     endforeach;
                     /*$updateEstudiante = $this->model->updateEstudiante($estudiante['id'], $codBanner);
                     $ultimoRegistroId = $estudiante['id'];
@@ -240,24 +240,24 @@ class Programarprimerciclo extends Controller{
             $ciclo = $materia['ciclo'];
             $prerequisitos = $materia['prerequisito'];
             if($prerequisitos == '' && $cuentaCursosCiclo1 < $numeroMateriasPermitidos):
-                $estaPlaneacion = $this->model->estaPlaneacion($codMateria, $codBanner);
-                if ($estaPlaneacion->rowCount()  == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
+                $estaProgramacion = $this->model->estaProgramacion($codMateria, $codBanner);
+                if ($estaProgramacion->rowCount()  == 0  && $numeroCreditos < $numeroCreditosPermitidos) :
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
-                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                     $cuentaCursosCiclo1++;
                 endif;
             else:
                 $prerequisitos = trim($prerequisitos,'"');
                 $prerequisitos = '"' . $prerequisitos . '"';
-                $estaPlaneacion = $this->model->estaPlaneacionPrerequisitos($prerequisitos, $codBanner);
+                $estaProgramacion = $this->model->estaProgramacionPrerequisitos($prerequisitos, $codBanner);
                 $estaPorVer = $this->model->estaPorVer($prerequisitos, $codBanner);
-                if ($estaPlaneacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
+                if ($estaProgramacion->rowCount() == 0  && $estaPorVer->rowCount() == 0  && $cuentaCursosCiclo1 < $numeroMateriasPermitidos) :
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
-                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
                     $cuentaCursosCiclo1++;
                 endif;
             endif;

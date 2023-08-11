@@ -50,24 +50,25 @@ class Programarsegundociclo extends Controller{
                 if ($programaHomologante != 'PPSV') :
 
                 var_dump($estudiante);die();
-                /*$fechaInicio = date('Y-m-d H:i:s');
+                $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;
                 $idHomologante = $estudiante['id'];
                 $codHomologante = $estudiante['homologante'];
                 $programaHomologante = $estudiante['programa'];
                 $tipoEstudiante = $estudiante['tipo_estudiante'];
-                $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante,$programaHomologante);
-                $materias_planeadas='';
-                foreach($materiasPlaneadas as $materia):
+                $materiasProgramadas = $this->model->materiasProgramadas($codHomologante,$programaHomologante);
+                var_dump($materiasProgramadas);die();
+                $materias_programadas='';
+                foreach($materiasProgramadas as $materia):
                     $codmateria= $materia['codMateria'];
-                    $materias_planeadas = $materias_planeadas . "'" . $codmateria . "',";
+                    $materias_programadas = $materias_programadas . "'" . $codmateria . "',";
                 endforeach;
-                $materias_planeadas = substr($materias_planeadas, 0, -1);
-	            $materias_planeadas = ($materias_planeadas=='') ? "'n-a'" : $materias_planeadas;
-                //var_dump($materias_planeadas);die();
-                $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
-                $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
+                $materias_programadas = substr($materias_programadas, 0, -1);
+	            $materias_programadas = ($materias_programadas=='') ? "'n-a'" : $materias_programadas;
+                //var_dump($materias_programadas);die();
+                $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_programadas);
+                /*$numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                 //var_dump($numeroCreditos);die();
                 $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
@@ -206,15 +207,15 @@ class Programarsegundociclo extends Controller{
         $codHomologante = $estudiante['homologante'];
         $programaHomologante = $estudiante['programa'];
         $tipoEstudiante = $estudiante['tipo_estudiante'];
-        $materiasPlaneadas = $this->model->materiasPlaneadas($codHomologante, $programaHomologante);
-        $materias_planeadas = '';
-        foreach ($materiasPlaneadas as $materia) :
+        $materiasProgramadas = $this->model->materiasProgramadas($codHomologante, $programaHomologante);
+        $materias_programadas = '';
+        foreach ($materiasProgramadas as $materia) :
             $codmateria = $materia['codMateria'];
-            $materias_planeadas = $materias_planeadas . "'" . $codmateria . "',";
+            $materias_programadas = $materias_programadas . "'" . $codmateria . "',";
         endforeach;
-        $materias_planeadas = substr($materias_planeadas, 0, -1);
-        $materias_planeadas = ($materias_planeadas == '') ? "'n-a'" : $materias_planeadas;
-        $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas);
+        $materias_programadas = substr($materias_programadas, 0, -1);
+        $materias_programadas = ($materias_programadas == '') ? "'n-a'" : $materias_programadas;
+        $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_programadas);
         $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
         $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();

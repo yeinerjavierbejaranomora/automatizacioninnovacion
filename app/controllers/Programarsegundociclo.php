@@ -80,10 +80,11 @@ class Programarsegundociclo extends Controller{
                 //var_dump($consultaMateriasPorVer->fetchAll());die();
                 $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
                 $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
-                var_dump($numeroCreditos);die();
-                /*$numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
+                //var_dump($numeroCreditos);die();
+                $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();
+                var_dump($numeroMateriasPorVer);die();
                 
-                $ruta = $estudiante['bolsa'];
+                /*$ruta = $estudiante['bolsa'];
                 if ($ruta != '') :
                     $ruta = 1;
                 else:

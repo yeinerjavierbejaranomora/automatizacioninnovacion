@@ -58,7 +58,7 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 $tipoEstudiante = $estudiante['tipo_estudiante'];
                 $materiasProgramadas = $this->model->materiasProgramadas($codHomologante,$programaHomologante);
-                var_dump($materiasProgramadas);die();
+                var_dump($materiasProgramadas->fetchAll());die();
                 $materias_programadas='';
                 foreach($materiasProgramadas as $materia):
                     $codmateria= $materia['codMateria'];

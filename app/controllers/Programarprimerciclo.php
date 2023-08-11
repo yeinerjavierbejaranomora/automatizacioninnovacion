@@ -45,7 +45,6 @@ class Programarprimerciclo extends Controller{
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         //var_dump($estudiantes->fetchAll());die();
-        
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 //var_dump($estudiante);die();
@@ -58,7 +57,7 @@ class Programarprimerciclo extends Controller{
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
                     //$codigoBanner = $estudiante['homologante'];
-                    $codigoBanner = '100074421';
+                    $codigoBanner = 100053582;
                     $ruta = $estudiante['bolsa'];
                     if ($ruta != '') :
                         $ruta = 1;
@@ -92,19 +91,7 @@ class Programarprimerciclo extends Controller{
                             break;
                     }
                     $ciclo = [1, 12];
-                    $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
-                    $materias_moodle = "";
-                    if ($materiasMoodleConsulta->rowCount() == 0) :
-                        $materias_moodle = '""';
-                    else :
-                        foreach ($materiasMoodleConsulta as $materia) {
-                            $materias_moodle .= '"' . $materia['codigomateria'] . '",';
-                        }
-                    endif;
-                    $materias_moodle = trim($materias_moodle, ",");
-                    // var_dump($materias_moodle);die();
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
-                    //$materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa,$materias_moodle);
                     var_dump($materiasPorVer->fetchAll());die();
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];

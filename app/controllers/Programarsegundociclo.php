@@ -50,8 +50,8 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 if ($programaHomologante != 'PPSV') :
 
-                //var_dump($estudiante);die();
-                $fechaInicio = date('Y-m-d H:i:s');
+                var_dump($estudiante);die();
+                /*$fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;
                 $idHomologante = $estudiante['id'];
@@ -137,7 +137,7 @@ class Programarsegundociclo extends Controller{
                         /*$consultaPrerequisitos = $this->model->consultaPrerequisitos($codMateria,$programaHomologante);
                         $fetchPrerequisistos = $consultaPrerequisitos->fetch(PDO::FETCH_ASSOC);
                         $prerequisitos =  $fetchPrerequisistos['prerequisito'];*/
-                        $prerequisitos = $materia['prerequisito'];
+                        /*$prerequisitos = $materia['prerequisito'];
 
                         $numeroCreditosTemp = $numeroCreditos + $creditoMateria;
                         if ($numeroCreditosTemp>=$numeroCreditosPermitidos) :
@@ -189,9 +189,9 @@ class Programarsegundociclo extends Controller{
                     //$insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                     // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
-                endif;
+                endif;*/
                 else :
-                    $this->programarOrden($estudiante);
+                    //$this->programarOrden($estudiante);
                 endif;
             }
         else:

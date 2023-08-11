@@ -84,7 +84,7 @@ class ProgramarPrimerCicloModel{
 
     public function materiasPorVer($codigoBanner,$programa){
         //var_dump($codigoBanner,$programa);die();
-        //try {
+        try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN mallaCurricular m ON m.codigoCurso=mpv.codMateria
             WHERE mpv.codBanner = 100074421  
@@ -97,11 +97,11 @@ class ProgramarPrimerCicloModel{
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);*/
             $consultaMateriasPorVer->execute();
-            var_dump($consultaMateriasPorVer->fetchAll());die();
-            /*return $consultaMateriasPorVer;
+            //var_dump($consultaMateriasPorVer->fetchAll());die();
+            return $consultaMateriasPorVer;
         } catch (PDOException $e) {
             return false;
-        }*/
+        }
     }
 
     public function materiasPorVerOrden($codigoBanner,$programa){

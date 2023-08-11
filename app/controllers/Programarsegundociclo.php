@@ -201,7 +201,7 @@ class Programarsegundociclo extends Controller{
                     // echo "Planeación realizada para : " . $codBanner . " y " . $codMateria . "-".$fechaInicio."-".$fechaFin. "<br />";
                     endif;*/
                 else :
-                //$this->programarOrden($estudiante);
+                    $this->programarOrden($estudiante);
                 endif;
             }
         else :

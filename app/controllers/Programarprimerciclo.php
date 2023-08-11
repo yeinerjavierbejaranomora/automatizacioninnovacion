@@ -45,6 +45,7 @@ class Programarprimerciclo extends Controller{
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         //var_dump($estudiantes->fetchAll());die();
+        
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 //var_dump($estudiante);die();
@@ -56,7 +57,8 @@ class Programarprimerciclo extends Controller{
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
                     $idEstudiante = $estudiante['id'];
-                    $codigoBanner = $estudiante['homologante'];
+                    //$codigoBanner = $estudiante['homologante'];
+                    $codigoBanner = 100048615;
                     $ruta = $estudiante['bolsa'];
                     if ($ruta != '') :
                         $ruta = 1;

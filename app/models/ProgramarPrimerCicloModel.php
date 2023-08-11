@@ -82,7 +82,7 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function materiasPorVer($codigoBanner,$programa){
+    public function materiasPorVer($codigoBanner,$programa,$materias_moodle){
         //var_dump($codigoBanner,$programa);die();
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
@@ -91,7 +91,7 @@ class ProgramarPrimerCicloModel{
             AND m.ciclo IN (1,12)
             AND mpv.codprograma = ?
             AND m.codprograma = ?
-            AND mpv.codMateria NOT IN ('PSV22135','PSV22185')
+            AND mpv.codMateria NOT IN ($materias_moodle)
             ORDER BY mpv.orden ASC");
             $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);

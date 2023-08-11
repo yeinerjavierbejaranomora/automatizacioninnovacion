@@ -26,7 +26,7 @@ class Programarprimerciclo extends Controller{
         //var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         //var_dump($estudiantes->rowCount());die();
-        $limit = 500;
+        $limit = 80;
         $numEstudinates = ceil($estudiantes->rowCount()/$limit);
         for ($i=0; $i < $numEstudinates; $i++) { 
             //sleep(10);
@@ -92,7 +92,7 @@ class Programarprimerciclo extends Controller{
                     }
                     $ciclo = [1, 12];
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
-                    var_dump($materiasPorVer->fetchAll());die();
+                    var_dump($materiasPorVer->rowCount());
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                     $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);

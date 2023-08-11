@@ -236,7 +236,7 @@ class Programarsegundociclo extends Controller{
         endif;
         $materias_moodle = trim($materias_moodle, ",");
         $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_programadas,$materias_moodle);
-        var_dump($consultaMateriasPorVer);die();
+        var_dump($consultaMateriasPorVer->fetchAll());die();
         $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
         $numeroMateriasPorVer = $consultaMateriasPorVer->rowCount();

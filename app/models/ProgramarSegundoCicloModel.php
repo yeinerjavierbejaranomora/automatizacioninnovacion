@@ -94,7 +94,6 @@ class ProgramarSegundoCicloModel{
     }
 
     public function materiasPorVer($codHomologante,$programaHomologante,$materias_planeadas,$materias_moodle){
-        var_dump($codHomologante,$programaHomologante,$materias_planeadas,$materias_moodle);die();
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mv.codBanner, mv.codMateria, mv.orden, mc.creditos, mc.ciclo,mc.prerequisito  FROM materiasPorVer mv INNER JOIN mallaCurricular mc ON mv.codMateria=mc.codigoCurso WHERE codBanner=? AND mv.codprograma = ? AND mc.codprograma = ? AND mv.codMateria NOT IN ($materias_planeadas,$materias_moodle) ORDER BY mv.orden ASC");
             $consultaMateriasPorVer->bindParam(1,$codHomologante,PDO::PARAM_INT);

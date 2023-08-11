@@ -49,7 +49,7 @@ class Programarsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 if ($programaHomologante != 'PPSV') :
 
-                    var_dump($estudiante);die();
+                    //var_dump($estudiante);die();
                     /*$fechaInicio = date('Y-m-d H:i:s');
                     $primerId = $estudiante['id'];
                     $ultimoRegistroId = 0;
@@ -225,6 +225,17 @@ class Programarsegundociclo extends Controller{
         endforeach;
         $materias_programadas = substr($materias_programadas, 0, -1);
         $materias_programadas = ($materias_programadas == '') ? "'n-a'" : $materias_programadas;
+        $materiasMoodleConsulta = $this->model->materiasMoodle($codHomologante);
+        $materias_moodle = "";
+        if ($materiasMoodleConsulta->rowCount() == 0) :
+            $materias_moodle = '""';
+        else :
+            foreach ($materiasMoodleConsulta as $materia) {
+                $materias_moodle .= '"' . $materia['codigomateria'] . '",';
+            }
+        endif;
+        $materias_moodle = trim($materias_moodle, ",");
+        var_dump($materias_moodle,$materias_programadas);die();
         $consultaMateriasPorVer = $this->model->materiasPorVer($codHomologante,$programaHomologante,$materias_programadas);
         $numeroCreditos = $this->model->getCreditosplaneados($codHomologante);
         $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];

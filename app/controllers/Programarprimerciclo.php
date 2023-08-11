@@ -157,8 +157,8 @@ class Programarprimerciclo extends Controller{
                 else :
                     //$this->programarOrden($estudiante);
                 endif;
+                die();
             endforeach;
-            die();
         else:
             echo "No hay estudiantes de primer ciclo para programar <br>";
         endif;

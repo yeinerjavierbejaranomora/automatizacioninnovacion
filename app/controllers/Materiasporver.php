@@ -220,8 +220,8 @@ class Materiasporver extends Controller{
                     $diff = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
+                    //var_dump($diff);die();
                 endif;*/
-                var_dump($diff);die();
                 $cantidadDiff = count($diff);
                 if(count($diff) > 0):
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);

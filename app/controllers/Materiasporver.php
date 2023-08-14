@@ -33,10 +33,14 @@ class Materiasporver extends Controller{
         endif;
         $limit = 800;
         $numEstudiantesTransferentes = $this->model->faltantesTransferentesNum($offset,$marcaIngreso);
-        $divEstudiantesTransferentes = ceil($numEstudiantesTransferentes->rowCount()/$limit);
-        for ($i=0; $i < $divEstudiantesTransferentes; $i++) {             
-            $this->transferentes($limit,$marcaIngreso);
-        }
+        if ($numEstudiantesTransferentes->rowCount() != 0) :
+            $divEstudiantesTransferentes = ceil($numEstudiantesTransferentes->rowCount() / $limit);
+            for ($i = 0; $i < $divEstudiantesTransferentes; $i++) {
+                $this->transferentes($limit, $marcaIngreso);
+            }
+        else :
+            echo "No hay estudiantes TRANSFERENTES <br>";
+        endif;        
         var_dump($divEstudiantesTransferentes);die();
         var_dump($marcaIngreso);die();
     }

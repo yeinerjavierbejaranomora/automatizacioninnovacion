@@ -264,7 +264,7 @@ class MateriasPorVerModel{
         }
     }
 
-    public function totalEstudiantes($offset){
+    public function totalEstudiantes($offset,$marcaIngreso){
         try {
             $consultaTotalEstudiantes = $this->db->connect()->prepare("SELECT COUNT(`id`) AS `total` FROM `estudiantes`
             WHERE `id` > ?
@@ -273,18 +273,21 @@ class MateriasPorVerModel{
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ?
             AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ? 
             AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             ORDER BY `id` ASC");
             $consultaTotalEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaTotalEstudiantes->bindParam(2,$offset,PDO::PARAM_INT);

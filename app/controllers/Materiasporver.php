@@ -23,7 +23,7 @@ class Materiasporver extends Controller{
         if($numEstudiantesPrimerIngreso->rowCount() != 0):
             $this->primeringreso($marcaIngreso);
         else:
-            //echo "No hay estudiantes de primer ingreso <br>";
+            echo "No hay estudiantes de primer ingreso <br>";
         endif;
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if($log->rowCount() == 0):
@@ -41,14 +41,14 @@ class Materiasporver extends Controller{
         else :
             echo "No hay estudiantes TRANSFERENTES <br>";
         endif;
-        var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
+        $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset,$marcaIngreso);
+        var_dump($totalEstudiantesAntiguos);die();
         if($totalEstudiantesAntiguos == 0):
             echo "No hay estudiantes ANTIGUOS <br>";die();
         else:

@@ -49,7 +49,7 @@ class ProgramarSegundoCicloModel{
 
     public function getEstudiantes($offset,$marcaIngreso,$limit){
         try {
-            $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante,marca_ingreso FROM estudiantes 
             WHERE `id` > ?
             AND `materias_faltantes`='OK'
             AND `planeado_ciclo1` = 'OK' 
@@ -183,7 +183,7 @@ class ProgramarSegundoCicloModel{
         }
     }
 
-    public function insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante){
+    public function insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante,$marca_ingreso){
         
         try {
             $fecha = date('Y-m-d H:i:s');
@@ -193,7 +193,8 @@ class ProgramarSegundoCicloModel{
             `orden`= ?, 
             `semestre`= ?, 
             `programada`= ?, 
-            `codprograma`= ?, 
+            `codprograma`= ?,
+            `periodo` = ?, 
             `fecha_registro` = ?");
             $insertProgramacion->bindValue(1,$codBanner,PDO::PARAM_INT);
             $insertProgramacion->bindValue(2,$codMateria,PDO::PARAM_STR);
@@ -201,7 +202,8 @@ class ProgramarSegundoCicloModel{
             $insertProgramacion->bindValue(4,$semestre,PDO::PARAM_INT);
             $insertProgramacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertProgramacion->bindValue(6,$programaHomologante,PDO::PARAM_STR);
-            $insertProgramacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(7,$marca_ingreso,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(8,$fecha,PDO::PARAM_STR);
             $insertProgramacion->execute();
             if($insertProgramacion):
                 return true;

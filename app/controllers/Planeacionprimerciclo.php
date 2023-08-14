@@ -55,7 +55,7 @@ class Planeacionprimerciclo extends Controller{
         //var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
-                var_dump($estudiante);die();
+                //var_dump($estudiante);die();
                 $programa = $estudiante['programa'];
                 if ($programa != 'PPSV') :
                     //echo "No es PPSV <br>";
@@ -97,6 +97,8 @@ class Planeacionprimerciclo extends Controller{
                             # code...
                             break;
                     }
+                    $marca_ingreso = $estudiante['marca_ingreso'];
+                    var_dump($marca_ingreso);die();
                     $ciclo = [1, 12];
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);

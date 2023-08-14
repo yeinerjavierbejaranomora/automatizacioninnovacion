@@ -91,21 +91,26 @@ class MateriasPorVerModel{
     }
 
     public function insertMateriaPorVer($mallaCurricular){
-        var_dump($mallaCurricular);die();
+        //var_dump($mallaCurricular);die();
         try {
             $numInsert= 0;
             foreach($mallaCurricular as $malla):
+                $fecha = date('Y-m-d H:i:s');
                 $insertMateriaPorVer = $this->db->connect()->prepare("INSERT INTO `materiasPorVer` SET 
                                                                                     `codBanner` = ?, 
                                                                                     `codMateria` = ?, 
                                                                                     `orden` = ?, 
-                                                                                    `codprograma` = ?, 
-                                                                                    `created_at` = NOW(), 
-                                                                                    `updated_at` = NOW()");
+                                                                                    `codprograma` = ?,
+                                                                                    `periodo` = ? 
+                                                                                    `created_at` = ?, 
+                                                                                    `updated_at` = ?");
                 $insertMateriaPorVer->bindValue(1,$malla['codBanner'],PDO::PARAM_INT);
                 $insertMateriaPorVer->bindValue(2,$malla['codMateria'],PDO::PARAM_INT);
                 $insertMateriaPorVer->bindValue(3,$malla['orden'],PDO::PARAM_INT);
                 $insertMateriaPorVer->bindValue(4,$malla['codprograma'],PDO::PARAM_INT);
+                $insertMateriaPorVer->bindValue(5,$malla['periodo'],PDO::PARAM_STR);
+                $insertMateriaPorVer->bindValue(6,$fecha,PDO::PARAM_STR);
+                $insertMateriaPorVer->bindValue(7,$fecha,PDO::PARAM_STR);
                 $insertMateriaPorVer->execute();
                 $numInsert++;
             endforeach;

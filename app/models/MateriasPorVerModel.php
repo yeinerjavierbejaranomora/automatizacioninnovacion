@@ -101,7 +101,7 @@ class MateriasPorVerModel{
                                                                                     `codMateria` = ?, 
                                                                                     `orden` = ?, 
                                                                                     `codprograma` = ?,
-                                                                                    `periodo` = ? 
+                                                                                    `periodo` = ?, 
                                                                                     `created_at` = ?, 
                                                                                     `updated_at` = ?");
                 $insertMateriaPorVer->bindValue(1,$malla['codBanner'],PDO::PARAM_INT);

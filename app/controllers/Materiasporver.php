@@ -106,11 +106,11 @@ class Materiasporver extends Controller{
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
-                var_dump($mallaCurricular);die();
                 $historial = $this->model->historial($codBanner);
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
+                var_dump($diff);die();
                 //$historialMoodle = $this->model->historialMoodle($codBanner);
                 //var_dump(count($historialMoodle));die();
                 /*if(count($historialMoodle) > 0 ):

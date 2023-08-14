@@ -32,7 +32,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $limit = 800;
-        $numEstudiantesTransferentes = $this->model->faltantesTransferentesNum($offset);
+        $numEstudiantesTransferentes = $this->model->faltantesTransferentesNum($offset,$marcaIngreso);
         var_dump($numEstudiantesTransferentes->rowCount());die();
         $this->transferentes($marcaIngreso);
         var_dump($marcaIngreso);die();

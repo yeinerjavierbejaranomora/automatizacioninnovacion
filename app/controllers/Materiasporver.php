@@ -13,11 +13,12 @@ class Materiasporver extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
+        $this->primeringreso($marcaIngreso);
         var_dump($marcaIngreso);die();
     }
 
 
-    public function primeringreso(){
+    public function primeringreso($marcaIngreso){
         
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         if($log->rowCount() == 0):
@@ -25,7 +26,8 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $primerIngreso = $this->model->falatntesPrimerIngreso($offset);
+        $primerIngreso = $this->model->falatntesPrimerIngreso($offset,$marcaIngreso);
+        var_dump($primerIngreso);die();
         if($primerIngreso->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;

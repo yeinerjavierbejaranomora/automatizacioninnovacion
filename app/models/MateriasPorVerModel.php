@@ -30,7 +30,7 @@ class MateriasPorVerModel{
         }
     }
 
-    public function falatntesPrimerIngreso($offset){
+    public function falatntesPrimerIngreso($offset,$marcaIngreso){
         try {
             $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`marca_ingreso` FROM `estudiantes` 
             WHERE `id` > ? 
@@ -39,12 +39,14 @@ class MateriasPorVerModel{
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ?  
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'INGRESO%' 
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL
-            AND `observacion` IS NULL");
+            AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)");
             $consultaEstPrimerIngreso->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->bindParam(2,$offset,PDO::PARAM_INT);
             $consultaEstPrimerIngreso->execute();

@@ -6,8 +6,7 @@ class Materiasporver extends Controller{
         $this->model = $this->model("MateriasPorVerModel");
     }
 
-
-    public function primeringreso(){
+    public function inicio(){
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
@@ -15,6 +14,11 @@ class Materiasporver extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         var_dump($marcaIngreso);die();
+    }
+
+
+    public function primeringreso(){
+        
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;

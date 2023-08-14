@@ -34,13 +34,15 @@ class Materiasporver extends Controller{
         $limit = 800;
         $numEstudiantesTransferentes = $this->model->faltantesTransferentesNum($offset,$marcaIngreso);
         $divEstudiantesTransferentes = ceil($numEstudiantesTransferentes->rowCount()/$limit);
+        for ($i=0; $i < $divEstudiantesTransferentes; $i++) {             
+            $this->transferentes($marcaIngreso);
+        }
         var_dump($divEstudiantesTransferentes);die();
-        $this->transferentes($marcaIngreso);
         var_dump($marcaIngreso);die();
     }
 
 
-    public function primeringreso($marcaIngreso){
+    public function primeringreso($limit,$marcaIngreso){
         
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         if($log->rowCount() == 0):
@@ -83,14 +85,15 @@ class Materiasporver extends Controller{
         endif;
     }
 
-    public function transferentes(){
+    public function transferentes($limit,$marcaIngreso){
+        var_dump($limit,$marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $limit = 800;
+        //$limit = 800;
         $transferentes = $this->model->faltantesTransferentes($offset,$limit);
         if($transferentes->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');

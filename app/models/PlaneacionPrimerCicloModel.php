@@ -194,8 +194,8 @@ class PlaneacionPrimerCicloModel{
             $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(6,$programa,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(8,$marca_ingreso,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(7,$marca_ingreso,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(8,$fecha,PDO::PARAM_STR);
             $insertPlaneacion->execute();
             if($insertPlaneacion):
                 return true;

@@ -52,10 +52,10 @@ class Planeacionprimerciclo extends Controller{
         endif;
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetchAll());die();
+        //var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
-                //var_dump($estudiante);die();
+                var_dump($estudiante);die();
                 $programa = $estudiante['programa'];
                 if ($programa != 'PPSV') :
                     //echo "No es PPSV <br>";

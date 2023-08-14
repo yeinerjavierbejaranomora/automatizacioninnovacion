@@ -166,6 +166,12 @@ class Materiasporver extends Controller{
     }
     
     public function estudiantesantiguos(){
+        $periodos = $this->model->periodos();
+        $marcaIngreso = "";
+        foreach ($periodos as $periodo) {
+            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+        }
+        $marcaIngreso = trim($marcaIngreso, ",");
         $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
@@ -180,7 +186,7 @@ class Materiasporver extends Controller{
             $limit = 1000;
             $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
             for ($i=0; $i < $numDivEstudiantes; $i++) :
-                $this->antiguos($offset,$limit);
+                $this->antiguos($offset,$limit,$marcaIngreso);
             endfor;
         endif;
     }

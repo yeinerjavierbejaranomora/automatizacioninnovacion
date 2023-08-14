@@ -57,7 +57,7 @@ class MateriasPorVerModel{
     }
 
     public function baseAcademica($codBanner,$programa,$periodo,$marcaIngreso){
-        var_dump($codBanner,$programa,$periodo,$marcaIngreso);die();
+        //var_dump($codBanner,$programa,$periodo,$marcaIngreso);die();
         try {
             $data = [];
             $consultaBaseAcademica = $this->db->connect()->prepare("SELECT m.codigoCurso,m.orden,m.codprograma FROM `mallaCurricular` m 

@@ -24,7 +24,7 @@ class Planeacionsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
-        var_dump($numEstudiantes);die();
+        //var_dump($numEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
             $this->segundociclo($marcaIngreso,$limit);
         }
@@ -40,6 +40,7 @@ class Planeacionsegundociclo extends Controller{
         endif;
         // $limit = 20;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];

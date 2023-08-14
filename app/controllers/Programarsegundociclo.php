@@ -44,7 +44,7 @@ class Programarsegundociclo extends Controller{
         endif;
         // $limit = 20;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetch(PDO::FETCH_ASSOC));die();
+        //var_dump($estudiantes->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];
@@ -117,6 +117,7 @@ class Programarsegundociclo extends Controller{
                             break;
                     }
                     $cicloReglaNegocio = 2;
+                    $marca_ingreso = $estudiante['marca_ingreso'];
                     $reglasNegocioConsulta = $this->model->getReglasNegocio($programaHomologante, $ruta, $tipoEstudiante, $cicloReglaNegocio);
                     $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
 
@@ -165,7 +166,7 @@ class Programarsegundociclo extends Controller{
                                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                                     $semestre = 1;
                                     $programada = '';
-                                    $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden2, $semestre, $programada, $programaHomologante);
+                                    $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden2, $semestre, $programada, $programaHomologante,$marca_ingreso);
                                 //echo $insertPlaneada . "<br />";
                                 endif;
                             else :
@@ -181,7 +182,7 @@ class Programarsegundociclo extends Controller{
                                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                                     $semestre = 1;
                                     $programada = '';
-                                    $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden2, $semestre, $programada, $programaHomologante);
+                                    $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden2, $semestre, $programada, $programaHomologante,$marca_ingreso);
                                 //echo $insertPlaneada . "<br />";
                                 endif;
                             endif;
@@ -274,6 +275,7 @@ class Programarsegundociclo extends Controller{
                 break;
         }
         $cicloReglaNegocio = 2;
+        $marca_ingreso = $estudiante['marca_ingreso'];
         $reglasNegocioConsulta = $this->model->getReglasNegocio($programaHomologante, $ruta, $tipoEstudiante, $cicloReglaNegocio);
         $reglasNegocio = $reglasNegocioConsulta->fetch(PDO::FETCH_ASSOC);
         $numeroCreditosPermitidos = $reglasNegocio['creditos'];
@@ -313,7 +315,7 @@ class Programarsegundociclo extends Controller{
                         $numeroCreditos = $numeroCreditos + $creditoMateria;
                         $semestre = 1;
                         $programada = '';
-                        $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                        $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante,$marca_ingreso);
                         //echo $insertPlaneada . "<br />";
                     endif;
                 else:
@@ -329,7 +331,7 @@ class Programarsegundociclo extends Controller{
                         $numeroCreditos = $numeroCreditos + $creditoMateria;
                         $semestre = 1;
                         $programada = '';
-                        $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante);
+                        $insertPlaneada = $this->model->insertProgramacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante,$marca_ingreso);
                         //echo $insertPlaneada . "<br />";
                     endif;
                 endif;

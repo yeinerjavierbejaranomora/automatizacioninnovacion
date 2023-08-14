@@ -215,7 +215,7 @@ class ProgramarPrimerCicloModel{
         }
     }
 
-    public function insertarProgramacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
+    public function insertarProgramacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa,$marca_ingreso){
         
         try {
             $fecha = date('Y-m-d H:i:s');
@@ -225,7 +225,8 @@ class ProgramarPrimerCicloModel{
             `orden`= ?, 
             `semestre`= ?, 
             `programada`= ?, 
-            `codprograma`= ?, 
+            `codprograma`= ?,
+            `periodo` = ?, 
             `fecha_registro` = ?");
             $insertProgramacion->bindValue(1,$codBanner,PDO::PARAM_INT);
             $insertProgramacion->bindValue(2,$codMateria,PDO::PARAM_STR);
@@ -233,7 +234,8 @@ class ProgramarPrimerCicloModel{
             $insertProgramacion->bindValue(4,$semestre,PDO::PARAM_INT);
             $insertProgramacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertProgramacion->bindValue(6,$programa,PDO::PARAM_STR);
-            $insertProgramacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(7,$marca_ingreso,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(8,$fecha,PDO::PARAM_STR);
             $insertProgramacion->execute();
             if($insertProgramacion):
                 return true;

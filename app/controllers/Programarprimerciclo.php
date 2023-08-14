@@ -44,7 +44,7 @@ class Programarprimerciclo extends Controller{
         endif;
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetchAll());die();
+        //var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 //var_dump($estudiante);die();
@@ -91,6 +91,7 @@ class Programarprimerciclo extends Controller{
                             break;
                     }
                     $ciclo = [1, 12];
+                    $marca_ingreso = $estudiante['marca_ingreso'];
                     $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
                     $materias_moodle = "";
                     if ($materiasMoodleConsulta->rowCount() == 0) :
@@ -139,7 +140,7 @@ class Programarprimerciclo extends Controller{
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                                $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                                 $cuentaCursosCiclo1++;
                             endif;
                         else :
@@ -151,7 +152,7 @@ class Programarprimerciclo extends Controller{
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                                $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                                 $cuentaCursosCiclo1++;
                             endif;
                         endif;
@@ -216,6 +217,7 @@ class Programarprimerciclo extends Controller{
                 # code...
                 break;
         }
+        $marca_ingreso = $estudiante['marca_ingreso'];
         $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
         $materias_moodle = "";
         if ($materiasMoodleConsulta->rowCount() == 0) :
@@ -254,7 +256,7 @@ class Programarprimerciclo extends Controller{
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
-                    $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                     $cuentaCursosCiclo1++;
                 endif;
             else:
@@ -266,7 +268,7 @@ class Programarprimerciclo extends Controller{
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
-                    $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $insertarProgramacion = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                     $cuentaCursosCiclo1++;
                 endif;
             endif;

@@ -207,7 +207,7 @@ class PlaneacionSegundoCicloModel{
         }
     }
 
-    public function insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante){
+    public function insertarPlaneacion($codBanner,$codMateria,$orden2,$semestre,$programada,$programaHomologante,$marca_ingreso){
         
         try {
             $fecha = date('Y-m-d H:i:s');
@@ -217,7 +217,8 @@ class PlaneacionSegundoCicloModel{
             `orden`= ?, 
             `semestre`= ?, 
             `programada`= ?, 
-            `codprograma`= ?, 
+            `codprograma`= ?,
+            `periodo`=?, 
             `fecha_registro` = ?");
             $insertPlaneacion->bindValue(1,$codBanner,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(2,$codMateria,PDO::PARAM_STR);
@@ -225,7 +226,8 @@ class PlaneacionSegundoCicloModel{
             $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(6,$programaHomologante,PDO::PARAM_STR);
-            $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(7,$marca_ingreso,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(8,$fecha,PDO::PARAM_STR);
             $insertPlaneacion->execute();
             if($insertPlaneacion):
                 return true;

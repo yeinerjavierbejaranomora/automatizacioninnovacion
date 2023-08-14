@@ -48,7 +48,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset,$marcaIngreso);
-        var_dump($totalEstudiantesAntiguos);die();
+        //var_dump($totalEstudiantesAntiguos);die();
         if($totalEstudiantesAntiguos == 0):
             echo "No hay estudiantes ANTIGUOS <br>";die();
         else:
@@ -56,7 +56,7 @@ class Materiasporver extends Controller{
             $limit = 1000;
             $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
             for ($i=0; $i < $numDivEstudiantes; $i++) :
-                $this->antiguos($offset,$limit);
+                $this->antiguos($offset,$limit,$marcaIngreso);
             endfor;
         endif;
     }
@@ -185,7 +185,7 @@ class Materiasporver extends Controller{
         endif;
     }
 
-    public function antiguos($offset,$limit){
+    public function antiguos($offset,$limit,$marcaIngreso){
         /*$log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
@@ -193,7 +193,8 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $limit = 1000;*/
-        $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit);
+        $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit,$marcaIngreso);
+        var_dump($estudiantesAntiguos);die();
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):
                 //var_dump($estudiante);die();

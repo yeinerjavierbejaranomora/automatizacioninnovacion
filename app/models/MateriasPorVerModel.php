@@ -299,7 +299,7 @@ class MateriasPorVerModel{
         }
     }
 
-    public function faltantesAntiguos($offset,$limit){
+    public function faltantesAntiguos($offset,$limit,$marcaIngreso){
         try{
             $consultaEstudiantesAntiguos = $this->db->connect()->prepare("SELECT * FROM `estudiantes`
             WHERE `id` > ?
@@ -308,16 +308,19 @@ class MateriasPorVerModel{
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             ORDER BY `id` ASC
             LIMIT ?");
             $consultaEstudiantesAntiguos->bindParam(1,$offset,PDO::PARAM_INT);

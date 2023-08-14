@@ -209,7 +209,7 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
 
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
-                var_dump($mallaCurricular);die();
+                //var_dump($mallaCurricular);die();
                 $historial = $this->model->historial($codBanner);
                 //$historialMoodle = $this->model->historialMoodle($codBanner);
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
@@ -220,8 +220,8 @@ class Materiasporver extends Controller{
                     $diff = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
-                    //var_dump($diff);die();
                 endif;*/
+                var_dump($diff);die();
                 $cantidadDiff = count($diff);
                 if(count($diff) > 0):
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);

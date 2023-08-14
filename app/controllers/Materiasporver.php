@@ -40,9 +40,25 @@ class Materiasporver extends Controller{
             }
         else :
             echo "No hay estudiantes TRANSFERENTES <br>";
-        endif;        
-        var_dump($divEstudiantesTransferentes);die();
+        endif;
         var_dump($marcaIngreso);die();
+        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        if($log->rowCount() == 0):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset);
+        if($totalEstudiantesAntiguos == 0):
+            echo "No hay estudiantes ANTIGUOS <br>";die();
+        else:
+            //var_dump($totalEstudiantesAntiguos);die();
+            $limit = 1000;
+            $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
+            for ($i=0; $i < $numDivEstudiantes; $i++) :
+                $this->antiguos($offset,$limit);
+            endfor;
+        endif;
     }
 
 

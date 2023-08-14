@@ -25,10 +25,11 @@ class Mafireplica  extends Controller{
             //var_dump($datosMafi->fetchAll());die();
             $numeroRegistros = 0;
             $numeroRegistrosAlertas = 0;
-            $primerId = $this->model->datamafireplica($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
+            //$primerId = $this->model->datamafireplica($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
+                $primerId = $estudiante['id'];
                 $codigoBanner = $estudiante['idbanner'];
                 $nombre = $estudiante['primer_apellido'];
                 $programa = $estudiante['codprograma'];

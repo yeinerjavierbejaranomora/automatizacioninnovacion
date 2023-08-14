@@ -42,7 +42,7 @@ class Materiasporver extends Controller{
     }
 
 
-    public function primeringreso($limit,$marcaIngreso){
+    public function primeringreso($marcaIngreso){
         
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         if($log->rowCount() == 0):

@@ -23,7 +23,7 @@ class Materiasporver extends Controller{
         if($numEstudiantesPrimerIngreso->rowCount() != 0):
             $this->primeringreso($marcaIngreso);
         else:
-            echo "No hay estudiantes de primer ingreso <br>";
+            //echo "No hay estudiantes de primer ingreso <br>";
         endif;
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if($log->rowCount() == 0):

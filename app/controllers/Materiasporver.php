@@ -8,6 +8,13 @@ class Materiasporver extends Controller{
 
 
     public function primeringreso(){
+        $periodos = $this->model->periodos();
+        $marcaIngreso = "";
+        foreach ($periodos as $periodo) {
+            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+        }
+        $marcaIngreso = trim($marcaIngreso, ",");
+        var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PrimerIngreso','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;

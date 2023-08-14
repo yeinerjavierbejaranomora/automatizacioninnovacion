@@ -8,6 +8,16 @@ class MateriasPorVerModel{
         $this->db = new Database();
     }
 
+    public function periodos(){
+        try {
+            $consultaPeriodo = $this->db->connect()->prepare("SELECT `periodos` FROM `periodo` WHERE `periodoActivo` = 1");
+            $consultaPeriodo->execute();
+            return $consultaPeriodo;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function logAplicacion($accion,$tabla){
         try {
             $consultaLog = $this->db->connect()->prepare("SELECT * FROM `logAplicacion` WHERE `accion` = ? AND `tabla_afectada` = ? ORDER BY `id` DESC LIMIT 1");

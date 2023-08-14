@@ -38,8 +38,8 @@ class Materiasporver extends Controller{
                 $codBanner = $estudiante['homologante'];
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
-                $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
-                var_dump($marcaIngreso);die();
+                $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
+                var_dump($mallaCurricular->fetchAll());die();
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
                 $registroMPV = $registroMPV + $insertMateriaPorVer;
                 if(count($mallaCurricular) == $insertMateriaPorVer):

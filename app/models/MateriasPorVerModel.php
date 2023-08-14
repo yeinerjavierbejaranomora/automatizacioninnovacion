@@ -56,7 +56,7 @@ class MateriasPorVerModel{
         }
     }
 
-    public function baseAcademica($codBanner,$programa,$periodo){
+    public function baseAcademica($codBanner,$programa,$periodo,$marcaIngreso){
         //var_dump($codBanner,$programa,$periodo);die();
         try {
             $data = [];
@@ -77,6 +77,7 @@ class MateriasPorVerModel{
                     'codMateria' => $value['codigoCurso'],
                     'orden' => $orden,
                     'codprograma' => $value['codprograma'],
+                    'periodo' => $marcaIngreso,
                     /*'created_at' => now(),
                     'updated_at' => now(),*/
                 ];

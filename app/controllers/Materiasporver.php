@@ -194,12 +194,12 @@ class Materiasporver extends Controller{
         endif;
         $limit = 1000;*/
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit,$marcaIngreso);
-        var_dump($estudiantesAntiguos->fetch(PDO::FETCH_ASSOC));die();
+        //var_dump($estudiantesAntiguos->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):
                 //var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
-                $primerId = $this->model->faltantesAntiguos($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
+                $primerId = $this->model->faltantesAntiguos($offset,$limit,$marcaIngreso)->fetch(PDO::FETCH_ASSOC)['id'];
                 $ultimoRegistroId = 0;
 
                 $marcaIngreso = $estudiante['marca_ingreso'];
@@ -208,7 +208,8 @@ class Materiasporver extends Controller{
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
 
-                $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo);
+                $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
+                var_dump($mallaCurricular);die();
                 $historial = $this->model->historial($codBanner);
                 //$historialMoodle = $this->model->historialMoodle($codBanner);
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {

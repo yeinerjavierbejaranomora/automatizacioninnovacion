@@ -194,7 +194,7 @@ class Materiasporver extends Controller{
         endif;
         $limit = 1000;*/
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit,$marcaIngreso);
-        var_dump($estudiantesAntiguos);die();
+        var_dump($estudiantesAntiguos->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):
                 //var_dump($estudiante);die();

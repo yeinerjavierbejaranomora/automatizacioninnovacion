@@ -20,8 +20,20 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $numEstudiantesPrimerIngreso = $this->model->falatntesPrimerIngreso($offset,$marcaIngreso);
-        var_dump($numEstudiantesPrimerIngreso->rowCount());die();
-        $this->primeringreso($marcaIngreso);
+        if($numEstudiantesPrimerIngreso->rowCount() != 0):
+            $this->primeringreso($marcaIngreso);
+        else:
+            echo "No hay estudiantes de primer ingreso <br>";
+        endif;
+        $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
+        if($log->rowCount() == 0):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        $limit = 800;
+        $numEstudiantesTransferentes = $this->model->faltantesTransferentes($offset,$limit);
+        var_dump($numEstudiantesTransferentes->rowCount());die();
         $this->transferentes($marcaIngreso);
         var_dump($marcaIngreso);die();
     }

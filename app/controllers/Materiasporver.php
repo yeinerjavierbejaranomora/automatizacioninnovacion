@@ -19,7 +19,7 @@ class Materiasporver extends Controller{
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        $numEstudiantesPrimerIngreso = $this->model->falatntesPrimerIngreso($offset,$marcaIngreso)
+        $numEstudiantesPrimerIngreso = $this->model->falatntesPrimerIngreso($offset,$marcaIngreso);
         var_dump($numEstudiantesPrimerIngreso->rowCount());die();
         $this->primeringreso($marcaIngreso);
         $this->transferentes($marcaIngreso);

@@ -86,7 +86,8 @@ class Materiasporver extends Controller{
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
                 //var_dump($mallaCurricular);die();
                 $insertMateriaPorVer = $this->model->insertMateriaPorVer($mallaCurricular);
-                $registroMPV = $registroMPV + $insertMateriaPorVer;
+                //$registroMPV = $registroMPV + $insertMateriaPorVer;
+                $registroMPV = $insertMateriaPorVer;
                 if(count($mallaCurricular) == $insertMateriaPorVer):
                     $updateEstudiantePI = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                 endif;
@@ -146,7 +147,8 @@ class Materiasporver extends Controller{
                     endif;
                 else:*/
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
-                    $registroMPV = $registroMPV + $insertMateriaPorVer;
+                    $registroMPV = $insertMateriaPorVer;
+                    //$registroMPV = $registroMPV + $insertMateriaPorVer;
                     if(count($diff) == $insertMateriaPorVer):
                         $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                     endif;

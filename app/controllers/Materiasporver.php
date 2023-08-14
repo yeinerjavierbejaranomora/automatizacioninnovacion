@@ -31,7 +31,7 @@ class Materiasporver extends Controller{
         if($primerIngreso->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;
-            $primerId = $this->model->falatntesPrimerIngreso($offset)->fetch(PDO::FETCH_ASSOC)['id'];
+            $primerId = $this->model->falatntesPrimerIngreso($offset,$marcaIngreso)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($primerIngreso as $estudiante):
                 $marcaIngreso = $estudiante['marca_ingreso'];

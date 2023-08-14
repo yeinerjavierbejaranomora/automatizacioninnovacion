@@ -175,7 +175,7 @@ class PlaneacionPrimerCicloModel{
         }
     }
 
-    public function insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa){
+    public function insertarPlaneacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa,$marca_ingreso){
         
         try {
             $fecha = date('Y-m-d H:i:s');
@@ -185,7 +185,8 @@ class PlaneacionPrimerCicloModel{
             `orden`= ?, 
             `semestre`= ?, 
             `programada`= ?, 
-            `codprograma`= ?, 
+            `codprograma`= ?,
+            `periodo` = ?, 
             `fecha_registro` = ?");
             $insertPlaneacion->bindValue(1,$codBanner,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(2,$codMateria,PDO::PARAM_STR);
@@ -193,6 +194,7 @@ class PlaneacionPrimerCicloModel{
             $insertPlaneacion->bindValue(4,$semestre,PDO::PARAM_INT);
             $insertPlaneacion->bindValue(5,$programada,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(6,$programa,PDO::PARAM_STR);
+            $insertPlaneacion->bindValue(8,$marca_ingreso,PDO::PARAM_STR);
             $insertPlaneacion->bindValue(7,$fecha,PDO::PARAM_STR);
             $insertPlaneacion->execute();
             if($insertPlaneacion):

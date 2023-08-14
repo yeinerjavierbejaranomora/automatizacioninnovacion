@@ -212,6 +212,7 @@ class Planeacionprimerciclo extends Controller{
                 # code...
                 break;
         }
+        $marca_ingreso = $estudiante['marca_ingreso'];
         $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
         //var_dump($materiasPorVer->fetchAll());die();
         $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);

@@ -201,7 +201,7 @@ class MateriasPorVerModel{
         }
     }
     
-    public function faltantesTransferentes($offset,$limit){
+    public function faltantesTransferentes($offset,$limit,$marcaIngreso){
         try {
             $consultaEstTransferente = $this->db->connect()->prepare("SELECT * FROM `estudiantes`
             WHERE `id` > ?
@@ -211,6 +211,7 @@ class MateriasPorVerModel{
             AND `materias_faltantes` IS NULL
             AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)
             LIMIT ?");
             $consultaEstTransferente->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstTransferente->bindParam(2,$limit,PDO::PARAM_INT);

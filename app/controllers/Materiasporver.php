@@ -86,7 +86,6 @@ class Materiasporver extends Controller{
     }
 
     public function transferentes($limit,$marcaIngreso){
-        var_dump($limit,$marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
@@ -94,7 +93,8 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         //$limit = 800;
-        $transferentes = $this->model->faltantesTransferentes($offset,$limit);
+        $transferentes = $this->model->faltantesTransferentes($offset,$limit,$marcaIngreso);
+        var_dump($transferentes);die();
         if($transferentes->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;

@@ -98,7 +98,6 @@ class Planeacionprimerciclo extends Controller{
                             break;
                     }
                     $marca_ingreso = $estudiante['marca_ingreso'];
-                    var_dump($marca_ingreso);die();
                     $ciclo = [1, 12];
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
@@ -136,7 +135,7 @@ class Planeacionprimerciclo extends Controller{
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                                $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                                 $cuentaCursosCiclo1++;
                             endif;
                         else :
@@ -148,7 +147,7 @@ class Planeacionprimerciclo extends Controller{
                                 $numeroCreditos = $numeroCreditos + $creditoMateria;
                                 $semestre = 1;
                                 $programada = '';
-                                $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                                $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                                 $cuentaCursosCiclo1++;
                             endif;
                         endif;
@@ -241,7 +240,7 @@ class Planeacionprimerciclo extends Controller{
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
-                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                     $cuentaCursosCiclo1++;
                 endif;
             else:
@@ -253,7 +252,7 @@ class Planeacionprimerciclo extends Controller{
                     $numeroCreditos = $numeroCreditos + $creditoMateria;
                     $semestre = 1;
                     $programada = '';
-                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa);
+                    $insertarPlaneacion = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                     $cuentaCursosCiclo1++;
                 endif;
             endif;

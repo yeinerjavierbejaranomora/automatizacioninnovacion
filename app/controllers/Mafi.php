@@ -17,6 +17,7 @@ class Mafi extends Controller{
         else:
             $offset = 0;
         endif;
+        
         $datosNum = $this->model->numeroDatosMafi($offset);
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if($datosNumFetch['total'] > 0):

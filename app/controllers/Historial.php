@@ -7,7 +7,7 @@ class Historial extends Controller{
     }
 
     public function inicio() {
-        $file = "../../public/historialAcademico14-08.csv";
+        $file = "../public/historialAcademico14-08.csv";
         var_dump(file_exists($file));die();
     }
 }

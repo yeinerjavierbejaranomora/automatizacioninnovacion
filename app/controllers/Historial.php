@@ -12,7 +12,7 @@ class Historial extends Controller{
         $lineNumber = 1;
         while (($raw_string = fgets($handle)) !== false) {
             $row = str_getcsv($raw_string);
-            var_dump($row);die();
+            var_dump($row[0]);die();
             $lineNumber++;
         }
         fclose($handle);

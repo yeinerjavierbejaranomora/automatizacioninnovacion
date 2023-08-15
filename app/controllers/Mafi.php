@@ -42,18 +42,25 @@ class Mafi extends Controller{
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 //if ($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')) :
                 if ($sello == 'TIENE RETENCION') :
-                    if(str_starts_with ($autorizadoAsistir,'ACTIVO ')):
-                        $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
-                        $numeroRegistros++;
+                    if (str_starts_with($autorizadoAsistir, 'ACTIVO ')) :
+                        /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
+                        $numeroRegistros++;*/
+                        $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                        $res = json_decode(file_get_contents($url), true);
+                        var_dump($res);die();
                     endif;
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :
-                    $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
-                    $numeroRegistros++;
+                    $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                    $res = json_decode(file_get_contents($url), true);
+                    var_dump($res);die();
+                /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
+                    $numeroRegistros++;*/
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $idBanner;
+                die();
             endforeach;
-            $fechaFin = date('Y-m-d H:i:s');
+            /*$fechaFin = date('Y-m-d H:i:s');
             $accion = 'Insert';
             $tablaAfectada = 'datosMafiReplica';
             $mensajeLog = 'Se realizo la insercion en la tabla datosMafiRelica desde la tabla datosMafi, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $numeroRegistros . ' registros';
@@ -62,7 +69,7 @@ class Mafi extends Controller{
             if ($insertarLog && $insertIndice) :
                 echo "Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin;
                 echo "Numero de registros: '$numeroRegistros'=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId;
-            endif;
+            endif;*/
         else:
             echo "No Hay datos que registrar";
         endif;

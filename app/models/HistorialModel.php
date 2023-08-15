@@ -9,7 +9,7 @@ class HistorialModel{
     }
 
     public function save($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota){
-        //var_dump($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);die();
+        var_dump($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);die();
         //try {
             $save = $this->db->connect()->prepare("INSERT INTO `historialAcademico` SET 
             `codBanner` = ?, 

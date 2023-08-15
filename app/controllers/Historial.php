@@ -8,8 +8,13 @@ class Historial extends Controller{
 
     public function inicio() {
         $file = "../public/historialAcademico14-08.csv";
-        $openfile = fopen($file, "r");
-        $cont = fread($openfile, filesize($file));
-        echo count($cont);
+        $handle = fopen($file, "r");
+        $lineNumber = 1;
+        while (($raw_string = fgets($handle)) !== false) {
+            $row = str_getcsv($raw_string);
+            var_dump($row);
+            $lineNumber++;
+        }
+        fclose($handle);
     }
 }

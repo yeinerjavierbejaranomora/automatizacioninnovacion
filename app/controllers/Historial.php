@@ -6,7 +6,7 @@ class Historial extends Controller{
         $this->model = $this->model("HistorialModel");
     }
 
-    public function FunctionName() {
+    public function inicio() {
         echo "hh";
     }
 }

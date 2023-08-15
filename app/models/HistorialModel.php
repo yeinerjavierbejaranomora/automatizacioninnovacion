@@ -9,7 +9,7 @@ class HistorialModel{
     }
 
     public function save($fila){
-        var_dump($fila);die();
+        //var_dump($fila);die();
         try {
             var_dump($fila[0]);die();
         } catch (PDOException $e) {

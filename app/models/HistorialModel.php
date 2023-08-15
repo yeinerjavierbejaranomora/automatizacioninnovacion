@@ -9,17 +9,11 @@ class HistorialModel{
     }
 
     public function save($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota){
-        var_dump($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);die();
+        //var_dump($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);die();
         //try {
             $save = $this->db->connect()->prepare("INSERT INTO `historialAcademico` SET 
             `codBanner` = $codBanner, 
-            `nombreEst` = $nombre, 
-            `institucionOrigen` = $origen, 
-            `codprograma` = $codPrograma, 
-            `programa` = $programa, 
-            `codMateria` = $codMateria, 
-            `nombreMat` = $nombreMateria, 
-            `nota` = $nota");
+            ");
             /*$save->bindValue(1,$codBanner,PDO::PARAM_INT);
             $save->bindValue(2,$nombre,PDO::PARAM_STR);
             $save->bindValue(3,$origen,PDO::PARAM_STR);

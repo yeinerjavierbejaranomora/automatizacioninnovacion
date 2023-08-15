@@ -53,8 +53,8 @@ class Mafi extends Controller{
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $idBanner;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                    var_dump($url);die();
-                    $res = json_decode(file_get_contents($url), true);
+                $res = json_decode(file_get_contents($url), true);
+                var_dump($res);die();
                 die();
             endforeach;
             /*$fechaFin = date('Y-m-d H:i:s');

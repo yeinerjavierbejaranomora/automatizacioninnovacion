@@ -28,7 +28,7 @@ class HistorialModel{
             $save->bindValue(6,$codMateria,PDO::PARAM_STR);
             $save->bindValue(7,$nombreMateria,PDO::PARAM_STR);
             $save->bindValue(8,$nota,PDO::PARAM_STR);
-            /*$save->execute();*/
+            $save->execute();
             var_dump($save);die();
             /*return $save;
         } catch (PDOException $e) {

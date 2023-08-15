@@ -42,13 +42,12 @@ class Mafi extends Controller{
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 if ($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')) :
                     if(str_starts_with ($autorizadoAsistir,'ACTIVO')):
-                        echo $idBanner." si";die();
+                        $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
+                        $numeroRegistros++;
                     endif;
-                    /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
-                    $numeroRegistros++;*/
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :
-                    /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
-                    $numeroRegistros++;*/
+                    $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
+                    $numeroRegistros++;
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $idBanner;

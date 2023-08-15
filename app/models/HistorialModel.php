@@ -7,4 +7,8 @@ class HistorialModel{
     {
         $this->db = new Database();
     }
+
+    public function save($fila){
+        var_dump($fila);die();
+    }
 }

@@ -13,7 +13,7 @@ class Historial extends Controller{
         while (($raw_string = fgets($handle)) !== false) {
             $row = str_getcsv($raw_string);
             $fila = explode(";",$row[0]);
-            var_dump($fila[2]);die();
+            $save = $this->model->save($fila);
             $lineNumber++;
         }
         fclose($handle);

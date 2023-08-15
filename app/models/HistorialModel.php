@@ -8,8 +8,8 @@ class HistorialModel{
         $this->db = new Database();
     }
 
-    public function save($codBanner){
-        var_dump($codBanner);die();
+    public function save($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota){
+        var_dump($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);die();
         try {
             var_dump($fila[2]);die();
         } catch (PDOException $e) {

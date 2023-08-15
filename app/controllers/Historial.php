@@ -15,7 +15,14 @@ class Historial extends Controller{
             $fila = explode(";",$row[0]);
             var_dump($fila);die();
             $codBanner = $fila[0];
-            $save = $this->model->save($codBanner);
+            $nombre = $fila[1];
+            $origen = $fila[2];
+            $codPrograma = $fila[3];
+            $programa = $fila[4];
+            $codMateria = $fila[5];
+            $nombreMateria = $fila[6];
+            $nota = $fila[7];
+            $save = $this->model->save($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);
             $lineNumber++;
         }
         fclose($handle);

@@ -12,7 +12,7 @@ class HistorialModel{
         //var_dump($fila);die();
         try {
             foreach($fila as $row):
-                var_dump($row);
+                var_dump($row);die();
             endforeach;
         } catch (PDOException $e) {
             return false;

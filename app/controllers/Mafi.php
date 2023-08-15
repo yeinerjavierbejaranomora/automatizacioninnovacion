@@ -44,7 +44,6 @@ class Mafi extends Controller{
                     if(str_starts_with ($autorizadoAsistir,'ACTIVO')):
                         echo "si";die();
                     endif;
-
                     /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                     $numeroRegistros++;*/
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :

@@ -12,7 +12,6 @@ class HistorialModel{
         //var_dump($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);die();
         //try {
             $save = $this->db->connect()->prepare("INSERT INTO `historialAcademico` SET 
-            `id` = NULL,
             `codBanner` = $codBanner, 
             `nombreEst` = $nombre, 
             `institucionOrigen` = $origen, 

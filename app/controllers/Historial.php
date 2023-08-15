@@ -23,6 +23,10 @@ class Historial extends Controller{
             $nombreMateria = $fila[6];
             $nota = $fila[7];
             $save = $this->model->save($codBanner,$nombre,$origen,$codPrograma,$programa,$codMateria,$nombreMateria,$nota);
+            if ($save):
+                $fechaInicio = date('Y-m-d H:i:s');
+                echo $codBanner." insertado a historial -- ". $fechaInicio;
+            endif;
             $lineNumber++;
         }
         fclose($handle);

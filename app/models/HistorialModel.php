@@ -9,10 +9,10 @@ class HistorialModel{
     }
 
     public function save($fila){
-        //var_dump($fila);die();
+        var_dump($fila);die();
         try {
             foreach($fila as $row):
-                var_dump($row[2]);die();
+                var_dump($row);die();
             endforeach;
         } catch (PDOException $e) {
             return false;

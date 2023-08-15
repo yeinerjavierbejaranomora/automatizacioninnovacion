@@ -45,19 +45,16 @@ class Mafi extends Controller{
                     if (str_starts_with($autorizadoAsistir, 'ACTIVO ')) :
                         /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                         $numeroRegistros++;*/
-                        $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                        var_dump($url);die();
-                        $res = json_decode(file_get_contents($url), true);
                     endif;
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :
-                    $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                    var_dump($url);die();
-                    $res = json_decode(file_get_contents($url), true);
                 /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                     $numeroRegistros++;*/
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $idBanner;
+                $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                    var_dump($url);die();
+                    $res = json_decode(file_get_contents($url), true);
                 die();
             endforeach;
             /*$fechaFin = date('Y-m-d H:i:s');

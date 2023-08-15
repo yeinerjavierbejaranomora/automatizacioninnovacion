@@ -41,7 +41,8 @@ class Mafi extends Controller{
                 $operador = $estudiante['operador'];
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                        var_dump($url);die();
+                $res = json_decode(file_get_contents($url), true);
+                var_dump($res);die();
                 //if ($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')) :
                 if ($sello == 'TIENE RETENCION') :
                     if (str_starts_with($autorizadoAsistir, 'ACTIVO ')) :

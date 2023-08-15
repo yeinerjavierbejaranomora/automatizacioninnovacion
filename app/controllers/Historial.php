@@ -13,7 +13,7 @@ class Historial extends Controller{
         while (($raw_string = fgets($handle)) !== false) {
             $row = str_getcsv($raw_string);
             $fila = explode(";",$row[0]);
-            // var_dump($fila);die();
+            var_dump($fila);die();
             $codBanner = $fila[0];
             $nombre = $fila[1];
             $origen = $fila[2];

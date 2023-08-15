@@ -20,7 +20,7 @@ class HistorialModel{
             `codMateria` = ?, 
             `nombreMat` = ?, 
             `nota` = ?");
-            $save->bindValue(1,$codBanner,PDO::PARAM_INT);
+            /*$save->bindValue(1,$codBanner,PDO::PARAM_INT);
             $save->bindValue(2,$nombre,PDO::PARAM_STR);
             $save->bindValue(3,$origen,PDO::PARAM_STR);
             $save->bindValue(4,$codPrograma,PDO::PARAM_STR);
@@ -28,7 +28,7 @@ class HistorialModel{
             $save->bindValue(6,$codMateria,PDO::PARAM_STR);
             $save->bindValue(7,$nombreMateria,PDO::PARAM_STR);
             $save->bindValue(8,$nota,PDO::PARAM_STR);
-            $save->execute();
+            $save->execute();*/
             var_dump($save);die();
             /*return $save;
         } catch (PDOException $e) {

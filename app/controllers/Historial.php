@@ -10,6 +10,6 @@ class Historial extends Controller{
         $file = "../public/historialAcademico14-08.csv";
         $openfile = fopen($file, "r");
         $cont = fread($openfile, filesize($file));
-        echo $cont;
+        echo count($cont);
     }
 }

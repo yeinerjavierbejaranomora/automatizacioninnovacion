@@ -9,7 +9,8 @@ class Historial extends Controller{
     public function inicio() {
         $file = "../public/historialAcademico_1.json";
         $jsonCont = file_get_contents($file);
-        var_dump($jsonCont);die();
+        $content = json_decode($jsonCont, true);
+        var_dump($content);die();
         $handle = fopen($file, "r");
         $lineNumber = 1;
         while (($raw_string = fgets($handle)) !== false) {

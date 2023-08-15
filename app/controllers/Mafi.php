@@ -46,13 +46,13 @@ class Mafi extends Controller{
                         /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                         $numeroRegistros++;*/
                         $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                        var_dump($url);die();
                         $res = json_decode(file_get_contents($url), true);
-                        var_dump($res);die();
                     endif;
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :
                     $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                    var_dump($url);die();
                     $res = json_decode(file_get_contents($url), true);
-                    var_dump($res);die();
                 /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                     $numeroRegistros++;*/
                 endif;

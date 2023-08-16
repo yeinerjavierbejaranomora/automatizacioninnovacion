@@ -139,7 +139,7 @@ class MafiReplicaModel{
                 $numInsert++;
                 //var_dump($insertHistorial);die();
             endforeach;
-            if($numInsert == count($historial)):
+            if($numInsert == count($arrayhistorial)):
                 return $numInsert;
             endif;
         } catch (PDOException $e) {

@@ -136,7 +136,7 @@ class MafiReplicaModel{
                 $insertHistorial->bindValue(7,$value['materia'],PDO::PARAM_STR);
                 $insertHistorial->bindValue(8,$value['calificacion'],PDO::PARAM_STR);
                 $insertHistorial->execute();
-                $numInsert++;
+                //$numInsert++;
                 var_dump($insertHistorial);die();
             endforeach;
             /*if($numInsert == count($historial)):

@@ -78,8 +78,7 @@ class Mafireplica  extends Controller{
                         $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];*/
                         if (empty($historial)) :
                             if($programaActivo < 1):
-                                $insertHistorial = $this->model->insertHistorial($arrayHistorial);
-                                var_dump($insertHistorial);
+                                
                                 /*$tieneHistorial = 'SIN HISTORIAL';
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
@@ -107,6 +106,8 @@ class Mafireplica  extends Controller{
                             endif;*/
                         else :
                             if($programaActivo > 0):
+                                $insertHistorial = $this->model->insertHistorial($arrayHistorial);
+                                var_dump($insertHistorial);
                                 //$insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
                             else:
                                 /*$programaAbrio = 'NO SE ABRIO PROGRAMA';

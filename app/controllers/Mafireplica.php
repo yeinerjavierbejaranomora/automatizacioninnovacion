@@ -22,7 +22,7 @@ class Mafireplica  extends Controller{
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :
             $datosMafi = $this->model->dataMafiReplica($offset,$limit);
-            var_dump($datosMafi->fetchAll());die();
+            //var_dump($datosMafi->fetchAll());die();
             $numeroRegistros = 0;
             $numeroRegistrosAlertas = 0;
             //$primerId = $this->model->datamafireplica($offset,$limit)->fetch(PDO::FETCH_ASSOC)['id'];
@@ -42,7 +42,11 @@ class Mafireplica  extends Controller{
                 $sello = $estudiante['sello'];
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 //if($marcaIngreso == '')
-                $periodo = substr($marcaIngreso,-2);
+                $periodo = substr($marcaIngreso, -2);
+
+                $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
+                $res = json_decode(file_get_contents($url), true);
+                var_dump($res);die();
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;

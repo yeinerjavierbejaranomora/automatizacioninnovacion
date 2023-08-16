@@ -117,6 +117,7 @@ class MafiReplicaModel{
         //try {
         //$numInsert= 0;
             foreach ($arrayhistorial as $historial) :
+                var_dump($historial);die();
                 foreach ($historial as $value) :
                     var_dump($value);die();
                     $operador  = 'operador';

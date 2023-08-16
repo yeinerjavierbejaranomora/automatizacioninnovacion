@@ -130,7 +130,7 @@ class MafiReplicaModel{
                 $insertHistorial->bindParam(6,$value['idCurso'],PDO::PARAM_STR);
                 $insertHistorial->bindParam(7,$value['materia'],PDO::PARAM_STR);
                 $insertHistorial->bindParam(8,$value['calificacion'],PDO::PARAM_STR);*/
-                $insertHistorial->execute();
+                //$insertHistorial->execute();
                 //$numInsert++;
                 var_dump($insertHistorial);die();
             endforeach;

@@ -21,7 +21,7 @@ class Mafireplica  extends Controller{
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :
             $divdatosNumFetch = ceil($datosNumFetch['totalEstudiantes']/$limit);
-            for ($i=0; $i < $divdatosNumFetch; $i++) { 
+            //for ($i=0; $i < $divdatosNumFetch; $i++) { 
             
             $datosMafi = $this->model->dataMafiReplica($offset,$limit);
             //var_dump($datosMafi->fetchAll());die();
@@ -173,7 +173,7 @@ class Mafireplica  extends Controller{
                 "<br> inicio:" . $fechaInicio . "-- Fin:" . $fechaFin;*/
                 echo $ultimoRegistroId . "--" . $codigoBanner . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
             endforeach;
-            }
+            //}
         else:
             echo "No Hay datos que registrar";
         endif;

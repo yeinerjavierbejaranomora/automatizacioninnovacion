@@ -113,8 +113,9 @@ class MafiReplicaModel{
     }
 
     public function insertHistorial($historial){
-        //var_dump($historial);die();
+        var_dump(count($historial));die();
         try {
+            $numInsert= 0;
             foreach($historial as $value):
                 var_dump($value);die();
                 $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico` SET 
@@ -126,7 +127,16 @@ class MafiReplicaModel{
                 `codMateria` = ?, 
                 `nombreMat` = ?, 
                 `nota` = ?");
-                $insertHistorial->bindValue(1,$value,PDO::PARAM_INT);
+                $insertHistorial->bindValue(1,$value['bannerID'],PDO::PARAM_INT);
+                $insertHistorial->bindValue(2,$value['estudiante'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(3,'operador',PDO::PARAM_STR);
+                $insertHistorial->bindValue(4,$value['cod_programa'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(5,$value['programa'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(6,$value['idCurso'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(7,$value['materia'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(8,$value['calificacion'],PDO::PARAM_STR);
+                $insertHistorial->execute();
+                $numInsert++;
             endforeach;
         } catch (PDOException $e) {
             return false;

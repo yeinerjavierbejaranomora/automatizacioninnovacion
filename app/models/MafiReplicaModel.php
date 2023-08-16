@@ -117,9 +117,9 @@ class MafiReplicaModel{
         //try {
             //$numInsert= 0;
             foreach($historial as $value):
-                //var_dump($value);die();
                 $operador  = 'operador';
                 $codigoBanner = $value['bannerID'];
+                var_dump($codigoBanner);die();
                 $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico2` (`codBanner`, `nombreEst`, `institucionOrigen`, `codprograma`, `programa`, `codMateria`, `nombreMat`, `nota`) VALUES
                 (".$codigoBanner.", ' Rincon Fuentes Ramón Alexander', 'operador', 'PISV', 'INGENIERIA DE SOFTWARE VIRT', 'ISV22100', 'HOM-CATEDR IBERO - RESPONSA SOCIAL', '4,5')");
                 /*$insertHistorial->bindParam(1,$value['bannerID'],PDO::PARAM_INT);

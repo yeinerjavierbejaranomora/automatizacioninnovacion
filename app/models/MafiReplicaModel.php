@@ -117,7 +117,8 @@ class MafiReplicaModel{
         //try {
             //$numInsert= 0;
             foreach($historial as $value):
-                var_dump($value);die();
+                foreach($value as $val)
+                var_dump($val);die();
                 $operador  = 'operador';
                 $codigoBanner = $value[0]['bannerID'];
                 var_dump($codigoBanner);die();
@@ -134,6 +135,7 @@ class MafiReplicaModel{
                 //$insertHistorial->execute();
                 //$numInsert++;
                 var_dump($insertHistorial);die();
+            endforeach;
             endforeach;
             /*if($numInsert == count($historial)):
                 return $numInsert;

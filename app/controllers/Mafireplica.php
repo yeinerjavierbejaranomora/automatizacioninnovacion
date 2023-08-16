@@ -46,7 +46,8 @@ class Mafireplica  extends Controller{
                 $codigoBanner = 100153752;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                 $historial = json_decode(file_get_contents($url), true);
-                var_dump(count($historial));die();
+                $historialCount =count($historial);
+                var_dump($historialCount);die();
                 /*if (!empty($historial)) :
                     var_dump($historial);
                     die();

@@ -114,8 +114,8 @@ class MafiReplicaModel{
 
     public function insertHistorial($historial){
         //var_dump(count($historial));die();
-        try {
-            $numInsert= 0;
+        //try {
+            //$numInsert= 0;
             foreach($historial as $value):
                 //var_dump($value);die();
                 $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico` SET 
@@ -137,13 +137,14 @@ class MafiReplicaModel{
                 $insertHistorial->bindValue(8,$value['calificacion'],PDO::PARAM_STR);
                 $insertHistorial->execute();
                 $numInsert++;
+                var_dump($insertHistorial);die();
             endforeach;
-            if($numInsert == count($historial)):
+            /*if($numInsert == count($historial)):
                 return $numInsert;
             endif;
         } catch (PDOException $e) {
             return false;
-        }
+        }*/
     }
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){

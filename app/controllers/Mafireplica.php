@@ -16,13 +16,11 @@ class Mafireplica  extends Controller{
             $offset = 0;
         endif;
         // var_dump($offset);die();
-        $limit = 100;
+        $limit = 6000;
         $datosNum = $this->model->numeroDatosMafi($offset);
+        //var_dump($datosNum->fetchAll());die();
         $datosNumFetch = $datosNum->fetch(PDO::FETCH_ASSOC);
         if ($datosNumFetch['totalEstudiantes'] > 0) :
-            $divdatosNumFetch = ceil($datosNumFetch['totalEstudiantes']/$limit);
-            //for ($i=0; $i < $divdatosNumFetch; $i++) { 
-            
             $datosMafi = $this->model->dataMafiReplica($offset,$limit);
             //var_dump($datosMafi->fetchAll());die();
             $numeroRegistros = 0;
@@ -45,30 +43,16 @@ class Mafireplica  extends Controller{
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso, -2);
-                //$codigoBanner = 100153752;
+                $codigoBanner = 100153752;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                 $historial = json_decode(file_get_contents($url), true);
-                $arrayHistorial = [];
-                foreach ($historial as $key => $value) {
-                    $arrayHistorial[] = [
-                        'codBanner' =>  (int)$value['bannerID'], 
-                        'nombreEst' =>  $value['estudiante'], 
-                        'institucionOrigen' =>  'operador', 
-                        'codprograma' =>  $value['cod_programa'], 
-                        'programa' =>  $value['programa'], 
-                        'codMateria' =>  $value['idCurso'], 
-                        'nombreMat' =>  $value['materia'], 
-                        'nota' =>  $value['calificacion'],
-                    ];
-                }
-                //var_dump($arrayHistorial);die();
-                /*if (!empty($historial)) :
+                if (!empty($historial)) :
                     var_dump($historial);
                     die();
                 else :
                     echo "No tiene historial";
                     die();
-                endif;*/
+                endif;
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
@@ -76,12 +60,10 @@ class Mafireplica  extends Controller{
                 $observaciones = NULL;
                 if($nivelFormacion == 'PROFESIONAL'):
                     if(str_contains($tipoEstudiante,'TRANSFERENTE')):
-                        /*$historial = $this->model->historialEstudiante($codigoBanner);
-                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];*/
-                        if (empty($historial)) :
+                        $historial = $this->model->historialEstudiante($codigoBanner);
+                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
+                        if($historialCount == 0):
                             if($programaActivo < 1):
-                                // var_dump($programaActivo);die();
-                                
                                 $tieneHistorial = 'SIN HISTORIAL';
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
@@ -107,10 +89,8 @@ class Mafireplica  extends Controller{
                             if($insertarEstudiante):
                                 $numeroRegistros++;
                             endif;
-                        else :
+                        else:
                             if($programaActivo > 0):
-                                $insertHistorial = $this->model->insertHistorial($arrayHistorial);
-                                var_dump($insertHistorial);
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
                             else:
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';
@@ -125,19 +105,12 @@ class Mafireplica  extends Controller{
                                 $numeroRegistros++;
                             endif;
                         endif;
-                        /*if($historialCount == 0):
-                            
-                        else:
-                            
-                        endif;*/
                     else:
                         if($programaActivo > 0):
                             $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                            $insertHistorial = $this->model->insertHistorial($arrayHistorial);
                         else:
                             $programaAbrio = 'NO SE ABRIO PROGRAMA';
                             $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                            $insertHistorial = $this->model->insertHistorial($arrayHistorial);
                             $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
                             if($insertarAlertaTemprana):
@@ -154,11 +127,11 @@ class Mafireplica  extends Controller{
                         if($insertarEstudiante):
                             $numeroRegistros++;
                         endif;
-                        $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
+                        /*$mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa;
                         $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         if ($insertarAlertaTemprana) :
                             $numeroRegistrosAlertas++;
-                        endif;
+                        endif;*/
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
@@ -174,7 +147,7 @@ class Mafireplica  extends Controller{
                 "<br> inicio:" . $fechaInicio . "-- Fin:" . $fechaFin;*/
                 echo $ultimoRegistroId . "--" . $codigoBanner . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
             endforeach;
-            //}
+            
         else:
             echo "No Hay datos que registrar";
         endif;

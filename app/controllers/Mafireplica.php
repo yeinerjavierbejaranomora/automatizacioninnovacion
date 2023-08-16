@@ -43,7 +43,7 @@ class Mafireplica  extends Controller{
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso, -2);
-
+                $codigoBanner = 100153752;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                 $historial = json_decode(file_get_contents($url), true);
                 var_dump($historial);die();

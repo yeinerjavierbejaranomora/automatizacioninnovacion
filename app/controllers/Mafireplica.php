@@ -49,7 +49,7 @@ class Mafireplica  extends Controller{
                 $arrayHistorial = [];
                 foreach ($historial as $key => $value) {
                     $arrayHistorial[] = [
-                        'codBanner' =>  $value['bannerID'], 
+                        'codBanner' =>  (int)$value['bannerID'], 
                         'nombreEst' =>  $value['estudiante'], 
                         'institucionOrigen' =>  'operador', 
                         'codprograma' =>  $value['cod_programa'], 

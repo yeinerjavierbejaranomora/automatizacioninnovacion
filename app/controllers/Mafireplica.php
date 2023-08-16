@@ -155,7 +155,7 @@ class Mafireplica  extends Controller{
                             $numeroRegistrosAlertas++;
                         endif;*/
                 endif;
-                /*$ultimoRegistroId = $estudiante['id'];
+                $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
                 $fechaFin = date('Y-m-d H:i:s');
                 $acccion = 'Insert';
@@ -164,9 +164,9 @@ class Mafireplica  extends Controller{
                 $fecha = date('Y-m-d H:i:s');
                 $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                 $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
-                /*echo  "Numero de registros: " . $numeroRegistros . "=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId .
+                echo  "Numero de registros: " . $numeroRegistros . "=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId .
                 "<br> Numero de registrosen alertas: " . $numeroRegistrosAlertas .
-                "<br> inicio:" . $fechaInicio . "-- Fin:" . $fechaFin;*/
+                "<br> inicio:" . $fechaInicio . "-- Fin:" . $fechaFin;
                 //echo $ultimoRegistroId . "--" . $codigoBanner . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
             endforeach;
             

@@ -46,25 +46,40 @@ class Mafi extends Controller{
                     if (str_starts_with($autorizadoAsistir, 'ACTIVO ')) :
                         $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                         $numeroRegistros++;
+                        $ultimoRegistroId = $estudiante['id'];
+                        $idBannerUltimoRegistro = $idBanner;
+                        /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                        $res = json_decode(file_get_contents($url), true);
+                        var_dump($res);die();*/
+                        $fechaFin = date('Y-m-d H:i:s');
+                        $accion = 'Insert';
+                        $tablaAfectada = 'datosMafiReplica';
+                        $mensajeLog = 'Se realizo la insercion en la tabla datosMafiRelica desde la tabla datosMafi, del id ' . $primerId . '.';
+                        $insertarLog = $this->model->insertLog($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $accion, $tablaAfectada, $mensajeLog);
+                        $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro, $accion, $mensajeLog);
+                        if ($insertarLog && $insertIndice) :
+                            echo "id registrado: " . $primerId ."Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin . '<br>';
+                        endif;
                     endif;
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :
                     $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
                     $numeroRegistros++;
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $idBanner;
+                    /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                    $res = json_decode(file_get_contents($url), true);
+                    var_dump($res);die();*/
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $accion = 'Insert';
+                    $tablaAfectada = 'datosMafiReplica';
+                    $mensajeLog = 'Se realizo la insercion en la tabla datosMafiRelica desde la tabla datosMafi, del id ' . $primerId . '.';
+                    $insertarLog = $this->model->insertLog($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $accion, $tablaAfectada, $mensajeLog);
+                    $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro, $accion, $mensajeLog);
+                    if ($insertarLog && $insertIndice) :
+                        echo "id registrado: " . $primerId ."Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin . '<br>';
+                    endif;
                 endif;
-                $ultimoRegistroId = $estudiante['id'];
-                $idBannerUltimoRegistro = $idBanner;
-                /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                $res = json_decode(file_get_contents($url), true);
-                var_dump($res);die();*/
-                $fechaFin = date('Y-m-d H:i:s');
-                $accion = 'Insert';
-                $tablaAfectada = 'datosMafiReplica';
-                $mensajeLog = 'Se realizo la insercion en la tabla datosMafiRelica desde la tabla datosMafi, del id ' . $primerId . '.';
-                $insertarLog = $this->model->insertLog($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $accion, $tablaAfectada, $mensajeLog);
-                $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro, $accion, $mensajeLog);
-                if ($insertarLog && $insertIndice) :
-                    echo "id registrado: " . $primerId ."Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin . '<br>';
-                endif;
+                
             endforeach;
             echo "Numero de registros: '$numeroRegistros'=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId;
         else:

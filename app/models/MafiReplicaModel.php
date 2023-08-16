@@ -112,6 +112,10 @@ class MafiReplicaModel{
         }
     }
 
+    public function insertHistorial($historial){
+        var_dump($historial);die();
+    }
+
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){
         try {
             $insertarLog = $this->db->connect()->prepare("INSERT INTO `logAplicacion` SET

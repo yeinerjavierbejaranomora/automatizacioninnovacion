@@ -113,6 +113,7 @@ class Mafireplica  extends Controller{
                         endif;*/
                     else:
                         if($programaActivo > 0):
+                            $insertHistorial = $this->model->insertHistorial($historial);
                             var_dump($historial);die();
                             //$insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
                         else:

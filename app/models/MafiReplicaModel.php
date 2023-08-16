@@ -117,7 +117,7 @@ class MafiReplicaModel{
         //try {
             //$numInsert= 0;
             foreach($historial as $value):
-                foreach($value as $val)
+                foreach($value as $val):
                 var_dump($val);die();
                 $operador  = 'operador';
                 $codigoBanner = $value[0]['bannerID'];

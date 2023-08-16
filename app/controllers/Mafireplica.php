@@ -136,7 +136,6 @@ class Mafireplica  extends Controller{
                             $numeroRegistrosAlertas++;
                         endif;*/
                 endif;
-                die();
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['idbanner'];
                 $fechaFin = date('Y-m-d H:i:s');

@@ -43,7 +43,7 @@ class Mafireplica  extends Controller{
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso, -2);
-                $codigoBanner = 100153752;
+                /*$codigoBanner = 100153752;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                 $historial = json_decode(file_get_contents($url), true);
                 if (!empty($historial)) :
@@ -52,7 +52,7 @@ class Mafireplica  extends Controller{
                 else :
                     echo "No tiene historial";
                     die();
-                endif;
+                endif;*/
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;
@@ -69,7 +69,7 @@ class Mafireplica  extends Controller{
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
                                 $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta);
-                                if($insertarAlertaTemprana):
+                                    if($insertarAlertaTemprana):
                                     $numeroRegistrosAlertas++;
                                 endif;
                                 $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;

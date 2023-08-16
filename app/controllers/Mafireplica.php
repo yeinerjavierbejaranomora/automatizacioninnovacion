@@ -128,7 +128,7 @@ class Mafireplica  extends Controller{
                     else:
                         if($programaActivo > 0):
                             $insertHistorial = $this->model->insertHistorial($arrayHistorial);
-                            var_dump($insertHistorial);die();
+                            var_dump($insertHistorial);
                             //$insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
                         else:
                             /*$programaAbrio = 'NO SE ABRIO PROGRAMA';
@@ -167,6 +167,7 @@ class Mafireplica  extends Controller{
                 echo  "Numero de registros: " . $numeroRegistros . "=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId .
                 "<br> Numero de registrosen alertas: " . $numeroRegistrosAlertas .
                 "<br> inicio:" . $fechaInicio . "-- Fin:" . $fechaFin;
+                die();
                 //echo $ultimoRegistroId . "--" . $codigoBanner . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
             endforeach;
             

@@ -113,7 +113,14 @@ class MafiReplicaModel{
     }
 
     public function insertHistorial($historial){
-        var_dump("1",$historial);die();
+        //var_dump($historial);die();
+        try {
+            foreach($historial as $value):
+                var_dump($value);die();
+            endforeach;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){

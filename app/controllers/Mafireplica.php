@@ -43,10 +43,11 @@ class Mafireplica  extends Controller{
                 $autorizadoAsistir = $estudiante['autorizado_asistir'];
                 //if($marcaIngreso == '')
                 $periodo = substr($marcaIngreso, -2);
-                /*$codigoBanner = 100153752;
+                $codigoBanner = 100153752;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                 $historial = json_decode(file_get_contents($url), true);
-                if (!empty($historial)) :
+                var_dump(count($historial));die();
+                /*if (!empty($historial)) :
                     var_dump($historial);
                     die();
                 else :
@@ -60,8 +61,8 @@ class Mafireplica  extends Controller{
                 $observaciones = NULL;
                 if($nivelFormacion == 'PROFESIONAL'):
                     if(str_contains($tipoEstudiante,'TRANSFERENTE')):
-                        $historial = $this->model->historialEstudiante($codigoBanner);
-                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
+                        /*$historial = $this->model->historialEstudiante($codigoBanner);
+                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];*/
                         if($historialCount == 0):
                             if($programaActivo < 1):
                                 $tieneHistorial = 'SIN HISTORIAL';

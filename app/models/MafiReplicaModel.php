@@ -113,7 +113,7 @@ class MafiReplicaModel{
     }
 
     public function insertHistorial($historial){
-        var_dump($historial);die();
+        var_dump("1",$historial);die();
     }
 
     public function insertarLogAplicacion($primerID,$ultimoRegistroId,$fechaInicio,$fechaFin,$acccion,$tablaAfectada,$descripcion){

@@ -24,10 +24,11 @@ class Mafi extends Controller{
             $datosMafi = $this->model->dataMafi($offset);
             //var_dump($datosMafi->fetchAll());die();
             $numeroRegistros = 0;
-            $primerId = $this->model->dataMafi($offset)->fetch(PDO::FETCH_ASSOC)['id'];
+            //$primerId = $this->model->dataMafi($offset)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach ($datosMafi as $estudiante) :
+                $primerId = $estudiante['id'];
                 $idBanner = $estudiante['idbanner'];
                 $primerApellido = $estudiante['primer_apellido'];
                 $programa = $estudiante['programa'];

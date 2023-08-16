@@ -43,30 +43,30 @@ class Mafi extends Controller{
                 //if ($sello == 'TIENE RETENCION' && ($autorizadoAsistir == 'ACTIVO EN PLATAFORMA' || $autorizadoAsistir == 'ACTIVO EN PLATAFORMA ICETEX')) :
                 if ($sello == 'TIENE RETENCION') :
                     if (str_starts_with($autorizadoAsistir, 'ACTIVO ')) :
-                        /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
-                        $numeroRegistros++;*/
+                        $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
+                        $numeroRegistros++;
                     endif;
                 elseif ($sello == 'TIENE SELLO FINANCIERO') :
-                /*$insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
-                    $numeroRegistros++;*/
+                    $insertEstudiante = $this->model->insertEstudiante($idBanner, $primerApellido, $programa, $codPrograma, $cadena, $periodo, $estado, $tipoEstudiante, $rutaAcademica, $sello, $operador, $autorizadoAsistir);
+                    $numeroRegistros++;
                 endif;
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $idBanner;
-                $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
+                /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
                 $res = json_decode(file_get_contents($url), true);
-                var_dump($res);die();
+                var_dump($res);die();*/
                 die();
+                $fechaFin = date('Y-m-d H:i:s');
+                $accion = 'Insert';
+                $tablaAfectada = 'datosMafiReplica';
+                $mensajeLog = 'Se realizo la insercion en la tabla datosMafiRelica desde la tabla datosMafi, del id ' . $primerId . '.';
+                $insertarLog = $this->model->insertLog($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $accion, $tablaAfectada, $mensajeLog);
+                $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro, $accion, $mensajeLog);
+                if ($insertarLog && $insertIndice) :
+                    echo "Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin;
+                    echo "Numero de registros: '$numeroRegistros'=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId;
+                endif;
             endforeach;
-            /*$fechaFin = date('Y-m-d H:i:s');
-            $accion = 'Insert';
-            $tablaAfectada = 'datosMafiReplica';
-            $mensajeLog = 'Se realizo la insercion en la tabla datosMafiRelica desde la tabla datosMafi, iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . ',insertando ' . $numeroRegistros . ' registros';
-            $insertarLog = $this->model->insertLog($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $accion, $tablaAfectada, $mensajeLog);
-            $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro, $accion, $mensajeLog);
-            if ($insertarLog && $insertIndice) :
-                echo "Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin;
-                echo "Numero de registros: '$numeroRegistros'=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId;
-            endif;*/
         else:
             echo "No Hay datos que registrar";
         endif;

@@ -118,7 +118,7 @@ class MafiReplicaModel{
         //$numInsert= 0;
             foreach ($arrayhistorial as $historial) :
                 foreach ($historial as $value) :
-                    //var_dump($value);die();
+                    var_dump($value);die();
                     $operador  = 'operador';
                     $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico2` SET 
                     `codBanner` = ?, 

@@ -117,6 +117,16 @@ class MafiReplicaModel{
         try {
             foreach($historial as $value):
                 var_dump($value);die();
+                $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico` SET 
+                `codBanner` = ?, 
+                `nombreEst` = ?, 
+                `institucionOrigen` = ?, 
+                `codprograma` = ?, 
+                `programa` = ?, 
+                `codMateria` = ?, 
+                `nombreMat` = ?, 
+                `nota` = ?");
+                $insertHistorial->bindValue(1,$value,PDO::PARAM_INT);
             endforeach;
         } catch (PDOException $e) {
             return false;

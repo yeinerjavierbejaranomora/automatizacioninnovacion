@@ -113,7 +113,7 @@ class MafiReplicaModel{
     }
 
     public function insertHistorial($historial){
-        var_dump(count($historial));die();
+        //var_dump(count($historial));die();
         try {
             $numInsert= 0;
             foreach($historial as $value):
@@ -138,6 +138,9 @@ class MafiReplicaModel{
                 $insertHistorial->execute();
                 $numInsert++;
             endforeach;
+            if($numInsert == count($historial)):
+                return $numInsert;
+            endif;
         } catch (PDOException $e) {
             return false;
         }

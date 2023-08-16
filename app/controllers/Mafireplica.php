@@ -48,7 +48,7 @@ class Mafireplica  extends Controller{
                 $historial = json_decode(file_get_contents($url), true);
                 $arrayHistorial = [];
                 foreach ($historial as $key => $value) {
-                    var_dump($value[bannerID]);
+                    var_dump($value['bannerID']);
                 }
                 die();
                 /*if (!empty($historial)) :

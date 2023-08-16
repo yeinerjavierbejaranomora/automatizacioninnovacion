@@ -59,7 +59,7 @@ class Mafireplica  extends Controller{
                         'nota' =>  $value['calificacion'],
                     ];
                 }
-                var_dump($arrayHistorial);die();
+                //var_dump($arrayHistorial);die();
                 /*if (!empty($historial)) :
                     var_dump($historial);
                     die();
@@ -127,7 +127,7 @@ class Mafireplica  extends Controller{
                         endif;*/
                     else:
                         if($programaActivo > 0):
-                            $insertHistorial = $this->model->insertHistorial($historial);
+                            $insertHistorial = $this->model->insertHistorial($arrayHistorial);
                             var_dump($insertHistorial);die();
                             //$insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
                         else:

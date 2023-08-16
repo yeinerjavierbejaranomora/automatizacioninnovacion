@@ -80,7 +80,7 @@ class Mafireplica  extends Controller{
                         $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];*/
                         if (empty($historial)) :
                             if($programaActivo < 1):
-                                var_dump($programaActivo);die();
+                                // var_dump($programaActivo);die();
                                 
                                 $tieneHistorial = 'SIN HISTORIAL';
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';

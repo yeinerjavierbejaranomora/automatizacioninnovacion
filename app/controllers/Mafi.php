@@ -55,7 +55,6 @@ class Mafi extends Controller{
                 /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
                 $res = json_decode(file_get_contents($url), true);
                 var_dump($res);die();*/
-                die();
                 $fechaFin = date('Y-m-d H:i:s');
                 $accion = 'Insert';
                 $tablaAfectada = 'datosMafiReplica';

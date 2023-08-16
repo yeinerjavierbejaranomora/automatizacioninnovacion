@@ -48,9 +48,6 @@ class Mafi extends Controller{
                         $numeroRegistros++;
                         $ultimoRegistroId = $estudiante['id'];
                         $idBannerUltimoRegistro = $idBanner;
-                        /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                        $res = json_decode(file_get_contents($url), true);
-                        var_dump($res);die();*/
                         $fechaFin = date('Y-m-d H:i:s');
                         $accion = 'Insert';
                         $tablaAfectada = 'datosMafiReplica';
@@ -66,9 +63,6 @@ class Mafi extends Controller{
                     $numeroRegistros++;
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $idBanner;
-                    /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
-                    $res = json_decode(file_get_contents($url), true);
-                    var_dump($res);die();*/
                     $fechaFin = date('Y-m-d H:i:s');
                     $accion = 'Insert';
                     $tablaAfectada = 'datosMafiReplica';

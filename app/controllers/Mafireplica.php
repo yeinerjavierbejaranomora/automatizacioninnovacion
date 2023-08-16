@@ -46,7 +46,13 @@ class Mafireplica  extends Controller{
                 $codigoBanner = 100153752;
                 $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                 $historial = json_decode(file_get_contents($url), true);
-                var_dump($historial);die();
+                if (!empty($historial)) :
+                    var_dump($historial);
+                    die();
+                else :
+                    echo "No tiene historial";
+                    die();
+                endif;
                 $programaActivoConsulta = $this->model->programaActivo($codigoBanner,$periodo);
                 $programaActivo = $programaActivoConsulta->fetch(PDO::FETCH_ASSOC)["programaActivo"];
                 $tieneHistorial = NULL;

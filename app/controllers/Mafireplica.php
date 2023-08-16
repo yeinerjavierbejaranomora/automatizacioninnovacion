@@ -64,6 +64,7 @@ class Mafireplica  extends Controller{
                     if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                         /*$historial = $this->model->historialEstudiante($codigoBanner);
                         $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];*/
+                        var_dump($historialCount);die();
                         if($historialCount == 0):
                             if($programaActivo < 1):
                                 $tieneHistorial = 'SIN HISTORIAL';

@@ -55,6 +55,7 @@ class Mafi extends Controller{
                 /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $idBanner;
                 $res = json_decode(file_get_contents($url), true);
                 var_dump($res);die();*/
+                die();
                 $fechaFin = date('Y-m-d H:i:s');
                 $accion = 'Insert';
                 $tablaAfectada = 'datosMafiReplica';
@@ -62,7 +63,8 @@ class Mafi extends Controller{
                 $insertarLog = $this->model->insertLog($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $accion, $tablaAfectada, $mensajeLog);
                 $insertIndice = $this->model->insertIndice($idBannerUltimoRegistro, $accion, $mensajeLog);
                 if ($insertarLog && $insertIndice) :
-                    echo "id registrado: " . $primerId . "Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin.'<br>';
+                    echo "id registrado: " . $primerId ."Fecha inicio: " . $fechaInicio . ', Fecha Fin ' . $fechaFin . '<br>';
+                    echo "Numero de registros: '$numeroRegistros'=> primer id registrado: " . $primerId . ', Ultimo id registrado ' . $ultimoRegistroId;
                 endif;
             endforeach;
         else:

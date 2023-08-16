@@ -129,7 +129,7 @@ class MafiReplicaModel{
                 `nota` = ?");
                 $insertHistorial->bindValue(1,$historial['codBanner'],PDO::PARAM_INT);
                 $insertHistorial->bindValue(2,$historial['nombreEst'],PDO::PARAM_STR);
-                $insertHistorial->bindValue(3,$$historial['institucionOrigen'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(3,$historial['institucionOrigen'],PDO::PARAM_STR);
                 $insertHistorial->bindValue(4,$historial['codprograma'],PDO::PARAM_STR);
                 $insertHistorial->bindValue(5,$historial['programa'],PDO::PARAM_STR);
                 $insertHistorial->bindValue(6,$historial['codMateria'],PDO::PARAM_STR);

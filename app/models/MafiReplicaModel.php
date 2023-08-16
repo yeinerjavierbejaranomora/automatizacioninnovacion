@@ -115,34 +115,30 @@ class MafiReplicaModel{
     public function insertHistorial($arrayhistorial){
         //var_dump(count($historial));die();
         //try {
-        //$numInsert= 0;
-            foreach ($arrayhistorial as $historial) :
-                var_dump($historial['bannerID']);
-                foreach ($historial as $value) :
-                    var_dump($value);die();
-                    $operador  = 'operador';
-                    $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico2` SET 
-                    `codBanner` = ?, 
-                    `nombreEst` = ?, 
-                    `institucionOrigen` = ?, 
-                    `codprograma` = ?, 
-                    `programa` = ?, 
-                    `codMateria` = ?, 
-                    `nombreMat` = ?, 
-                    `nota` = ?");
-                    $insertHistorial->bindValue(1, $value['bannerID'], PDO::PARAM_INT);
-                    $insertHistorial->bindValue(2, $value['estudiante'], PDO::PARAM_STR);
-                    $insertHistorial->bindValue(3, $operador, PDO::PARAM_STR);
-                    $insertHistorial->bindValue(4, $value['cod_programa'], PDO::PARAM_STR);
-                    $insertHistorial->bindValue(5, $value['programa'], PDO::PARAM_STR);
-                    $insertHistorial->bindValue(6, $value['idCurso'], PDO::PARAM_STR);
-                    $insertHistorial->bindValue(7, $value['materia'], PDO::PARAM_STR);
-                    $insertHistorial->bindValue(8, $value['calificacion'], PDO::PARAM_STR);
-                    $insertHistorial->execute();
-                    //$numInsert++;
-                    var_dump($insertHistorial);
-                    die();
-                endforeach;
+            //$numInsert= 0;
+            foreach($arrayhistorial as $historial):
+                var_dump($historial);die();
+                $operador  = 'operador';
+                $insertHistorial = $this->db->connect()->prepare("INSERT INTO `historialAcademico2` SET 
+                `codBanner` = ?, 
+                `nombreEst` = ?, 
+                `institucionOrigen` = ?, 
+                `codprograma` = ?, 
+                `programa` = ?, 
+                `codMateria` = ?, 
+                `nombreMat` = ?, 
+                `nota` = ?");
+                $insertHistorial->bindValue(1,$value['bannerID'],PDO::PARAM_INT);
+                $insertHistorial->bindValue(2,$value['estudiante'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(3,$operador,PDO::PARAM_STR);
+                $insertHistorial->bindValue(4,$value['cod_programa'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(5,$value['programa'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(6,$value['idCurso'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(7,$value['materia'],PDO::PARAM_STR);
+                $insertHistorial->bindValue(8,$value['calificacion'],PDO::PARAM_STR);
+                $insertHistorial->execute();
+                //$numInsert++;
+                var_dump($insertHistorial);die();
             endforeach;
             /*if($numInsert == count($historial)):
                 return $numInsert;

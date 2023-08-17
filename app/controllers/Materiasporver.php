@@ -134,9 +134,9 @@ class Materiasporver extends Controller{
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
-                $historialMoodle = $this->model->historialMoodle($codBanner);
+                //$historialMoodle = $this->model->historialMoodle($codBanner);
                 //var_dump($historialMoodle);die();
-                if(count($historialMoodle) > 0 ):
+                /*if(count($historialMoodle) > 0 ):
                     $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
@@ -146,14 +146,14 @@ class Materiasporver extends Controller{
                     if(count($diffMoodle) == $insertMateriaPorVer):
                         $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                     endif;
-                else:
+                else:*/
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
                     $registroMPV = $insertMateriaPorVer;
                     //$registroMPV = $registroMPV + $insertMateriaPorVer;
                     if(count($diff) == $insertMateriaPorVer):
                         $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                     endif;
-                endif;
+                //endif;
                 // die();
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
@@ -222,19 +222,17 @@ class Materiasporver extends Controller{
 
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
                 //var_dump($mallaCurricular);die();
-                $historial = $this->model->historial($codBanner,$programa);
-                $historialMoodle = $this->model->historialMoodle($codBanner);
+                $historial = $this->model->historial($codBanner);
+                //$historialMoodle = $this->model->historialMoodle($codBanner);
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
-                //var_dump($historialMoodle);die();
-                if(count($historialMoodle) > 0 ):
-                    //var_dump($diff);die();
+                /*if(count($historialMoodle) > 0 ):
                     $diff = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
                     //var_dump($diff);die();
-                endif;
+                endif;*/
                 $cantidadDiff = count($diff);
                 if(count($diff) > 0):
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);

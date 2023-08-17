@@ -54,6 +54,7 @@ class Materiasporver extends Controller{
         else:
             $limit = 1000;
             $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
+            var_dump($numDivEstudiantes);die();
             for ($i=0; $i < $numDivEstudiantes; $i++) :
                 $this->antiguos($offset,$limit,$marcaIngreso);
             endfor;

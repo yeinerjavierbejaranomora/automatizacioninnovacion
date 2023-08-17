@@ -136,10 +136,10 @@ class Materiasporver extends Controller{
                 $historialMoodle = $this->model->historialMoodle($codBanner);
                 //var_dump($historialMoodle);die();
                 if(count($historialMoodle) > 0 ):
-                var_dump($diff);die();
                     $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
+                    var_dump($diffMoodle);die();
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diffMoodle);
                     $registroMPV = $registroMPV + $insertMateriaPorVer;
                     if(count($diffMoodle) == $insertMateriaPorVer):

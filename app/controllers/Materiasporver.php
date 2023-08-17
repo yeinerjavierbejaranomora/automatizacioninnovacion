@@ -135,7 +135,7 @@ class Materiasporver extends Controller{
                 });
                 //var_dump($diff);die();
                 $historialMoodle = $this->model->historialMoodle($codBanner);
-                //var_dump($historialMoodle);die();
+                var_dump($historialMoodle);die();
                 if(count($historialMoodle) > 0 ):
                     $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];

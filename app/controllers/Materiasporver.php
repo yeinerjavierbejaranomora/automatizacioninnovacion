@@ -139,7 +139,7 @@ class Materiasporver extends Controller{
                     $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
-                    var_dump($diffMoodle);die();
+                    //var_dump($diffMoodle);die();
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diffMoodle);
                     $registroMPV = $registroMPV + $insertMateriaPorVer;
                     if(count($diffMoodle) == $insertMateriaPorVer):
@@ -153,7 +153,7 @@ class Materiasporver extends Controller{
                         $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                     endif;
                 endif;
-                die();
+                // die();
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
                 $fechaFin = date('Y-m-d H:i:s');
@@ -222,17 +222,17 @@ class Materiasporver extends Controller{
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
                 //var_dump($mallaCurricular);die();
                 $historial = $this->model->historial($codBanner);
-                //$historialMoodle = $this->model->historialMoodle($codBanner);
+                $historialMoodle = $this->model->historialMoodle($codBanner);
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
-                /*if(count($historialMoodle) > 0 ):
+                if(count($historialMoodle) > 0 ):
                     //var_dump($diff);die();
                     $diff = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
                     //var_dump($diff);die();
-                endif;*/
+                endif;
                 $cantidadDiff = count($diff);
                 if(count($diff) > 0):
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);

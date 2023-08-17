@@ -98,6 +98,17 @@ class Planeacionprimerciclo extends Controller{
                             break;
                     }
                     $marca_ingreso = $estudiante['marca_ingreso'];
+                    $materiasMoodleConsulta = $this->model->materiasMoodle($codigoBanner);
+                    $materias_moodle = "";
+                    if ($materiasMoodleConsulta->rowCount() == 0) :
+                        $materias_moodle = '""';
+                    else :
+                        foreach ($materiasMoodleConsulta as $materia) {
+                            $materias_moodle .= '"' . $materia['codigomateria'] . '",';
+                        }
+                    endif;
+                    $materias_moodle = trim($materias_moodle, ",");
+                    var_dump($materias_moodle);die();
                     $ciclo = [1, 12];
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);

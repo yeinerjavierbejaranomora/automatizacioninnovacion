@@ -67,6 +67,17 @@ class PlaneacionPrimerCicloModel{
         }
     }
 
+    public function materiasMoodle($codBanner){
+        try {
+            $consultaMateriaMoodle = $this->db->connect()->prepare("SELECT `Id_Banner`,`Tipo_Estudiante`,`codigomateria`,`Nota_Acumulada` FROM `datos_moodle` WHERE `Id_Banner`= ?");
+            $consultaMateriaMoodle->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $consultaMateriaMoodle->execute();
+            return $consultaMateriaMoodle;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function materiasPorVer($codigoBanner,$ciclo,$programa){
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 

@@ -210,7 +210,7 @@ class Materiasporver extends Controller{
         //var_dump($estudiantesAntiguos->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantesAntiguos->rowCount() != 0):
             foreach($estudiantesAntiguos as $estudiante):
-                var_dump($estudiante);die();
+                //var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $this->model->faltantesAntiguos($offset,$limit,$marcaIngreso)->fetch(PDO::FETCH_ASSOC)['id'];
                 $ultimoRegistroId = 0;
@@ -222,7 +222,7 @@ class Materiasporver extends Controller{
                 $periodo = substr($marcaIngreso,-2);
 
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
-                //var_dump($mallaCurricular);die();
+                var_dump($mallaCurricular);die();
                 $historial = $this->model->historial($codBanner);
                 //$historialMoodle = $this->model->historialMoodle($codBanner);
                 var_dump($historial);die();

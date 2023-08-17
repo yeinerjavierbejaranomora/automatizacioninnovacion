@@ -122,13 +122,14 @@ class Materiasporver extends Controller{
             $primerId = $this->model->faltantesTransferentes($offset,$limit,$marcaIngreso)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($transferentes as $estudiante):
-                var_dump($estudiante);die();
+                //var_dump($estudiante);die();
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
                 $programa = $estudiante['programa'];
                 $periodo = substr($marcaIngreso,-2);
                 $mallaCurricular = $this->model->baseAcademica($codBanner,$programa,$periodo,$marcaIngreso);
-                $historial = $this->model->historial($codBanner);
+                $historial = $this->model->historial($codBanner,$programa);
+                var_dump($historial);die();
                 $diff = array_udiff($mallaCurricular, $historial, function($a, $b) {
                     return $a['codMateria'] <=> $b['codMateria'];
                 });

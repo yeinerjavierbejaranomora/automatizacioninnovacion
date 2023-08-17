@@ -21,7 +21,7 @@ class Materiasporver extends Controller{
         endif;
         $numEstudiantesPrimerIngreso = $this->model->falatntesPrimerIngreso($offset,$marcaIngreso);
         if($numEstudiantesPrimerIngreso->rowCount() != 0):
-            $this->primeringreso($marcaIngreso);
+            //$this->primeringreso($marcaIngreso);
         else:
             echo "No hay estudiantes de primer ingreso <br>";
         endif;
@@ -41,7 +41,7 @@ class Materiasporver extends Controller{
         else :
             echo "No hay estudiantes TRANSFERENTES <br>";
         endif;
-        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        /*$log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
         else:
@@ -57,7 +57,7 @@ class Materiasporver extends Controller{
             for ($i=0; $i < $numDivEstudiantes; $i++) :
                 $this->antiguos($offset,$limit,$marcaIngreso);
             endfor;
-        endif;
+        endif;*/
     }
 
 
@@ -133,8 +133,8 @@ class Materiasporver extends Controller{
                     return $a['codMateria'] <=> $b['codMateria'];
                 });
                 //var_dump($diff);die();
-                //$historialMoodle = $this->model->historialMoodle($codBanner);
-                //var_dump(count($historialMoodle));die();
+                $historialMoodle = $this->model->historialMoodle($codBanner);
+                var_dump(count($historialMoodle));die();
                 /*if(count($historialMoodle) > 0 ):
                     $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];

@@ -78,7 +78,7 @@ class PlaneacionPrimerCicloModel{
         }
     }
 
-    public function materiasPorVer($codigoBanner,$ciclo,$programa){
+    public function materiasPorVer($codigoBanner,$ciclo,$programa,$materias_moodle){
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN mallaCurricular m ON m.codigoCurso=mpv.codMateria
@@ -86,6 +86,7 @@ class PlaneacionPrimerCicloModel{
             AND m.ciclo IN (1,12)
             AND mpv.codprograma = ?
             AND m.codprograma = ?
+            AND mpv.codMateria NOT IN ($materias_moodle)
             ORDER BY mpv.orden ASC");
             $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);

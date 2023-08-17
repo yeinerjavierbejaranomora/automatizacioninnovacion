@@ -108,9 +108,10 @@ class Planeacionprimerciclo extends Controller{
                         }
                     endif;
                     $materias_moodle = trim($materias_moodle, ",");
-                    var_dump($materias_moodle);die();
                     $ciclo = [1, 12];
-                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa, $materias_moodle);
+                    var_dump($materiasPorVer->fetchAll());die();
+                    //$materiasPorVer = $this->model->materiasPorVer($codigoBanner, $ciclo, $programa);
                     $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);
                     $numeroCreditos = $numeroCreditos->rowCount() == 0 ? 0 : $numeroCreditos->fetch(PDO::FETCH_ASSOC)['CreditosPlaneados'];
                     $numeroCreditosC1 = $this->model->getCreditosCicloUno($codigoBanner);

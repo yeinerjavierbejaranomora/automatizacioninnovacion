@@ -236,7 +236,7 @@ class Planeacionprimerciclo extends Controller{
         endif;
         $materias_moodle = trim($materias_moodle, ",");
         $materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa, $materias_moodle);
-        var_dump($materiasPorVer);die();
+        // var_dump($materiasPorVer);die();
         //$materiasPorVer = $this->model->materiasPorVerOrden($codigoBanner, $programa);
         //var_dump($materiasPorVer->fetchAll());die();
         $numeroCreditos = $this->model->getCreditosPlaneados($codigoBanner);

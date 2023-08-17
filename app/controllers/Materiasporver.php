@@ -54,7 +54,7 @@ class Materiasporver extends Controller{
         else:
             $limit = 1000;
             $numDivEstudiantes = ceil($totalEstudiantesAntiguos/$limit);
-            var_dump($numDivEstudiantes);die();
+            //var_dump($numDivEstudiantes);die();
             for ($i=0; $i < $numDivEstudiantes; $i++) :
                 $this->antiguos($offset,$limit,$marcaIngreso);
             endfor;
@@ -206,7 +206,7 @@ class Materiasporver extends Controller{
         endif;
         $limit = 1000;*/
         $estudiantesAntiguos = $this->model->faltantesAntiguos($offset,$limit,$marcaIngreso);
-        //var_dump($estudiantesAntiguos->fetch(PDO::FETCH_ASSOC));die();
+        var_dump($estudiantesAntiguos->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantesAntiguos->rowCount() != false):
             foreach($estudiantesAntiguos as $estudiante):
                 //var_dump($estudiante);die();

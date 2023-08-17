@@ -122,7 +122,7 @@ class Materiasporver extends Controller{
             $primerId = $this->model->faltantesTransferentes($offset,$limit,$marcaIngreso)->fetch(PDO::FETCH_ASSOC)['id'];
             $ultimoRegistroId = 0;
             foreach($transferentes as $estudiante):
-                var_dump($estudiante);die();
+                //var_dump($estudiante);die();
                 $marcaIngreso = $estudiante['marca_ingreso'];
                 $codBanner = $estudiante['homologante'];
                 $programa = $estudiante['programa'];
@@ -134,8 +134,8 @@ class Materiasporver extends Controller{
                 });
                 //var_dump($diff);die();
                 $historialMoodle = $this->model->historialMoodle($codBanner);
-                var_dump($historialMoodle);die();
-                /*if(count($historialMoodle) > 0 ):
+                //var_dump($historialMoodle);die();
+                if(count($historialMoodle) > 0 ):
                     $diffMoodle = array_udiff($diff, $historialMoodle, function($a, $b) {
                         return $a['codMateria'] <=> $b['codMateria'];
                     });
@@ -144,14 +144,15 @@ class Materiasporver extends Controller{
                     if(count($diffMoodle) == $insertMateriaPorVer):
                         $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                     endif;
-                else:*/
+                else:
                     $insertMateriaPorVer = $this->model->insertMateriaPorVer($diff);
                     $registroMPV = $insertMateriaPorVer;
                     //$registroMPV = $registroMPV + $insertMateriaPorVer;
                     if(count($diff) == $insertMateriaPorVer):
                         $updateEstudianteT = $this->model->updateEstudiante($estudiante['id'],$codBanner);
                     endif;
-                //endif;
+                endif;
+                die();
                 $ultimoRegistroId = $estudiante['id'];
                 $idBannerUltimoRegistro = $estudiante['homologante'];
                 $fechaFin = date('Y-m-d H:i:s');

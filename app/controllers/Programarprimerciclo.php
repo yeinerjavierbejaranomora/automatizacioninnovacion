@@ -10,7 +10,7 @@ class Programarprimerciclo extends Controller{
 
 
     public function inicio(){
-        var_dump(date('Y'));die();
+        var_dump(date('Y-m-d'));die();
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;

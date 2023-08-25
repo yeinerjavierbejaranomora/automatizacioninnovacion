@@ -60,11 +60,11 @@ class Mafireplica  extends Controller{
                 $observaciones = NULL;
                 if($nivelFormacion == 'PROFESIONAL'):
                     if(str_contains($tipoEstudiante,'TRANSFERENTE')):
-                        /*$historial = $this->model->historialEstudiante($codigoBanner);
-                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];*/
-                        $url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
+                        $historial = $this->model->historialEstudiante($codigoBanner);
+                        $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];
+                        /*$url = "https://services.ibero.edu.co/utilitary/v1/MoodleAulaVirtual/GetPersonByIdBannerQuery/" . $codigoBanner;
                         $historial = json_decode(file_get_contents($url), true);
-                        $historialCount =count($historial);
+                        $historialCount =count($historial);*/
                         if($historialCount == 0):
                             if($programaActivo < 1):
                                 $tieneHistorial = 'SIN HISTORIAL';

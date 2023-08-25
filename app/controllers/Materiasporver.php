@@ -49,7 +49,7 @@ class Materiasporver extends Controller{
         endif;
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset,$marcaIngreso);
         //var_dump($totalEstudiantesAntiguos);die();
-        /*if($totalEstudiantesAntiguos == 0):
+        if($totalEstudiantesAntiguos == 0):
             echo "No hay estudiantes ANTIGUOS <br>";
         else:
             $limit = 1000;
@@ -58,7 +58,7 @@ class Materiasporver extends Controller{
             for ($i=0; $i < $numDivEstudiantes; $i++) :
                 $this->antiguos($offset,$limit,$marcaIngreso);
             endfor;
-        endif;*/
+        endif;
     }
 
 

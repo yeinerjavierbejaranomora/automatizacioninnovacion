@@ -29,8 +29,13 @@ class PlaneacionSegundoCicloModel{
     }
 
     public function getEstudiantesNum($offset,$marcaIngreso,$primer){
-        var_dump($offset,$marcaIngreso,$primer);die();
+        //var_dump($offset,$marcaIngreso,$primer);die();
         try {
+            if($primer == ''){
+                var_dump("vacio");die();
+            }else{
+                var_dump("primera vez");die();
+            }
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
             WHERE `id` > ?
             AND materias_faltantes='OK' 

@@ -14,28 +14,33 @@ class Programarsegundociclo extends Controller{
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
         $fechaInicioCiclo2 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo2'];
-        echo $fechaInicioCiclo2,"<br>";
-        echo date("Y-m-d",strtotime($fechaInicioCiclo2."- 1 week"));die();
+        /*echo $fechaInicioCiclo2,"<br>";
+        echo date("Y-m-d",strtotime($fechaInicioCiclo2."- 1 week"));die();*/
+        $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo2."- 1 week"));
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         // var_dump($marcaIngreso);die();
-        $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'programacion');
-        if ($log->rowCount() == 0) :
-            $offset = 0;
-        else :
-            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo2):
+            $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'programacion');
+            if ($log->rowCount() == 0) :
+                $offset = 0;
+            else :
+                $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+            endif;
+            $limit = 4;
+            $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
+            $numEstudiantes = $estudiantes->rowCount();
+            $divEstudiantes = ceil($numEstudiantes/$limit);
+            var_dump($numEstudiantes);die();
+            for ($i=0; $i < $divEstudiantes; $i++) {
+                $this->segundociclo($marcaIngreso,$limit);
+            }
+        else:
+            echo " fuera de fecha";
         endif;
-        $limit = 4;
-        $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        $numEstudiantes = $estudiantes->rowCount();
-        $divEstudiantes = ceil($numEstudiantes/$limit);
-        //var_dump($numEstudiantes);die();
-        for ($i=0; $i < $divEstudiantes; $i++) {
-            $this->segundociclo($marcaIngreso,$limit);
-        }
     }
 
 

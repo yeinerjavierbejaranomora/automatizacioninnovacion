@@ -11,7 +11,7 @@ class Programarprimerciclo extends Controller{
 
     public function inicio(){
         //$fechaActual = date('Y-m-d');
-        $dias_a_restar = 7;
+        $diasARestar = 7;
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -21,7 +21,7 @@ class Programarprimerciclo extends Controller{
         // $offset = 6013;
         $periodos = $this->model->periodos();
         $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
-        $fechaInicioCiclo1->sub(new DateInterval('P' . $dias_a_restar . 'D'));
+        $fechaInicioCiclo1->sub(new DateInterval("P{$diasARestar}D"));
         var_dump($fechaInicioCiclo1->format('Y-m-d'));die();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

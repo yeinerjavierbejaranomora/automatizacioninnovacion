@@ -54,7 +54,7 @@ class Programarsegundociclo extends Controller{
         endif;
         // $limit = 20;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetch(PDO::FETCH_ASSOC));die();
+        //var_dump($estudiantes->fetch(PDO::FETCH_ASSOC));die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];

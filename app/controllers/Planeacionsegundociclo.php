@@ -22,6 +22,7 @@ class Planeacionsegundociclo extends Controller{
         endif;
         $limit = 500;
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
+        var_dump($estudiantes);die();
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
         var_dump($numEstudiantes);die();

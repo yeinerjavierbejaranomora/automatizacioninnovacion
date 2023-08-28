@@ -45,9 +45,9 @@ class ProgramarPrimerCicloModel{
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK'
             AND `planeado_ciclo1` = 'OK' 
-            AND `planeado_ciclo2` = 'OK'  
+            /*AND `planeado_ciclo2` = 'OK'  
             AND `programado_ciclo1` IS NULL 
-            AND `programado_ciclo2` IS NULL 
+            AND `programado_ciclo2` IS NULL */
             AND `marca_ingreso` IN ($marcaIngreso) 
             /*AND `programa` != 'PPSV'*/ 
             ORDER BY `id` ASC");

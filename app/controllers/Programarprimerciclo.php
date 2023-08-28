@@ -10,15 +10,8 @@ class Programarprimerciclo extends Controller{
 
 
     public function inicio(){
-        //$fechaActual = date('Y-m-d');
+        $fechaActual = date('Y-m-d');
         $dias_a_restar = 7;
-        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
-        if ($log->rowCount() == 0) :
-            $offset = 0;
-        else :
-            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
-        endif;
-        // $offset = 6013;
         $periodos = $this->model->periodos();
         $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
         echo $fechaInicioCiclo1,"<br>";
@@ -28,6 +21,14 @@ class Programarprimerciclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
+        if ($log->rowCount() == 0) :
+            $offset = 0;
+        else :
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+        // $offset = 6013;
+        
         //var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         //var_dump($estudiantes->rowCount());die();

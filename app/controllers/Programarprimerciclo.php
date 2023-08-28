@@ -19,7 +19,7 @@ class Programarprimerciclo extends Controller{
         endif;
         // $offset = 6013;
         $periodos = $this->model->periodos();
-        var_dump($periodos->fetchAll());die();
+        var_dump($periodos->fetch(PDO::FETCH_ASSOC));die();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";

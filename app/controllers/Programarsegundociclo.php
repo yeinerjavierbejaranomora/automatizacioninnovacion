@@ -13,7 +13,9 @@ class Programarsegundociclo extends Controller{
         $fechaActual = date('Y-m-d');
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
-        var_dump($periodos->fetchAll());die();
+        $fechaInicioCiclo2 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo2'];
+        echo $fechaInicioCiclo2,"<br>";
+        echo date("Y-m-d",strtotime($fechaInicioCiclo2."- 1 week"));die();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";

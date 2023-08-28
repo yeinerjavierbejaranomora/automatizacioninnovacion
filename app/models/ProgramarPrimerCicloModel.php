@@ -8,7 +8,7 @@ class ProgramarPrimerCicloModel{
 
     public function periodos(){
         try {
-            $consultaPeriodo = $this->db->connect()->prepare("SELECT `periodos`,`fechaInicioCiclo1`,`fechaCierreCiclo1` FROM `periodo` WHERE `periodoActivo` = 1");
+            $consultaPeriodo = $this->db->connect()->prepare("SELECT `periodos`,`fechaInicioCiclo1`,`fechaCierreCiclo1` FROM `periodo` WHERE `activoCiclo1` = 1");
             $consultaPeriodo->execute();
             return $consultaPeriodo;
         } catch (PDOException $e) {

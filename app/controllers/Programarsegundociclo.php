@@ -10,6 +10,7 @@ class Programarsegundociclo extends Controller{
 
 
     public function inicio(){
+        var_dump(date('Y-m-d'));die();
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {

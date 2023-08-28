@@ -28,26 +28,15 @@ class PlaneacionSegundoCicloModel{
         }
     }
 
-    public function getEstudiantesNum($offset,$marcaIngreso,$primer){
-        //var_dump($offset,$marcaIngreso,$primer);die();
+    public function getEstudiantesNum($offset,$marcaIngreso){
         try {
-            if($primer == ''){
-                $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
-                WHERE `id` > ?
-                AND materias_faltantes='OK' 
-                AND planeado_ciclo1 = 'OK'
-                AND planeado_ciclo2 IS NULL 
-                AND marca_ingreso IN ($marcaIngreso) 
-                ORDER BY id ASC");
-            }else{
-                $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
-                WHERE `id` > ?
-                AND materias_faltantes='OK' 
-                AND planeado_ciclo1 IS NULL 
-                AND planeado_ciclo2 IS NULL 
-                AND marca_ingreso IN ($marcaIngreso) 
-                ORDER BY id ASC");
-            }
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
+            WHERE `id` > ?
+            AND materias_faltantes='OK' 
+            /*AND planeado_ciclo1 IS NULL 
+            AND planeado_ciclo2 IS NULL */
+            AND marca_ingreso IN ($marcaIngreso) 
+            ORDER BY id ASC");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->execute();
             return $consultaEstudiantes;

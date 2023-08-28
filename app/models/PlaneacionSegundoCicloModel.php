@@ -50,8 +50,8 @@ class PlaneacionSegundoCicloModel{
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante`,`marca_ingreso` FROM estudiantes 
             WHERE `id` > ?
             AND materias_faltantes='OK' 
-            AND planeado_ciclo1='OK' 
-            AND planeado_ciclo2 IS NULL 
+            /*AND planeado_ciclo1='OK' 
+            AND planeado_ciclo2 IS NULL */
             AND marca_ingreso IN ($marcaIngreso) 
             ORDER BY id ASC 
             LIMIT ?");

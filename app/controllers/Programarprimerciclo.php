@@ -10,7 +10,7 @@ class Programarprimerciclo extends Controller{
 
 
     public function inicio(){
-        var_dump(date('Y-m-d'));die();
+        //var_dump(date('Y-m-d'));die();
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -19,6 +19,7 @@ class Programarprimerciclo extends Controller{
         endif;
         // $offset = 6013;
         $periodos = $this->model->periodos();
+        var_dump($periodos->fetchAll());die();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";

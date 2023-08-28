@@ -23,7 +23,6 @@ class Programarprimerciclo extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
-            echo "fecha programar <br>";
             $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
             if ($log->rowCount() == 0) :
                 $offset = 0;

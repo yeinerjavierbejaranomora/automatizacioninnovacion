@@ -13,7 +13,7 @@ class Planeacionsegundociclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        //var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -24,7 +24,7 @@ class Planeacionsegundociclo extends Controller{
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         $numEstudiantes = $estudiantes->rowCount();
         $divEstudiantes = ceil($numEstudiantes/$limit);
-        //var_dump($numEstudiantes);die();
+        var_dump($numEstudiantes);die();
         for ($i=0; $i < $divEstudiantes; $i++) {
             $this->segundociclo($marcaIngreso,$limit);
         }

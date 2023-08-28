@@ -14,15 +14,15 @@ class Programarprimerciclo extends Controller{
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
         $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
-        echo $fechaInicioCiclo1,"<br>";
-        echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
+        /*echo $fechaInicioCiclo1,"<br>";
+        echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));die();*/
         $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        if($fechaActual  < $fechaInicioCiclo1):
+        if($fechaActual > $fechaInicioProgramacion):
             echo "fecha programar";
         else:
             echo " fuera de fecha";

@@ -24,27 +24,26 @@ class Programarprimerciclo extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             echo "fecha programar";
+            $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
+            if ($log->rowCount() == 0) :
+                $offset = 0;
+            else :
+                $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+            endif;
+            // $offset = 6013;
+            
+            var_dump($marcaIngreso);die();
+            $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
+            //var_dump($estudiantes->rowCount());die();
+            $limit = 500;
+            $numEstudinates = ceil($estudiantes->rowCount()/$limit);
+            for ($i=0; $i < $numEstudinates; $i++) { 
+                //sleep(10);
+                $this->primerciclo($limit,$marcaIngreso);
+            }
         else:
             echo " fuera de fecha";
         endif;
-        die();
-        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCiclo', 'programacion');
-        if ($log->rowCount() == 0) :
-            $offset = 0;
-        else :
-            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
-        endif;
-        // $offset = 6013;
-        
-        //var_dump($marcaIngreso);die();
-        $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        //var_dump($estudiantes->rowCount());die();
-        $limit = 500;
-        $numEstudinates = ceil($estudiantes->rowCount()/$limit);
-        for ($i=0; $i < $numEstudinates; $i++) { 
-            //sleep(10);
-            $this->primerciclo($limit,$marcaIngreso);
-        }
     }
 
     public function primerciclo($limit,$marcaIngreso,){

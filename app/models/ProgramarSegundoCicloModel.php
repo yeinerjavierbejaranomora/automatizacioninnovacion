@@ -52,10 +52,10 @@ class ProgramarSegundoCicloModel{
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante,marca_ingreso FROM estudiantes 
             WHERE `id` > ?
             AND `materias_faltantes`='OK'
-            AND `planeado_ciclo1` = 'OK' 
+            /*AND `planeado_ciclo1` = 'OK' */
             AND `planeado_ciclo2` = 'OK'
-            AND `programado_ciclo1`='OK' 
-            AND `programado_ciclo2` IS NULL 
+            /*ND `programado_ciclo1`='OK' 
+            AND `programado_ciclo2` IS NULL */
             AND `marca_ingreso` IN ($marcaIngreso) 
             ORDER BY id ASC
             LIMIT ?");

@@ -22,7 +22,7 @@ class Programarprimerciclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        if($fechaActual >= $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
+        if($fechaActual >= $fechaInicioProgramacion && $fechaInicioCiclo1 >= $fechaActual):
             echo "fecha programar";
         else:
             echo " fuera de fecha";

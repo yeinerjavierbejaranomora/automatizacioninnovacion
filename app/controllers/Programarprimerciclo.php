@@ -20,7 +20,9 @@ class Programarprimerciclo extends Controller{
         endif;
         // $offset = 6013;
         $periodos = $this->model->periodos();
-        var_dump($periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1']);die();
+        $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
+        echo $fechaInicioCiclo1;
+        echo date("d-m-Y",strtotime($fechaInicioCiclo1."- 1 week"));die();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";

@@ -58,7 +58,7 @@ class Mafireplica  extends Controller{
                 $tieneHistorial = NULL;
                 $programaAbrio = NULL;
                 $observaciones = NULL;
-                if($nivelFormacion == 'PROFESIONAL' && $nivelFormacion == 'ESPECIALISTA'):
+                if($nivelFormacion == 'PROFESIONAL' || $nivelFormacion == 'ESPECIALISTA'):
                     if(str_contains($tipoEstudiante,'TRANSFERENTE')):
                         $historial = $this->model->historialEstudiante($codigoBanner);
                         $historialCount =$historial->fetch(PDO::FETCH_ASSOC)['historial'];

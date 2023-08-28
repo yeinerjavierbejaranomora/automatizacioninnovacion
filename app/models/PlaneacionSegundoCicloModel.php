@@ -28,7 +28,8 @@ class PlaneacionSegundoCicloModel{
         }
     }
 
-    public function getEstudiantesNum($offset,$marcaIngreso){
+    public function getEstudiantesNum($offset,$marcaIngreso,$primer){
+        var_dump($offset,$marcaIngreso,$primer);die();
         try {
             $consultaEstudiantes = $this->db->connect()->prepare("SELECT id, homologante, programa,tipo_estudiante FROM estudiantes 
             WHERE `id` > ?

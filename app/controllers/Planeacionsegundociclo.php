@@ -17,15 +17,16 @@ class Planeacionsegundociclo extends Controller{
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
+            $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso,'PrimerVez');
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+            $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso,'');
         endif;
         $limit = 500;
-        $estudiantesp = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        $numEstudiantesp = $estudiantesp->rowCount();
-        $divEstudiantesp = ceil($numEstudiantesp/$limit);
-        var_dump($numEstudiantesp);die();
-        for ($i=0; $i < $divEstudiantesp; $i++) {
+        $numEstudiantes = $estudiantes->rowCount();
+        $divEstudiantes = ceil($numEstudiantes/$limit);
+        var_dump($numEstudiantes);die();
+        for ($i=0; $i < $divEstudiantes; $i++) {
             $this->segundociclo($marcaIngreso,$limit);
         }
     }

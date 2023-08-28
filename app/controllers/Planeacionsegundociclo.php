@@ -21,11 +21,11 @@ class Planeacionsegundociclo extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $limit = 500;
-        $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-        $numEstudiantes = $estudiantes->rowCount();
-        $divEstudiantes = ceil($numEstudiantes/$limit);
-        var_dump($numEstudiantes);die();
-        for ($i=0; $i < $divEstudiantes; $i++) {
+        $estudiantesp = $this->model->getEstudiantesNum($offset,$marcaIngreso);
+        $numEstudiantesp = $estudiantesp->rowCount();
+        $divEstudiantesp = ceil($numEstudiantesp/$limit);
+        var_dump($numEstudiantesp);die();
+        for ($i=0; $i < $divEstudiantesp; $i++) {
             $this->segundociclo($marcaIngreso,$limit);
         }
     }

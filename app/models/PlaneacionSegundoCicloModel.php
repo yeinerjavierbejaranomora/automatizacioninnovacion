@@ -34,7 +34,7 @@ class PlaneacionSegundoCicloModel{
             WHERE `id` > ?
             AND materias_faltantes='OK' 
             AND planeado_ciclo1='OK' 
-            AND planeado_ciclo2 IS NULL 
+            AND planeado_ciclo2 = 'OK'
             AND marca_ingreso IN ($marcaIngreso) 
             ORDER BY id ASC");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);

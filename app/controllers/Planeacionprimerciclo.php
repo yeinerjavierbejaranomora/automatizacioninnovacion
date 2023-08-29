@@ -55,7 +55,7 @@ class Planeacionprimerciclo extends Controller{
         endif;
         //$limit = 50;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes);die();
+        var_dump($estudiantes->rowCount());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 //var_dump($estudiante);die();

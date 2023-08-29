@@ -34,14 +34,16 @@ class MateriasPorVerModel{
         try {
             $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`marca_ingreso` FROM `estudiantes` 
             WHERE `id` > ? 
-            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `programa` NOT IN ('MED')
+            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
             AND `tipo_estudiante` LIKE 'PRIMER%'  
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ?  
-            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
+            AND `programa` NOT IN ('MED')
+            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
             AND `tipo_estudiante` LIKE 'INGRESO%' 
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL

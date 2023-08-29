@@ -14,6 +14,12 @@ class Materiasporverespecializacion extends Controller {
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
+        $log = $this->model->logAplicacion('Insert-especializacion','materiasPorVer');
+        if($log->rowCount() == 0):
+            $offset =0;
+        else:
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
         var_dump($marcaIngreso);die();
     }
 }

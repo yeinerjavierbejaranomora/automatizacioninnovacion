@@ -13,7 +13,8 @@ class Programarsegundociclo extends Controller{
         $fechaActual = date('Y-m-d');
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
-        $fechaInicioCiclo2 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo2'];
+        //$fechaInicioCiclo2 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo2'];
+        $fechaInicioCiclo2 = '2023-08-30';
         /*echo $fechaInicioCiclo2,"<br>";
         echo date("Y-m-d",strtotime($fechaInicioCiclo2."- 1 week"));die();*/
         $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo2."- 1 week"));
@@ -27,6 +28,7 @@ class Programarsegundociclo extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         // var_dump($marcaIngreso);die();
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo2):
+            echo "detro de la fecha";die();
             $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCiclo', 'programacion');
             if ($log->rowCount() == 0) :
                 $offset = 0;

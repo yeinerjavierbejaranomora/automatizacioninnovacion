@@ -11,7 +11,7 @@ class Materiasporverespecializacion extends Controller {
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
-            var_dump($periodo);die();
+            var_dump(substr($periodo,2));die();
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");

@@ -26,7 +26,7 @@ class Materiasporver extends Controller{
         else:
             echo "No hay estudiantes de primer ingreso <br>";
         endif;
-        /*$log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
+        $log = $this->model->logAplicacion('Insert-Transferente','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
         else:
@@ -34,6 +34,7 @@ class Materiasporver extends Controller{
         endif;
         $limit = 800;
         $numEstudiantesTransferentes = $this->model->faltantesTransferentesNum($offset,$marcaIngreso);
+        var_dump($numEstudiantesTransferentes->rowCount());die();
         if ($numEstudiantesTransferentes->rowCount() != 0) :
             $divEstudiantesTransferentes = ceil($numEstudiantesTransferentes->rowCount() / $limit);
             for ($i = 0; $i < $divEstudiantesTransferentes; $i++) {
@@ -42,7 +43,7 @@ class Materiasporver extends Controller{
         else :
             echo "No hay estudiantes TRANSFERENTES <br>";
         endif;
-        $log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
+        /*$log = $this->model->logAplicacion('Insert-EstudinatesAntiguos','materiasPorVer');
         if($log->rowCount() == 0):
             $offset =0;
         else:

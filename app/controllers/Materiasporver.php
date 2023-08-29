@@ -50,7 +50,7 @@ class Materiasporver extends Controller{
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
         $totalEstudiantesAntiguos = $this->model->totalEstudiantes($offset,$marcaIngreso);
-        var_dump($totalEstudiantesAntiguos);die();
+        //var_dump($totalEstudiantesAntiguos);die();
         if($totalEstudiantesAntiguos == 0):
             echo "No hay estudiantes ANTIGUOS <br>";
         else:
@@ -119,6 +119,7 @@ class Materiasporver extends Controller{
         endif;
         //$limit = 800;
         $transferentes = $this->model->faltantesTransferentes($offset,$limit,$marcaIngreso);
+        var_dump($transferentes->fetchAll());die();
         if($transferentes->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;

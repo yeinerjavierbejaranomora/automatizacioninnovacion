@@ -34,7 +34,12 @@ class Programarespecializacionciclouno extends Controller{
             endif;
             //var_dump($offset);die();
             $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-            var_dump($estudiantes->fetchAll());die();
+            $limit = 500;
+            $numEstudinates = ceil($estudiantes->rowCount()/$limit);
+            for ($i=0; $i < $numEstudinates; $i++) { 
+                //sleep(10);
+                //$this->primerciclo($limit,$marcaIngreso);
+            }
         else:
             echo " fuera de fecha";
         endif;

@@ -16,7 +16,7 @@ class Planeacionsegundociclo extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        // var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -43,7 +43,7 @@ class Planeacionsegundociclo extends Controller{
         endif;
         // $limit = 20;
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        //var_dump($estudiantes->fetch(PDO::FETCH_ASSOC));die();
+        var_dump($estudiantes->rowCount());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $key => $estudiante) {
                 $programaHomologante = $estudiante['programa'];

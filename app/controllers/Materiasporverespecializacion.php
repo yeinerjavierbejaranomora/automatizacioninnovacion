@@ -20,6 +20,6 @@ class Materiasporverespecializacion extends Controller {
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        var_dump($marcaIngreso);die();
+        var_dump($log);die();
     }
 }

@@ -20,6 +20,7 @@ class Materiasporverespecializacion extends Controller {
         else:
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        var_dump($offset);die();
+        $estudiantesEspecializaciones = $this->model->estudiantesEspecializacion($offset,$marcaIngreso);
+        var_dump($estudiantesEspecializaciones->fetchAll());die();
     }
 }

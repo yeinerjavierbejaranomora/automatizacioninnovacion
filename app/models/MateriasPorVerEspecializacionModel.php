@@ -30,4 +30,19 @@ class MateriasPorVerEspecializacionModel {
             return false;
         }
     }
+
+    public function estudiantesEspecializacion($offset,$marcaIngreso){
+        try {
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT * FROM `estudiantes` 
+            WHERE `id` > ?
+            AND `programaActivo` IS NULL
+            AND `observacion` IS NULL
+            AND `marca_ingreso` IN ($marcaIngreso)");
+            $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstudiantes->execute();
+            return $consultaEstudiantes;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

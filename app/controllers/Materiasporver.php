@@ -119,7 +119,6 @@ class Materiasporver extends Controller{
         endif;
         //$limit = 800;
         $transferentes = $this->model->faltantesTransferentes($offset,$limit,$marcaIngreso);
-        var_dump($transferentes->fetchAll());die();
         if($transferentes->rowCount() != false):
             $fechaInicio = date('Y-m-d H:i:s');
             $registroMPV = 0;

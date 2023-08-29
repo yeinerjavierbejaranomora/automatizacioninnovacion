@@ -10,10 +10,13 @@ class Planeacionsegundociclo extends Controller{
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
-            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+            $codPeriodo = substr($periodo['periodos'],-2);
+            if($codPeriodo >= 11 && $codPeriodo <=35):
+                $marcaIngreso .= (int)$periodo['periodos'] . ",";
+            endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        //var_dump($marcaIngreso);die();
+        var_dump($marcaIngreso);die();
         $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCiclo', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;

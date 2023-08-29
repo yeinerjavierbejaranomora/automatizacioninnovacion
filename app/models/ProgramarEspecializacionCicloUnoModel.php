@@ -3,6 +3,16 @@ class ProgramarEspecializacionCicloUnoModel {
     private $db;
     public function __construct()
     {
-        $this->db = $this->db;
+        $this->db = new Database();
+    }
+
+    public function periodos(){
+        try {
+            $consultaPeriodo = $this->db->connect()->prepare("SELECT `periodos` FROM `periodo` WHERE `activoCiclo1` = 1");
+            $consultaPeriodo->execute();
+            return $consultaPeriodo;
+        } catch (PDOException $e) {
+            return false;
+        }
     }
 }

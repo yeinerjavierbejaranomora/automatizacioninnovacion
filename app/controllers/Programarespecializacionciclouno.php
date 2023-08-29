@@ -25,7 +25,14 @@ class Programarespecializacionciclouno extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
-            echo "detro de la fecha";die();
+            //echo "detro de la fecha";die();
+            $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+            if ($log->rowCount() == 0) :
+                $offset = 0;
+            else :
+                $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+            endif;
+            var_dump($offset);die();
         else:
             echo " fuera de fecha";
         endif;

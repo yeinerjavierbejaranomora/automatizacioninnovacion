@@ -11,10 +11,12 @@ class Materiasporverespecializacion extends Controller {
         $periodos = $this->model->periodos();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
-            var_dump(substr($periodo['periodos'],-2));
-            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+            $codPeriodo = substr($periodo['periodos'],-2);
+            if($codPeriodo >= 41 && $codPeriodo >=45):
+                $marcaIngreso .= (int)$periodo['periodos'] . ",";
+            endif;
         }
-        die();
+        var_dump($marcaIngreso);die();
         $marcaIngreso = trim($marcaIngreso, ",");
         $log = $this->model->logAplicacion('Insert-especializacion','materiasPorVer');
         if($log->rowCount() == 0):

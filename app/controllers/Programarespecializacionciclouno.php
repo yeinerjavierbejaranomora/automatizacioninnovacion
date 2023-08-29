@@ -24,7 +24,11 @@ class Programarespecializacionciclouno extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
+            echo "detro de la fecha";die();
+        else:
+            echo " fuera de fecha";
+        endif;
     }
 }
 ?>

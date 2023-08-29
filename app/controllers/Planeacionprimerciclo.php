@@ -20,7 +20,7 @@ class Planeacionprimerciclo extends Controller{
             $marcaIngreso .= (int)$periodo['periodos'] . ",";
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        //var_dump($marcaIngreso);die();
+        var_dump($marcaIngreso);die();
         $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
         //var_dump($estudiantes->rowCount());die();
         $limit = 500;

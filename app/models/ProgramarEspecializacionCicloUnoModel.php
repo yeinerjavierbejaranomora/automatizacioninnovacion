@@ -27,4 +27,25 @@ class ProgramarEspecializacionCicloUnoModel {
             return false;
         }
     }
+
+    public function getEstudiantesNum($offset,$marcaIngreso){
+        //var_dump($marcaIngreso);die();
+        try {
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante` FROM `estudiantes` 
+            WHERE `id` > ?
+            AND `materias_faltantes` = 'OK'
+            /*AND `planeado_ciclo1` = 'OK' */
+            /*AND `planeado_ciclo2` = 'OK'  
+            AND `programado_ciclo1` IS NULL 
+            AND `programado_ciclo2` IS NULL */
+            AND `marca_ingreso` IN ($marcaIngreso) 
+            /*AND `programa` != 'PPSV'*/ 
+            ORDER BY `id` ASC");
+            $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
+            $consultaEstudiantes->execute();
+            return $consultaEstudiantes;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

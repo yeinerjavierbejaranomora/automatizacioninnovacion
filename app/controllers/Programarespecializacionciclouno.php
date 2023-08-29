@@ -32,7 +32,9 @@ class Programarespecializacionciclouno extends Controller{
             else :
                 $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
             endif;
-            var_dump($offset);die();
+            //var_dump($offset);die();
+            $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
+            var_dump($estudiantes);die();
         else:
             echo " fuera de fecha";
         endif;

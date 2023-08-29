@@ -19,7 +19,10 @@ class Programarprimerciclo extends Controller{
         $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
-            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+            $codPeriodo = substr($periodo['periodos'],-2);
+            if($codPeriodo >= 11 && $codPeriodo <=35):
+                $marcaIngreso .= (int)$periodo['periodos'] . ",";
+            endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):

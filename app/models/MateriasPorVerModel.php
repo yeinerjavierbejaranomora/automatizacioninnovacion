@@ -34,16 +34,14 @@ class MateriasPorVerModel{
         try {
             $consultaEstPrimerIngreso = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`marca_ingreso` FROM `estudiantes` 
             WHERE `id` > ? 
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'PRIMER%'  
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ?  
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `tipo_estudiante` LIKE 'INGRESO%' 
             AND `programaActivo` IS NULL 
             AND `materias_faltantes` IS NULL
@@ -192,8 +190,7 @@ class MateriasPorVerModel{
             AND `programaActivo` IS NULL
             AND `tiene_historial` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)");
             $consultaEstTransferente->bindParam(1,$offset,PDO::PARAM_INT);
@@ -275,24 +272,21 @@ class MateriasPorVerModel{
             AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ?
             AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ? 
             AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             ORDER BY `id` ASC");
@@ -313,22 +307,19 @@ class MateriasPorVerModel{
             AND `tipo_estudiante` LIKE 'ESTUDIANTE ANTIGUO%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ? AND `tipo_estudiante` LIKE 'PSEUDO ACTIVOS%'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             OR `id` > ? AND `tipo_estudiante` = 'REINGRESO'
             AND `programaActivo` IS NULL
             AND `materias_faltantes` IS NULL
-            AND `programa` NOT IN ('MED')
-            /*AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')*/
+            AND `programa` NOT IN ('MED','EFCC','EAU','EFAC','EASV','EGSV','ESST','EGFV','EAGV','EGYV','EMDV','EDIV','EDIA','ENEV','EABV')
             AND `observacion` IS NULL
             AND `marca_ingreso` IN ($marcaIngreso)
             ORDER BY `id` ASC

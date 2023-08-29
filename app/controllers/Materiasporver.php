@@ -34,7 +34,7 @@ class Materiasporver extends Controller{
         endif;
         $limit = 800;
         $numEstudiantesTransferentes = $this->model->faltantesTransferentesNum($offset,$marcaIngreso);
-        var_dump($numEstudiantesTransferentes->rowCount());die();
+        //var_dump($numEstudiantesTransferentes->rowCount());die();
         if ($numEstudiantesTransferentes->rowCount() != 0) :
             $divEstudiantesTransferentes = ceil($numEstudiantesTransferentes->rowCount() / $limit);
             for ($i = 0; $i < $divEstudiantesTransferentes; $i++) {

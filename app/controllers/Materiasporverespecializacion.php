@@ -12,7 +12,7 @@ class Materiasporverespecializacion extends Controller {
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $codPeriodo = substr($periodo['periodos'],-2);
-            if($codPeriodo >= 41 && $codPeriodo >=45):
+            if($codPeriodo >= 41 && $codPeriodo <=45):
                 $marcaIngreso .= (int)$periodo['periodos'] . ",";
             endif;
         }

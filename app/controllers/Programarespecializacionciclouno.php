@@ -34,7 +34,7 @@ class Programarespecializacionciclouno extends Controller{
             endif;
             //var_dump($offset);die();
             $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-            var_dump($estudiantes);die();
+            var_dump($estudiantes->fetchAll());die();
         else:
             echo " fuera de fecha";
         endif;

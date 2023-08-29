@@ -8,6 +8,12 @@ class Materiasporverespecializacion extends Controller {
     }
 
     public function inicio(){
-        echo "Hola matrias especializacion";
+        $periodos = $this->model->periodos();
+        $marcaIngreso = "";
+        foreach ($periodos as $periodo) {
+            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+        }
+        $marcaIngreso = trim($marcaIngreso, ",");
+        var_dump($marcaIngreso);die();
     }
 }

@@ -48,6 +48,14 @@ class Programarespecializacionciclouno extends Controller{
                         endif;
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
+                    $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
+                    var_dump($estudiantes->rowCount());die();
+                    $limit = 500;
+                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                    for ($i = 0; $i < $numEstudinates; $i++) {
+                        //sleep(10);
+                        //$this->primerciclo($limit,$marcaIngreso);
+                    }
                     var_dump($marcaIngreso);die();
                 case 42:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
@@ -58,6 +66,14 @@ class Programarespecializacionciclouno extends Controller{
                         endif;
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
+                    $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
+                    var_dump($estudiantes->rowCount());die();
+                    $limit = 500;
+                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                    for ($i = 0; $i < $numEstudinates; $i++) {
+                        //sleep(10);
+                        //$this->primerciclo($limit,$marcaIngreso);
+                    }
                     var_dump($marcaIngreso);die();
                 case 43:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
@@ -68,6 +84,14 @@ class Programarespecializacionciclouno extends Controller{
                         endif;
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
+                    $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
+                    var_dump($estudiantes->rowCount());die();
+                    $limit = 500;
+                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                    for ($i = 0; $i < $numEstudinates; $i++) {
+                        //sleep(10);
+                        //$this->primerciclo($limit,$marcaIngreso);
+                    }
                     var_dump($marcaIngreso);die();
                 case 44:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
@@ -79,7 +103,7 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    var_dump($estudiantes);die();
+                    var_dump($estudiantes->rowCount());die();
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
@@ -95,6 +119,14 @@ class Programarespecializacionciclouno extends Controller{
                         endif;
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
+                    $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
+                    var_dump($estudiantes->rowCount());die();
+                    $limit = 500;
+                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                    for ($i = 0; $i < $numEstudinates; $i++) {
+                        //sleep(10);
+                        //$this->primerciclo($limit,$marcaIngreso);
+                    }
                     var_dump($marcaIngreso);die();
                     break;
                 
@@ -106,6 +138,17 @@ class Programarespecializacionciclouno extends Controller{
         else:
             echo " fuera de fecha";
         endif;
+    }
+
+    public function primerCiclo($limit,$marcaIngreso){
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+        if ($log->rowCount() == 0) :
+            $offset = 0;
+        else :
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+
+        $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
     }
 }
 ?>

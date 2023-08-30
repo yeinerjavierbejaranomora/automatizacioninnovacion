@@ -25,6 +25,23 @@ class Programarespecializacionciclouno extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         $codPeriodo = substr($marcaIngreso,-2);
+        switch ($codPeriodo) {
+            case 41:
+                var_dump("ciclo 1, 41");die();
+            case 42:
+                var_dump("ciclo 2, 41 y 42");die();
+            case 43:
+                var_dump("ciclo 1, 42 y 43");die();
+            case 44:
+                var_dump("ciclo 2, 43 y 44");die();
+            case 45:
+                var_dump("ciclo 1, 45 y 44, y solo ciclo 2, 45");die();
+                break;
+            
+            default:
+                # code...
+                break;
+        }
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             //echo "detro de la fecha";die();
             $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');

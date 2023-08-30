@@ -107,8 +107,8 @@ class ProgramarEspecializacionCicloUnoModel {
             AND m.codprograma = ?
             ORDER BY mpv.orden ASC");
             $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
-            $consultaMateriasPorVer->bindValue(2,$codigoBanner,PDO::PARAM_INT);
-            $consultaMateriasPorVer->bindValue(3,$semestre,PDO::PARAM_STR);
+            $consultaMateriasPorVer->bindValue(2,$semestre,PDO::PARAM_INT);
+            $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->bindValue(4,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->execute();
             return $consultaMateriasPorVer;

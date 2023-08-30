@@ -150,13 +150,16 @@ class Programarespecializacionciclouno extends Controller{
                 $programa = $estudiante['programa'];
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     echo "202343";
+                    $ciclo = 2;
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
+                    var_dump($materiasPorVer);die();
                 else:
                     echo "202344";
+                    $ciclo = 2 .",". 12;
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
+                    var_dump($materiasPorVer);die();
                 endif;
                 die();
-                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
-                var_dump($codPeriodo);die();
-                var_dump($estudiante);die();
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";

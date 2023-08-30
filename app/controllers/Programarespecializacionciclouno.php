@@ -148,6 +148,10 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        if($estudiantes->rowCount() > 0):
+            else:
+            echo "No hay estudiantes de especialización para programar <br>";
+        endif;
         var_dump($estudiantes->fetchAll());die();
     }
 
@@ -160,6 +164,10 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        if($estudiantes->rowCount() > 0):
+            else:
+            echo "No hay estudiantes de especialización para programar <br>";
+        endif;
         var_dump($estudiantes->fetchAll());die();
     }
 }

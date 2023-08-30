@@ -24,17 +24,11 @@ class Programarespecializacionciclouno extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);
+        // var_dump($marcaIngreso);
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
-        $periodosEspecializacion = $this->model->periodosEspecializacion();
-        foreach ($periodosEspecializacion as $periodo) {
-            $codPeriodo = substr($periodo['periodos'],-2);
-            if($codPeriodo >= 41 && $codPeriodo <=45):
-                $marcaIngreso .= (int)$periodo['periodos'] . ",";
-            endif;
-        }
-        var_dump($marcaIngreso);die();
+        
+        // var_dump($marcaIngreso);die();
         switch ($codPeriodo) {
             case 41:
                 var_dump("ciclo 1, 41");die();
@@ -43,7 +37,14 @@ class Programarespecializacionciclouno extends Controller{
             case 43:
                 var_dump("ciclo 1, 42 y 43");die();
             case 44:
-                var_dump("ciclo 2, 43 y 44");die();
+                $periodosEspecializacion = $this->model->periodosEspecializacion();
+                foreach ($periodosEspecializacion as $periodo) {
+                    $codPeriodo = substr($periodo['periodos'], -2);
+                    if ($codPeriodo >= 43 && $codPeriodo <= 44) :
+                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                    endif;
+                }
+                var_dump($marcaIngreso);die();
             case 45:
                 var_dump("ciclo 1, 45 y 44, y solo ciclo 2, 45");die();
                 break;

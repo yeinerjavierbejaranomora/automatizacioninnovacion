@@ -70,7 +70,7 @@ class ProgramarEspecializacionCicloUnoModel {
             AND `programado_ciclo2` IS NULL */
             AND `marca_ingreso` IN ($marcaIngreso) 
             /*AND `programa` != 'PPSV'*/ 
-            ORDER BY `id` AS
+            ORDER BY `id` ASC
             LIMIT ?");
             $consultaEstudiantes->bindParam(1,$offset,PDO::PARAM_INT);
             $consultaEstudiantes->bindParam(2,$limit,PDO::PARAM_INT);

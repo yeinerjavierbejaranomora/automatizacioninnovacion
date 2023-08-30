@@ -30,11 +30,35 @@ class Programarespecializacionciclouno extends Controller{
         // var_dump($marcaIngreso);die();
         switch ($codPeriodo) {
             case 41:
-                var_dump("ciclo 1, 41");die();
+                $periodosEspecializacion = $this->model->periodosEspecializacion();
+                foreach ($periodosEspecializacion as $periodo) {
+                    $codPeriodo = substr($periodo['periodos'], -2);
+                    if ($codPeriodo >= 41) :
+                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                    endif;
+                }
+                $marcaIngreso = trim($marcaIngreso, ",");
+                var_dump($marcaIngreso);die();
             case 42:
-                var_dump("ciclo 2, 41 y 42");die();
+                $periodosEspecializacion = $this->model->periodosEspecializacion();
+                foreach ($periodosEspecializacion as $periodo) {
+                    $codPeriodo = substr($periodo['periodos'], -2);
+                    if ($codPeriodo >= 41 && $codPeriodo <= 42) :
+                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                    endif;
+                }
+                $marcaIngreso = trim($marcaIngreso, ",");
+                var_dump($marcaIngreso);die();
             case 43:
-                var_dump("ciclo 1, 42 y 43");die();
+                $periodosEspecializacion = $this->model->periodosEspecializacion();
+                foreach ($periodosEspecializacion as $periodo) {
+                    $codPeriodo = substr($periodo['periodos'], -2);
+                    if ($codPeriodo >= 42 && $codPeriodo <= 43) :
+                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                    endif;
+                }
+                $marcaIngreso = trim($marcaIngreso, ",");
+                var_dump($marcaIngreso);die();
             case 44:
                 $periodosEspecializacion = $this->model->periodosEspecializacion();
                 foreach ($periodosEspecializacion as $periodo) {
@@ -46,7 +70,15 @@ class Programarespecializacionciclouno extends Controller{
                 $marcaIngreso = trim($marcaIngreso, ",");
                 var_dump($marcaIngreso);die();
             case 45:
-                var_dump("ciclo 1, 45 y 44, y solo ciclo 2, 45");die();
+                $periodosEspecializacion = $this->model->periodosEspecializacion();
+                foreach ($periodosEspecializacion as $periodo) {
+                    $codPeriodo = substr($periodo['periodos'], -2);
+                    if ($codPeriodo >= 44 && $codPeriodo <= 45) :
+                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                    endif;
+                }
+                $marcaIngreso = trim($marcaIngreso, ",");
+                var_dump($marcaIngreso);die();
                 break;
             
             default:

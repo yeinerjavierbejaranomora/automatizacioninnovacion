@@ -30,14 +30,15 @@ class Programarespecializacionciclouno extends Controller{
         // var_dump($marcaIngreso);die();
         
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
-            echo "detro de la fecha";die();
+            //echo "detro de la fecha";die();
+            
             $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
             if ($log->rowCount() == 0) :
                 $offset = 0;
             else :
                 $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
             endif;
-            //var_dump($offset);die();
+            var_dump($offset);die();
             $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
             $limit = 500;
             $numEstudinates = ceil($estudiantes->rowCount()/$limit);

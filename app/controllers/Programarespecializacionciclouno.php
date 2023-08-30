@@ -152,12 +152,12 @@ class Programarespecializacionciclouno extends Controller{
                     echo "202343";
                     $ciclo = 2;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
-                    var_dump($materiasPorVer);die();
+                    var_dump($materiasPorVer->fetchAll());die();
                 else:
                     echo "202344";
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
-                    var_dump($materiasPorVer);die();
+                    var_dump($materiasPorVer->fetchAll());die();
                 endif;
                 die();
             endforeach;
@@ -186,12 +186,12 @@ class Programarespecializacionciclouno extends Controller{
                     echo "202343";
                     $ciclo = 2;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
-                    var_dump($materiasPorVer);die();
+                    var_dump($materiasPorVer->fetchAll());die();
                 else:
                     echo "202344";
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
-                    var_dump($materiasPorVer);die();
+                    var_dump($materiasPorVer->fetchAll());die();
                 endif;
                     die();
             endforeach;

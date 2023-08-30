@@ -148,6 +148,12 @@ class Programarespecializacionciclouno extends Controller{
                 $ciclo = [1, 12];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
+                if(substr($marca_ingreso,-2) < $codPeriodo):
+                    echo "202343";
+                else:
+                    echo "202344";
+                endif;
+                die();
                 $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
                 var_dump($codPeriodo);die();
                 var_dump($estudiante);die();

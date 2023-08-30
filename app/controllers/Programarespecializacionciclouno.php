@@ -103,11 +103,12 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    // var_dump($estudiantes->rowCount());die();
+                    var_dump($estudiantes->rowCount());die();
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
-                        $this->primerciclo($limit,$marcaIngreso);
+                        //sleep(10);
+                        //$this->primerciclo($limit,$marcaIngreso);
                     }
                 case 45:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
@@ -119,7 +120,7 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    // var_dump($estudiantes->rowCount());die();
+                    var_dump($estudiantes->rowCount());die();
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
@@ -148,7 +149,6 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetchAll());die();
     }
 }
 ?>

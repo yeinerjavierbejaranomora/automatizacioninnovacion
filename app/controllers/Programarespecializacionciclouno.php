@@ -42,8 +42,8 @@ class Programarespecializacionciclouno extends Controller{
                 case 41:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
-                        $codPeriodo = substr($periodo['periodos'], -2);
-                        if ($codPeriodo == 41) :
+                        $codPeriodo2 = substr($periodo['periodos'], -2);
+                        if ($codPeriodo2 == 41) :
                             $marcaIngreso .= (int)$periodo['periodos'] . ",";
                         endif;
                     }
@@ -58,8 +58,8 @@ class Programarespecializacionciclouno extends Controller{
                 case 42:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
-                        $codPeriodo = substr($periodo['periodos'], -2);
-                        if ($codPeriodo >= 41 && $codPeriodo <= 42) :
+                        $codPeriodo2 = substr($periodo['periodos'], -2);
+                        if ($codPeriodo2 >= 41 && $codPeriodo2 <= 42) :
                             $marcaIngreso .= (int)$periodo['periodos'] . ",";
                         endif;
                     }
@@ -74,8 +74,8 @@ class Programarespecializacionciclouno extends Controller{
                 case 43:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
-                        $codPeriodo = substr($periodo['periodos'], -2);
-                        if ($codPeriodo >= 42 && $codPeriodo <= 43) :
+                        $codPeriodo2 = substr($periodo['periodos'], -2);
+                        if ($codPeriodo2 >= 42 && $codPeriodo2 <= 43) :
                             $marcaIngreso .= (int)$periodo['periodos'] . ",";
                         endif;
                     }
@@ -90,8 +90,8 @@ class Programarespecializacionciclouno extends Controller{
                 case 44:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
-                        $codPeriodo = substr($periodo['periodos'], -2);
-                        if ($codPeriodo >= 43 && $codPeriodo <= 44) :
+                        $codPeriodo2 = substr($periodo['periodos'], -2);
+                        if ($codPeriodo2 >= 43 && $codPeriodo2 <= 44) :
                             $marcaIngreso .= (int)$periodo['periodos'] . ",";
                         endif;
                     }
@@ -106,8 +106,8 @@ class Programarespecializacionciclouno extends Controller{
                 case 45:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
-                        $codPeriodo = substr($periodo['periodos'], -2);
-                        if ($codPeriodo >= 44 && $codPeriodo <= 45) :
+                        $codPeriodo2 = substr($periodo['periodos'], -2);
+                        if ($codPeriodo2 >= 44 && $codPeriodo2 <= 45) :
                             $marcaIngreso .= (int)$periodo['periodos'] . ",";
                         endif;
                     }

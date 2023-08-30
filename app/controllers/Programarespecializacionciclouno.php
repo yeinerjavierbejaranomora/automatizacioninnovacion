@@ -179,15 +179,19 @@ class Programarespecializacionciclouno extends Controller{
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
-                $ciclo = 2 .",". 12;
-                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
-                foreach($materiasPorVer as $materia):
-                    if(substr($marca_ingreso,-2) < $codPeriodo):
-                        echo "202343";
-                    else:
-                        echo "202344";
-                    endif;
-                endforeach;
+                if(substr($marca_ingreso,-2) < $codPeriodo):
+                    echo "202343";
+                    $ciclo = 2 .",". 12;
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
+                    foreach($materiasPorVer as $materia):
+                    endforeach;
+                else:
+                    echo "202344";
+                    $ciclo = 2 .",". 12;
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
+                    foreach($materiasPorVer as $materia):
+                    endforeach;
+                endif;
                 die();
             endforeach;
             else:

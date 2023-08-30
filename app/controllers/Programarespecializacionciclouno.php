@@ -49,14 +49,12 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    var_dump($estudiantes->rowCount());die();
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         //sleep(10);
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
-                    var_dump($marcaIngreso);die();
                 case 42:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
@@ -67,14 +65,12 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    var_dump($estudiantes->rowCount());die();
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         //sleep(10);
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
-                    var_dump($marcaIngreso);die();
                 case 43:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
@@ -85,14 +81,12 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    var_dump($estudiantes->rowCount());die();
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         //sleep(10);
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
-                    var_dump($marcaIngreso);die();
                 case 44:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
@@ -107,7 +101,7 @@ class Programarespecializacionciclouno extends Controller{
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
-                        $this->primerCiclo($limit,$marcaIngreso);
+                        $this->primerCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 45:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
@@ -126,7 +120,6 @@ class Programarespecializacionciclouno extends Controller{
                         //sleep(10);
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
-                    var_dump($marcaIngreso);die();
                     break;
                 
                 default:
@@ -139,7 +132,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
     }
 
-    public function primerCiclo($limit,$marcaIngreso){
+    public function primerCiclo($limit,$marcaIngreso,$codPeriodo){
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -152,6 +145,11 @@ class Programarespecializacionciclouno extends Controller{
             foreach ($estudiantes as $estudiante) :
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];
+                $ciclo = [1, 12];
+                $marca_ingreso = $estudiante['marca_ingreso'];
+                $programa = $estudiante['programa'];
+                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
+                var_dump($codPeriodo);die();
                 var_dump($estudiante);die();
             endforeach;
             else:
@@ -160,7 +158,7 @@ class Programarespecializacionciclouno extends Controller{
         var_dump($estudiantes->fetchAll());die();
     }
 
-    public function segundoCiclo($limit,$marcaIngreso){
+    public function segundoCiclo($limit,$marcaIngreso,$codPeriodo){
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -173,6 +171,10 @@ class Programarespecializacionciclouno extends Controller{
             foreach ($estudiantes as $estudiante) :
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];
+                $ciclo = [2, 12];
+                $marca_ingreso = $estudiante['marca_ingreso'];
+                $programa = $estudiante['programa'];
+                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa);
                 var_dump($estudiante);die();
             endforeach;
             else:

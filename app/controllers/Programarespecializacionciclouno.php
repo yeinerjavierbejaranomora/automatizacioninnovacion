@@ -38,14 +38,71 @@ class Programarespecializacionciclouno extends Controller{
             else :
                 $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
             endif;
-            var_dump($offset);die();
-            $estudiantes = $this->model->getEstudiantesNum($offset,$marcaIngreso);
-            $limit = 500;
-            $numEstudinates = ceil($estudiantes->rowCount()/$limit);
-            for ($i=0; $i < $numEstudinates; $i++) { 
-                //sleep(10);
-                //$this->primerciclo($limit,$marcaIngreso);
+            switch ($codPeriodo) {
+                case 41:
+                    $periodosEspecializacion = $this->model->periodosEspecializacion();
+                    foreach ($periodosEspecializacion as $periodo) {
+                        $codPeriodo = substr($periodo['periodos'], -2);
+                        if ($codPeriodo == 41) :
+                            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                        endif;
+                    }
+                    $marcaIngreso = trim($marcaIngreso, ",");
+                    var_dump($marcaIngreso);die();
+                case 42:
+                    $periodosEspecializacion = $this->model->periodosEspecializacion();
+                    foreach ($periodosEspecializacion as $periodo) {
+                        $codPeriodo = substr($periodo['periodos'], -2);
+                        if ($codPeriodo >= 41 && $codPeriodo <= 42) :
+                            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                        endif;
+                    }
+                    $marcaIngreso = trim($marcaIngreso, ",");
+                    var_dump($marcaIngreso);die();
+                case 43:
+                    $periodosEspecializacion = $this->model->periodosEspecializacion();
+                    foreach ($periodosEspecializacion as $periodo) {
+                        $codPeriodo = substr($periodo['periodos'], -2);
+                        if ($codPeriodo >= 42 && $codPeriodo <= 43) :
+                            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                        endif;
+                    }
+                    $marcaIngreso = trim($marcaIngreso, ",");
+                    var_dump($marcaIngreso);die();
+                case 44:
+                    $periodosEspecializacion = $this->model->periodosEspecializacion();
+                    foreach ($periodosEspecializacion as $periodo) {
+                        $codPeriodo = substr($periodo['periodos'], -2);
+                        if ($codPeriodo >= 43 && $codPeriodo <= 44) :
+                            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                        endif;
+                    }
+                    $marcaIngreso = trim($marcaIngreso, ",");
+                    $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
+                    var_dump($estudiantes->rowCount());die();
+                    $limit = 500;
+                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                    for ($i = 0; $i < $numEstudinates; $i++) {
+                        //sleep(10);
+                        //$this->primerciclo($limit,$marcaIngreso);
+                    }
+                case 45:
+                    $periodosEspecializacion = $this->model->periodosEspecializacion();
+                    foreach ($periodosEspecializacion as $periodo) {
+                        $codPeriodo = substr($periodo['periodos'], -2);
+                        if ($codPeriodo >= 44 && $codPeriodo <= 45) :
+                            $marcaIngreso .= (int)$periodo['periodos'] . ",";
+                        endif;
+                    }
+                    $marcaIngreso = trim($marcaIngreso, ",");
+                    var_dump($marcaIngreso);die();
+                    break;
+                
+                default:
+                    # code...
+                    break;
             }
+            
         else:
             echo " fuera de fecha";
         endif;

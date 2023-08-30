@@ -149,6 +149,9 @@ class Programarespecializacionciclouno extends Controller{
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
+            foreach ($estudiantes as $estudiante) :
+                var_dump($estudiante);die();
+            endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";
         endif;
@@ -165,6 +168,9 @@ class Programarespecializacionciclouno extends Controller{
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
+            foreach ($estudiantes as $estudiante) :
+                var_dump($estudiante);die();
+            endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";
         endif;

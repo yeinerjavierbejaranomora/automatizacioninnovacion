@@ -84,7 +84,7 @@ class ProgramarEspecializacionCicloUnoModel {
     public function materiasPorVer($codigoBanner,$programa,$ciclo){
         //var_dump($codigoBanner,$programa);die();
         try {
-            $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
+            $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.semestre,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN `mallaCurricular` m ON m.codigoCurso=mpv.codMateria
             WHERE mpv.codBanner = ?  
             AND m.ciclo IN ($ciclo)

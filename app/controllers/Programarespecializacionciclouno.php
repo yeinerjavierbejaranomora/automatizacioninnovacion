@@ -180,7 +180,7 @@ class Programarespecializacionciclouno extends Controller{
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
                 $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
-                var_dump($consultaSemestre->fetchAll());die();
+                var_dump($consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre']);die();
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     // echo "202343";
                     $ciclo = 2 .",". 12;

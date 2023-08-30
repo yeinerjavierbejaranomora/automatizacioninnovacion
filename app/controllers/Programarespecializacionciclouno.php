@@ -144,15 +144,14 @@ class Programarespecializacionciclouno extends Controller{
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 $idEstudiante = $estudiante['id'];
-                //$codigoBanner = $estudiante['homologante'];
-                $codigoBanner = 100025931;
+                $codigoBanner = $estudiante['homologante'];
                 $ciclo = [1, 12];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     //echo "202343";
                     $ciclo = 2;
-                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
+                    $materiasPorVer = $this->model->materiasPorVer(100025931, $programa,$ciclo);
                     var_dump($materiasPorVer->fetchAll());die();
                 else:
                     //echo "202344";

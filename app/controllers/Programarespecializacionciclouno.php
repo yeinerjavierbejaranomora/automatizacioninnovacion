@@ -184,12 +184,14 @@ class Programarespecializacionciclouno extends Controller{
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
                     foreach($materiasPorVer as $materia):
+                        var_dump($materia);
                     endforeach;
                 else:
                     echo "202344";
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
                     foreach($materiasPorVer as $materia):
+                        var_dump($materia);
                     endforeach;
                 endif;
                 die();

@@ -150,6 +150,8 @@ class Programarespecializacionciclouno extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
+                $idEstudiante = $estudiante['id'];
+                $codigoBanner = $estudiante['homologante'];
                 var_dump($estudiante);die();
             endforeach;
             else:
@@ -169,6 +171,8 @@ class Programarespecializacionciclouno extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
+                $idEstudiante = $estudiante['id'];
+                $codigoBanner = $estudiante['homologante'];
                 var_dump($estudiante);die();
             endforeach;
             else:

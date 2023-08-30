@@ -26,7 +26,7 @@ class Programarespecializacionciclouno extends Controller{
         $marcaIngreso = trim($marcaIngreso, ",");
         $codPeriodo = substr($marcaIngreso,-2);
         $periodosEspecializacion = $this->model->periodosEspecializacion();
-        var_dump($periodosEspecializacion);die();
+        var_dump($periodosEspecializacion->fetchAll());die();
         switch ($codPeriodo) {
             case 41:
                 var_dump("ciclo 1, 41");die();

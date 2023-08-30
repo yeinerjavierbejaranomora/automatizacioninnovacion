@@ -148,6 +148,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->fetchAll());die();
     }
 
     public function segundoCiclo($limit,$marcaIngreso){
@@ -159,6 +160,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->fetchAll());die();
     }
 }
 ?>

@@ -95,19 +95,21 @@ class ProgramarEspecializacionCicloUnoModel {
         }
     }
 
-    public function materiasPorVer($codigoBanner,$programa,$ciclo){
+    public function materiasPorVer($codigoBanner,$programa,$ciclo,$semestre){
         //var_dump($codigoBanner,$programa);die();
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.semestre,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN `mallaCurricular` m ON m.codigoCurso=mpv.codMateria
             WHERE mpv.codBanner = ?  
             AND m.ciclo IN ($ciclo)
+            AND m.semestre = ?
             AND mpv.codprograma = ?
             AND m.codprograma = ?
             ORDER BY mpv.orden ASC");
             $consultaMateriasPorVer->bindValue(1,$codigoBanner,PDO::PARAM_INT);
-            $consultaMateriasPorVer->bindValue(2,$programa,PDO::PARAM_STR);
-            $consultaMateriasPorVer->bindValue(3,$programa,PDO::PARAM_STR);
+            $consultaMateriasPorVer->bindValue(2,$codigoBanner,PDO::PARAM_INT);
+            $consultaMateriasPorVer->bindValue(3,$semestre,PDO::PARAM_STR);
+            $consultaMateriasPorVer->bindValue(4,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->execute();
             return $consultaMateriasPorVer;
         } catch (PDOException $e) {

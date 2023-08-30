@@ -25,6 +25,7 @@ class Programarespecializacionciclouno extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         var_dump($marcaIngreso);
+        $marcaIngreso = "";
         $codPeriodo = substr($marcaIngreso,-2);
         $periodosEspecializacion = $this->model->periodosEspecializacion();
         foreach ($periodosEspecializacion as $periodo) {

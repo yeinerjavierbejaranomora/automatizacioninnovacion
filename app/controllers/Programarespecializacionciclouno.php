@@ -101,7 +101,7 @@ class Programarespecializacionciclouno extends Controller{
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
-                        $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
+                        $this->primerCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 45:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
@@ -144,7 +144,8 @@ class Programarespecializacionciclouno extends Controller{
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 $idEstudiante = $estudiante['id'];
-                $codigoBanner = $estudiante['homologante'];
+                //$codigoBanner = $estudiante['homologante'];
+                $codigoBanner = 100025931;
                 $ciclo = [1, 12];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];

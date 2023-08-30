@@ -61,7 +61,7 @@ class ProgramarEspecializacionCicloUnoModel {
 
     public function getEstudiantes($offset,$marcaIngreso,$limit){
         try {
-            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante` FROM `estudiantes` 
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`bolsa`,`tipo_estudiante`,`marca_ingreso` FROM `estudiantes` 
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK'
             /*AND `planeado_ciclo1` = 'OK' */

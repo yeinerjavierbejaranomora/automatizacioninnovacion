@@ -33,7 +33,7 @@ class Programarespecializacionciclouno extends Controller{
                 $periodosEspecializacion = $this->model->periodosEspecializacion();
                 foreach ($periodosEspecializacion as $periodo) {
                     $codPeriodo = substr($periodo['periodos'], -2);
-                    if ($codPeriodo >= 41) :
+                    if ($codPeriodo == 41) :
                         $marcaIngreso .= (int)$periodo['periodos'] . ",";
                     endif;
                 }

@@ -43,6 +43,7 @@ class Programarespecializacionciclouno extends Controller{
                         $marcaIngreso .= (int)$periodo['periodos'] . ",";
                     endif;
                 }
+                $marcaIngreso = trim($marcaIngreso, ",");
                 var_dump($marcaIngreso);die();
             case 45:
                 var_dump("ciclo 1, 45 y 44, y solo ciclo 2, 45");die();

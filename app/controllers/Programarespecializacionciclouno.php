@@ -107,8 +107,7 @@ class Programarespecializacionciclouno extends Controller{
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
-                        //sleep(10);
-                        //$this->primerciclo($limit,$marcaIngreso);
+                        $this->primerciclo($limit,$marcaIngreso);
                     }
                 case 45:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();

@@ -150,5 +150,16 @@ class Programarespecializacionciclouno extends Controller{
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
     }
+
+    public function segundoCiclo($limit,$marcaIngreso){
+        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+        if ($log->rowCount() == 0) :
+            $offset = 0;
+        else :
+            $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+        endif;
+
+        $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+    }
 }
 ?>

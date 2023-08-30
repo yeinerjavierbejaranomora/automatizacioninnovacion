@@ -156,7 +156,7 @@ class Programarespecializacionciclouno extends Controller{
                 else:
                     //echo "202344";
                     $ciclo = 2 .",". 12;
-                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
+                    $materiasPorVer = $this->model->materiasPorVer(100025931, $programa,$ciclo);
                     var_dump($materiasPorVer->fetchAll());die();
                 endif;
                 die();

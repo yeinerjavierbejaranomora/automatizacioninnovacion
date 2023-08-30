@@ -15,6 +15,16 @@ class ProgramarEspecializacionCicloUnoModel {
             return false;
         }
     }
+    
+    public function periodosEspecializacion(){
+        try {
+            $consultaPeriodo = $this->db->connect()->prepare("SELECT `periodos` FROM `periodo` WHERE `periodoActivo` = 1");
+            $consultaPeriodo->execute();
+            return $consultaPeriodo;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 
     public function logAplicacion($accion,$tabla){
         try {

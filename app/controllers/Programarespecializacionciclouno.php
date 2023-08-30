@@ -188,9 +188,14 @@ class Programarespecializacionciclouno extends Controller{
                     foreach($materiasPorVer as $materia):
                         $ciclo = $materia['ciclo'];
                         if($ciclo == 12):
-                            var_dump("No aplica");
+                            var_dump($materia['codMateria']);
+                            /*creo alerta de materia de ciclo completo*/
+                            /*$mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' no tiene materias por ver, segundo ciclo.';
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);*/
                         else:
-                            var_dump("Aplica");
+                            /**programo las materias insertando en programacion */
+                            var_dump($materia['codMateria']);
+                            //var_dump("Aplica");
                         endif;
                     endforeach;
                 else:

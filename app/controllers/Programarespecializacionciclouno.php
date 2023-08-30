@@ -175,7 +175,7 @@ class Programarespecializacionciclouno extends Controller{
                 $programa = $estudiante['programa'];
                 $ciclo = 2 .",". 12;
                 $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo);
-                var_dump($materiasPorVer->fetchAll());die();
+                var_dump($materiasPorVer);die();
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";

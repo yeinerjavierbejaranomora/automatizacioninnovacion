@@ -27,7 +27,6 @@ class Programarespecializacionciclouno extends Controller{
         // var_dump($marcaIngreso);
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
-        
         // var_dump($marcaIngreso);die();
         switch ($codPeriodo) {
             case 41:

@@ -28,65 +28,9 @@ class Programarespecializacionciclouno extends Controller{
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
         // var_dump($marcaIngreso);die();
-        switch ($codPeriodo) {
-            case 41:
-                $periodosEspecializacion = $this->model->periodosEspecializacion();
-                foreach ($periodosEspecializacion as $periodo) {
-                    $codPeriodo = substr($periodo['periodos'], -2);
-                    if ($codPeriodo == 41) :
-                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
-                    endif;
-                }
-                $marcaIngreso = trim($marcaIngreso, ",");
-                var_dump($marcaIngreso);die();
-            case 42:
-                $periodosEspecializacion = $this->model->periodosEspecializacion();
-                foreach ($periodosEspecializacion as $periodo) {
-                    $codPeriodo = substr($periodo['periodos'], -2);
-                    if ($codPeriodo >= 41 && $codPeriodo <= 42) :
-                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
-                    endif;
-                }
-                $marcaIngreso = trim($marcaIngreso, ",");
-                var_dump($marcaIngreso);die();
-            case 43:
-                $periodosEspecializacion = $this->model->periodosEspecializacion();
-                foreach ($periodosEspecializacion as $periodo) {
-                    $codPeriodo = substr($periodo['periodos'], -2);
-                    if ($codPeriodo >= 42 && $codPeriodo <= 43) :
-                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
-                    endif;
-                }
-                $marcaIngreso = trim($marcaIngreso, ",");
-                var_dump($marcaIngreso);die();
-            case 44:
-                $periodosEspecializacion = $this->model->periodosEspecializacion();
-                foreach ($periodosEspecializacion as $periodo) {
-                    $codPeriodo = substr($periodo['periodos'], -2);
-                    if ($codPeriodo >= 43 && $codPeriodo <= 44) :
-                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
-                    endif;
-                }
-                $marcaIngreso = trim($marcaIngreso, ",");
-                var_dump($marcaIngreso);die();
-            case 45:
-                $periodosEspecializacion = $this->model->periodosEspecializacion();
-                foreach ($periodosEspecializacion as $periodo) {
-                    $codPeriodo = substr($periodo['periodos'], -2);
-                    if ($codPeriodo >= 44 && $codPeriodo <= 45) :
-                        $marcaIngreso .= (int)$periodo['periodos'] . ",";
-                    endif;
-                }
-                $marcaIngreso = trim($marcaIngreso, ",");
-                var_dump($marcaIngreso);die();
-                break;
-            
-            default:
-                # code...
-                break;
-        }
+        
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
-            //echo "detro de la fecha";die();
+            echo "detro de la fecha";die();
             $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
             if ($log->rowCount() == 0) :
                 $offset = 0;

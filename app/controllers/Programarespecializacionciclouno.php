@@ -179,6 +179,8 @@ class Programarespecializacionciclouno extends Controller{
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
+                $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
+                var_dump($consultaSemestre->fetchAll());die();
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     // echo "202343";
                     $ciclo = 2 .",". 12;

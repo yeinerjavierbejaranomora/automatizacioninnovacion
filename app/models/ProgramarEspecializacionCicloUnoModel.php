@@ -81,6 +81,20 @@ class ProgramarEspecializacionCicloUnoModel {
         }
     }
 
+    public function consultaSemestre($codigoBanner, $programa){
+        try {
+            $consultaSemetre = $this->db->connect()->prepare("SELECT h.`codBanner`,h.`codMateria`,m.semestre FROM `historialAcademico` h
+            INNER JOIN mallaCurricular m ON m.codigoCurso=h.codMateria
+            WHERE h.`codBanner` = ? AND h.`codprograma` = ? ORDER BY h.`codMateria` DESC LIMIT 1");
+            $consultaSemetre->bindParam(1,$codigoBanner,PDO::PARAM_INT);
+            $consultaSemetre->bindParam(2,$programa,PDO::PARAM_STR);
+            $consultaSemetre->execute();
+            return $consultaSemetre;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
     public function materiasPorVer($codigoBanner,$programa,$ciclo){
         //var_dump($codigoBanner,$programa);die();
         try {

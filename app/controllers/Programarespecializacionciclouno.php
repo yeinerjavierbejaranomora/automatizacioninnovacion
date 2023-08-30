@@ -17,6 +17,7 @@ class Programarespecializacionciclouno extends Controller{
         echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));*/
         $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
         $marcaIngreso = "";
+        $codPeriodo = '';
         foreach ($periodos as $periodo) {
             $codPeriodo = substr($periodo['periodos'],-2);
             if($codPeriodo >= 41 && $codPeriodo <=45):
@@ -24,7 +25,7 @@ class Programarespecializacionciclouno extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);die();
+        var_dump($codPeriodo);die();
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             //echo "detro de la fecha";die();
             $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');

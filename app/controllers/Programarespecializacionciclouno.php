@@ -186,7 +186,12 @@ class Programarespecializacionciclouno extends Controller{
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo,$semestre);
                     foreach($materiasPorVer as $materia):
-                        var_dump($materia['ciclo']);
+                        $ciclo = $materia['ciclo'];
+                        if($ciclo == 12):
+                            var_dump("No aplica");
+                        else:
+                            var_dump("Aplica");
+                        endif;
                     endforeach;
                 else:
                     // echo "202344";

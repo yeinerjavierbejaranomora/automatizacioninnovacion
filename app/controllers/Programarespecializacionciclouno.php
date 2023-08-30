@@ -160,7 +160,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetchAll());die();
+        var_dump($estudiantes);die();
     }
 }
 ?>

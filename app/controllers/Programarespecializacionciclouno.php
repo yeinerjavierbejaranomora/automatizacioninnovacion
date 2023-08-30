@@ -149,6 +149,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
 
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes->fetchAll());die();
     }
 }
 ?>

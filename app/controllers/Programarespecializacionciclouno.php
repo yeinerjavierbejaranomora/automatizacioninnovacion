@@ -232,7 +232,7 @@ class Programarespecializacionciclouno extends Controller{
                         endif;                        
                     endforeach;
                     $orden++;
-                    /*$ultimoRegistroId = $estudiante['id'];
+                    $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-ProgramacionSegundoCiclo';
@@ -240,7 +240,7 @@ class Programarespecializacionciclouno extends Controller{
                     $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
-                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 else:
                     // echo "202344";
                     $ciclo = 2 .",". 12;

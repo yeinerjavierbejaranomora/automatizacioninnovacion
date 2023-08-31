@@ -254,6 +254,7 @@ class Programarespecializacionciclouno extends Controller{
                         $semestre = $materia['semestre'];
                         if($ciclo == 12):
                             /*creo alerta de materia de ciclo completo*/
+                            $orden--;
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:

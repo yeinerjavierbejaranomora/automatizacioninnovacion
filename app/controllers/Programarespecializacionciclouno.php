@@ -38,6 +38,7 @@ class Programarespecializacionciclouno extends Controller{
             else :
                 $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
             endif;
+            var_dump($offset);die();
             switch ($codPeriodo) {
                 case 41:
                     $periodosEspecializacion = $this->model->periodosEspecializacion();

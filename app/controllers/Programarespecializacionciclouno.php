@@ -329,7 +329,7 @@ class Programarespecializacionciclouno extends Controller{
                             break;
                     }
                 $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
-                var_dump($consultaSemestre->fetchAll());die();
+                //var_dump($consultaSemestre->fetchAll());die();
                 $semestre = $consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre'];
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     // echo "202343";
@@ -372,6 +372,7 @@ class Programarespecializacionciclouno extends Controller{
                         $semestre = 1;
                     endif;
                     $semestre++;
+                    var_dump($semestre);die();
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo,$semestre);
                     //var_dump($materiasPorVer->fetchAll());die();

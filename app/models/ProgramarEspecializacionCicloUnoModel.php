@@ -129,4 +129,34 @@ class ProgramarEspecializacionCicloUnoModel {
             return false;
         }
     }
+
+    public function insertarProgramacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa,$marca_ingreso){
+        
+        try {
+            $fecha = date('Y-m-d H:i:s');
+            $insertProgramacion = $this->db->connect()->prepare("INSERT INTO `programacion` SET 
+            `codBanner`= ?, 
+            `codMateria`= ?, 
+            `orden`= ?, 
+            `semestre`= ?, 
+            `programada`= ?, 
+            `codprograma`= ?,
+            `periodo` = ?, 
+            `fecha_registro` = ?");
+            $insertProgramacion->bindValue(1,$codBanner,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(2,$codMateria,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(3,$orden,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(4,$semestre,PDO::PARAM_INT);
+            $insertProgramacion->bindValue(5,$programada,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(6,$programa,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(7,$marca_ingreso,PDO::PARAM_STR);
+            $insertProgramacion->bindValue(8,$fecha,PDO::PARAM_STR);
+            $insertProgramacion->execute();
+            if($insertProgramacion):
+                return true;
+            endif;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 }

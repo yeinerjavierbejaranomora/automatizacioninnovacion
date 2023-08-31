@@ -212,15 +212,19 @@ class Programarespecializacionciclouno extends Controller{
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo,$semestre);
                     foreach($materiasPorVer as $materia):
+                        var_dump($materia);die();
+                        $codBanner = $materia['codBanner'];
+                        $codMateria = $materia['codMateria'];
+                        $creditoMateria = $materia['creditos'];
                         $ciclo = $materia['ciclo'];
+
                         if($ciclo == 12):
                             /*creo alerta de materia de ciclo completo*/
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:
                             /**programo las materias insertando en programacion */
-                            
-                            var_dump("Aplica");
+                            $insertPlaneada = $this->model->insertProgramacion($codigoBanner, $codMateria, $orden2, $semestre, $programada, $programaHomologante,$marca_ingreso);
                         endif;
                     endforeach;
                 else:

@@ -279,7 +279,7 @@ class Programarespecializacionciclouno extends Controller{
                     endif;
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo,$semestre);
-                    var_dump($materiasPorVer->fetchAll());die();
+                    //var_dump($materiasPorVer->fetchAll());die();
                     $orden = 1;
                     foreach($materiasPorVer as $materia):
                         $fechaInicio = date('Y-m-d H:i:s');

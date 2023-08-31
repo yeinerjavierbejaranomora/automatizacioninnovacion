@@ -277,7 +277,6 @@ class Programarespecializacionciclouno extends Controller{
                     if($semestre == NULL):
                         $semestre = 1;
                     endif;
-                    var_dump($semestre);die();
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo,$semestre);
                     var_dump($materiasPorVer->fetchAll());die();

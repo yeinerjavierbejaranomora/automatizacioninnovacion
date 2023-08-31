@@ -98,7 +98,7 @@ class Programarespecializacionciclouno extends Controller{
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
                     // var_dump($estudiantes->rowCount());die();
-                    $limit = 500;
+                    $limit = 1;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
@@ -229,16 +229,18 @@ class Programarespecializacionciclouno extends Controller{
                             /**programo las materias insertando en programacion */
                             $programada = '';
                             $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
-                        endif;
-                        /*$ultimoRegistroId = $estudiante['id'];
-                            $idBannerUltimoRegistro = $estudiante['homologante'];
-                            $fechaFin = date('Y-m-d H:i:s');
-                            $acccion = 'Insert-ProgramacionSegundoCiclo';
-                            $tablaAfectada = 'programacion';
-                            $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
-                            $fecha = date('Y-m-d H:i:s');
-                            $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);*/
+                        endif;                        
                     endforeach;
+                    $orden++;
+                    /*$ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $estudiante['homologante'];
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $acccion = 'Insert-ProgramacionSegundoCiclo';
+                    $tablaAfectada = 'programacion';
+                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $fecha = date('Y-m-d H:i:s');
+                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";*/
                 else:
                     // echo "202344";
                     $ciclo = 2 .",". 12;

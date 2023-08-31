@@ -228,7 +228,7 @@ class Programarespecializacionciclouno extends Controller{
                         else:
                             /**programo las materias insertando en programacion */
                             $programada = '';
-                            $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
+                            $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                         endif;                        
                     endforeach;
                     $orden++;

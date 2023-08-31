@@ -25,22 +25,23 @@ class Programarespecializacionciclouno extends Controller{
         }
         $marcaIngreso = trim($marcaIngreso, ",");
         // var_dump($marcaIngreso);
-        var_dump($marcaIngreso);die();
+        //var_dump($marcaIngreso);die();
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
         
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             //echo "detro de la fecha";die();
             
-            $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
-            if ($log->rowCount() == 0) :
-                $offset = 0;
-            else :
-                $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
-            endif;
-            var_dump($offset);die();
+            
             switch ($codPeriodo) {
                 case 41:
+                    $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+                    if ($log->rowCount() == 0) :
+                        $offset = 0;
+                    else :
+                        $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+                    endif;
+                    var_dump($offset);die();
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
                         $codPeriodo2 = substr($periodo['periodos'], -2);
@@ -57,6 +58,13 @@ class Programarespecializacionciclouno extends Controller{
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
                 case 42:
+                    $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
+                    if ($log->rowCount() == 0) :
+                        $offset = 0;
+                    else :
+                        $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+                    endif;
+                    var_dump($offset);die();
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
                         $codPeriodo2 = substr($periodo['periodos'], -2);
@@ -73,6 +81,13 @@ class Programarespecializacionciclouno extends Controller{
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
                 case 43:
+                    $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+                    if ($log->rowCount() == 0) :
+                        $offset = 0;
+                    else :
+                        $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+                    endif;
+                    var_dump($offset);die();
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
                         $codPeriodo2 = substr($periodo['periodos'], -2);
@@ -89,6 +104,13 @@ class Programarespecializacionciclouno extends Controller{
                         //$this->primerciclo($limit,$marcaIngreso);
                     }
                 case 44:
+                    $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
+                    if ($log->rowCount() == 0) :
+                        $offset = 0;
+                    else :
+                        $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+                    endif;
+                    var_dump($offset);die();
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
                         $codPeriodo2 = substr($periodo['periodos'], -2);
@@ -105,6 +127,13 @@ class Programarespecializacionciclouno extends Controller{
                         $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 45:
+                    $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+                    if ($log->rowCount() == 0) :
+                        $offset = 0;
+                    else :
+                        $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
+                    endif;
+                    var_dump($offset);die();
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
                         $codPeriodo2 = substr($periodo['periodos'], -2);

@@ -32,7 +32,7 @@ class Programarespecializacionciclouno extends Controller{
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             //echo "detro de la fecha";die();
             
-            $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+            $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
             if ($log->rowCount() == 0) :
                 $offset = 0;
             else :

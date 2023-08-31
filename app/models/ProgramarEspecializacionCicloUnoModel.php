@@ -131,8 +131,6 @@ class ProgramarEspecializacionCicloUnoModel {
     }
 
     public function insertarProgramacion($codBanner,$codMateria,$orden,$semestre,$programada,$programa,$marca_ingreso){
-        var_dump($codBanner,$codMateria,$orden,$semestre,$programada,$programa,$marca_ingreso);die();
-        
         try {
             $fecha = date('Y-m-d H:i:s');
             $insertProgramacion = $this->db->connect()->prepare("INSERT INTO `programacion` SET 

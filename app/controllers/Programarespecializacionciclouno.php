@@ -262,7 +262,7 @@ class Programarespecializacionciclouno extends Controller{
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
-                    $acccion = 'Insert-ProgramacionSegundoCiclo';
+                    $acccion = 'Insert-ProgramacionSegundoCicloEspecializacion';
                     $tablaAfectada = 'programacion';
                     $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del segundo ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');

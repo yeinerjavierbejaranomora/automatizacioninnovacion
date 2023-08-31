@@ -274,7 +274,9 @@ class Programarespecializacionciclouno extends Controller{
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 else:
                     // echo "202344";
-                    var_dump($semestre);die();
+                    if($semestre == NULL):
+                        echo "Estudiante nuevo";die();
+                    endif;
                     $ciclo = 2 .",". 12;
                     $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa,$ciclo,$semestre);
                     var_dump($materiasPorVer->fetchAll());die();

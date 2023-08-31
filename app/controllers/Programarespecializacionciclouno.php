@@ -179,6 +179,32 @@ class Programarespecializacionciclouno extends Controller{
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
+                $tipoEstudiante = $estudiante['tipo_estudiante'];
+
+                    switch ($tipoEstudiante) {
+                        case str_contains($tipoEstudiante, 'TRANSFERENTE'):
+                            $tipoEstudiante = 'TRANSFERENTE';
+                            break;
+                        case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
+                            $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                            break;
+                        case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
+                            $tipoEstudiante = 'PRIMER INGRESO';
+                            break;
+                        case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
+                            $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                            break;
+                        case str_contains($tipoEstudiante, 'REINGRESO'):
+                            $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                            break;
+                        case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
+                            $tipoEstudiante = 'PRIMER INGRESO';
+                            break;
+
+                        default:
+                            # code...
+                            break;
+                    }
                 $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
                 $semestre = $consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre'];
                 if(substr($marca_ingreso,-2) < $codPeriodo):
@@ -188,14 +214,13 @@ class Programarespecializacionciclouno extends Controller{
                     foreach($materiasPorVer as $materia):
                         $ciclo = $materia['ciclo'];
                         if($ciclo == 12):
-                            var_dump($materia['codMateria']);
                             /*creo alerta de materia de ciclo completo*/
-                            /*$mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' no tiene materias por ver, segundo ciclo.';
-                            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);*/
+                            $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:
                             /**programo las materias insertando en programacion */
-                            var_dump($materia['codMateria']);
-                            //var_dump("Aplica");
+                            
+                            var_dump("Aplica");
                         endif;
                     endforeach;
                 else:

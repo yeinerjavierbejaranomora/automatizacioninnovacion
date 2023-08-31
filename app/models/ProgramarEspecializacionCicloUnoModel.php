@@ -61,7 +61,7 @@ class ProgramarEspecializacionCicloUnoModel {
 
     public function getEstudiantes($offset,$marcaIngreso,$limit){
         try {
-            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`marca_ingreso` FROM `estudiantes` 
+            $consultaEstudiantes = $this->db->connect()->prepare("SELECT `id`,`homologante`,`programa`,`marca_ingreso`,`tipo_estudiante` FROM `estudiantes` 
             WHERE `id` > ?
             AND `materias_faltantes` = 'OK'
             /*AND `planeado_ciclo1` = 'OK' */
@@ -112,6 +112,19 @@ class ProgramarEspecializacionCicloUnoModel {
             $consultaMateriasPorVer->bindValue(4,$programa,PDO::PARAM_STR);
             $consultaMateriasPorVer->execute();
             return $consultaMateriasPorVer;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+    public function insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta){
+        try {
+            $insertAlerta = $this->db->connect()->prepare("INSERT INTO `alertas_tempranas` SET `idbanner` = ?, `tipo_estudiante` = ?, `desccripcion` = ?, `created_at` = NOW(), `updated_at` = NOW()");
+            $insertAlerta->bindValue(1,$codigoBanner,PDO::PARAM_INT);
+            $insertAlerta->bindValue(2,$tipoEstudiante,PDO::PARAM_STR);
+            $insertAlerta->bindValue(3,$mensajeAlerta,PDO::PARAM_STR);
+            $insertAlerta->execute();
+            return $insertAlerta;
         } catch (PDOException $e) {
             return false;
         }

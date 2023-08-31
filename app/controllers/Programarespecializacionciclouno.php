@@ -397,6 +397,7 @@ class Programarespecializacionciclouno extends Controller{
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 endif;
+                die();
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";

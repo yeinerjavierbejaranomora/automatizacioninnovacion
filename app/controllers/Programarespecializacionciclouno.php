@@ -121,7 +121,7 @@ class Programarespecializacionciclouno extends Controller{
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
                     // var_dump($estudiantes->rowCount());die();
-                    $limit = 1;
+                    $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
@@ -400,7 +400,6 @@ class Programarespecializacionciclouno extends Controller{
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                     echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 endif;
-                die();
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";

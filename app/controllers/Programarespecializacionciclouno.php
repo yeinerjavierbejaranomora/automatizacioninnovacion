@@ -205,7 +205,7 @@ class Programarespecializacionciclouno extends Controller{
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
-                var_dump($estudiante);die();
+                // var_dump($estudiante);die();
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];

@@ -227,8 +227,8 @@ class Programarespecializacionciclouno extends Controller{
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:
                             /**programo las materias insertando en programacion */
-                            // $programada = '';
-                            // $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
+                            $programada = '';
+                            $insertPlaneada = $this->model->insertProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                         endif;                        
                     endforeach;
                     $orden++;

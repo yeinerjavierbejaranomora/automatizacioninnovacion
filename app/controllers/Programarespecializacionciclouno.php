@@ -170,7 +170,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
         
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes);die();
+        var_dump($estudiantes->fetchAll());die();
         /*if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 $idEstudiante = $estudiante['id'];

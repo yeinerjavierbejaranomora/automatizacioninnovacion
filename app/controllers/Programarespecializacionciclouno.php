@@ -8,14 +8,15 @@ class Programarespecializacionciclouno extends Controller{
     }
 
     public function inicio(){
-        $fechaActual = date('Y-m-d');
+        echo "prueba especializacion";
+        /*$fechaActual = date('Y-m-d');
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
         // $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
         $fechaInicioCiclo1 = '2023-09-02';
         /*echo $fechaInicioCiclo1,"<br>";
         echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));*/
-        $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
+        /*$fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $codPeriodo = substr($periodo['periodos'],-2);
@@ -158,10 +159,10 @@ class Programarespecializacionciclouno extends Controller{
             
         else:
             echo " fuera de fecha";
-        endif;
+        endif;*/
     }
 
-    public function primerCiclo($limit,$marcaIngreso,$codPeriodo){
+    /*public function primerCiclo($limit,$marcaIngreso,$codPeriodo){
         $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -227,13 +228,13 @@ class Programarespecializacionciclouno extends Controller{
                             $ciclo = $materia['ciclo'];
                             $semestre = $materia['semestre'];
                             if ($ciclo == 12) :
-                                /*creo alerta de materia de ciclo completo*/
-                                $orden--;
+                                /**creo alerta de materia de ciclo completo*/
+                                /*$orden--;
                                 $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia ' . $materia['codMateria'] . ' ya que es de ciclo completo';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                             else :
                                 /**programo las materias insertando en programacion */
-                                $programada = '';
+                                /*$programada = '';
                                 $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                             endif;
                             $orden++;
@@ -347,12 +348,12 @@ class Programarespecializacionciclouno extends Controller{
                         $semestre = $materia['semestre'];
                         if($ciclo == 12):
                             /*creo alerta de materia de ciclo completo*/
-                            $orden--;
+                            /*$orden--;
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:
                             /**programo las materias insertando en programacion */
-                            $programada = '';
+                            /*$programada = '';
                             $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                         endif;                        
                         $orden++;
@@ -404,6 +405,6 @@ class Programarespecializacionciclouno extends Controller{
             else:
             echo "No hay estudiantes de especialización para programar <br>";
         endif;
-    }
+    }*/
 }
 ?>

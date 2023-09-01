@@ -170,9 +170,10 @@ class Programarespecializacionciclouno extends Controller{
         endif;
         
         $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        var_dump($estudiantes->fetchAll());die();
-        /*if($estudiantes->rowCount() > 0):
+        //var_dump($estudiantes->fetchAll());die();
+        if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
+                var_dump($estudiante);die();
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];
@@ -234,7 +235,7 @@ class Programarespecializacionciclouno extends Controller{
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                             else :
                                 /**programo las materias insertando en programacion */
-                               /* $programada = '';
+                                $programada = '';
                                 $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                             endif;
                             $orden++;
@@ -284,7 +285,7 @@ class Programarespecializacionciclouno extends Controller{
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";
-        endif;*/
+        endif;
     }
 
     /*public function segundoCiclo($limit,$marcaIngreso,$codPeriodo){

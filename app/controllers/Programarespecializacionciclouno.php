@@ -24,8 +24,8 @@ class Programarespecializacionciclouno extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);
-        var_dump($marcaIngreso);die();
+        // var_dump($marcaIngreso);
+        //var_dump($marcaIngreso);die();
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
         
@@ -33,7 +33,7 @@ class Programarespecializacionciclouno extends Controller{
             //echo "detro de la fecha";die();
             
             
-            /*switch ($codPeriodo) {
+            switch ($codPeriodo) {
                 case 41:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :
@@ -154,7 +154,7 @@ class Programarespecializacionciclouno extends Controller{
                 default:
                     # code...
                     break;
-            }*/
+            }
             
         else:
             echo " fuera de fecha";

@@ -55,7 +55,7 @@ class Programarespecializacionciclouno extends Controller{
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         //sleep(10);
-                        $this->primerciclo($limit,$marcaIngreso,$codPeriodo);
+                        //$this->primerciclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 42:
                     $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
@@ -101,7 +101,7 @@ class Programarespecializacionciclouno extends Controller{
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         //sleep(10);
-                        //$this->primerciclo($limit,$marcaIngreso,$codPeriodo);
+                        $this->primerciclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 44:
                     $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');

@@ -120,12 +120,15 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    var_dump($estudiantes->rowCount());die();
+                    if($estudiantes->rowCount() > 0):
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
+                    else:
+                        echo "No hay Estudiantes por programar especializacion";
+                    endif;
                 case 45:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :

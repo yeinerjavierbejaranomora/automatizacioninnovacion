@@ -78,7 +78,7 @@ class Programarespecializacionciclouno extends Controller{
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
                         //sleep(10);
-                        //$this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
+                        $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 43:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
@@ -124,7 +124,7 @@ class Programarespecializacionciclouno extends Controller{
                     $limit = 500;
                     $numEstudinates = ceil($estudiantes->rowCount() / $limit);
                     for ($i = 0; $i < $numEstudinates; $i++) {
-                        //$this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
+                        $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
                 case 45:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
@@ -290,7 +290,7 @@ class Programarespecializacionciclouno extends Controller{
         endif;
     }
 
-    /*public function segundoCiclo($limit,$marcaIngreso,$codPeriodo){
+    public function segundoCiclo($limit,$marcaIngreso,$codPeriodo){
         $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
@@ -333,7 +333,7 @@ class Programarespecializacionciclouno extends Controller{
                             break;
                     }
                 $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
-                //var_dump($consultaSemestre->fetchAll());die();
+                var_dump($consultaSemestre->fetchAll());die();
                 $semestre = $consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre'];
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     // echo "202343";
@@ -356,7 +356,7 @@ class Programarespecializacionciclouno extends Controller{
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:
                             /**programo las materias insertando en programacion */
-                            /*$programada = '';
+                            $programada = '';
                             $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                         endif;                        
                         $orden++;
@@ -408,6 +408,6 @@ class Programarespecializacionciclouno extends Controller{
             else:
             echo "No hay estudiantes de especialización para programar <br>";
         endif;
-    }*/
+    }
 }
 ?>

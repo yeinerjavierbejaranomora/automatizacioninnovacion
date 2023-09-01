@@ -27,7 +27,7 @@ class Programarespecializacionciclouno extends Controller{
         //var_dump($marcaIngreso);
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = 0;
-        //var_dump($marcaIngreso);die();
+        var_dump($marcaIngreso);die();
         
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             //echo "detro de la fecha";die();

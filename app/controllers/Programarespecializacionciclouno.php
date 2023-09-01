@@ -24,8 +24,8 @@ class Programarespecializacionciclouno extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        // var_dump($marcaIngreso);
-        //var_dump($marcaIngreso);die();
+        var_dump($marcaIngreso);
+        var_dump($marcaIngreso);die();
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
         

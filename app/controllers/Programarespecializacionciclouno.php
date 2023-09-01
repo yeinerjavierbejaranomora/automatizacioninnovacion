@@ -173,13 +173,14 @@ class Programarespecializacionciclouno extends Controller{
         //var_dump($estudiantes->fetchAll());die();
         if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
-                var_dump($estudiante);die();
+                //var_dump($estudiante);die();
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
                 $ciclo = 1 . "," . 12;
                 $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo);
+                var_dump($materiasPorVer->fetchAll());die();
                 foreach ($materiasPorVer as $materia) :
                     // var_dump($estudiante);die();
                     $idEstudiante = $estudiante['id'];

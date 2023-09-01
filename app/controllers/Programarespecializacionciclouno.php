@@ -201,114 +201,103 @@ class Programarespecializacionciclouno extends Controller{
                 $codigoBanner = $estudiante['homologante'];
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
-                $ciclo = 1 . "," . 12;
-                
-                //var_dump($codigoBanner, $programa, $ciclo);die();
-                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo,$semestre);
-                var_dump($materiasPorVer->fetchAll());die();
-                foreach ($materiasPorVer as $materia) :
-                    // var_dump($estudiante);die();
-                    $idEstudiante = $estudiante['id'];
-                    $codigoBanner = $estudiante['homologante'];
-                    $marca_ingreso = $estudiante['marca_ingreso'];
-                    $programa = $estudiante['programa'];
-                    $tipoEstudiante = $estudiante['tipo_estudiante'];
-                    $semestre = $materia['semestre'];
+                $tipoEstudiante = $estudiante['tipo_estudiante'];
 
-                    switch ($tipoEstudiante) {
-                        case str_contains($tipoEstudiante, 'TRANSFERENTE'):
-                            $tipoEstudiante = 'TRANSFERENTE';
-                            break;
-                        case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
-                            $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
-                            break;
-                        case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
-                            $tipoEstudiante = 'PRIMER INGRESO';
-                            break;
-                        case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
-                            $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
-                            break;
-                        case str_contains($tipoEstudiante, 'REINGRESO'):
-                            $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
-                            break;
-                        case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
-                            $tipoEstudiante = 'PRIMER INGRESO';
-                            break;
+                switch ($tipoEstudiante) {
+                    case str_contains($tipoEstudiante, 'TRANSFERENTE'):
+                        $tipoEstudiante = 'TRANSFERENTE';
+                        break;
+                    case str_contains($tipoEstudiante, 'ESTUDIANTE ANTIGUO'):
+                        $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                        break;
+                    case str_contains($tipoEstudiante, 'PRIMER INGRESO'):
+                        $tipoEstudiante = 'PRIMER INGRESO';
+                        break;
+                    case str_contains($tipoEstudiante, 'PSEUDO ACTIVOS'):
+                        $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                        break;
+                    case str_contains($tipoEstudiante, 'REINGRESO'):
+                        $tipoEstudiante = 'ESTUDIANTE ANTIGUO';
+                        break;
+                    case str_contains($tipoEstudiante, 'INGRESO SINGULAR'):
+                        $tipoEstudiante = 'PRIMER INGRESO';
+                        break;
 
-                        default:
-                            # code...
-                            break;
-                    }
-                    $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
-                    $semestre = $consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre'];
-                    if(substr($marca_ingreso,-2) < $codPeriodo):
-                        //echo "202343";
-                        $ciclo = 1 .",". 12;
-                        $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo, $semestre);
-                        $orden = 1;
-                        foreach ($materiasPorVer as $materia) :
-                            $fechaInicio = date('Y-m-d H:i:s');
-                            $primerId = $estudiante['id'];
-                            $ultimoRegistroId = 0;
-                            $codBanner = $materia['codBanner'];
-                            $codMateria = $materia['codMateria'];
-                            $creditoMateria = $materia['creditos'];
-                            $ciclo = $materia['ciclo'];
-                            $semestre = $materia['semestre'];
-                            if ($ciclo == 12) :
-                                /**creo alerta de materia de ciclo completo*/
-                                /*$orden--;
+                    default:
+                        # code...
+                        break;
+                }
+                $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
+                $semestre = $consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre'];
+
+                if (substr($marca_ingreso, -2) < $codPeriodo) :
+                    //echo "202343";
+                    $ciclo = 1 . "," . 12;
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo, $semestre);
+                    $orden = 1;
+                    foreach ($materiasPorVer as $materia) :
+                        $fechaInicio = date('Y-m-d H:i:s');
+                        $primerId = $estudiante['id'];
+                        $ultimoRegistroId = 0;
+                        $codBanner = $materia['codBanner'];
+                        $codMateria = $materia['codMateria'];
+                        $creditoMateria = $materia['creditos'];
+                        $ciclo = $materia['ciclo'];
+                        $semestre = $materia['semestre'];
+                        if ($ciclo == 12) :
+                            /**creo alerta de materia de ciclo completo*/
+                            $orden--;
                                 $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia ' . $materia['codMateria'] . ' ya que es de ciclo completo';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                             else :
                                 /**programo las materias insertando en programacion */
-                                $programada = '';
-                                $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
-                            endif;
-                            $orden++;
-                        endforeach;
-                        $ultimoRegistroId = $estudiante['id'];
-                        $idBannerUltimoRegistro = $estudiante['homologante'];
-                        $fechaFin = date('Y-m-d H:i:s');
-                        $acccion = 'Insert-ProgramacionPrimerCicloEspecializacion';
-                        $tablaAfectada = 'programacion';
-                        $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del primer ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
-                        $fecha = date('Y-m-d H:i:s');
-                        $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
-                        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
-                    else:
-                        //echo "202344";
-                        if ($semestre == NULL) :
-                            $semestre = 1;
-                        endif;
-                        $ciclo = 1 . "," . 12;
-                        $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo, $semestre);
-                        //var_dump($materiasPorVer->fetchAll());die();
-                        $orden = 1;
-                        foreach ($materiasPorVer as $materia) :
-                            $fechaInicio = date('Y-m-d H:i:s');
-                            $primerId = $estudiante['id'];
-                            $ultimoRegistroId = 0;
-                            $codBanner = $materia['codBanner'];
-                            $codMateria = $materia['codMateria'];
-                            $creditoMateria = $materia['creditos'];
-                            $ciclo = $materia['ciclo'];
-                            $semestre = $materia['semestre'];
                             $programada = '';
                             $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
-                            $orden++;
-                        endforeach;
-                        $ultimoRegistroId = $estudiante['id'];
-                        $idBannerUltimoRegistro = $estudiante['homologante'];
-                        $fechaFin = date('Y-m-d H:i:s');
-                        $acccion = 'Insert-ProgramacionPrimerCicloEspecializacion';
-                        $tablaAfectada = 'programacion';
-                        $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del primer ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
-                        $fecha = date('Y-m-d H:i:s');
-                        $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
-                        echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                        endif;
+                        $orden++;
+                    endforeach;
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $estudiante['homologante'];
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $acccion = 'Insert-ProgramacionPrimerCicloEspecializacion';
+                    $tablaAfectada = 'programacion';
+                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del primer ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $fecha = date('Y-m-d H:i:s');
+                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                else :
+                    //echo "202344";
+                    if ($semestre == NULL) :
+                        $semestre = 1;
                     endif;
-                endforeach;
+                    $ciclo = 1 . "," . 12;
+                    $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo, $semestre);
+                    //var_dump($materiasPorVer->fetchAll());die();
+                    $orden = 1;
+                    foreach ($materiasPorVer as $materia) :
+                        $fechaInicio = date('Y-m-d H:i:s');
+                        $primerId = $estudiante['id'];
+                        $ultimoRegistroId = 0;
+                        $codBanner = $materia['codBanner'];
+                        $codMateria = $materia['codMateria'];
+                        $creditoMateria = $materia['creditos'];
+                        $ciclo = $materia['ciclo'];
+                        $semestre = $materia['semestre'];
+                        $programada = '';
+                        $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
+                        $orden++;
+                    endforeach;
+                    $ultimoRegistroId = $estudiante['id'];
+                    $idBannerUltimoRegistro = $estudiante['homologante'];
+                    $fechaFin = date('Y-m-d H:i:s');
+                    $acccion = 'Insert-ProgramacionPrimerCicloEspecializacion';
+                    $tablaAfectada = 'programacion';
+                    $descripcion = 'Se realizo la insercion en la tabla programacion insertando las materias del primer ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
+                    $fecha = date('Y-m-d H:i:s');
+                    $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
+                    echo $ultimoRegistroId . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
+                endif;
+                
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";
@@ -358,7 +347,6 @@ class Programarespecializacionciclouno extends Controller{
                             break;
                     }
                 $consultaSemestre = $this->model->consultaSemestre($codigoBanner, $programa);
-                var_dump($consultaSemestre->fetchAll());die();
                 $semestre = $consultaSemestre->fetch(PDO::FETCH_ASSOC)['semestre'];
                 if(substr($marca_ingreso,-2) < $codPeriodo):
                     // echo "202343";
@@ -376,7 +364,7 @@ class Programarespecializacionciclouno extends Controller{
                         $semestre = $materia['semestre'];
                         if($ciclo == 12):
                             /*creo alerta de materia de ciclo completo*/
-                            /*$orden--;
+                            $orden--;
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:

@@ -57,6 +57,7 @@ class Programarespecializacionciclouno extends Controller{
                         //sleep(10);
                         //$this->primerciclo($limit,$marcaIngreso,$codPeriodo);
                     }
+                    break;
                 case 42:
                     $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :
@@ -80,6 +81,7 @@ class Programarespecializacionciclouno extends Controller{
                         //sleep(10);
                         $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
                     }
+                    break;
                 case 43:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :
@@ -103,7 +105,8 @@ class Programarespecializacionciclouno extends Controller{
                         //sleep(10);
                         //$this->primerciclo($limit,$marcaIngreso,$codPeriodo);
                     }
-                case $codPeriodo == 44:
+                    break;
+                case 44:
                     $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :
                         $offset = 0;
@@ -129,7 +132,8 @@ class Programarespecializacionciclouno extends Controller{
                     else:
                         echo "No hay Estudiantes por programar especializacion";
                     endif;
-                case $codPeriodo == 45:
+                    break;
+                case 45:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :
                         $offset = 0;

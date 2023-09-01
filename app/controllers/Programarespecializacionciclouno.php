@@ -179,6 +179,7 @@ class Programarespecializacionciclouno extends Controller{
                 $marca_ingreso = $estudiante['marca_ingreso'];
                 $programa = $estudiante['programa'];
                 $ciclo = 1 . "," . 12;
+                var_dump($codigoBanner, $programa, $ciclo);die();
                 $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo);
                 var_dump($materiasPorVer->fetchAll());die();
                 foreach ($materiasPorVer as $materia) :

@@ -5,7 +5,7 @@ class Database{
     {
         // $this->host = 'localhost';
         $this->host = '127.16.15.155';
-        $this->db = 'u266816196_ILPoF';
+        //$this->db = 'u266816196_ILPoF';
         // $this->user = 'u266816196_YCF0b';
         $this->user = 'VirtualIbero';
         // $this->password = 'Yeiner91041755542.';

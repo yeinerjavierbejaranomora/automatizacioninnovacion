@@ -180,7 +180,7 @@ class Programarespecializacionciclouno extends Controller{
                 $programa = $estudiante['programa'];
                 $ciclo = 1 . "," . 12;
                 //var_dump($codigoBanner, $programa, $ciclo);die();
-                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo);
+                $materiasPorVer = $this->model->materiasPorVer($codigoBanner, $programa, $ciclo,$semestre);
                 var_dump($materiasPorVer->fetchAll());die();
                 foreach ($materiasPorVer as $materia) :
                     // var_dump($estudiante);die();

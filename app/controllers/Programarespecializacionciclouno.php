@@ -168,10 +168,10 @@ class Programarespecializacionciclouno extends Controller{
         else :
             $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
         endif;
-        var_dump($offset);die();
-
-        /*$estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
-        if($estudiantes->rowCount() > 0):
+        
+        $estudiantes = $this->model->getEstudiantes($offset,$marcaIngreso,$limit);
+        var_dump($estudiantes);die();
+        /*if($estudiantes->rowCount() > 0):
             foreach ($estudiantes as $estudiante) :
                 $idEstudiante = $estudiante['id'];
                 $codigoBanner = $estudiante['homologante'];

@@ -24,10 +24,10 @@ class Programarespecializacionciclouno extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        var_dump($marcaIngreso);
+        //var_dump($marcaIngreso);
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
-        var_dump($marcaIngreso);die();
+        //var_dump($marcaIngreso);die();
         
         if($fechaActual > $fechaInicioProgramacion && $fechaActual <= $fechaInicioCiclo1):
             //echo "detro de la fecha";die();
@@ -110,7 +110,7 @@ class Programarespecializacionciclouno extends Controller{
                     else :
                         $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
                     endif;
-                    // var_dump($offset);die();
+                    var_dump($offset);die();
                     $periodosEspecializacion = $this->model->periodosEspecializacion();
                     foreach ($periodosEspecializacion as $periodo) {
                         $codPeriodo2 = substr($periodo['periodos'], -2);

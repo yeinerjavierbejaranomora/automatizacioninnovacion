@@ -20,6 +20,7 @@ class Database{
             ];
 
             $this->pdo = new PDO($connection,$this->user,$this->password,$options);
+            var_dump($this->pdo);die();
             return $this->pdo;
         } catch (PDOException $e) {
             print_r("Error connection: ".$e->getMessage());

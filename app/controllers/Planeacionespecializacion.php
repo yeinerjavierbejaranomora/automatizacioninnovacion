@@ -24,7 +24,7 @@ class Planeacionespecializacion extends Controller{
         $marcaIngreso = "";
         switch ($codPeriodo) {
             case 41:
-                $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+                $log = $this->model->logAplicacion('Insert-planeacionPrimerCicloEspecializacion', 'planeacion');
                 if ($log->rowCount() == 0) :
                     $offset = 0;
                 else :
@@ -52,7 +52,7 @@ class Planeacionespecializacion extends Controller{
                 endif;
                 break;
             case 42:
-                $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
+                $log = $this->model->logAplicacion('Insert-planeacionSegundoCicloEspecializacion', 'planeacion');
                 if ($log->rowCount() == 0) :
                     $offset = 0;
                 else :
@@ -80,7 +80,7 @@ class Planeacionespecializacion extends Controller{
                 endif;
                 break;
             case 43:
-                $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+                $log = $this->model->logAplicacion('Insert-planeacionPrimerCicloEspecializacion', 'planeacion');
                 if ($log->rowCount() == 0) :
                     $offset = 0;
                 else :
@@ -108,13 +108,13 @@ class Planeacionespecializacion extends Controller{
                 endif;
                 break;
             case 44:
-                $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
+                $log = $this->model->logAplicacion('Insert-planeacionSegundoCicloEspecializacion', 'planeacion');
                 if ($log->rowCount() == 0) :
                     $offset = 0;
                 else :
                     $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
                 endif;
-                var_dump($offset);die();
+                //var_dump($offset);die();
                 $periodosEspecializacion = $this->model->periodosEspecializacion();
                 foreach ($periodosEspecializacion as $periodo) {
                     $codPeriodo2 = substr($periodo['periodos'], -2);
@@ -135,7 +135,7 @@ class Planeacionespecializacion extends Controller{
                 endif;
                 break;
             case 45:
-                $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+                $log = $this->model->logAplicacion('Insert-planeacionPrimerCicloEspecializacion', 'planeacion');
                 if ($log->rowCount() == 0) :
                     $offset = 0;
                 else :
@@ -170,7 +170,7 @@ class Planeacionespecializacion extends Controller{
     }
 
     public function primerCiclo($limit,$marcaIngreso,$codPeriodo){
-        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCicloEspecializacion', 'programacion');
+        $log = $this->model->logAplicacion('Insert-PlaneacionPrimerCicloEspecializacion', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -234,7 +234,7 @@ class Planeacionespecializacion extends Controller{
                                 $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia ' . $materia['codMateria'] . ' ya que es de ciclo completo';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                             else :
-                                /**programo las materias insertando en programacion */
+                                /**programo las materias insertando en planeacion */
                             $programada = '';
                             $insertPlaneada = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                         endif;
@@ -244,7 +244,7 @@ class Planeacionespecializacion extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-PlaneacionPrimerCicloEspecializacion';
-                    $tablaAfectada = 'programacion';
+                    $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
@@ -275,7 +275,7 @@ class Planeacionespecializacion extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-PlaneacionPrimerCicloEspecializacion';
-                    $tablaAfectada = 'programacion';
+                    $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del primer ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
@@ -289,7 +289,7 @@ class Planeacionespecializacion extends Controller{
     }
 
     public function segundoCiclo($limit,$marcaIngreso,$codPeriodo){
-        $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCicloEspecializacion', 'programacion');
+        $log = $this->model->logAplicacion('Insert-PlaneacionSegundoCicloEspecializacion', 'planeacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -352,7 +352,7 @@ class Planeacionespecializacion extends Controller{
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                         else:
-                            /**programo las materias insertando en programacion */
+                            /**programo las materias insertando en planeacion */
                             $programada = '';
                             $insertPlaneada = $this->model->insertarPlaneacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa,$marca_ingreso);
                         endif;                        
@@ -362,7 +362,7 @@ class Planeacionespecializacion extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-PlaneacionSegundoCicloEspecializacion';
-                    $tablaAfectada = 'programacion';
+                    $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
@@ -395,7 +395,7 @@ class Planeacionespecializacion extends Controller{
                     $idBannerUltimoRegistro = $estudiante['homologante'];
                     $fechaFin = date('Y-m-d H:i:s');
                     $acccion = 'Insert-PlaneacionSegundoCicloEspecializacion';
-                    $tablaAfectada = 'programacion';
+                    $tablaAfectada = 'planeacion';
                     $descripcion = 'Se realizo la insercion en la tabla planeacion insertando las materias del segundo ciclo del estudiante ' . $codigoBanner . ', iniciando en el id ' . $primerId . ' y terminando en el id ' . $ultimoRegistroId . '.';
                     $fecha = date('Y-m-d H:i:s');
                     $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);

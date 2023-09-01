@@ -96,7 +96,7 @@ class ProgramarEspecializacionCicloUnoModel {
     }
 
     public function materiasPorVer($codigoBanner,$programa,$ciclo,$semestre){
-        var_dump($codigoBanner,$programa,$ciclo,$semestre);die();
+        //var_dump($codigoBanner,$programa,$ciclo,$semestre);die();
         try {
             $consultaMateriasPorVer = $this->db->connect()->prepare("SELECT mpv.codBanner,mpv.codMateria,mpv.orden,m.semestre,m.creditos,m.ciclo,m.prerequisito FROM `materiasPorVer` mpv 
             INNER JOIN `mallaCurricular` m ON m.codigoCurso=mpv.codMateria

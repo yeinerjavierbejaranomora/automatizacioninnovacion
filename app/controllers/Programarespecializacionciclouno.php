@@ -51,12 +51,16 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    $limit = 500;
-                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
-                    for ($i = 0; $i < $numEstudinates; $i++) {
-                        //sleep(10);
-                        //$this->primerciclo($limit,$marcaIngreso,$codPeriodo);
-                    }
+                    if($estudiantes->rowCount() > 0):
+                        $limit = 500;
+                        $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                        for ($i = 0; $i < $numEstudinates; $i++) {
+                            //sleep(10);
+                            $this->primerciclo($limit,$marcaIngreso,$codPeriodo);
+                        }
+                    else:
+                        echo "No hay Estudiantes por programar especializacion";
+                    endif;
                     break;
                 case 42:
                     $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
@@ -75,12 +79,16 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    $limit = 500;
-                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
-                    for ($i = 0; $i < $numEstudinates; $i++) {
-                        //sleep(10);
-                        $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
-                    }
+                    if($estudiantes->rowCount() > 0):
+                        $limit = 500;
+                        $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                        for ($i = 0; $i < $numEstudinates; $i++) {
+                            //sleep(10);
+                            $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
+                        }
+                    else:
+                        echo "No hay Estudiantes por programar especializacion";
+                    endif;
                     break;
                 case 43:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
@@ -99,12 +107,16 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    $limit = 500;
-                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
-                    for ($i = 0; $i < $numEstudinates; $i++) {
-                        //sleep(10);
-                        //$this->primerciclo($limit,$marcaIngreso,$codPeriodo);
-                    }
+                    if($estudiantes->rowCount() > 0):
+                        $limit = 500;
+                        $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                        for ($i = 0; $i < $numEstudinates; $i++) {
+                            //sleep(10);
+                            $this->primerciclo($limit,$marcaIngreso,$codPeriodo);
+                        }
+                    else:
+                        echo "No hay Estudiantes por programar especializacion";
+                    endif;
                     break;
                 case 44:
                     $log = $this->model->logAplicacion('Insert-ProgramacionSegundoCicloEspecializacion', 'programacion');
@@ -124,11 +136,11 @@ class Programarespecializacionciclouno extends Controller{
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
                     if($estudiantes->rowCount() > 0):
-                    $limit = 500;
-                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
-                    for ($i = 0; $i < $numEstudinates; $i++) {
-                        $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
-                    }
+                        $limit = 500;
+                        $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                        for ($i = 0; $i < $numEstudinates; $i++) {
+                            $this->segundoCiclo($limit,$marcaIngreso,$codPeriodo);
+                        }
                     else:
                         echo "No hay Estudiantes por programar especializacion";
                     endif;
@@ -150,12 +162,16 @@ class Programarespecializacionciclouno extends Controller{
                     }
                     $marcaIngreso = trim($marcaIngreso, ",");
                     $estudiantes = $this->model->getEstudiantesNum($offset, $marcaIngreso);
-                    $limit = 500;
-                    $numEstudinates = ceil($estudiantes->rowCount() / $limit);
-                    for ($i = 0; $i < $numEstudinates; $i++) {
-                        //sleep(10);
-                        $this->primerciclo($limit,$marcaIngreso,$codPeriodo);
-                    }
+                    if($estudiantes->rowCount() > 0):
+                        $limit = 500;
+                        $numEstudinates = ceil($estudiantes->rowCount() / $limit);
+                        for ($i = 0; $i < $numEstudinates; $i++) {
+                            //sleep(10);
+                            $this->primerciclo($limit,$marcaIngreso,$codPeriodo);
+                        }
+                    else:
+                        echo "No hay Estudiantes por programar especializacion";
+                    endif;
                     break;
                 
                 default:

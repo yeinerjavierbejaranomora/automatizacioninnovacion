@@ -8,15 +8,14 @@ class Programarespecializacionciclouno extends Controller{
     }
 
     public function inicio(){
-        echo "prueba especializacion";
-        /*$fechaActual = date('Y-m-d');
+        $fechaActual = date('Y-m-d');
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
         // $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
         $fechaInicioCiclo1 = '2023-09-02';
         /*echo $fechaInicioCiclo1,"<br>";
         echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));*/
-        /*$fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
+        $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $codPeriodo = substr($periodo['periodos'],-2);
@@ -34,7 +33,7 @@ class Programarespecializacionciclouno extends Controller{
             //echo "detro de la fecha";die();
             
             
-            switch ($codPeriodo) {
+            /*switch ($codPeriodo) {
                 case 41:
                     $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
                     if ($log->rowCount() == 0) :
@@ -155,11 +154,11 @@ class Programarespecializacionciclouno extends Controller{
                 default:
                     # code...
                     break;
-            }
+            }*/
             
         else:
             echo " fuera de fecha";
-        endif;*/
+        endif;
     }
 
     /*public function primerCiclo($limit,$marcaIngreso,$codPeriodo){

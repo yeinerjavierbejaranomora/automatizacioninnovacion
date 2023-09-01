@@ -4,7 +4,7 @@ class Programarespecializacion extends Controller{
     private $model;
     public function __construct()
     {
-        $this->model = $this->model('ProgramarEspecializacionModel');
+        $this->model = $this->model('PlaneacionEspecializacionModel');
     }
 
     public function inicio(){

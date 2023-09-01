@@ -114,7 +114,7 @@ class Planeacionespecializacion extends Controller{
                 else :
                     $offset = $log->fetch(PDO::FETCH_ASSOC)['idFin'];
                 endif;
-                //var_dump($offset);die();
+                var_dump($offset);die();
                 $periodosEspecializacion = $this->model->periodosEspecializacion();
                 foreach ($periodosEspecializacion as $periodo) {
                     $codPeriodo2 = substr($periodo['periodos'], -2);

@@ -162,7 +162,7 @@ class Programarespecializacionciclouno extends Controller{
     }
 
     public function primerCiclo($limit,$marcaIngreso,$codPeriodo){
-        $log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
+        /*$log = $this->model->logAplicacion('Insert-ProgramacionPrimerCicloEspecializacion', 'programacion');
         if ($log->rowCount() == 0) :
             $offset = 0;
         else :
@@ -233,7 +233,7 @@ class Programarespecializacionciclouno extends Controller{
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
                             else :
                                 /**programo las materias insertando en programacion */
-                                $programada = '';
+                               /* $programada = '';
                                 $insertPlaneada = $this->model->insertarProgramacion($codBanner, $codMateria, $orden, $semestre, $programada, $programa, $marca_ingreso);
                             endif;
                             $orden++;
@@ -283,7 +283,7 @@ class Programarespecializacionciclouno extends Controller{
             endforeach;
             else:
             echo "No hay estudiantes de especialización para programar <br>";
-        endif;
+        endif;*/
     }
 
     /*public function segundoCiclo($limit,$marcaIngreso,$codPeriodo){

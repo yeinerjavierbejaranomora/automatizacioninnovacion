@@ -23,7 +23,7 @@ class Database2 {
         } else {
             echo "Error al ejecutar la consulta: " . $conexion->error;
         }
-        
+        die();
         // Cierra la conexión
         $conexion->close();
     }

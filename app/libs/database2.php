@@ -9,22 +9,26 @@ class Database2 {
     }
 
     function connect(){
-        $conexion = new mysqli($this->host, $this->user, $this->password);
-        if ($conexion->connect_error) {
-            die("Error de conexión: " . $conexion->connect_error);
-        }
-        $query = "SHOW DATABASES";
-        $resultado = $conexion->query($query);
-        if ($resultado) {
-            echo "Bases de datos disponibles:<br>";
-            while ($fila = $resultado->fetch_assoc()) {
+        try {
+        
+            // Crea una instancia de PDO
+            $conexion = new PDO($this->host, $this->user, $this->password);
+        
+            // Configura PDO para lanzar excepciones en errores
+            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        
+            // Ejecuta una consulta para obtener la lista de bases de datos
+            $consulta = $conexion->query("SHOW DATABASES");
+        
+            // Obtiene los resultados en un array
+            $basesDeDatos = $consulta->fetchAll(PDO::FETCH_ASSOC);
+        
+            // Itera a través de la lista de bases de datos
+            foreach ($basesDeDatos as $fila) {
                 echo $fila['Database'] . "<br>";
             }
-        } else {
-            echo "Error al ejecutar la consulta: " . $conexion->error;
+        } catch (PDOException $e) {
+            echo "Error de conexión: " . $e->getMessage();
         }
-        die();
-        // Cierra la conexión
-        $conexion->close();
     }
 }

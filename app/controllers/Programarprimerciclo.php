@@ -14,7 +14,7 @@ class Programarprimerciclo extends Controller{
         $dias_a_restar = 7;
         $periodos = $this->model->periodos();
         // $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
-        $fechaInicioCiclo1 = '2023-08-30';
+        $fechaInicioCiclo1 = '2023-09-06';
         /*echo $fechaInicioCiclo1,"<br>";
         echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));*/
         $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));

@@ -1,8 +1,8 @@
 <?php
 // require_once 'libs/database.php';
-require_once 'libs/database2.php';
-require_once 'libs/controller.php';
-require_once 'libs/app.php';
+// require_once 'libs/database2.php';
+// require_once 'libs/controller.php';
+// require_once 'libs/app.php';
 $host = "172.16.15.155";
 $usuario = "VirtualIbero";
 $contraseña = "V1rtu4|1b3r0";

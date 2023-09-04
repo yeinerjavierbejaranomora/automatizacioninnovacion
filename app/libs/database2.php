@@ -12,7 +12,8 @@ class Database2 {
         try {
         
             // Crea una instancia de PDO
-            $conexion = new PDO($this->host, $this->user, $this->password);
+            $dsn = "mysql:host=".$this->host; . "port=3306";
+            $conexion = new PDO($dsn, $this->user, $this->password);
         
             // Configura PDO para lanzar excepciones en errores
             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

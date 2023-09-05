@@ -200,7 +200,7 @@ class MafiReplicaModel{
             $insertAlerta->bindValue(2,$tipoEstudiante,PDO::PARAM_STR);
             $insertAlerta->bindValue(3,$programa,PDO::PARAM_STR);
             $insertAlerta->bindValue(4,$marcaIngreso,PDO::PARAM_STR);
-            $insertAlerta->bindValue(5,0,PDO::PARAM_INT);
+            $insertAlerta->bindValue(5,1,PDO::PARAM_INT);
             $insertAlerta->bindValue(6,$mensajeAlerta,PDO::PARAM_STR);
             $insertAlerta->execute();
             return $insertAlerta;

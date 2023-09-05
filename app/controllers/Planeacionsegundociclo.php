@@ -49,7 +49,7 @@ class Planeacionsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 if ($programaHomologante != 'PPSV') :
 
-                var_dump($estudiante);die();
+                // var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;

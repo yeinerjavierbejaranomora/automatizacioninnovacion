@@ -71,7 +71,7 @@ class Mafireplica  extends Controller{
                                 $tieneHistorial = 'SIN HISTORIAL';
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                                $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
+                                $mensajeAlerta = 'El estudiante con idBanner ' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoEstudiante,$mensajeAlerta);
                                     if($insertarAlertaTemprana):
                                     $numeroRegistrosAlertas++;
@@ -84,7 +84,7 @@ class Mafireplica  extends Controller{
                             else:
                                 $tieneHistorial = 'SIN HISTORIAL';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                                $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
+                                $mensajeAlerta = 'El estudiante con idBanner ' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoEstudiante,$mensajeAlerta);
                                 if($insertarAlertaTemprana):
                                     $numeroRegistrosAlertas++;
@@ -142,7 +142,7 @@ class Mafireplica  extends Controller{
                 $fechaFin = date('Y-m-d H:i:s');
                 $acccion = 'Insert';
                 $tablaAfectada = 'estudiantes';
-                $descripcion = 'Se realizo la insercion en la tabla estudiantes, del estudiante con codigo banner'. $codigoBanner;
+                $descripcion = 'Se realizo la insercion en la tabla estudiantes, del estudiante con codigo banner '. $codigoBanner;
                 $fecha = date('Y-m-d H:i:s');
                 $insertarLogAplicacion = $this->model->insertarLogAplicacion($primerId, $ultimoRegistroId, $fechaInicio, $fechaFin, $acccion, $tablaAfectada, $descripcion);
                 $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);

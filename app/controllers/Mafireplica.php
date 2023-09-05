@@ -29,6 +29,7 @@ class Mafireplica  extends Controller{
             $ultimoRegistroId = 0;
             $fechaInicio = date('Y-m-d H:i:s');
             foreach($datosMafi as $estudiante):
+                var_dump($estudiante);die();
                 $primerId = $estudiante['id'];
                 $codigoBanner = $estudiante['idbanner'];
                 $nombre = $estudiante['primer_apellido'];

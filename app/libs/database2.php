@@ -17,7 +17,7 @@ class Database2 {
         // ];
         // var_dump($connectionOptions);die();
         try {
-            $conn = new PDO("sqlsrv:Server=$this->host;Database=$this->db", $this->user,$this->password);
+            $conn = new PDO("sqlsrv:Server=$this->host;database=$this->db", $this->user,$this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Conexión establecida correctamente";
         } catch (PDOException $e) {

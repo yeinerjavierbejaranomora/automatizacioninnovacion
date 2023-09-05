@@ -15,7 +15,7 @@ class Database2 {
             "Uid" => $this->user,
             "PWD" => $this->password
         ];
-        var_dump($connectionOptions);die();
+        //var_dump($connectionOptions);die();
         try {
             $conn = new PDO("sqlsrv:Server=$this->host;Database=your_database", $connectionOptions);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

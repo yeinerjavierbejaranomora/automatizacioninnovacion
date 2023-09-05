@@ -193,12 +193,15 @@ class MafiReplicaModel{
         }
     }
 
-    public function insertarAlerta($codigoBanner,$tipoEstudiante,$mensajeAlerta){
+    public function insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoEstudiante,$mensajeAlerta){
         try {
-            $insertAlerta = $this->db->connect()->prepare("INSERT INTO `alertas_tempranas` SET `idbanner` = ?, `tipo_estudiante` = ?, `desccripcion` = ?, `created_at` = NOW(), `updated_at` = NOW()");
+            $insertAlerta = $this->db->connect()->prepare("INSERT INTO `alertas_tempranas` SET `idbanner` = ?, `tipo_estudiante` = ?, `codprograma` = ?, `periodo` = ?, `activo` = ?, `desccripcion` = ?, `created_at` = NOW(), `updated_at` = NOW()");
             $insertAlerta->bindValue(1,$codigoBanner,PDO::PARAM_INT);
             $insertAlerta->bindValue(2,$tipoEstudiante,PDO::PARAM_STR);
-            $insertAlerta->bindValue(3,$mensajeAlerta,PDO::PARAM_STR);
+            $insertAlerta->bindValue(3,$programa,PDO::PARAM_STR);
+            $insertAlerta->bindValue(4,$marcaIngreso,PDO::PARAM_STR);
+            $insertAlerta->bindValue(5,0,PDO::PARAM_INT);
+            $insertAlerta->bindValue(6,$mensajeAlerta,PDO::PARAM_STR);
             $insertAlerta->execute();
             return $insertAlerta;
         } catch (PDOException $e) {

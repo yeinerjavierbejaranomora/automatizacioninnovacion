@@ -49,7 +49,7 @@ class Planeacionsegundociclo extends Controller{
                 $programaHomologante = $estudiante['programa'];
                 if ($programaHomologante != 'PPSV') :
 
-                //var_dump($estudiante);die();
+                var_dump($estudiante);die();
                 $fechaInicio = date('Y-m-d H:i:s');
                 $primerId = $estudiante['id'];
                 $ultimoRegistroId = 0;
@@ -126,7 +126,7 @@ class Planeacionsegundociclo extends Controller{
 
                 if ($numeroMateriasPorVer == 0) :
                     $mensajeAlerta = 'El estudiante con idBanner ' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante,$marcaIngreso,$programaHomologante, $tipoEstudiante, $mensajeAlerta);
                     $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
                     $ultimoRegistroId = $estudiante['id'];
                     $idBannerUltimoRegistro = $estudiante['homologante'];
@@ -282,7 +282,7 @@ class Planeacionsegundociclo extends Controller{
         $orden2 = 1;
         if ($numeroMateriasPorVer == 0) :
             $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ', perteneciente al programa '.$programaHomologante.', no tiene materias por ver, segundo ciclo.';
-            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante, $tipoEstudiante, $mensajeAlerta);
+            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante,$marcaIngreso,$programaHomologante, $tipoEstudiante, $mensajeAlerta);
             $updateEstudinate = $this->model->updateEstudinate($idHomologante, $codHomologante);
             $ultimoRegistroId = $estudiante['id'];
             $idBannerUltimoRegistro = $estudiante['homologante'];

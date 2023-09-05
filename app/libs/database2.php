@@ -4,32 +4,24 @@ class Database2 {
     function __construct()
     {
         $this->host = "172.16.15.155";
+        $this->db = "Moodle";
         $this->user = "VirtualIbero";
         $this->password = "V1rtu4|1b3r0";
     }
 
     function connect(){
+        $connectionOptions = [
+            "Database" => $this->db,
+            "Uid" => $this->user,
+            "PWD" => $this->password
+        ];
+        var_dump($connectionOptions);die();
         try {
-        
-            // Crea una instancia de PDO
-            $dsn = "mysql:host=".$this->host .";port=3306";
-            $conexion = new PDO($dsn, $this->user, $this->password);
-        
-            // Configura PDO para lanzar excepciones en errores
-            $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-            // Ejecuta una consulta para obtener la lista de bases de datos
-            $consulta = $conexion->query("SHOW DATABASES");
-        
-            // Obtiene los resultados en un array
-            $basesDeDatos = $consulta->fetchAll(PDO::FETCH_ASSOC);
-        
-            // Itera a través de la lista de bases de datos
-            foreach ($basesDeDatos as $fila) {
-                echo $fila['Database'] . "<br>";
-            }
+            $conn = new PDO("sqlsrv:Server=$this->host;Database=your_database", $connectionOptions);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            echo "Conexión establecida correctamente";
         } catch (PDOException $e) {
-            echo "Error de conexión: " . $e->getMessage();
+            die("Error en la conexión: " . $e->getMessage());
         }
     }
 }

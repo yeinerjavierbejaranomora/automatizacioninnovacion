@@ -282,7 +282,7 @@ class Planeacionsegundociclo extends Controller{
         $orden2 = 1;
         if ($numeroMateriasPorVer == 0) :
             $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ', perteneciente al programa '.$programaHomologante.', no tiene materias por ver, segundo ciclo.';
-            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante,$marcaIngreso,$programaHomologante, $tipoEstudiante, $mensajeAlerta);
+            $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante,$marca_ingreso,$programaHomologante, $tipoEstudiante, $mensajeAlerta);
             $updateEstudinate = $this->model->updateEstudinate($idHomologante, $codHomologante);
             $ultimoRegistroId = $estudiante['id'];
             $idBannerUltimoRegistro = $estudiante['homologante'];

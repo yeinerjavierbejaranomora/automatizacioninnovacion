@@ -10,14 +10,14 @@ class Database2 {
     }
 
     function connect(){
-        $connectionOptions = [
-            "Database" => $this->db,
-            "Uid" => $this->user,
-            "PWD" => $this->password
-        ];
-        var_dump($connectionOptions);die();
+        // $connectionOptions = [
+        //     "Database" => $this->db,
+        //     "Uid" => $this->user,
+        //     "PWD" => $this->password
+        // ];
+        // var_dump($connectionOptions);die();
         try {
-            $conn = new PDO("sqlsrv:Server=$this->host;Database=your_database", $connectionOptions);
+            $conn = new PDO("sqlsrv:Server=$this->host;Database=$this->db", $this->user,$this->password);
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             echo "Conexión establecida correctamente";
         } catch (PDOException $e) {

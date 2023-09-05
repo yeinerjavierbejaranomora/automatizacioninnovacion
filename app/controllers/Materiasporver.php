@@ -255,7 +255,7 @@ class Materiasporver extends Controller{
                     echo $ultimoRegistroId . "-" . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 else :
                     $mensajeAlerta = 'El estudiante con idBanner' . $codBanner . ' es estudiante antiguo y ya vio todo.';
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner, $tipoEstudiante, $mensajeAlerta);
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner,$marcaIngreso,$programa,$tipoEstudiante,$mensajeAlerta);
                     $updateEstudianteEA = $this->model->upateEstuianteAntiguo($estudiante['id'],$codBanner);
                     echo "estudiante vio todo". $codBanner."<br>";
                 endif;

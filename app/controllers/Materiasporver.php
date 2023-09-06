@@ -254,8 +254,9 @@ class Materiasporver extends Controller{
                     $insertIndiceCambio = $this->model->insertIndiceCambio($idBannerUltimoRegistro, $acccion, $descripcion, $fecha);
                     echo $ultimoRegistroId . "-" . "-Fecha Inicio: " . $fechaInicio . "Fecha Fin: " . $fechaFin . "<br>";
                 else :
+                    $tipoAlerta = 'Materias por ver';
                     $mensajeAlerta = 'El estudiante con idBanner' . $codBanner . ' es estudiante antiguo y ya vio todo.';
-                    $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner,$marcaIngreso,$programa,$tipoEstudiante,$mensajeAlerta);
+                    $insertarAlertaTemprana = $this->model->insertarAlerta($codBanner,$marcaIngreso,$programa,$tipoAlerta,$tipoEstudiante,$mensajeAlerta);
                     $updateEstudianteEA = $this->model->upateEstuianteAntiguo($estudiante['id'],$codBanner);
                     echo "estudiante vio todo". $codBanner."<br>";
                 endif;

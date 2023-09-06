@@ -247,8 +247,9 @@ class Programarespecializacion extends Controller{
                         if ($ciclo == 12) :
                             /**creo alerta de materia de ciclo completo*/
                             $orden--;
+                            $tipoAlerta = 'programacion especializacion';
                                 $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia ' . $materia['codMateria'] . ' ya que es de ciclo completo';
-                                $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
+                                $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marca_ingreso,$programa,$tipoAlerta, $tipoEstudiante, $mensajeAlerta);
                             else :
                                 /**programo las materias insertando en programacion */
                             $programada = '';
@@ -365,8 +366,9 @@ class Programarespecializacion extends Controller{
                         if($ciclo == 12):
                             /*creo alerta de materia de ciclo completo*/
                             $orden--;
+                            $tipoAlerta = 'programacion especializacion';
                             $mensajeAlerta = 'El estudiante con idBanner' . $codigoBanner . ', No se le puede programar la materia '.$materia['codMateria'] .' ya que es de ciclo completo';
-                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner, $tipoEstudiante, $mensajeAlerta);
+                            $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marca_ingreso,$programa,$tipoAlerta, $tipoEstudiante, $mensajeAlerta);
                         else:
                             /**programo las materias insertando en programacion */
                             $programada = '';

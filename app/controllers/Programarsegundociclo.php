@@ -141,7 +141,7 @@ class Programarsegundociclo extends Controller{
                     $orden2 = 1;
 
                     if ($numeroMateriasPorVer == 0) :
-                        $tipoAlerta = 'programacion';
+                        $tipoAlerta = 'Sin materias segundo ciclo';
                         $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ' no tiene materias por ver, segundo ciclo.';
                         $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante,$marca_ingreso,$programaHomologante,$tipoAlerta, $tipoEstudiante, $mensajeAlerta);
                         $updateEstudinate = $this->model->updateEstudinate($idHomologante,$codHomologante);
@@ -298,7 +298,7 @@ class Programarsegundociclo extends Controller{
         $numeroMateriasPermitidos = (int)$reglasNegocio['materiasPermitidas'];
         $orden2 = 1;
         if ($numeroMateriasPorVer == 0) :
-            $tipoAlerta = 'programacion';
+            $tipoAlerta = 'Sin materias segundo ciclo';
             $mensajeAlerta = 'El estudiante con idBanner' . $codHomologante . ', perteneciente al programa '.$programaHomologante.', no tiene materias por ver, segundo ciclo.';
             $insertarAlertaTemprana = $this->model->insertarAlerta($codHomologante,$marca_ingreso,$programaHomologante,$tipoAlerta, $tipoEstudiante, $mensajeAlerta);
             $updateEstudinate = $this->model->updateEstudinate($idHomologante, $codHomologante);

@@ -71,13 +71,13 @@ class Mafireplica  extends Controller{
                                 $tieneHistorial = 'SIN HISTORIAL';
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                                $tipoAlerta = 'mafiReplica';
+                                $tipoAlerta = 'Sin historial';
                                 $mensajeAlerta = 'El estudiante con idBanner ' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoAlerta,$tipoEstudiante,$mensajeAlerta);
                                     if($insertarAlertaTemprana):
                                     $numeroRegistrosAlertas++;
                                 endif;
-                                $tipoAlerta = 'mafiReplica';
+                                $tipoAlerta = 'No abrio programa';
                                 $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoAlerta,$tipoEstudiante,$mensajeAlerta);
                                 if($insertarAlertaTemprana):
@@ -86,7 +86,7 @@ class Mafireplica  extends Controller{
                             else:
                                 $tieneHistorial = 'SIN HISTORIAL';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                                $tipoAlerta = 'mafiReplica';
+                                $tipoAlerta = 'Sin historial';
                                 $mensajeAlerta = 'El estudiante con idBanner ' . $codigoBanner . ' es "TRANSFERENTE" y no tiene historial academico';
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoAlerta,$tipoEstudiante,$mensajeAlerta);
                                 if($insertarAlertaTemprana):
@@ -102,7 +102,7 @@ class Mafireplica  extends Controller{
                             else:
                                 $programaAbrio = 'NO SE ABRIO PROGRAMA';
                                 $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                                $tipoAlerta = 'mafiReplica';
+                                $tipoAlerta = 'No abrio programa';
                                 $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
                                 $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoAlerta,$tipoEstudiante,$mensajeAlerta);
                                 if($insertarAlertaTemprana):
@@ -119,7 +119,7 @@ class Mafireplica  extends Controller{
                         else:
                             $programaAbrio = 'NO SE ABRIO PROGRAMA';
                             $insertarEstudiante = $this->model->insertarEstudiante($codigoBanner,$nombre,$programa,$bolsa,$operador,$nodo,$tipoEstudiante,$tieneHistorial,$programaAbrio,$marcaIngreso,$observaciones,$sello,$autorizadoAsistir);
-                            $tipoAlerta = 'mafiReplica';
+                            $tipoAlerta = 'No abrio programa';
                             $mensajeAlerta = 'NO SE ABRIO PROGRAMA ' . $programa;
                             $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoAlerta,$tipoEstudiante,$mensajeAlerta);
                             if($insertarAlertaTemprana):
@@ -136,7 +136,7 @@ class Mafireplica  extends Controller{
                         if($insertarEstudiante):
                             $numeroRegistros++;
                         endif;
-                        $tipoAlerta = 'mafiReplica';
+                        $tipoAlerta = 'Periodo no corresponde';
                         $mensajeAlerta = 'El ' . $codigoBanner . ' es tipo de estudiante ' . $tipoEstudiante . ', programa' . $programa .', su nivel de formacion '. $nivelFormacion . ' NO corresponde con el perido '. $marcaIngreso .'.';
                         $insertarAlertaTemprana = $this->model->insertarAlerta($codigoBanner,$marcaIngreso,$programa,$tipoAlerta, $tipoEstudiante, $mensajeAlerta);
                         if ($insertarAlertaTemprana) :

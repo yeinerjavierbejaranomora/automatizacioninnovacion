@@ -10,13 +10,14 @@ class Programarespecializacion extends Controller{
     public function inicio(){
         $fechaActual = date('Y-m-d');
         $dias_a_restar = 7;
-        $periodos = $this->model->periodos();
+        $periodos = $this->model->periodosEspecializacion();
         // $fechaInicioCiclo1 = $periodos->fetch(PDO::FETCH_ASSOC)['fechaInicioCiclo1'];
-        $fechaInicioCiclo1 = '2023-09-06';
+        $fechaInicioCiclo1 = '2023-09-25';
         /*echo $fechaInicioCiclo1,"<br>";
         echo date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));*/
         $fechaInicioProgramacion = date("Y-m-d",strtotime($fechaInicioCiclo1."- 1 week"));
         $marcaIngreso = "";
+        var_dump($marcaIngreso);die();
         foreach ($periodos as $periodo) {
             $codPeriodo = substr($periodo['periodos'],-2);
             if($codPeriodo >= 41 && $codPeriodo <=45):

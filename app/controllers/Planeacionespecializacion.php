@@ -10,7 +10,7 @@ class Planeacionespecializacion extends Controller{
     }
 
     public function inicio(){
-        $periodos = $this->model->periodos();
+        $periodos = $this->model->periodosEspecializacion();
         $marcaIngreso = "";
         foreach ($periodos as $periodo) {
             $codPeriodo = substr($periodo['periodos'],-2);
@@ -19,7 +19,7 @@ class Planeacionespecializacion extends Controller{
             endif;
         }
         $marcaIngreso = trim($marcaIngreso, ",");
-        //var_dump($marcaIngreso);die();
+        var_dump($marcaIngreso);die();
         $codPeriodo = substr($marcaIngreso,-2);
         $marcaIngreso = "";
         switch ($codPeriodo) {
